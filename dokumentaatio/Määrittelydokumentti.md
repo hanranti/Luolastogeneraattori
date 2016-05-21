@@ -6,4 +6,4 @@ Yksittäisen luolan reunoilla olevien uloskäyntien täytyy olla avoinna myös v
 
 Pelaaja on luokka, joka sisältää tiedon pelaajan x- ja y- koordinaatit luolassa ja luolan sijainnin luolastossa.
 
-Ohjelma ottaa aluksi parametrinä luvun joka määrittää yksittäisen luolan koon.
+Ohjelma ottaa aluksi parametrinä luvun joka määrittää yksittäisen luolan koon. Ohjelman suorituksen aikana ohjelma ottaa syötteenä pelaajan siirtoja.
