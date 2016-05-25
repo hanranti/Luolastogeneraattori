@@ -3,6 +3,11 @@ package luolastogeneraattori;
 public class GUI {
 
     private Pelaaja pelaaja;
+    
+
+    public GUI(Pelaaja pelaaja) {
+        this.pelaaja = pelaaja;
+    }
 
     public void piirra(boolean[][] luola) {
         for (int i = 0; i < luola.length; i++) {

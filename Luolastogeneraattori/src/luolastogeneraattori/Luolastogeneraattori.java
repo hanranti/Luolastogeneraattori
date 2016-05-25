@@ -8,8 +8,13 @@ public class Luolastogeneraattori {
         if (args.length > 0) {
             size = Integer.parseInt(args[0]);
         }
-        
-        Luolasto luolasto = new Luolasto();
-    }
 
+        Pelaaja pelaaja = new Pelaaja(size / 2, size / 2, 5, 5);
+        Luolasto luolasto = new Luolasto(size);
+        GUI gui = new GUI(pelaaja);
+
+        while (true) {
+            gui.piirra(luolasto.getLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY()).getLuola());
+        }
+    }
 }

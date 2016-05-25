@@ -18,4 +18,12 @@ public class Pelaaja {
     public int getY() {
         return y;
     }
+
+    public int getLuolaX() {
+        return luolaX;
+    }
+
+    public int getLuolaY() {
+        return luolaY;
+    }
 }

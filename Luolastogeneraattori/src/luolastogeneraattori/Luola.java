@@ -23,4 +23,8 @@ public class Luola {
         luola[(luola.length - 1) / 2][0] = false;
         luola[(luola.length - 1) / 2][luola.length - 1] = false;
     }
+
+    public boolean[][] getLuola() {
+        return luola;
+    }
 }
