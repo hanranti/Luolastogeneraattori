@@ -11,28 +11,31 @@ public class Luolastogeneraattori {
             size = Integer.parseInt(args[0]);
         }
 
-        Pelaaja pelaaja = new Pelaaja(size / 2, size / 2, 5, 5);
         Luolasto luolasto = new Luolasto(size);
+        Pelaaja pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
         GUI gui = new GUI(pelaaja);
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            System.out.println(pelaaja.getLuolaX() + " " + pelaaja.getLuolaY());
             gui.piirra(
                     luolasto.getLuola(
                             pelaaja.getLuolaX(),
                             pelaaja.getLuolaY())
                     .getLuola());
             String s = scanner.nextLine();
-            if (s == "o") {
+            if (s.equals("o")) {
                 pelaaja.liikutaOikealle();
-            } else if (s == "v") {
+            } else if (s.equals("v")) {
                 pelaaja.liikutaVasemmalle();
-            } else if (s == "y") {
+            } else if (s.equals("y")) {
                 pelaaja.liikutaYlos();
-            } else if (s == "a") {
-                pelaaja.liikutaAlas();;
-            };
+            } else if (s.equals("a")) {
+                pelaaja.liikutaAlas();
+            } else if (s.equals("exit")) {
+                break;
+            }
         }
     }
 }

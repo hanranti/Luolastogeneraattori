@@ -29,4 +29,8 @@ public class Luolasto {
     public Luola getLuola(int x, int y) {
         return luolasto[x][y];
     }
+
+    public int getSize() {
+        return size;
+    }
 }
