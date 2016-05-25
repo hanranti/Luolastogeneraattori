@@ -11,6 +11,22 @@ public class Pelaaja {
         this.luolaY = luolaY;
     }
 
+    public void liikutaYlos() {
+        y--;
+    }
+
+    public void liikutaAlas() {
+        y++;
+    }
+
+    public void liikutaOikealle() {
+        x++;
+    }
+
+    public void liikutaVasemmalle() {
+        x--;
+    }
+
     public int getX() {
         return x;
     }

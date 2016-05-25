@@ -12,7 +12,8 @@ public class Luolasto {
 
     public void genertoiLuola(int x, int y) {
         Luola luola = new Luola(size);
-
+        luola.generoi();
+        luolasto[x][y] = luola;
     }
 
     private void kasvataTaulukkoa() {
