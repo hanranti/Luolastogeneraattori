@@ -11,4 +11,11 @@ public class Pelaaja {
         this.luolaY = luolaY;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }
