@@ -11,6 +11,9 @@ public class Luolasto {
     }
 
     public void genertoiLuola(int x, int y) {
+        if (x >= size || x < 0 || y >= size || y < 0) {
+            kasvataTaulukkoa();
+        }
         Luola luola = new Luola(size);
         luola.generoi();
         luolasto[x][y] = luola;

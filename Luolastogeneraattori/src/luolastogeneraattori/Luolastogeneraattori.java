@@ -19,11 +19,7 @@ public class Luolastogeneraattori {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println(pelaaja.getLuolaX() + " " + pelaaja.getLuolaY());
-            gui.piirra(
-                    luolasto.getLuola(
-                            pelaaja.getLuolaX(),
-                            pelaaja.getLuolaY())
-                    .getLuola());
+            gui.piirra(luolasto.getLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY()).getLuola());
             String s = scanner.nextLine();
             if (s.equals("o")) {
                 pelaaja.liikutaOikealle();

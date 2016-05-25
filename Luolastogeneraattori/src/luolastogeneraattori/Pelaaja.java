@@ -14,6 +14,9 @@ public class Pelaaja {
     }
 
     public void liikutaYlos() {
+        if (luolasto.getLuola(luolaX, luolaY).getLuola()[x][y - 1] && y - 1 > 0) {
+            return;
+        }
         y--;
         if (y < 0) {
             luolaY--;
