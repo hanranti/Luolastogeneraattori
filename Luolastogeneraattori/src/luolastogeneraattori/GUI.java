@@ -21,11 +21,11 @@ public class GUI {
      * @param luola
      */
     public void piirra(boolean[][] luola) {
-        for (int i = 0; i < luola.length; i++) {
-            for (int j = 0; j < luola[0].length; j++) {
-                if (i == pelaaja.getX() && j == pelaaja.getY()) {
+        for (int i = 0; i < luola[0].length; i++) {
+            for (int j = 0; j < luola.length; j++) {
+                if (j == pelaaja.getX() && i == pelaaja.getY()) {
                     System.out.print("@");
-                } else if (luola[i][j]) {
+                } else if (luola[j][i]) {
                     System.out.print("x");
                 } else {
                     System.out.print("o");
