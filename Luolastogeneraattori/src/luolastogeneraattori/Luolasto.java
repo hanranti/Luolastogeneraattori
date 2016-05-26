@@ -1,15 +1,28 @@
 package luolastogeneraattori;
 
+/**
+ *
+ * @author Hannu
+ */
 public class Luolasto {
 
     private Luola[][] luolasto;
     private int size;
 
+    /**
+     *
+     * @param size
+     */
     public Luolasto(int size) {
         luolasto = new Luola[10][10];
         this.size = size;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public void genertoiLuola(int x, int y) {
         if (x >= size || x < 0 || y >= size || y < 0) {
             kasvataTaulukkoa();
@@ -29,10 +42,20 @@ public class Luolasto {
         luolasto = luolasto2;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public Luola getLuola(int x, int y) {
         return luolasto[x][y];
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSize() {
         return size;
     }

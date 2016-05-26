@@ -2,8 +2,16 @@ package luolastogeneraattori;
 
 import java.util.Scanner;
 
+/**
+ *
+ * @author Hannu
+ */
 public class Luolastogeneraattori {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int size = 32;
 

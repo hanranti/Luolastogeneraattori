@@ -1,15 +1,26 @@
 package luolastogeneraattori;
 
+/**
+ *
+ * @author Hannu
+ */
 public class Luola {
 
     boolean[][] luola;
     int size;
 
+    /**
+     *
+     * @param size
+     */
     public Luola(int size) {
         this.size = size;
         luola = new boolean[size][size];
     }
 
+    /**
+     *
+     */
     public void generoi() {
         for (int i = 0; i < luola.length; i++) {
             for (int j = 0; j < luola[0].length; j++) {
@@ -24,6 +35,10 @@ public class Luola {
         luola[(luola.length - 1) / 2][luola.length - 1] = false;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean[][] getLuola() {
         return luola;
     }

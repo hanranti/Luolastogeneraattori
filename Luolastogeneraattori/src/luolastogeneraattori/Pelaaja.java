@@ -1,10 +1,22 @@
 package luolastogeneraattori;
 
+/**
+ *
+ * @author Hannu
+ */
 public class Pelaaja {
 
     private int x, y, luolaX, luolaY;
     private Luolasto luolasto;
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param luolaX
+     * @param luolaY
+     * @param luolasto
+     */
     public Pelaaja(int x, int y, int luolaX, int luolaY, Luolasto luolasto) {
         this.x = x;
         this.y = y;
@@ -13,6 +25,9 @@ public class Pelaaja {
         this.luolasto = luolasto;
     }
 
+    /**
+     *
+     */
     public void liikutaYlos() {
         if (y - 1 >= 0 && luolasto.getLuola(luolaX, luolaY).getLuola()[x][y - 1]) {
             return;
@@ -25,6 +40,9 @@ public class Pelaaja {
         }
     }
 
+    /**
+     *
+     */
     public void liikutaAlas() {
         if (y + 1 >= 0 && luolasto.getLuola(luolaX, luolaY).getLuola()[x][y + 1]) {
             return;
@@ -37,6 +55,9 @@ public class Pelaaja {
         }
     }
 
+    /**
+     *
+     */
     public void liikutaOikealle() {
         if (x + 1 >= 0 && luolasto.getLuola(luolaX, luolaY).getLuola()[x + 1][y]) {
             return;
@@ -49,6 +70,9 @@ public class Pelaaja {
         }
     }
 
+    /**
+     *
+     */
     public void liikutaVasemmalle() {
         if (x - 1 >= 0 && luolasto.getLuola(luolaX, luolaY).getLuola()[x - 1][y]) {
             return;
@@ -61,18 +85,34 @@ public class Pelaaja {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLuolaX() {
         return luolaX;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLuolaY() {
         return luolaY;
     }
