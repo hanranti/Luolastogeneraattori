@@ -25,7 +25,7 @@ public class Luolastogeneraattori {
         Luolasto luolasto = new Luolasto(size);
         Pelaaja pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
-        GUI gui = new GUI(pelaaja);
+        GUI gui = new GUI();
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -34,7 +34,8 @@ public class Luolastogeneraattori {
                     luolasto.getLuola(
                             pelaaja.getLuolaX(),
                             pelaaja.getLuolaY())
-                    .getLuola());
+                    .getLuola(),
+                    pelaaja);
             String s = scanner.nextLine();
             if (s.equals("o")) {
                 pelaaja.liikutaOikealle();

@@ -8,6 +8,7 @@ public class Luolasto {
 
     private Luola[][] luolasto;
     private int size;
+    private int muutos;
 
     /**
      *
@@ -16,6 +17,7 @@ public class Luolasto {
     public Luolasto(int size) {
         luolasto = new Luola[10][10];
         this.size = size;
+        muutos = 0;
     }
 
     /**
@@ -29,7 +31,7 @@ public class Luolasto {
         }
         Luola luola = new Luola(size);
         luola.generoi();
-        luolasto[x][y] = luola;
+        luolasto[x + muutos][y + muutos] = luola;
     }
 
     private void kasvataTaulukkoa() {
@@ -40,6 +42,7 @@ public class Luolasto {
             }
         }
         luolasto = luolasto2;
+        muutos = luolasto.length / 2;
     }
 
     /**
@@ -49,7 +52,7 @@ public class Luolasto {
      * @return
      */
     public Luola getLuola(int x, int y) {
-        return luolasto[x][y];
+        return luolasto[x + muutos][y + muutos];
     }
 
     /**

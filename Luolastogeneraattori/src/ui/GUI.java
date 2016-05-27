@@ -8,21 +8,18 @@ import luolasto.Pelaaja;
  */
 public class GUI {
 
-    private Pelaaja pelaaja;
-    
     /**
      *
-     * @param pelaaja
      */
-    public GUI(Pelaaja pelaaja) {
-        this.pelaaja = pelaaja;
+    public GUI() {
     }
 
     /**
      *
      * @param luola
+     * @param pelaaja
      */
-    public void piirra(boolean[][] luola) {
+    public void piirra(boolean[][] luola, Pelaaja pelaaja) {
         for (int i = 0; i < luola[0].length; i++) {
             for (int j = 0; j < luola.length; j++) {
                 if (j == pelaaja.getX() && i == pelaaja.getY()) {
