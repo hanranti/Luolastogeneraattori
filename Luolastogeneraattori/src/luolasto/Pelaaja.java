@@ -8,7 +8,7 @@ import luolasto.Luolasto;
  */
 public class Pelaaja {
 
-    private int x, y, luolaX, luolaY;
+    private int x, y, luolaX, luolaY, size;
     private Luolasto luolasto;
 
     /**
@@ -19,12 +19,13 @@ public class Pelaaja {
      * @param luolaY
      * @param luolasto
      */
-    public Pelaaja(int x, int y, int luolaX, int luolaY, Luolasto luolasto) {
+    public Pelaaja(int x, int y, int luolaX, int luolaY, Luolasto luolasto, int size) {
         this.x = x;
         this.y = y;
         this.luolaX = luolaX;
         this.luolaY = luolaY;
         this.luolasto = luolasto;
+        this.size = size;
     }
 
     /**
@@ -46,7 +47,7 @@ public class Pelaaja {
      *
      */
     public void liikutaAlas() {
-        if (y + 1 >= 0 && luolasto.getLuola(luolaX, luolaY).getLuola()[x][y + 1]) {
+        if (y >= size && luolasto.getLuola(luolaX, luolaY).getLuola()[x][y + 1]) {
             return;
         }
         y++;
@@ -61,7 +62,7 @@ public class Pelaaja {
      *
      */
     public void liikutaOikealle() {
-        if (x + 1 >= 0 && luolasto.getLuola(luolaX, luolaY).getLuola()[x + 1][y]) {
+        if (x >= size && luolasto.getLuola(luolaX, luolaY).getLuola()[x + 1][y]) {
             return;
         }
         x++;

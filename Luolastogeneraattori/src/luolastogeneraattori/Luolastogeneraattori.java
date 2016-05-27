@@ -6,13 +6,22 @@ import ui.GUI;
 import java.util.Scanner;
 
 /**
- *
+ * Luokka sisältää ohjelman käynnistävän main metodin.
+ * 
  * @author Hannu
  */
 public class Luolastogeneraattori {
 
     /**
-     *
+     * Metodi käynnistää ohjelman. Ohjelman parametri args sisältää tiedon 
+     * yksittäisen luolan koosta size. Jos tätä lukua ei anneta, size muuttujan 
+     * arvoksi annetaan 32.
+     * 
+     * Metodi luo tämän jälkeen ohjelman tarvitsemat luokat ja alkaa while 
+     * -loopissa kysymään pelaajan siirtoja ja näiden mukaan tulostaa luolan, 
+     * jossa pelaaja on. Antamalla siirroksi "exit" ohjelman suoritus 
+     * lopetetaan.
+     * 
      * @param args
      */
     public static void main(String[] args) {
@@ -23,19 +32,20 @@ public class Luolastogeneraattori {
         }
 
         Luolasto luolasto = new Luolasto(size);
-        Pelaaja pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto);
+        Pelaaja pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
         GUI gui = new GUI();
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println(pelaaja.getLuolaX() + " " + pelaaja.getLuolaY());
-            gui.piirra(
+            gui.tulosta(
                     luolasto.getLuola(
                             pelaaja.getLuolaX(),
                             pelaaja.getLuolaY())
                     .getLuola(),
                     pelaaja);
+            System.out.print("Seuraava siirto: ");
             String s = scanner.nextLine();
             if (s.equals("o")) {
                 pelaaja.liikutaOikealle();

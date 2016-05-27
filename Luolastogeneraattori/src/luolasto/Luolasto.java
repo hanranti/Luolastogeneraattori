@@ -34,15 +34,21 @@ public class Luolasto {
         luolasto[x + muutos][y + muutos] = luola;
     }
 
+    /**
+     * Metodi vaihtaa luolastotaulukon tilalle tästä kaksi kertaa suuremman
+     * taulukon, jonka keskelle tallennetaan vanhan taulukon arvot. Metodi
+     * kasvattaa muutos -muuttujaa, siten että hakemalla alkuperäisen taulukon 
+     * mukaisilla koordinaateilla palautetaan oikea luola.
+     */
     private void kasvataTaulukkoa() {
-        Luola[][] luolasto2 = new Luola[size * 2][size * 2];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                luolasto2[size / 2 + i][size / 2 + j] = luolasto[i][j];
+        muutos = luolasto.length / 2;
+        Luola[][] luolasto2 = new Luola[luolasto.length * 2][luolasto.length * 2];
+        for (int i = 0; i < luolasto.length; i++) {
+            for (int j = 0; j < luolasto[0].length; j++) {
+                luolasto2[muutos + i][muutos + j] = luolasto[i][j];
             }
         }
         luolasto = luolasto2;
-        muutos = luolasto.length / 2;
     }
 
     /**
