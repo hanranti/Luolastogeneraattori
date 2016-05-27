@@ -1,4 +1,6 @@
-package luolastogeneraattori;
+package luolasto;
+
+import luolasto.Luolasto;
 
 /**
  *

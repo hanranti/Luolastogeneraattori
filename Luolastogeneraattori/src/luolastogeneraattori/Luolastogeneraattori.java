@@ -1,5 +1,8 @@
 package luolastogeneraattori;
 
+import luolasto.Pelaaja;
+import luolasto.Luolasto;
+import ui.GUI;
 import java.util.Scanner;
 
 /**

@@ -1,4 +1,6 @@
-package luolastogeneraattori;
+package ui;
+
+import luolasto.Pelaaja;
 
 /**
  *

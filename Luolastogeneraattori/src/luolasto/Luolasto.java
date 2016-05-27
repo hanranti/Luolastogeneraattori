@@ -1,4 +1,4 @@
-package luolastogeneraattori;
+package luolasto;
 
 /**
  *
