@@ -17,7 +17,7 @@ public class GUI {
     /**
      * Metodi ottaa parametreinä tulostettavan luolan ja pelaajan. Metodi
      * tulostaa luolan, jossa seiniä kuvataan merkillä "x", avoimia alueita 
-     * merkillä "o" ja pelaajaa merkillä "@".
+     * merkillä " " ja pelaajaa merkillä "@".
      * 
      * @param luola
      * @param pelaaja
@@ -30,7 +30,7 @@ public class GUI {
                 } else if (luola[j][i]) {
                     System.out.print("x");
                 } else {
-                    System.out.print("o");
+                    System.out.print(" ");
                 }
             }
             System.out.println("");

@@ -1,7 +1,5 @@
 package luolasto;
 
-import luolasto.Luolasto;
-
 /**
  *
  * @author Hannu
@@ -9,7 +7,7 @@ import luolasto.Luolasto;
 public class Pelaaja {
 
     private int x, y, luolaX, luolaY, size;
-    private Luolasto luolasto;
+    private final Luolasto luolasto;
 
     /**
      *
@@ -39,7 +37,7 @@ public class Pelaaja {
         if (y < 0) {
             luolaY--;
             luolasto.genertoiLuola(luolaX, luolaY);
-            y = luolasto.getSize() - 1;
+            y = size - 1;
         }
     }
 
@@ -51,7 +49,7 @@ public class Pelaaja {
             return;
         }
         y++;
-        if (y > luolasto.getSize() - 1) {
+        if (y > size - 1) {
             luolaY++;
             luolasto.genertoiLuola(luolaX, luolaY);
             y = 0;
@@ -66,7 +64,7 @@ public class Pelaaja {
             return;
         }
         x++;
-        if (x > luolasto.getSize() - 1) {
+        if (x > size - 1) {
             luolaX++;
             luolasto.genertoiLuola(luolaX, luolaY);
             x = 0;
@@ -84,7 +82,7 @@ public class Pelaaja {
         if (x < 0) {
             luolaX--;
             luolasto.genertoiLuola(luolaX, luolaY);
-            x = luolasto.getSize() - 1;
+            x = size - 1;
         }
     }
 

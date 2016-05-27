@@ -1,16 +1,19 @@
 package luolasto;
 
 /**
+ * Luokka sisältää luolaston eli ohjelman tarvitsemat luolat.
  *
  * @author Hannu
  */
 public class Luolasto {
 
     private Luola[][] luolasto;
-    private int size;
+    private final int size;
     private int muutos;
 
     /**
+     * Metodi luo Luolasto -olion, joka sisältää ja generoi ohjelman tarvitsemat
+     * luolat.
      *
      * @param size
      */
@@ -21,6 +24,8 @@ public class Luolasto {
     }
 
     /**
+     * Metodi generoi luolan, jossa on satunnaisesti asetettuja huoneita
+     * uloskäyntejä ja käytäviä näiden välillä.
      *
      * @param x
      * @param y
@@ -37,7 +42,7 @@ public class Luolasto {
     /**
      * Metodi vaihtaa luolastotaulukon tilalle tästä kaksi kertaa suuremman
      * taulukon, jonka keskelle tallennetaan vanhan taulukon arvot. Metodi
-     * kasvattaa muutos -muuttujaa, siten että hakemalla alkuperäisen taulukon 
+     * kasvattaa muutos -muuttujaa, siten että hakemalla alkuperäisen taulukon
      * mukaisilla koordinaateilla palautetaan oikea luola.
      */
     private void kasvataTaulukkoa() {
@@ -59,13 +64,5 @@ public class Luolasto {
      */
     public Luola getLuola(int x, int y) {
         return luolasto[x + muutos][y + muutos];
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getSize() {
-        return size;
     }
 }
