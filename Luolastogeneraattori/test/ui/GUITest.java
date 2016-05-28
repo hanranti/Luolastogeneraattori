@@ -5,6 +5,7 @@
  */
 package ui;
 
+import luolasto.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Hannu
+ * @author hanranti
  */
 public class GUITest {
     
@@ -38,14 +39,15 @@ public class GUITest {
     }
 
     /**
-     * Test of piirra method, of class GUI.
+     * Test of tulosta method, of class GUI.
      */
     @Test
-    public void testPiirra() {
-        System.out.println("piirra");
+    public void testTulosta() {
+        System.out.println("tulosta");
         boolean[][] luola = null;
-        GUI instance = null;
-        instance.piirra(luola);
+        Pelaaja pelaaja = null;
+        GUI instance = new GUI();
+        instance.tulosta(luola, pelaaja);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

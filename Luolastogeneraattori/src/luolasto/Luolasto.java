@@ -24,8 +24,10 @@ public class Luolasto {
     }
 
     /**
-     * Metodi generoi luolan, jossa on satunnaisesti asetettuja huoneita
-     * uloskäyntejä ja käytäviä näiden välillä.
+     * Metodi luo jageneroi luolan, jossa on satunnaisesti asetettuja huoneita
+     * uloskäyntejä ja käytäviä näiden välillä. Jos luolaa yritetään generoida
+     * taulukon ulkopuolelle, taulukon koko kasvatetaan kaksinkertaisesksi 
+     * kasvataTaulukkoa() metodilla.
      *
      * @param x
      * @param y
@@ -57,6 +59,7 @@ public class Luolasto {
     }
 
     /**
+     * Metodi palauttaa Luola -olion taulukon x, ja y koordinaateista.
      *
      * @param x
      * @param y

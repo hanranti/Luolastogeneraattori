@@ -1,6 +1,9 @@
 package luolasto;
 
 /**
+ * Luokka sisältää tiedon, missä luolassa pelaaja on luolastossa, ja, missä 
+ * koordinaateissa pelaaja on luolassa. Luokan liikuta metodeilla voidaan 
+ * liikuttaa pelaajaa yksi askel kerrallaan.
  *
  * @author Hannu
  */
@@ -10,6 +13,9 @@ public class Pelaaja {
     private final Luolasto luolasto;
 
     /**
+     * Metodi luo Pelaaja -olion. Metodi saa parametreina pelaajan aloitus 
+     * koordinaatit luolassa ja luolasta, jossa pelaaja on, sekä luolasto 
+     * -olion, joka sisältää tiedon luolastosta, jossa pelaaja sijaitsee.
      *
      * @param x
      * @param y
@@ -27,6 +33,9 @@ public class Pelaaja {
     }
 
     /**
+     * Metodi liikuttaa pelaajaa y-koordinaateissa yhden askeleen alaspäin. Jos 
+     * kohteessa on seinä, pelaajaa ei liikuteta. Jos pelaaja liikkuu luolan
+     * ulkopuolelle, luolasto generoi uuden luolan uudelle paikalle
      *
      */
     public void liikutaYlos() {
@@ -42,6 +51,9 @@ public class Pelaaja {
     }
 
     /**
+     * Metodi liikuttaa pelaajaa y-koordinaateissa yhden askeleen ylöspäin. Jos 
+     * kohteessa on seinä, pelaajaa ei liikuteta. Jos pelaaja liikkuu luolan
+     * ulkopuolelle, luolasto generoi uuden luolan uudelle paikalle
      *
      */
     public void liikutaAlas() {
@@ -57,6 +69,9 @@ public class Pelaaja {
     }
 
     /**
+     * Metodi liikuttaa pelaajaa x-koordinaateissa yhden askeleen oikealle. Jos 
+     * kohteessa on seinä, pelaajaa ei liikuteta. Jos pelaaja liikkuu luolan
+     * ulkopuolelle, luolasto generoi uuden luolan uudelle paikalle
      *
      */
     public void liikutaOikealle() {
@@ -72,6 +87,9 @@ public class Pelaaja {
     }
 
     /**
+     * Metodi liikuttaa pelaajaa x-koordinaateissa yhden askeleen vasemmalle. 
+     * Jos kohteessa on seinä, pelaajaa ei liikuteta. Jos pelaaja liikkuu luolan
+     * ulkopuolelle, luolasto generoi uuden luolan uudelle paikalle
      *
      */
     public void liikutaVasemmalle() {
@@ -87,7 +105,8 @@ public class Pelaaja {
     }
 
     /**
-     *
+     * Metodi palauttaa pelaajan x-koordinaatin.
+     * 
      * @return
      */
     public int getX() {
@@ -95,7 +114,8 @@ public class Pelaaja {
     }
 
     /**
-     *
+     * Metodi palauttaa pelaajan y-koordinaatin.
+     * 
      * @return
      */
     public int getY() {
@@ -103,7 +123,8 @@ public class Pelaaja {
     }
 
     /**
-     *
+     * Metodi palauttaa x-koordinaatin luolasta, jossa pelaaja on, luolastosta.
+     * 
      * @return
      */
     public int getLuolaX() {
@@ -111,7 +132,8 @@ public class Pelaaja {
     }
 
     /**
-     *
+     * Metodi palauttaa y-koordinaatin luolasta, jossa pelaaja on, luolastosta.
+     * 
      * @return
      */
     public int getLuolaY() {

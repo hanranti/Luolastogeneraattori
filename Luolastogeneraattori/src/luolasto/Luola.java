@@ -1,6 +1,8 @@
 package luolasto;
 
 /**
+ * Luokka sisältää boolean[][] taulukon, joka määrittää yksittäisen luolan 
+ * seinät ja avoimet alueet. True kuvaa seinää ja false avointa aluetta.
  *
  * @author Hannu
  */
@@ -10,6 +12,8 @@ public class Luola {
     int size;
 
     /**
+     * Metodi luo Luola -olion. Metodi ottaa parametrina int size muuttujan,
+     * joka määrittää luolan leveyden ja korkeuden.
      *
      * @param size
      */
@@ -19,6 +23,8 @@ public class Luola {
     }
 
     /**
+     * Metodi generoi luolaan seiniä ja avoimia alueita. Luolaan luodaan 
+     * satunnaisesti huoneita, uloskäyntejä ja näitä yhdistäviä käytäviä.
      *
      */
     public void generoi() {
@@ -36,6 +42,7 @@ public class Luola {
     }
 
     /**
+     * Metodi palauttaa yksittäistä luolaa kuvaavan boolean[][] -taulukon.
      *
      * @return
      */
