@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author Hannu
  */
 public class LuolaTest {
-    
+
     public LuolaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -62,5 +62,14 @@ public class LuolaTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
+    @Test
+    public void testLuola() {
+        Luola luola = new Luola(10);
+        assertEquals(10, luola.getLuola().length);
+        assertEquals(10, luola.getLuola()[0].length);
+        luola = new Luola(32);
+        assertEquals(32, luola.getLuola().length);
+        assertEquals(3, luola.getLuola()[0].length);
+    }
 }
