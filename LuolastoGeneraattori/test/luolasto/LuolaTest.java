@@ -5,7 +5,6 @@
  */
 package luolasto;
 
-import java.lang.reflect.Method;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,11 +14,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author hanranti
+ * @author Hannu
  */
-public class LuolastoTest {
+public class LuolaTest {
 
-    public LuolastoTest() {
+    public LuolaTest() {
     }
 
     @BeforeClass
@@ -39,38 +38,38 @@ public class LuolastoTest {
     }
 
     /**
-     * Test of genertoiLuola method, of class Luolasto.
+     * Test of generoi method, of class Luola.
      */
     @Test
-    public void testGenertoiLuola() {
-        System.out.println("genertoiLuola");
-        int x = 0;
-        int y = 0;
-        Luolasto instance = null;
-        instance.genertoiLuola(x, y);
+    public void testGeneroi() {
+        System.out.println("generoi");
+        Luola instance = null;
+        instance.generoi();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getLuola method, of class Luolasto.
+     * Test of getLuola method, of class Luola.
      */
     @Test
     public void testGetLuola() {
         System.out.println("getLuola");
-        int x = 0;
-        int y = 0;
-        Luolasto instance = null;
-        Luola expResult = null;
-        Luola result = instance.getLuola(x, y);
-        assertEquals(expResult, result);
+        Luola instance = null;
+        boolean[][] expResult = null;
+        boolean[][] result = instance.getLuola();
+        assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     @Test
-    public void testKasvataTaulukkoa() {
-        Luolasto luolasto = new Luolasto(32);
-//        Method kasvataTaulukkoa = Luolasto.class.getDeclaredMethod("kasvataTaulukkoa", parameterTypes);
+    public void testLuola() {
+        Luola luola = new Luola(10);
+        assertEquals(10, luola.getLuola().length);
+        assertEquals(10, luola.getLuola()[0].length);
+        luola = new Luola(32);
+        assertEquals(32, luola.getLuola().length);
+        assertEquals(3, luola.getLuola()[0].length);
     }
 }
