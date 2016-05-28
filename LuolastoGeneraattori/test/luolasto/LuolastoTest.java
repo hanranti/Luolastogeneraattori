@@ -5,7 +5,10 @@
  */
 package luolasto;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,39 +41,31 @@ public class LuolastoTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of genertoiLuola method, of class Luolasto.
-     */
-    @Test
-    public void testGenertoiLuola() {
-        System.out.println("genertoiLuola");
-        int x = 0;
-        int y = 0;
-        Luolasto instance = null;
-        instance.genertoiLuola(x, y);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getLuola method, of class Luolasto.
-     */
-    @Test
-    public void testGetLuola() {
-        System.out.println("getLuola");
-        int x = 0;
-        int y = 0;
-        Luolasto instance = null;
-        Luola expResult = null;
-        Luola result = instance.getLuola(x, y);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
     @Test
     public void testKasvataTaulukkoa() {
         Luolasto luolasto = new Luolasto(32);
 //        Method kasvataTaulukkoa = Luolasto.class.getDeclaredMethod("kasvataTaulukkoa", parameterTypes);
+    }
+
+    @Test
+    public void testMuutos() {
+        try {
+            Luolasto luolasto = new Luolasto(10);
+            Field muutos = luolasto.getClass().getDeclaredField("muutos");
+            muutos.setAccessible(true);
+            assertEquals(0, muutos.get(luolasto));
+            luolasto.genertoiLuola(-1, 5);
+            assertEquals(5, muutos.get(luolasto));
+            luolasto.getLuola(-11, 5);
+            assertEquals(10, muutos.get(luolasto));
+        } catch (IllegalArgumentException ex) {
+            fail("IllegalArgumentException");
+        } catch (IllegalAccessException ex) {
+            fail("IllegalAccessException");
+        } catch (NoSuchFieldException ex) {
+            fail("NoSuchFieldException");
+        } catch (SecurityException ex) {
+            fail("SecurityException");
+        }
     }
 }

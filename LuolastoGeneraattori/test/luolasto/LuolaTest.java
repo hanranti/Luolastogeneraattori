@@ -37,32 +37,6 @@ public class LuolaTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of generoi method, of class Luola.
-     */
-    @Test
-    public void testGeneroi() {
-        System.out.println("generoi");
-        Luola instance = null;
-        instance.generoi();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getLuola method, of class Luola.
-     */
-    @Test
-    public void testGetLuola() {
-        System.out.println("getLuola");
-        Luola instance = null;
-        boolean[][] expResult = null;
-        boolean[][] result = instance.getLuola();
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
     @Test
     public void testLuola() {
         Luola luola = new Luola(10);
@@ -70,6 +44,32 @@ public class LuolaTest {
         assertEquals(10, luola.getLuola()[0].length);
         luola = new Luola(32);
         assertEquals(32, luola.getLuola().length);
-        assertEquals(3, luola.getLuola()[0].length);
+        assertEquals(32, luola.getLuola()[0].length);
+    }
+
+    @Test
+    public void sisaltaaUloskaynnin() {
+        boolean sisaltaaUloskaynnin = false;
+        Luola luola = new Luola(32);
+        luola.generoi();
+        boolean[][] taulukko = luola.getLuola();
+        for (int j = 0; j < taulukko.length; j++) {
+            if (!taulukko[0][j]) {
+                sisaltaaUloskaynnin = true;
+                break;
+            }
+            if (!taulukko[j][0]) {
+                sisaltaaUloskaynnin = true;
+                break;
+            }
+            if (!taulukko[taulukko.length - 1][j]) {
+                sisaltaaUloskaynnin = true;
+                break;
+            }
+            if (!taulukko[j][taulukko[0].length - 1]) {
+                sisaltaaUloskaynnin = true;
+                break;
+            }
+        }assertTrue(sisaltaaUloskaynnin);
     }
 }
