@@ -57,7 +57,7 @@ public class Pelaaja {
      *
      */
     public void liikutaAlas() {
-        if (y >= size && luolasto.getLuola(luolaX, luolaY).getLuola()[x][y + 1]) {
+        if (y < size && luolasto.getLuola(luolaX, luolaY).getLuola()[x][y + 1]) {
             return;
         }
         y++;
@@ -75,7 +75,7 @@ public class Pelaaja {
      *
      */
     public void liikutaOikealle() {
-        if (x >= size && luolasto.getLuola(luolaX, luolaY).getLuola()[x + 1][y]) {
+        if (x < size && luolasto.getLuola(luolaX, luolaY).getLuola()[x + 1][y]) {
             return;
         }
         x++;
