@@ -5,6 +5,7 @@
  */
 package luolasto;
 
+import tyokalut.MethodInvoker;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.logging.Level;
@@ -22,7 +23,8 @@ import static org.junit.Assert.*;
  */
 public class LuolastoTest {
 
-    private Method[] methods;
+    private MethodInvoker luolastoMethodInvoker;
+    private Luolasto luolasto;
 
     public LuolastoTest() {
     }
@@ -37,7 +39,8 @@ public class LuolastoTest {
 
     @Before
     public void setUp() {
-        methods = Luolasto.class.getDeclaredMethods();
+        luolasto = new Luolasto(10);
+        luolastoMethodInvoker = new MethodInvoker(luolasto);
     }
 
     @After
@@ -46,16 +49,10 @@ public class LuolastoTest {
 
     @Test
     public void testKasvataTaulukkoa() {
-        Luolasto luolasto = new Luolasto(32);
-        Method kasvataTaulukkoa;
-        for (Method method : methods) {
-            if (method.getName().equals("kasvataTaulukkoa")) {
-                kasvataTaulukkoa = method;
-            }
-        }
-
+        
     }
 // -15 -5 0 10 15 25
+
     @Test
     public void testMuutos() {
         try {
