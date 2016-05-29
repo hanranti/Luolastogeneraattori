@@ -1,11 +1,15 @@
 #Viikkoraportti 2
 
-Käytin 2 tuntia koodin aloittamiseen. Nyt Luolastogeneraattori luokan main metodi saa ohjelman parametreina yksittäisen luolan koon, luo ohjelman tarvitsemat luokat ja alkaa while loopissa kysymään pelaajan siirtoja ja tulostaa siirron jälkeen luolan.
+Käytin 2 tuntia koodin aloittamiseen. 
+
+* Nyt Luolastogeneraattori luokan main metodi saa ohjelman parametreina yksittäisen luolan koon, luo ohjelman tarvitsemat luokat ja alkaa while loopissa kysymään pelaajan siirtoja ja tulostaa siirron jälkeen luolan.
 
 * Luolasto -luokka ei vielä generoi luolia satunnaisesti, vaan jokaisessa luolassa on reunoilla seinät lukuunottamatta jokaisen reunan keskellä olevaa uloskäyntiä. Luolassa pystyy nyt kulkemaan avoimilla alueilla ja uloskäynneistä toiseen luolaan. Liikkuminen luolasto -taulukon ulkopuolelle aiheuttaa virheen ArrayIndexOutOfBoundsException eli luolaston kaksinkertaistaminen ei vielä toimi.
 
 
-Käytin 2,5 tuntia javadocin ja testien aloittamiseen sekä korjauksiin ja pieniin muutoksiin koodissa. Nyt Luolaston kaksinkertaistaminen toimii ensimmäisellä kerralla, mutta myöhemmin aiheuttaa virheen: Exception in thread "main" java.lang.OutOfMemoryError: Java heap space. En tiedä mikä aiheuttaa virheen. 
+Käytin 2,5 tuntia javadocin ja testien aloittamiseen sekä korjauksiin ja pieniin muutoksiin koodissa. 
+
+* Nyt Luolaston kaksinkertaistaminen toimii ensimmäisellä kerralla, mutta myöhemmin aiheuttaa virheen: Exception in thread "main" java.lang.OutOfMemoryError: Java heap space. En tiedä mikä aiheuttaa virheen. 
 
 * Korjaan luolaston kaksinkertaistamisesta aiheutuvan virheen koordinaateissa Luolaston muuttujalla int muutos. Kun luolasto kaksinkertaistetaan, vanhat luolat siirretään luolaston keskelle eli näiden koordinaatit muuttuvat. Koska käytän muuttujaa int muutos, koordinaattien muuttuminen näkyy vain luokan Luolasto sisällä. Koordinaatit siis säilyvät samoina Pelaaja luokalle, jolloin Pelaajan koordinaatit voivat saada myös negatiivisia arvoja. Tämä ei aiheuta taulukossa ArrayIndexOutOfBoundsException:ia, koska int muutoksen lisääminen Luolaston sisällä koordinaateissa korjaa kaksinkertaistamisesta johtuvan muutoksen. 
 
