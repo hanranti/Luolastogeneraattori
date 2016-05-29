@@ -12,4 +12,6 @@ Korjaan luolaston kaksinkertaistamisesta aiheutuvan virheen koordinaateissa Luol
 Erilliset koordinaatit Luolaston sisä- ja ulkopuolella voivat kuitenkin aiheuttaa ongelmia esimerkiksi tapauksessa, jossa luolan koko on pariton, joten koordinaatit täytyy ehkä muuttaa samoiksi kaikkialla ohjelman sisällä.
 
 
-Käytin 2,5 tuntia javadocin ja testien tekemiseen. Korjasin myös build-impl.xml:stä johtuneen virheen, joka esti ohjelman ajamisen.
+Käytin 2 tuntia javadocin ja testien tekemiseen. Korjasin myös build-impl.xml:stä johtuneen virheen, joka esti ohjelman ajamisen.
+
+Käytin tunnin testien tekemiseen. Lisäsin testeille FieldAccess ja  aiemmassa työssä tekemäni MethodInvoker luokan. Näillä testit pääsevät käsiksi luokan yksityisiin muuttujiin ja metodeihin.
