@@ -18,6 +18,9 @@ import static org.junit.Assert.*;
  */
 public class PelaajaTest {
 
+    private Pelaaja pelaaja;
+    private Luolasto luolasto;
+
     public PelaajaTest() {
     }
 
@@ -31,9 +34,20 @@ public class PelaajaTest {
 
     @Before
     public void setUp() {
+        luolasto = new Luolasto(10);
+        pelaaja = new Pelaaja(5, 5, 5, 5, luolasto, 10);
     }
 
     @After
     public void tearDown() {
+    }
+
+    private void poistaSeinat(Luola luola) {
+        boolean[][] t = luola.getLuola();
+        for (int i = 0; i < t.length; i++) {
+            for (int j = 0; j < t[0].length; j++) {
+                t[i][j] = false;
+            }
+        }
     }
 }

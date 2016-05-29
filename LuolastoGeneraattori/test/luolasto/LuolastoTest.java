@@ -22,6 +22,8 @@ import static org.junit.Assert.*;
  */
 public class LuolastoTest {
 
+    private Method[] methods;
+
     public LuolastoTest() {
     }
 
@@ -35,6 +37,7 @@ public class LuolastoTest {
 
     @Before
     public void setUp() {
+        methods = Luolasto.class.getDeclaredMethods();
     }
 
     @After
@@ -44,9 +47,15 @@ public class LuolastoTest {
     @Test
     public void testKasvataTaulukkoa() {
         Luolasto luolasto = new Luolasto(32);
-//        Method kasvataTaulukkoa = Luolasto.class.getDeclaredMethod("kasvataTaulukkoa", parameterTypes);
-    }
+        Method kasvataTaulukkoa;
+        for (Method method : methods) {
+            if (method.getName().equals("kasvataTaulukkoa")) {
+                kasvataTaulukkoa = method;
+            }
+        }
 
+    }
+// -15 -5 0 10 15 25
     @Test
     public void testMuutos() {
         try {
@@ -56,8 +65,10 @@ public class LuolastoTest {
             assertEquals(0, muutos.get(luolasto));
             luolasto.genertoiLuola(-1, 5);
             assertEquals(5, muutos.get(luolasto));
-            luolasto.getLuola(-11, 5);
+            luolasto.genertoiLuola(-6, 5);
             assertEquals(10, muutos.get(luolasto));
+            luolasto.genertoiLuola(-15, 5);
+            assertEquals(20, muutos.get(luolasto));
         } catch (IllegalArgumentException ex) {
             fail("IllegalArgumentException");
         } catch (IllegalAccessException ex) {
