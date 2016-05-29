@@ -1,41 +1,42 @@
 package luolastogeneraattori;
 
-import luolasto.Pelaaja;
-import luolasto.Luolasto;
-import ui.GUI;
 import java.util.Scanner;
+import luolasto.Luolasto;
+import luolasto.Pelaaja;
+import ui.GUI;
 
 /**
- * Luokka sisältää ohjelman käynnistävän main metodin.
- * 
- * @author Hannu
+ * Luokkaa käytetään ohjelman käynnistämiseen.
+ *
+ * @author hanranti
  */
-public class LuolastoGeneraattori {
+public class Luolastogeneraattori {
+
+    private int size;
+    private Luolasto luolasto;
+    private Pelaaja pelaaja;
+    private GUI gui;
 
     /**
-     * Metodi käynnistää ohjelman. Ohjelman parametri args sisältää tiedon 
-     * yksittäisen luolan koosta size. Jos tätä lukua ei anneta, size muuttujan 
-     * arvoksi annetaan 32.
+     * Metodi luo ohjelman tarvitsemat luokat ja välittää näille parametrina
+     * saamansa luolan koon.
      * 
-     * Metodi luo tämän jälkeen ohjelman tarvitsemat luokat ja alkaa while 
-     * -loopissa kysymään pelaajan siirtoja ja näiden mukaan tulostaa luolan, 
-     * jossa pelaaja on. Antamalla siirroksi "exit" ohjelman suoritus 
-     * lopetetaan.
-     * 
-     * @param args
+     * @param size
      */
-    public static void main(String[] args) {
-        int size = 32;
-
-        if (args.length > 0) {
-            size = Integer.parseInt(args[0]);
-        }
-
-        Luolasto luolasto = new Luolasto(size);
-        Pelaaja pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);
+    public Luolastogeneraattori(int size) {
+        this.size = size;
+        luolasto = new Luolasto(size);
+        pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
-        GUI gui = new GUI();
+        gui = new GUI();
+    }
 
+    /**
+     * Metodi aloittaa ohjelman suorituksen. Metodi kysyy pelaajan siirtoja,
+     * suorittaa nämä ja tulostaa tilanteen luolasta, jossa pelaaja on.
+     *
+     */
+    public void kaynnista() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println(pelaaja.getLuolaX() + " " + pelaaja.getLuolaY());

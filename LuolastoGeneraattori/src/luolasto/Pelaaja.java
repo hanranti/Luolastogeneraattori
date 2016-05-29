@@ -1,8 +1,8 @@
 package luolasto;
 
 /**
- * Luokka sisältää tiedon, missä luolassa pelaaja on luolastossa, ja, missä 
- * koordinaateissa pelaaja on luolassa. Luokan liikuta metodeilla voidaan 
+ * Luokka sisältää tiedon, missä luolassa pelaaja on luolastossa, ja, missä
+ * koordinaateissa pelaaja on luolassa. Luokan liikuta metodeilla voidaan
  * liikuttaa pelaajaa yksi askel kerrallaan.
  *
  * @author Hannu
@@ -13,8 +13,8 @@ public class Pelaaja {
     private final Luolasto luolasto;
 
     /**
-     * Metodi luo Pelaaja -olion. Metodi saa parametreina pelaajan aloitus 
-     * koordinaatit luolassa ja luolasta, jossa pelaaja on, sekä luolasto 
+     * Metodi luo Pelaaja -olion. Metodi saa parametreina pelaajan aloitus
+     * koordinaatit luolassa ja luolasta, jossa pelaaja on, sekä luolasto
      * -olion, joka sisältää tiedon luolastosta, jossa pelaaja sijaitsee.
      *
      * @param x
@@ -33,7 +33,7 @@ public class Pelaaja {
     }
 
     /**
-     * Metodi liikuttaa pelaajaa y-koordinaateissa yhden askeleen alaspäin. Jos 
+     * Metodi liikuttaa pelaajaa y-koordinaateissa yhden askeleen alaspäin. Jos
      * kohteessa on seinä, pelaajaa ei liikuteta. Jos pelaaja liikkuu luolan
      * ulkopuolelle, luolasto generoi uuden luolan uudelle paikalle
      *
@@ -51,13 +51,13 @@ public class Pelaaja {
     }
 
     /**
-     * Metodi liikuttaa pelaajaa y-koordinaateissa yhden askeleen ylöspäin. Jos 
+     * Metodi liikuttaa pelaajaa y-koordinaateissa yhden askeleen ylöspäin. Jos
      * kohteessa on seinä, pelaajaa ei liikuteta. Jos pelaaja liikkuu luolan
      * ulkopuolelle, luolasto generoi uuden luolan uudelle paikalle
      *
      */
     public void liikutaAlas() {
-        if (y < size && luolasto.getLuola(luolaX, luolaY).getLuola()[x][y + 1]) {
+        if (y < size - 1 && luolasto.getLuola(luolaX, luolaY).getLuola()[x][y + 1]) {
             return;
         }
         y++;
@@ -69,13 +69,13 @@ public class Pelaaja {
     }
 
     /**
-     * Metodi liikuttaa pelaajaa x-koordinaateissa yhden askeleen oikealle. Jos 
+     * Metodi liikuttaa pelaajaa x-koordinaateissa yhden askeleen oikealle. Jos
      * kohteessa on seinä, pelaajaa ei liikuteta. Jos pelaaja liikkuu luolan
      * ulkopuolelle, luolasto generoi uuden luolan uudelle paikalle
      *
      */
     public void liikutaOikealle() {
-        if (x < size && luolasto.getLuola(luolaX, luolaY).getLuola()[x + 1][y]) {
+        if (x < size - 1 && luolasto.getLuola(luolaX, luolaY).getLuola()[x + 1][y]) {
             return;
         }
         x++;
@@ -87,7 +87,7 @@ public class Pelaaja {
     }
 
     /**
-     * Metodi liikuttaa pelaajaa x-koordinaateissa yhden askeleen vasemmalle. 
+     * Metodi liikuttaa pelaajaa x-koordinaateissa yhden askeleen vasemmalle.
      * Jos kohteessa on seinä, pelaajaa ei liikuteta. Jos pelaaja liikkuu luolan
      * ulkopuolelle, luolasto generoi uuden luolan uudelle paikalle
      *
@@ -106,7 +106,7 @@ public class Pelaaja {
 
     /**
      * Metodi palauttaa pelaajan x-koordinaatin.
-     * 
+     *
      * @return
      */
     public int getX() {
@@ -115,7 +115,7 @@ public class Pelaaja {
 
     /**
      * Metodi palauttaa pelaajan y-koordinaatin.
-     * 
+     *
      * @return
      */
     public int getY() {
@@ -124,7 +124,7 @@ public class Pelaaja {
 
     /**
      * Metodi palauttaa x-koordinaatin luolasta, jossa pelaaja on, luolastosta.
-     * 
+     *
      * @return
      */
     public int getLuolaX() {
@@ -133,7 +133,7 @@ public class Pelaaja {
 
     /**
      * Metodi palauttaa y-koordinaatin luolasta, jossa pelaaja on, luolastosta.
-     * 
+     *
      * @return
      */
     public int getLuolaY() {
