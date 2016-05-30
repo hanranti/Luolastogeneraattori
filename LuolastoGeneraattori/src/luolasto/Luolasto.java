@@ -8,6 +8,7 @@ package luolasto;
 public class Luolasto {
 
     private Luola[][] luolasto;
+    private boolean[][] generoitu;
     private final int size;
     private int muutos;
 
@@ -19,6 +20,7 @@ public class Luolasto {
      */
     public Luolasto(int size) {
         luolasto = new Luola[10][10];
+        generoitu = new boolean[luolasto.length][luolasto[0].length];
         this.size = size;
         muutos = 0;
     }
@@ -26,7 +28,7 @@ public class Luolasto {
     /**
      * Metodi luo jageneroi luolan, jossa on satunnaisesti asetettuja huoneita
      * uloskäyntejä ja käytäviä näiden välillä. Jos luolaa yritetään generoida
-     * taulukon ulkopuolelle, taulukon koko kasvatetaan kaksinkertaisesksi 
+     * taulukon ulkopuolelle, taulukon koko kasvatetaan kaksinkertaisesksi
      * kasvataTaulukkoa() metodilla.
      *
      * @param x
@@ -36,9 +38,12 @@ public class Luolasto {
         if (x >= size || x < 0 || y >= size || y < 0) {
             kasvataTaulukkoa();
         }
-        Luola luola = new Luola(size);
-        luola.generoi();
-        luolasto[x + muutos][y + muutos] = luola;
+        if (!generoitu[x + muutos][y + muutos]) {
+            Luola luola = new Luola(size);
+            luola.generoi();
+            luolasto[x + muutos][y + muutos] = luola;
+            generoitu[x + muutos][y + muutos] = true;
+        }
     }
 
     /**
@@ -48,14 +53,18 @@ public class Luolasto {
      * mukaisilla koordinaateilla palautetaan oikea luola.
      */
     private void kasvataTaulukkoa() {
+        int vanhaMuutos = muutos;
         muutos = luolasto.length / 2;
-        Luola[][] luolasto2 = new Luola[luolasto.length * 2][luolasto.length * 2];
+        Luola[][] luolasto2 = new Luola[luolasto.length * 2][luolasto[0].length * 2];
+        boolean[][] generoitu2 = new boolean[luolasto2.length][luolasto2[0].length];
         for (int i = 0; i < luolasto.length; i++) {
             for (int j = 0; j < luolasto[0].length; j++) {
-                luolasto2[muutos + i][muutos + j] = luolasto[i][j];
+                luolasto2[muutos + i][muutos + j] = luolasto[vanhaMuutos + i][vanhaMuutos + j];
+                generoitu2[muutos + i][muutos + j] = generoitu[vanhaMuutos + i][vanhaMuutos + j];
             }
         }
         luolasto = luolasto2;
+        generoitu = generoitu2;
     }
 
     /**
