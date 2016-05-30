@@ -49,9 +49,10 @@ public class LuolaTest {
 
     @Test
     public void sisaltaaUloskaynnin() {
+        Luolasto luolasto = new Luolasto(32);
         boolean sisaltaaUloskaynnin = false;
         Luola luola = new Luola(32);
-        luola.generoi();
+        luola.generoi(null, 5, 5);
         boolean[][] taulukko = luola.getLuola();
         for (int j = 0; j < taulukko.length; j++) {
             if (!taulukko[0][j]) {

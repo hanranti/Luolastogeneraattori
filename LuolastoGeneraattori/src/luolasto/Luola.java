@@ -88,10 +88,10 @@ public class Luola {
             int x = qX.poll();
             int y = qY.poll();
             luola[x][y] = true;
-            if ((x == size - 1 && luolasto.getLuola(X + 1, Y) != null && !!luolasto.getLuola(X + 1, Y).getLuola()[0][y])
-                    || (y == size - 1 && luolasto.getLuola(X, Y + 1) != null && !!luolasto.getLuola(X, Y + 1).getLuola()[x][0])
-                    || x == 0 && luolasto.getLuola(X - 1, Y) != null && !!luolasto.getLuola(X - 1, Y).getLuola()[size - 1][y]
-                    || y == 0 && luolasto.getLuola(X, Y - 1) != null && !!luolasto.getLuola(X, Y - 1).getLuola()[x][size - 1]) {
+            if ((x == size - 1 && luolasto.getLuola(X + 1, Y) != null && !luolasto.getLuola(X + 1, Y).getLuola()[0][y])
+                    || (y == size - 1 && luolasto.getLuola(X, Y + 1) != null && !luolasto.getLuola(X, Y + 1).getLuola()[x][0])
+                    || x == 0 && luolasto.getLuola(X - 1, Y) != null && !luolasto.getLuola(X - 1, Y).getLuola()[size - 1][y]
+                    || y == 0 && luolasto.getLuola(X, Y - 1) != null && !luolasto.getLuola(X, Y - 1).getLuola()[x][size - 1]) {
                 luola[x][y] = false;
                 continue;
             }
