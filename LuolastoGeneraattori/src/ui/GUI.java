@@ -28,9 +28,9 @@ public class GUI {
                 if (j == pelaaja.getX() && i == pelaaja.getY()) {
                     System.out.print("@");
                 } else if (luola[j][i]) {
-                    System.out.print("x");
-                } else {
                     System.out.print(" ");
+                } else {
+                    System.out.print("x");
                 }
             }
             System.out.println("");

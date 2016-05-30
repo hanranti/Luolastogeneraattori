@@ -8,7 +8,6 @@ package luolasto;
 public class Luolasto {
 
     private Luola[][] luolasto;
-    private boolean[][] generoitu;
     private final int size;
     private int muutos;
 
@@ -20,7 +19,6 @@ public class Luolasto {
      */
     public Luolasto(int size) {
         luolasto = new Luola[10][10];
-        generoitu = new boolean[luolasto.length][luolasto[0].length];
         this.size = size;
         muutos = 0;
     }
@@ -39,11 +37,10 @@ public class Luolasto {
         if (x + muutos >= luolasto.length || x + muutos < 0 || y + muutos >= luolasto[0].length || y + muutos < 0) {
             kasvataTaulukkoa();
         }
-        if (!generoitu[x + muutos][y + muutos]) {
+        if (luolasto[x + muutos][y + muutos] == null) {
             Luola luola = new Luola(size);
-            luola.generoi(this);
+            luola.generoi(this, x, y);
             luolasto[x + muutos][y + muutos] = luola;
-            generoitu[x + muutos][y + muutos] = true;
         }
     }
     //  -75 -35 -15 -5 0 10(10) 15(20) 25(40) 45(80)  85
@@ -63,15 +60,12 @@ public class Luolasto {
         for (int i = 0; i < luolasto.length; i++) {
             for (int j = 0; j < luolasto[0].length; j++) {
 //                System.out.println("i" + i + "j" + j);
-                luolasto2[uusiMuutos -muutos + i][uusiMuutos - muutos + j]
+                luolasto2[uusiMuutos - muutos + i][uusiMuutos - muutos + j]
                         = luolasto[i][j];
-                generoitu2[uusiMuutos -muutos+ i][uusiMuutos-muutos + j]
-                        = generoitu[i][j];
             }
         }
         muutos = uusiMuutos;
         luolasto = luolasto2;
-        generoitu = generoitu2;
     }
 
     /**

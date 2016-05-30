@@ -3,6 +3,7 @@ package luolastogeneraattori;
 import java.util.Scanner;
 import luolasto.Luolasto;
 import luolasto.Pelaaja;
+import luolasto.Piste;
 import ui.GUI;
 
 /**
@@ -28,6 +29,9 @@ public class Luolastogeneraattori {
         luolasto = new Luolasto(size);
         pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
+        Piste aloitusHuone = new Piste(size/2, size/2);
+        luolasto.getLuola(5, 5).generoiHuone(aloitusHuone, 10);
+        luolasto.getLuola(5, 5).addHuone(aloitusHuone);
         gui = new GUI();
     }
 

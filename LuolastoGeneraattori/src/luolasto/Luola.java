@@ -12,8 +12,8 @@ import java.util.Random;
  */
 public class Luola {
 
-    boolean[][] luola;
-    int size;
+    private boolean[][] luola;
+    private int size;
     private ArrayList<Piste> huoneet;
     private ArrayList<Piste> uloskaynnit;
     private Random random;
@@ -35,7 +35,7 @@ public class Luola {
      * satunnaisesti huoneita, uloskäyntejä ja näitä yhdistäviä käytäviä.
      *
      */
-    public void generoi(Luolasto luolasto) {
+    public void generoi(Luolasto luolasto, int x, int y) {
         //        for (int i = 0; i < luola.length; i++) {
         //            for (int j = 0; j < luola[0].length; j++) {
         //                if (i == 0 || j == 0 || i == luola.length - 1 || j == luola[0].length - 1) {
@@ -53,12 +53,16 @@ public class Luola {
     private void luoKaytavat() {
     }
 
-    private void luoUloskaynnit(int s, Luolasto luolasto) {
+    private void luoUloskaynnit(int s, int x, int y, Luolasto luolasto) {
         if (s > 9) {
             s = 9;
         } else if (s < 1) {
             s = 1;
         }
+        if (luolasto.getLuola(x + 1, y) == null) {
+            int maara = random.nextInt(size / 10);
+        }
+
     }
 
     private void luoHuoneet(int s) {
@@ -73,7 +77,9 @@ public class Luola {
         int m2 = m;
         m *= s;
         m2 *= (10 - s);
-        int maara = random.nextInt(m);
+        m/=10;
+        System.out.println(m);
+        int maara = random.nextInt(m) + 1;
         for (int i = 0; i < maara; i++) {
             Piste piste = new Piste(random.nextInt(size), random.nextInt(size));
             huoneet.add(piste);
@@ -98,7 +104,7 @@ public class Luola {
             int y = qY.poll();
             luola[x][y] = true;
             if (limit == 0) {
-                break;
+//                break;
             }
             limit--;
             if (x < size - 1 && !color[x + 1][y] && (dist[x][y] < 4 || random.nextBoolean())) {
@@ -126,6 +132,10 @@ public class Luola {
                 qY.add(y - 1);
             }
         }
+    }
+
+    public void addHuone(Piste huone) {
+        huoneet.add(huone);
     }
 
     /**

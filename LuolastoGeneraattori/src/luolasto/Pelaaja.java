@@ -139,6 +139,8 @@ public class Pelaaja {
     public int getLuolaY() {
         return luolaY;
     }
-    public void merkkaa(){
-    luolasto.getLuola(luolaX, luolaY).getLuola()[x][y] = true;}
+
+    public void merkkaa() {
+        luolasto.getLuola(luolaX, luolaY).getLuola()[x][y] = true;
+    }
 }
