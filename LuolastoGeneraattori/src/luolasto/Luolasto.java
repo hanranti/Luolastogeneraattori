@@ -35,7 +35,8 @@ public class Luolasto {
      * @param y
      */
     public void genertoiLuola(int x, int y) {
-        if (x >= size || x < 0 || y >= size || y < 0) {
+        System.out.println(luolasto.length);
+        if (x+ muutos >= luolasto.length || x+muutos < 0 || y+muutos >= luolasto[0].length || y+muutos < 0) {
             kasvataTaulukkoa();
         }
         if (!generoitu[x + muutos][y + muutos]) {
@@ -45,6 +46,8 @@ public class Luolasto {
             generoitu[x + muutos][y + muutos] = true;
         }
     }
+    //  -75 -35 -15 -5 0 10(10) 15(20) 25(40) 45(80)  85
+    //  -40 -20 -10 -5 0 10     15     30     60
 
     /**
      * Metodi vaihtaa luolastotaulukon tilalle tästä kaksi kertaa suuremman
@@ -56,10 +59,10 @@ public class Luolasto {
         int uusiMuutos = luolasto.length / 2;
         Luola[][] luolasto2 = new Luola[luolasto.length * 2][luolasto[0].length * 2];
         boolean[][] generoitu2 = new boolean[luolasto2.length][luolasto2[0].length];
-        System.out.println("uusimuutos " + uusiMuutos);
+//        System.out.println("uusimuutos " + uusiMuutos);
         for (int i = 0; i < luolasto.length; i++) {
             for (int j = 0; j < luolasto[0].length; j++) {
-                System.out.println("i" + i + "j" + j);
+//                System.out.println("i" + i + "j" + j);
                 luolasto2[uusiMuutos - muutos+ i][uusiMuutos -muutos + j] 
                         = luolasto[i][ j];
                 generoitu2[uusiMuutos -muutos+ i][uusiMuutos-muutos+ j] 
