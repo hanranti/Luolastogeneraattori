@@ -20,7 +20,7 @@ public class Luolastogeneraattori {
     /**
      * Metodi luo ohjelman tarvitsemat luokat ja välittää näille parametrina
      * saamansa luolan koon.
-     * 
+     *
      * @param size
      */
     public Luolastogeneraattori(int size) {
@@ -58,6 +58,10 @@ public class Luolastogeneraattori {
                 pelaaja.liikutaAlas();
             } else if (s.equals("exit")) {
                 break;
+            } else if (s.equals("m")) {
+                pelaaja.merkkaa();
+            } else if (s.equals("t")) {
+                luolasto.tulostaLuolasto();
             }
         }
     }

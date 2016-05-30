@@ -52,9 +52,9 @@ public class LuolastoTest {
         luolastoMethodInvoker.invokeMethod("kasvataTaulukkoa", new Object[0]);
         assertEquals(5, (int) luolastoFieldAccess.getField("muutos"));
         luolastoMethodInvoker.invokeMethod("kasvataTaulukkoa", new Object[0]);
-        assertEquals(10, (int) luolastoFieldAccess.getField("muutos"));
+        assertEquals(15, (int) luolastoFieldAccess.getField("muutos"));
         luolastoMethodInvoker.invokeMethod("kasvataTaulukkoa", new Object[0]);
-        assertEquals(20, (int) luolastoFieldAccess.getField("muutos"));
+        assertEquals(35, (int) luolastoFieldAccess.getField("muutos"));
     }
 // -15 -5 0 10 15 25
 
@@ -67,10 +67,10 @@ public class LuolastoTest {
         assertEquals(5, muutos);
         luolasto.genertoiLuola(-6, 5);
         muutos = (int) luolastoFieldAccess.getField("muutos");
-        assertEquals(10, muutos);
+        assertEquals(15, muutos);
         luolasto.genertoiLuola(-16, 5);
         muutos = (int) luolastoFieldAccess.getField("muutos");
-        assertEquals(20, muutos);
+        assertEquals(35, muutos);
     }
 
     @Test

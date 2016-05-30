@@ -36,7 +36,7 @@ public class Luolasto {
      */
     public void genertoiLuola(int x, int y) {
         System.out.println(luolasto.length);
-        if (x+ muutos  >= luolasto.length || x+muutos < 0 || y+muutos >= luolasto[0].length || y+muutos < 0) {
+        if (x + muutos >= luolasto.length || x + muutos < 0 || y + muutos >= luolasto[0].length || y + muutos < 0) {
             kasvataTaulukkoa();
         }
         if (!generoitu[x + muutos][y + muutos]) {
@@ -63,10 +63,10 @@ public class Luolasto {
         for (int i = 0; i < luolasto.length; i++) {
             for (int j = 0; j < luolasto[0].length; j++) {
 //                System.out.println("i" + i + "j" + j);
-                luolasto2[muutos + i][muutos + j] 
-                        = luolasto[i][ j];
-                generoitu2[muutos + i][muutos+ j] 
-                        = generoitu[ i][j];
+                luolasto2[muutos + i][muutos + j]
+                        = luolasto[i][j];
+                generoitu2[muutos + i][muutos + j]
+                        = generoitu[i][j];
             }
         }
         luolasto = luolasto2;
@@ -82,5 +82,33 @@ public class Luolasto {
      */
     public Luola getLuola(int x, int y) {
         return luolasto[x + muutos][y + muutos];
+    }
+
+    public void tulostaLuolasto() {
+        System.out.print(" ");
+        for (int i = 0; i < luolasto.length; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(i);
+            }
+        }
+        System.out.println("");
+        for (int i = 0; i < luolasto[0].length; i++) {
+            for (int j = 0; j < size; j++) {
+            System.out.print(i);
+                for (int k = 0; k < luolasto.length; k++) {
+//                    System.out.print(k);
+                    for (int l = 0; l < size; l++) {
+                        if (luolasto[k][i] == null) {
+                            System.out.print("n");
+                        } else if (luolasto[k][i].getLuola()[l][j]) {
+                            System.out.print("x");
+                        } else {
+                            System.out.print(" ");
+                        }
+                    }
+                }
+                System.out.println("");
+            }
+        }
     }
 }
