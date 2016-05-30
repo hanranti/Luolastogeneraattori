@@ -35,7 +35,7 @@ public class Luola {
      * satunnaisesti huoneita, uloskäyntejä ja näitä yhdistäviä käytäviä.
      *
      */
-    public void generoi(Luolasto luolasto, int x, int y) {
+    public void generoi(Luolasto luolasto, int X, int Y) {
         //        for (int i = 0; i < luola.length; i++) {
         //            for (int j = 0; j < luola[0].length; j++) {
         //                if (i == 0 || j == 0 || i == luola.length - 1 || j == luola[0].length - 1) {
@@ -47,25 +47,13 @@ public class Luola {
         //        luola[luola.length - 1][(luola.length - 1) / 2] = false;
         //        luola[(luola.length - 1) / 2][0] = false;
         //        luola[(luola.length - 1) / 2][luola.length - 1] = false;
-        luoHuoneet(random.nextInt(8) + 1);
+        luoHuoneet(luolasto, random.nextInt(8) + 1, X, Y);
     }
 
     private void luoKaytavat() {
     }
 
-    private void luoUloskaynnit(int s, int x, int y, Luolasto luolasto) {
-        if (s > 9) {
-            s = 9;
-        } else if (s < 1) {
-            s = 1;
-        }
-        if (luolasto.getLuola(x + 1, y) == null) {
-            int maara = random.nextInt(size / 10);
-        }
-
-    }
-
-    private void luoHuoneet(int s) {
+    private void luoHuoneet(Luolasto luolasto, int s, int X, int Y) {
         if (s > 9) {
             s = 9;
         } else if (s < 1) {
@@ -77,36 +65,36 @@ public class Luola {
         int m2 = m;
         m *= s;
         m2 *= (10 - s);
-        m/=10;
-        System.out.println(m);
+        m /= 10;
+        m++;
         int maara = random.nextInt(m) + 1;
         for (int i = 0; i < maara; i++) {
             Piste piste = new Piste(random.nextInt(size), random.nextInt(size));
             huoneet.add(piste);
         }
-        for (Piste huone : huoneet) {
-            generoiHuone(huone, m2);
-        }
-    }
-
-    public void generoiHuone(Piste piste, int s) {
-        int limit = random.nextInt(s);
         ArrayDeque<Integer> qX = new ArrayDeque<>();
         ArrayDeque<Integer> qY = new ArrayDeque<>();
+        for (Piste huone : huoneet) {
+            qX.add(huone.getX());
+            qY.add(huone.getY());
+        }
+        generoiHuoneet(qX, qY, luolasto, m2, X, Y);
+    }
+
+    public void generoiHuoneet(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY, Luolasto luolasto, int s, int X, int Y) {
         int[][] dist = new int[size][size];
         boolean[][] color = new boolean[size][size];
-        qX.add(piste.getX());
-        qY.add(piste.getY());
-        dist[piste.getX()][piste.getY()] = 0;
-        color[piste.getX()][piste.getY()] = true;
         while (!qX.isEmpty()) {
             int x = qX.poll();
             int y = qY.poll();
             luola[x][y] = true;
-            if (limit == 0) {
-//                break;
+            if ((x == size - 1 && luolasto.getLuola(X + 1, Y) != null && !!luolasto.getLuola(X + 1, Y).getLuola()[0][y])
+                    || (y == size - 1 && luolasto.getLuola(X, Y + 1) != null && !!luolasto.getLuola(X, Y + 1).getLuola()[x][0])
+                    || x == 0 && luolasto.getLuola(X - 1, Y) != null && !!luolasto.getLuola(X - 1, Y).getLuola()[size - 1][y]
+                    || y == 0 && luolasto.getLuola(X, Y - 1) != null && !!luolasto.getLuola(X, Y - 1).getLuola()[x][size - 1]) {
+                luola[x][y] = false;
+                continue;
             }
-            limit--;
             if (x < size - 1 && !color[x + 1][y] && (dist[x][y] < 4 || random.nextBoolean())) {
                 color[x + 1][y] = true;
                 dist[x + 1][y] = dist[x][y] + 1;
@@ -131,6 +119,7 @@ public class Luola {
                 qX.add(x);
                 qY.add(y - 1);
             }
+            color[x][y] = true;
         }
     }
 

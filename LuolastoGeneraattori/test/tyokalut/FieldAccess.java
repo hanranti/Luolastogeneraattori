@@ -8,11 +8,11 @@ import java.util.logging.Logger;
  *
  * @author hanranti
  */
-public class FieldAccess {
+public class FieldAccess <E>{
 
-    private Object object;
+    private E object;
 
-    public FieldAccess(Object object) {
+    public FieldAccess(E object) {
         this.object = object;
     }
 

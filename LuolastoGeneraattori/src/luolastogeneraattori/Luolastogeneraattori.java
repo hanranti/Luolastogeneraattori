@@ -30,8 +30,8 @@ public class Luolastogeneraattori {
         pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
         Piste aloitusHuone = new Piste(size/2, size/2);
-        luolasto.getLuola(5, 5).generoiHuone(aloitusHuone, 10);
         luolasto.getLuola(5, 5).addHuone(aloitusHuone);
+        luolasto.genertoiLuola(5, 5);
         gui = new GUI();
     }
 

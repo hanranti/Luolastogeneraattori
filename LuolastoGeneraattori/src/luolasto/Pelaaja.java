@@ -39,7 +39,7 @@ public class Pelaaja {
      *
      */
     public void liikutaYlos() {
-        if (y - 1 >= 0 && luolasto.getLuola(luolaX, luolaY).getLuola()[x][y - 1]) {
+        if (y - 1 >= 0 && !luolasto.getLuola(luolaX, luolaY).getLuola()[x][y - 1]) {
             return;
         }
         y--;
@@ -57,7 +57,7 @@ public class Pelaaja {
      *
      */
     public void liikutaAlas() {
-        if (y < size - 1 && luolasto.getLuola(luolaX, luolaY).getLuola()[x][y + 1]) {
+        if (y < size - 1 && !luolasto.getLuola(luolaX, luolaY).getLuola()[x][y + 1]) {
             return;
         }
         y++;
@@ -75,7 +75,7 @@ public class Pelaaja {
      *
      */
     public void liikutaOikealle() {
-        if (x < size - 1 && luolasto.getLuola(luolaX, luolaY).getLuola()[x + 1][y]) {
+        if (x < size - 1 && !luolasto.getLuola(luolaX, luolaY).getLuola()[x + 1][y]) {
             return;
         }
         x++;
@@ -93,7 +93,7 @@ public class Pelaaja {
      *
      */
     public void liikutaVasemmalle() {
-        if (x - 1 >= 0 && luolasto.getLuola(luolaX, luolaY).getLuola()[x - 1][y]) {
+        if (x - 1 >= 0 && !luolasto.getLuola(luolaX, luolaY).getLuola()[x - 1][y]) {
             return;
         }
         x--;
