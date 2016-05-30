@@ -14,6 +14,9 @@ public class Luola {
 
     boolean[][] luola;
     int size;
+    private ArrayList<Piste> huoneet;
+    private ArrayList<Piste> uloskaynnit;
+    private Random random;
 
     /**
      * Metodi luo Luola -olion. Metodi ottaa parametrina int size muuttujan,
@@ -24,6 +27,7 @@ public class Luola {
     public Luola(int size) {
         this.size = size;
         luola = new boolean[size][size];
+        random = new Random();
     }
 
     /**
@@ -31,7 +35,7 @@ public class Luola {
      * satunnaisesti huoneita, uloskäyntejä ja näitä yhdistäviä käytäviä.
      *
      */
-    public void generoi() {
+    public void generoi(Luolasto luolasto) {
         //        for (int i = 0; i < luola.length; i++) {
         //            for (int j = 0; j < luola[0].length; j++) {
         //                if (i == 0 || j == 0 || i == luola.length - 1 || j == luola[0].length - 1) {
@@ -43,22 +47,32 @@ public class Luola {
         //        luola[luola.length - 1][(luola.length - 1) / 2] = false;
         //        luola[(luola.length - 1) / 2][0] = false;
         //        luola[(luola.length - 1) / 2][luola.length - 1] = false;
-        luoHuoneet(10);
+        luoHuoneet(random.nextInt(8) + 1);
+    }
+
+    private void luoKaytavat() {
+    }
+
+    private void luoUloskaynnit(int s, Luolasto luolasto) {
+        if (s > 9) {
+            s = 9;
+        } else if (s < 1) {
+            s = 1;
+        }
     }
 
     private void luoHuoneet(int s) {
         if (s > 9) {
             s = 9;
-        } else if (s < 0) {
-            s = 0;
+        } else if (s < 1) {
+            s = 1;
         }
-        ArrayList<Piste> huoneet = new ArrayList<>();
-        Random random = new Random();
+        huoneet = new ArrayList<>();
         int m = size;
         m /= 10;
         int m2 = m;
         m *= s;
-        m2 *=(10-s);
+        m2 *= (10 - s);
         int maara = random.nextInt(m);
         for (int i = 0; i < maara; i++) {
             Piste piste = new Piste(random.nextInt(size), random.nextInt(size));
@@ -70,7 +84,6 @@ public class Luola {
     }
 
     public void generoiHuone(Piste piste, int s) {
-        Random random = new Random();
         int limit = random.nextInt(s);
         ArrayDeque<Integer> qX = new ArrayDeque<>();
         ArrayDeque<Integer> qY = new ArrayDeque<>();

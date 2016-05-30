@@ -41,7 +41,7 @@ public class Luolasto {
         }
         if (!generoitu[x + muutos][y + muutos]) {
             Luola luola = new Luola(size);
-            luola.generoi();
+            luola.generoi(this);
             luolasto[x + muutos][y + muutos] = luola;
             generoitu[x + muutos][y + muutos] = true;
         }
