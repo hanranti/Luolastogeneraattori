@@ -56,19 +56,20 @@ public class Luolasto {
      * mukaisilla koordinaateilla palautetaan oikea luola.
      */
     private void kasvataTaulukkoa() {
-        muutos += luolasto.length / 2;
+        int uusiMuutos = muutos + luolasto.length / 2;
         Luola[][] luolasto2 = new Luola[luolasto.length * 2][luolasto[0].length * 2];
         boolean[][] generoitu2 = new boolean[luolasto2.length][luolasto2[0].length];
 //        System.out.println("uusimuutos " + uusiMuutos);
         for (int i = 0; i < luolasto.length; i++) {
             for (int j = 0; j < luolasto[0].length; j++) {
 //                System.out.println("i" + i + "j" + j);
-                luolasto2[muutos + i][muutos + j]
+                luolasto2[uusiMuutos -muutos + i][uusiMuutos - muutos + j]
                         = luolasto[i][j];
-                generoitu2[muutos + i][muutos + j]
+                generoitu2[uusiMuutos -muutos+ i][uusiMuutos-muutos + j]
                         = generoitu[i][j];
             }
         }
+        muutos = uusiMuutos;
         luolasto = luolasto2;
         generoitu = generoitu2;
     }
@@ -94,7 +95,7 @@ public class Luolasto {
         System.out.println("");
         for (int i = 0; i < luolasto[0].length; i++) {
             for (int j = 0; j < size; j++) {
-            System.out.print(i);
+                System.out.print(i);
                 for (int k = 0; k < luolasto.length; k++) {
 //                    System.out.print(k);
                     for (int l = 0; l < size; l++) {
