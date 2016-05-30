@@ -36,7 +36,7 @@ public class Luolasto {
      */
     public void genertoiLuola(int x, int y) {
         System.out.println(luolasto.length);
-        if (x+ muutos >= luolasto.length || x+muutos < 0 || y+muutos >= luolasto[0].length || y+muutos < 0) {
+        if (x+ muutos  >= luolasto.length || x+muutos < 0 || y+muutos >= luolasto[0].length || y+muutos < 0) {
             kasvataTaulukkoa();
         }
         if (!generoitu[x + muutos][y + muutos]) {
@@ -56,20 +56,19 @@ public class Luolasto {
      * mukaisilla koordinaateilla palautetaan oikea luola.
      */
     private void kasvataTaulukkoa() {
-        int uusiMuutos = luolasto.length / 2;
+        muutos += luolasto.length / 2;
         Luola[][] luolasto2 = new Luola[luolasto.length * 2][luolasto[0].length * 2];
         boolean[][] generoitu2 = new boolean[luolasto2.length][luolasto2[0].length];
 //        System.out.println("uusimuutos " + uusiMuutos);
         for (int i = 0; i < luolasto.length; i++) {
             for (int j = 0; j < luolasto[0].length; j++) {
 //                System.out.println("i" + i + "j" + j);
-                luolasto2[uusiMuutos - muutos+ i][uusiMuutos -muutos + j] 
+                luolasto2[muutos + i][muutos + j] 
                         = luolasto[i][ j];
-                generoitu2[uusiMuutos -muutos+ i][uusiMuutos-muutos+ j] 
+                generoitu2[muutos + i][muutos+ j] 
                         = generoitu[ i][j];
             }
         }
-        muutos = uusiMuutos;
         luolasto = luolasto2;
         generoitu = generoitu2;
     }
