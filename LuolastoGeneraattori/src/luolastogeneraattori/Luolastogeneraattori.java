@@ -1,5 +1,7 @@
 package luolastogeneraattori;
 
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import luolasto.Luolasto;
 import luolasto.Pelaaja;
@@ -29,9 +31,11 @@ public class Luolastogeneraattori {
         luolasto = new Luolasto(size);
         pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
-        Piste aloitusHuone = new Piste(size/2, size/2);
-        luolasto.getLuola(5, 5).addHuone(aloitusHuone);
-        luolasto.genertoiLuola(5, 5);
+        Random random = new Random();
+        ArrayList<Piste> huoneet = luolasto.getLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY()).getHuoneet();
+        Piste huone = huoneet.get(random.nextInt(huoneet.size()));
+        pelaaja.setX(huone.getX());
+        pelaaja.setY(huone.getY());
         gui = new GUI();
     }
 

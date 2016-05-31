@@ -3,6 +3,7 @@ package luolasto;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Random;
+import tietorakenteet.Matematiikka;
 
 /**
  * Luokka sisältää boolean[][] taulukon, joka määrittää yksittäisen luolan
@@ -65,7 +66,6 @@ public class Luola {
         int m2 = m;
         m *= s;
         m2 *= (10 - s);
-        m /= 10;
         m++;
         int maara = random.nextInt(m) + 1;
         for (int i = 0; i < maara; i++) {
@@ -82,7 +82,16 @@ public class Luola {
     }
 
     public void generoiHuoneet(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY, Luolasto luolasto, int s, int X, int Y) {
-        int[][] dist = new int[size][size];
+        int[][] aloitusX = new int[size][size];
+        int[][] aloitusY = new int[size][size];
+        for (int i = 0; i < qX.size(); i++) {
+            int x = qX.poll();
+            int y = qY.poll();
+            aloitusX[x][y] = x;
+            aloitusY[x][y] = y;
+            qX.add(x);
+            qY.add(y);
+        }
         boolean[][] color = new boolean[size][size];
         while (!qX.isEmpty()) {
             int x = qX.poll();
@@ -95,27 +104,27 @@ public class Luola {
                 luola[x][y] = false;
                 continue;
             }
-            if (x < size - 1 && !color[x + 1][y] && (dist[x][y] < 4 || random.nextBoolean())) {
+            if (x < size - 1 && !color[x + 1][y] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < 6 || random.nextInt(3) < 1)) {
                 color[x + 1][y] = true;
-                dist[x + 1][y] = dist[x][y] + 1;
+                aloitusX[x + 1][y] = aloitusX[x][y];
                 qX.add(x + 1);
                 qY.add(y);
             }
-            if (x > 0 && !color[x - 1][y] && (dist[x][y] < 4 || random.nextBoolean())) {
+            if (x > 0 && !color[x - 1][y] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < 6 || random.nextInt(3) < 1)) {
                 color[x - 1][y] = true;
-                dist[x - 1][y] = dist[x][y] + 1;
+                aloitusX[x - 1][y] = aloitusX[x][y];
                 qX.add(x - 1);
                 qY.add(y);
             }
-            if (y < size - 1 && !color[x][y + 1] && (dist[x][y] < 4 || random.nextBoolean())) {
+            if (y < size - 1 && !color[x][y + 1] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < 6 || random.nextInt(3) < 1)) {
                 color[x][y + 1] = true;
-                dist[x][y + 1] = dist[x][y] + 1;
+                aloitusX[x][y + 1] = aloitusX[x][y];
                 qX.add(x);
                 qY.add(y + 1);
             }
-            if (y > 0 && !color[x][y - 1] && (dist[x][y] < 4 || random.nextBoolean())) {
+            if (y > 0 && !color[x][y - 1] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < 6 || random.nextInt(3) < 1)) {
                 color[x][y - 1] = true;
-                dist[x][y - 1] = dist[x][y] + 1;
+                aloitusX[x][y - 1] = aloitusX[x][y];
                 qX.add(x);
                 qY.add(y - 1);
             }
@@ -134,5 +143,9 @@ public class Luola {
      */
     public boolean[][] getLuola() {
         return luola;
+    }
+
+    public ArrayList<Piste> getHuoneet() {
+        return huoneet;
     }
 }

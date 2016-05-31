@@ -143,4 +143,12 @@ public class Pelaaja {
     public void merkkaa() {
         luolasto.getLuola(luolaX, luolaY).getLuola()[x][y] = true;
     }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
 }
