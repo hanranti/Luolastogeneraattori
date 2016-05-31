@@ -27,6 +27,7 @@ public class Luolastogeneraattori {
      * @param size
      */
     public Luolastogeneraattori(int size) {
+        System.out.println("LuolastoGeneraattori");
         this.size = size;
         luolasto = new Luolasto(size);
         pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);
@@ -45,6 +46,7 @@ public class Luolastogeneraattori {
      *
      */
     public void kaynnista() {
+        System.out.println("kaynnista");
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println(pelaaja.getLuolaX() + " " + pelaaja.getLuolaY());

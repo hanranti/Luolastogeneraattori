@@ -14,21 +14,26 @@ import tietorakenteet.Matematiikka;
 public class Luola {
 
     private boolean[][] luola;
-    private int size;
+    private int luolaX, luolaY, size;
     private ArrayList<Piste> huoneet;
     private ArrayList<Piste> uloskaynnit;
     private Random random;
+    private Luolasto luolasto;
 
     /**
      * Metodi luo Luola -olion. Metodi ottaa parametrina int size muuttujan,
      * joka määrittää luolan leveyden ja korkeuden.
      *
+     * @param luolasto
      * @param size
+     * @param x
      */
-    public Luola(int size) {
+    public Luola(Luolasto luolasto, int x, int y, int size) {
+        System.out.println("Luola");
         this.size = size;
         luola = new boolean[size][size];
         random = new Random();
+        this.luolasto = luolasto;
     }
 
     /**
@@ -36,7 +41,8 @@ public class Luola {
      * satunnaisesti huoneita, uloskäyntejä ja näitä yhdistäviä käytäviä.
      *
      */
-    public void generoi(Luolasto luolasto, int X, int Y) {
+    public void generoi() {
+        System.out.println("generoi");
         //        for (int i = 0; i < luola.length; i++) {
         //            for (int j = 0; j < luola[0].length; j++) {
         //                if (i == 0 || j == 0 || i == luola.length - 1 || j == luola[0].length - 1) {
@@ -48,18 +54,10 @@ public class Luola {
         //        luola[luola.length - 1][(luola.length - 1) / 2] = false;
         //        luola[(luola.length - 1) / 2][0] = false;
         //        luola[(luola.length - 1) / 2][luola.length - 1] = false;
-        luoHuoneet(luolasto, random.nextInt(8) + 1, X, Y);
-    }
-
-    private void luoKaytavat() {
-    }
-
-    private void luoHuoneet(Luolasto luolasto, int s, int X, int Y) {
-        if (s > 9) {
-            s = 9;
-        } else if (s < 1) {
-            s = 1;
-        }
+        ArrayDeque<Integer> qX = new ArrayDeque<>();
+        ArrayDeque<Integer> qY = new ArrayDeque<>();
+        ArrayDeque<Integer> dist = new ArrayDeque<>();
+        int s = random.nextInt(8) + 1;
         huoneet = new ArrayList<>();
         int m = size;
         m /= 10;
@@ -67,21 +65,38 @@ public class Luola {
         m *= s;
         m2 *= (10 - s);
         m++;
+        luoHuoneet(qX, qY, dist, m);
+        generoiHuoneet(qX, qY, dist, m2);
+    }
+
+    private void luoKaytavat() {
+    }
+
+    private void generoiKaytava(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
+            ArrayDeque<Integer> dist, int x, int y, int loppuX, int loppuY) {
+        luola[x][y] = true;
+        qX.add(x);
+        qY.add(y);
+        dist.add(random.nextInt(2));
+    }
+
+    private void luoHuoneet(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
+            ArrayDeque<Integer> dist, int m) {
+        System.out.println("luohuoneet");
         int maara = random.nextInt(m) + 1;
         for (int i = 0; i < maara; i++) {
             Piste piste = new Piste(random.nextInt(size), random.nextInt(size));
             huoneet.add(piste);
         }
-        ArrayDeque<Integer> qX = new ArrayDeque<>();
-        ArrayDeque<Integer> qY = new ArrayDeque<>();
         for (Piste huone : huoneet) {
             qX.add(huone.getX());
             qY.add(huone.getY());
+            dist.add(random.nextInt(5) + 5);
         }
-        generoiHuoneet(qX, qY, luolasto, m2, X, Y);
     }
 
-    public void generoiHuoneet(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY, Luolasto luolasto, int s, int X, int Y) {
+    public void generoiHuoneet(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY, ArrayDeque<Integer> dist, int s) {
+        System.out.println("generoiHuoneet");
         int[][] aloitusX = new int[size][size];
         int[][] aloitusY = new int[size][size];
         for (int i = 0; i < qX.size(); i++) {
@@ -96,33 +111,40 @@ public class Luola {
         while (!qX.isEmpty()) {
             int x = qX.poll();
             int y = qY.poll();
+            int d = dist.poll();
             luola[x][y] = true;
-            if ((x == size - 1 && luolasto.getLuola(X + 1, Y) != null && !luolasto.getLuola(X + 1, Y).getLuola()[0][y])
-                    || (y == size - 1 && luolasto.getLuola(X, Y + 1) != null && !luolasto.getLuola(X, Y + 1).getLuola()[x][0])
-                    || x == 0 && luolasto.getLuola(X - 1, Y) != null && !luolasto.getLuola(X - 1, Y).getLuola()[size - 1][y]
-                    || y == 0 && luolasto.getLuola(X, Y - 1) != null && !luolasto.getLuola(X, Y - 1).getLuola()[x][size - 1]) {
+            System.out.println(x + " " + y);
+            System.out.println(luolaX + " " + luolaY);
+            if ((x == size - 1 && luolasto.getLuola(luolaX + 1, luolaY) != null
+                    && !luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][y])
+                    || (y == size - 1 && luolasto.getLuola(luolaX, luolaY + 1) != null
+                    && !luolasto.getLuola(luolaX, luolaY + 1).getLuola()[x][0])
+                    || x == 0 && luolasto.getLuola(luolaX - 1, luolaY) != null
+                    && !luolasto.getLuola(luolaX - 1, luolaY).getLuola()[size - 1][y]
+                    || y == 0 && luolasto.getLuola(luolaX, luolaY - 1) != null
+                    && !luolasto.getLuola(luolaX, luolaY - 1).getLuola()[x][size - 1]) {
                 luola[x][y] = false;
                 continue;
             }
-            if (x < size - 1 && !color[x + 1][y] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < 6 || random.nextInt(3) < 1)) {
+            if (x < size - 1 && !color[x + 1][y] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x + 1][y] = true;
                 aloitusX[x + 1][y] = aloitusX[x][y];
                 qX.add(x + 1);
                 qY.add(y);
             }
-            if (x > 0 && !color[x - 1][y] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < 6 || random.nextInt(3) < 1)) {
+            if (x > 0 && !color[x - 1][y] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x - 1][y] = true;
                 aloitusX[x - 1][y] = aloitusX[x][y];
                 qX.add(x - 1);
                 qY.add(y);
             }
-            if (y < size - 1 && !color[x][y + 1] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < 6 || random.nextInt(3) < 1)) {
+            if (y < size - 1 && !color[x][y + 1] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x][y + 1] = true;
                 aloitusX[x][y + 1] = aloitusX[x][y];
                 qX.add(x);
                 qY.add(y + 1);
             }
-            if (y > 0 && !color[x][y - 1] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < 6 || random.nextInt(3) < 1)) {
+            if (y > 0 && !color[x][y - 1] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x][y - 1] = true;
                 aloitusX[x][y - 1] = aloitusX[x][y];
                 qX.add(x);

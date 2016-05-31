@@ -38,8 +38,8 @@ public class Luolasto {
             kasvataTaulukkoa();
         }
         if (luolasto[x + muutos][y + muutos] == null) {
-            Luola luola = new Luola(size);
-            luola.generoi(this, x, y);
+            Luola luola = new Luola(this, x, y, size);
+            luola.generoi();
             luolasto[x + muutos][y + muutos] = luola;
         }
     }
@@ -76,7 +76,11 @@ public class Luolasto {
      * @return
      */
     public Luola getLuola(int x, int y) {
-        return luolasto[x + muutos][y + muutos];
+        try {
+            return luolasto[x + muutos][y + muutos];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return null;
+        }
     }
 
     public void tulostaLuolasto() {
