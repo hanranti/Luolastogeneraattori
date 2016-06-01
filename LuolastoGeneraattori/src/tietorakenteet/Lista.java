@@ -19,7 +19,7 @@ public class Lista<E extends Object> {
             last = first;
         } else {
             Solmu solmu = new Solmu(object);
-            last.setNext(solmu);
+            last.setOikea(solmu);
             last = solmu;
         }
     }
@@ -32,19 +32,19 @@ public class Lista<E extends Object> {
         while (solmu != null) {
             if (solmu.getObject() == object) {
                 if (solmu == first) {
-                    first = solmu.getNext();
+                    first = solmu.getOikea();
                 }
                 if (solmu == last) {
-                    last = solmu.getPrev();
+                    last = solmu.getVasen();
                 }
-                if (solmu.getPrev() != null) {
-                    solmu.getPrev().setNext(solmu.getNext());
+                if (solmu.getVasen() != null) {
+                    solmu.getVasen().setOikea(solmu.getOikea());
                 }
-                if (solmu.getNext() != null) {
-                    solmu.getNext().setPrev(solmu.getPrev());
+                if (solmu.getOikea() != null) {
+                    solmu.getOikea().setVasen(solmu.getVasen());
                 }
             }
-            solmu = solmu.getNext();
+            solmu = solmu.getOikea();
         }
     }
 
@@ -54,7 +54,7 @@ public class Lista<E extends Object> {
             if (solmu.getObject() == object) {
                 return true;
             }
-            solmu = solmu.getNext();
+            solmu = solmu.getOikea();
         }
         return false;
     }

@@ -39,10 +39,11 @@ public class LuolaTest {
 
     @Test
     public void testLuola() {
-        Luola luola = new Luola(10);
+        Luolasto luolasto = new Luolasto(10);
+        Luola luola = new Luola(luolasto, 5, 5, 10);
         assertEquals(10, luola.getLuola().length);
         assertEquals(10, luola.getLuola()[0].length);
-        luola = new Luola(32);
+        luola = new Luola(luolasto, 5, 5, 32);
         assertEquals(32, luola.getLuola().length);
         assertEquals(32, luola.getLuola()[0].length);
     }
@@ -51,8 +52,8 @@ public class LuolaTest {
     public void sisaltaaUloskaynnin() {
         Luolasto luolasto = new Luolasto(32);
         boolean sisaltaaUloskaynnin = false;
-        Luola luola = new Luola(32);
-        luola.generoi(null, 5, 5);
+        Luola luola = new Luola(luolasto, 5, 5, 32);
+        luola.generoi();
         boolean[][] taulukko = luola.getLuola();
         for (int j = 0; j < taulukko.length; j++) {
             if (!taulukko[0][j]) {

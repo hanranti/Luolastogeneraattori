@@ -6,6 +6,7 @@ import java.util.Scanner;
 import luolasto.Luolasto;
 import luolasto.Pelaaja;
 import luolasto.Piste;
+import tietorakenteet.Keko;
 import ui.GUI;
 
 /**
@@ -28,6 +29,8 @@ public class Luolastogeneraattori {
      */
     public Luolastogeneraattori(int size) {
         System.out.println("LuolastoGeneraattori");
+        Keko keko = new Keko<Comparable>();
+
         this.size = size;
         luolasto = new Luolasto(size);
         pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);

@@ -76,11 +76,10 @@ public class Luolasto {
      * @return
      */
     public Luola getLuola(int x, int y) {
-        try {
-            return luolasto[x + muutos][y + muutos];
-        } catch (ArrayIndexOutOfBoundsException e) {
+        if (x + muutos < 0 || x + muutos >= luolasto.length || y + muutos < 0 || y + muutos >= luolasto[0].length) {
             return null;
         }
+        return luolasto[x + muutos][y + muutos];
     }
 
     public void tulostaLuolasto() {

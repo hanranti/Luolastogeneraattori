@@ -7,26 +7,26 @@ package tietorakenteet;
 public class Solmu<E extends Object> {
 
     private Object object;
-    private Solmu prev, next;
+    private Solmu vasen, oikea;
 
     public Solmu(E object) {
         this.object = object;
     }
 
-    public void setPrev(Solmu prev) {
-        this.prev = prev;
+    public void setVasen(Solmu prev) {
+        this.vasen = prev;
     }
 
-    public void setNext(Solmu next) {
-        this.next = next;
+    public void setOikea(Solmu next) {
+        this.oikea = next;
     }
 
-    public Solmu getPrev() {
-        return prev;
+    public Solmu getVasen() {
+        return vasen;
     }
 
-    public Solmu getNext() {
-        return next;
+    public Solmu getOikea() {
+        return oikea;
     }
 
     public Object getObject() {
