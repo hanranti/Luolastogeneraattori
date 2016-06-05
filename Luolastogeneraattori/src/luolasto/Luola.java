@@ -223,15 +223,10 @@ public class Luola {
         }
         boolean[][] color = new boolean[size][size];
         while (!qX.isEmpty()) {
-            System.out.println(qX.size());
-            System.out.println(qY.size());
-            System.out.println(dist.size());
             int x = qX.poll();
             int y = qY.poll();
             int d = dist.poll();
             luola[x][y] = true;
-            System.out.println(x + " " + y);
-            System.out.println(luolaX + " " + luolaY);
             if ((x == size - 1 && luolasto.getLuola(luolaX + 1, luolaY) != null
                     && !luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][y])
                     || (y == size - 1 && luolasto.getLuola(luolaX, luolaY + 1) != null

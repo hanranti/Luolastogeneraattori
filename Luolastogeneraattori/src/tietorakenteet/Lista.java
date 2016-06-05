@@ -6,14 +6,14 @@ import java.lang.reflect.Array;
  *
  * @author hanranti
  */
-public class Lista<E extends Object> {
+public class Lista {
 
     private Solmu first, last;
 
     public Lista() {
     }
 
-    public void add(E object) {
+    public void add(Object object) {
         if (first == null) {
             first = new Solmu(object);
             last = first;
@@ -24,17 +24,22 @@ public class Lista<E extends Object> {
         }
     }
 
-    public void remove(E object) {
+    public void remove(Object object) {
+        Solmu s = first;
+        while (s.getOikea() !=null) {
+            System.out.println(s.getObject());
+            s = s.getOikea();
+        }
         if (first == null) {
             return;
         }
         Solmu solmu = first;
         while (solmu != null) {
-            if (solmu.getObject() == object) {
-                if (solmu == first) {
+            if (solmu.getObject().equals(object)) {
+                if (solmu.equals(first)) {
                     first = solmu.getOikea();
                 }
-                if (solmu == last) {
+                if (solmu.equals(last)) {
                     last = solmu.getVasen();
                 }
                 if (solmu.getVasen() != null) {
@@ -46,9 +51,14 @@ public class Lista<E extends Object> {
             }
             solmu = solmu.getOikea();
         }
+        s = first;
+        while (s.getOikea() !=null) {
+            System.out.println(s.getObject());
+            s = s.getOikea();
+        }
     }
 
-    public boolean contains(E object) {
+    public boolean contains(Object object) {
         Solmu solmu = first;
         while (solmu != null) {
             if (solmu.getObject() == object) {

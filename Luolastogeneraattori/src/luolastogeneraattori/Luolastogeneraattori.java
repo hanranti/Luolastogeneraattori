@@ -50,7 +50,7 @@ public class Luolastogeneraattori {
         System.out.println("kaynnista");
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println(pelaaja.getLuolaX() + " " + pelaaja.getLuolaY());
+//            System.out.println(pelaaja.getLuolaX() + " " + pelaaja.getLuolaY());
             gui.tulosta(
                     luolasto.getLuola(
                             pelaaja.getLuolaX(),

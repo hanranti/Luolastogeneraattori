@@ -4,36 +4,42 @@ package tietorakenteet;
  *
  * @author hanranti
  */
-public class Keko {
+public class Keko<E> {
 
     private int[] taulukko;
+    private Object[] objects;
     private int size;
 
     public Keko() {
         taulukko = new int[8];
+        objects = new Object[8];
         size = 0;
     }
 
-    public void insert(int k) {
+    public void insert(Object object, int k) {
         size++;
-        if (size >= taulukko.length) {
+        if (size >= taulukko.length - 1) {
             kasvataTaulukkoa();
         }
         int i = size;
         while (i > 1 && taulukko[i / 2] < k) {
             taulukko[i] = taulukko[i / 2];
+            objects[i] = objects[i / 2];
             i /= 2;
         }
         taulukko[i] = k;
+        objects[i] = object;
     }
 
     public Object juuri() {
-        return taulukko[1];
+        return objects[1];
     }
 
     public Object poistaJuuri() {
-        int juuri = taulukko[1];
+        Object juuri = objects[1];
         taulukko[1] = taulukko[size];
+        objects[1] = objects[size];
+        heapify(1);
         return juuri;
     }
 
@@ -58,14 +64,27 @@ public class Keko {
 
     private void vaihda(int a, int b) {
         int arvo = taulukko[a];
+        Object object = objects[a];
         taulukko[a] = taulukko[b];
         taulukko[b] = arvo;
+        objects[a] = objects[b];
+        objects[b] = object;
     }
 
     private void kasvataTaulukkoa() {
+        for (int i = 0; i < taulukko.length; i++) {
+            System.out.println(objects[i] + " " + taulukko[i]);
+        }
         int[] uusiTaulukko = new int[taulukko.length * 2];
+        Object[] uusiObjects = new Object[taulukko.length * 2];
         for (int i = 0; i < taulukko.length; i++) {
             uusiTaulukko[i] = taulukko[i];
+            uusiObjects[i] = objects[i];
+        }
+        taulukko = uusiTaulukko;
+        objects = uusiObjects;
+        for (int i = 0; i < taulukko.length; i++) {
+            System.out.println(objects[i] + " " + taulukko[i]);
         }
     }
 }
