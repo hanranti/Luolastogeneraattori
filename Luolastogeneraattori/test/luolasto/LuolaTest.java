@@ -1,4 +1,3 @@
-
 package luolasto;
 
 import org.junit.After;
@@ -68,6 +67,7 @@ public class LuolaTest {
                 sisaltaaUloskaynnin = true;
                 break;
             }
-        }assertTrue(sisaltaaUloskaynnin);
+        }
+        assertTrue(sisaltaaUloskaynnin);
     }
 }
