@@ -6,7 +6,6 @@ import java.util.Scanner;
 import luolasto.Luolasto;
 import luolasto.Pelaaja;
 import luolasto.Piste;
-import tietorakenteet.Keko;
 import ui.GUI;
 
 /**
@@ -69,10 +68,8 @@ public class Luolastogeneraattori {
                 pelaaja.liikutaAlas();
             } else if (s.equals("exit")) {
                 break;
-            } else if (s.equals("m")) {
-                pelaaja.merkkaa();
             } else if (s.equals("t")) {
-                luolasto.tulostaLuolasto();
+//                luolasto.tulostaLuolasto();
             }
         }
     }

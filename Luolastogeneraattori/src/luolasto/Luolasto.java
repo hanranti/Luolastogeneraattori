@@ -82,31 +82,31 @@ public class Luolasto {
         return luolasto[x + muutos][y + muutos];
     }
 
-    public void tulostaLuolasto() {
-        System.out.print(" ");
-        for (int i = 0; i < luolasto.length; i++) {
-            for (int j = 0; j < size; j++) {
-                System.out.print(i);
-            }
-        }
-        System.out.println("");
-        for (int i = 0; i < luolasto[0].length; i++) {
-            for (int j = 0; j < size; j++) {
-                System.out.print(i);
-                for (int k = 0; k < luolasto.length; k++) {
-//                    System.out.print(k);
-                    for (int l = 0; l < size; l++) {
-                        if (luolasto[k][i] == null) {
-                            System.out.print("n");
-                        } else if (luolasto[k][i].getLuola()[l][j]) {
-                            System.out.print("x");
-                        } else {
-                            System.out.print(" ");
-                        }
-                    }
-                }
-                System.out.println("");
-            }
-        }
-    }
+//    public void tulostaLuolasto() {
+//        System.out.print(" ");
+//        for (int i = 0; i < luolasto.length; i++) {
+//            for (int j = 0; j < size; j++) {
+//                System.out.print(i);
+//            }
+//        }
+//        System.out.println("");
+//        for (int i = 0; i < luolasto[0].length; i++) {
+//            for (int j = 0; j < size; j++) {
+//                System.out.print(i);
+//                for (int k = 0; k < luolasto.length; k++) {
+////                    System.out.print(k);
+//                    for (int l = 0; l < size; l++) {
+//                        if (luolasto[k][i] == null) {
+//                            System.out.print("n");
+//                        } else if (luolasto[k][i].getLuola()[l][j]) {
+//                            System.out.print("x");
+//                        } else {
+//                            System.out.print(" ");
+//                        }
+//                    }
+//                }
+//                System.out.println("");
+//            }
+//        }
+//    }
 }

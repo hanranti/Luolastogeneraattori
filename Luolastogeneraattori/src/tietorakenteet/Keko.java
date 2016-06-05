@@ -1,21 +1,34 @@
 package tietorakenteet;
 
 /**
+ * Keko -luokka kuvaa keko -tietorakennetta.
  *
  * @author hanranti
  */
-public class Keko<E> {
+public class Keko {
 
     private int[] taulukko;
     private Object[] objects;
     private int size;
 
+    /**
+     * Metodi luo keko -olion, johon voidaan lisätä olioita antaen oliolle arvon
+     * ja poistaa aina suurimman arvon saanut olio keosta.
+     *
+     */
     public Keko() {
         taulukko = new int[8];
         objects = new Object[8];
         size = 0;
     }
 
+    /**
+     * Metodi lisää kekoon olion ja tälle arvon. Jos olioiden määrä kasvaa yli
+     * taulukon koon, taulukon kokoa kasvatetaan kasvataTaulukkoa -metodilla.
+     *
+     * @param object
+     * @param k
+     */
     public void insert(Object object, int k) {
         size++;
         if (size >= taulukko.length - 1) {
@@ -31,10 +44,22 @@ public class Keko<E> {
         objects[i] = object;
     }
 
+    /**
+     * Metodi palauttaa olion, jonka saama arvo on suurin keossa.
+     *
+     * @return
+     */
     public Object juuri() {
         return objects[1];
     }
 
+    /**
+     * Metodi poistaa suurimman arvon saaneen olion keosta, järjestää keon
+     * uudelleen heapify -metodilla ja palauttaa entisen suurimman arvon saaneen
+     * olion.
+     *
+     * @return
+     */
     public Object poistaJuuri() {
         Object juuri = objects[1];
         taulukko[1] = taulukko[size];

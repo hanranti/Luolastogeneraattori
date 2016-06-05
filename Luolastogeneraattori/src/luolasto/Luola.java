@@ -25,6 +25,7 @@ public class Luola {
      *
      * @param luolasto
      * @param size
+     * @param y
      * @param x
      */
     public Luola(Luolasto luolasto, int x, int y, int size) {
@@ -209,7 +210,7 @@ public class Luola {
         }
     }
 
-    public void generoiHuoneet(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY, ArrayDeque<Integer> dist, int s) {
+    private void generoiHuoneet(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY, ArrayDeque<Integer> dist, int s) {
         System.out.println("generoiHuoneet");
         int[][] aloitusX = new int[size][size];
         int[][] aloitusY = new int[size][size];
@@ -238,28 +239,28 @@ public class Luola {
                 luola[x][y] = false;
                 continue;
             }
-            if (x < size - 1 && !color[x + 1][y] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
+            if (x < size - 1 && !color[x + 1][y] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x + 1][y] = true;
                 aloitusX[x + 1][y] = aloitusX[x][y];
                 qX.add(x + 1);
                 qY.add(y);
                 dist.add(d);
             }
-            if (x > 0 && !color[x - 1][y] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
+            if (x > 0 && !color[x - 1][y] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x - 1][y] = true;
                 aloitusX[x - 1][y] = aloitusX[x][y];
                 qX.add(x - 1);
                 qY.add(y);
                 dist.add(d);
             }
-            if (y < size - 1 && !color[x][y + 1] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
+            if (y < size - 1 && !color[x][y + 1] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x][y + 1] = true;
                 aloitusX[x][y + 1] = aloitusX[x][y];
                 qX.add(x);
                 qY.add(y + 1);
                 dist.add(d);
             }
-            if (y > 0 && !color[x][y - 1] && (Matematiikka.kateetinPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
+            if (y > 0 && !color[x][y - 1] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x][y - 1] = true;
                 aloitusX[x][y - 1] = aloitusX[x][y];
                 qX.add(x);
@@ -270,6 +271,12 @@ public class Luola {
         }
     }
 
+    /**
+     * Metodi lisää huoneisiin uuden Piste -olion, joka sisältää yhden huoneen
+     * koordinaatit.
+     *
+     * @param huone
+     */
     public void addHuone(Piste huone) {
         huoneet.add(huone);
     }
@@ -283,6 +290,12 @@ public class Luola {
         return luola;
     }
 
+    /**
+     * Metodi palauttaa listan Piste olioista,jotka sisältävät huoneiden 
+     * koordinaatit.
+     *
+     * @return
+     */
     public ArrayList<Piste> getHuoneet() {
         return huoneet;
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package luolasto;
 
 import org.junit.After;
@@ -47,7 +42,7 @@ public class PelaajaTest {
         boolean[][] t = luola.getLuola();
         for (int i = 0; i < t.length; i++) {
             for (int j = 0; j < t[0].length; j++) {
-                t[i][j] = false;
+                t[i][j] = true;
             }
         }
     }
@@ -97,10 +92,10 @@ public class PelaajaTest {
     public void testSeinat() {
         poistaSeinat(luolasto.getLuola(5, 5));
         boolean[][] t = luolasto.getLuola(5, 5).getLuola();
-        t[4][5] = true;
-        t[6][5] = true;
-        t[5][4] = true;
-        t[5][6] = true;
+        t[4][5] = false;
+        t[6][5] = false;
+        t[5][4] = false;
+        t[5][6] = false;
         pelaaja.liikutaVasemmalle();
         assertEquals(5, pelaaja.getX());
         pelaaja.liikutaOikealle();

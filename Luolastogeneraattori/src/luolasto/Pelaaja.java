@@ -22,6 +22,7 @@ public class Pelaaja {
      * @param luolaX
      * @param luolaY
      * @param luolasto
+     * @param size
      */
     public Pelaaja(int x, int y, int luolaX, int luolaY, Luolasto luolasto, int size) {
         this.x = x;
@@ -140,14 +141,20 @@ public class Pelaaja {
         return luolaY;
     }
 
-    public void merkkaa() {
-        luolasto.getLuola(luolaX, luolaY).getLuola()[x][y] = true;
-    }
-
+    /**
+     * Metodi asettaa parametrina saadun arvon x:n arvoksi.
+     *
+     * @param x
+     */
     public void setX(int x) {
         this.x = x;
     }
 
+    /**
+     * Metodi asettaa parametrina saadun arvon y:n arvoksi.
+     *
+     * @param y
+     */
     public void setY(int y) {
         this.y = y;
     }

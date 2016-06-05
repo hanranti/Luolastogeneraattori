@@ -1,14 +1,22 @@
 package tietorakenteet;
 
 /**
+ * Jono -luokka kuvaa jono -tietorakennetta, jossa jonon loppuun voidaan lisätä
+ * olioita ja jonon alusta voidaan poistaa olioita.
  *
  * @author hanranti
  */
-public class Jono<E extends Object> {
+public class Jono {
 
     private Object[] taulukko;
     private int alku, loppu, koko;
 
+    /**
+     * Metodi luo jono -olion. Jono sisältää taulukon johon jono tallennetaan.
+     * Jonon loppuun voidaan tallentaa olioita ja alusta voidaan poistaa
+     * olioita.
+     *
+     */
     public Jono() {
         taulukko = new Object[10];
         alku = 0;
@@ -16,26 +24,37 @@ public class Jono<E extends Object> {
         koko = 0;
     }
 
-    public void push(E object) {
-        taulukko[loppu] = object;
-        loppu++;
+    /**
+     * Metodi lisää olion jonon loppuun. Jos taulukko on lisäyksen jälkeen täysi,
+     * taulukon kokoa kasvatetaan kasvataTaulukkoa -metodilla.
+     *
+     * @param object
+     */
+    public void push(Object object) {
         if (loppu >= taulukko.length) {
             loppu = 0;
         }
+        taulukko[loppu] = object;
+        loppu++;
         if (loppu == alku) {
             kasvataTaulukkoa();
         }
         koko++;
     }
 
-    public E poll() {
+    /**
+     * Metodi poistaa ja palauttaa jonon ensimmäisen alkion.
+     *
+     * @return
+     */
+    public Object poll() {
         if (this.tyhja()) {
             return null;
         }
         Object object = taulukko[alku];
         alku++;
         koko--;
-        return (E) object;
+        return  object;
     }
 
     private void kasvataTaulukkoa() {
@@ -53,13 +72,23 @@ public class Jono<E extends Object> {
         loppu = koko;
     }
 
+    /**
+     * Jos jono on tyhjä, metodi palauttaa true, muulloin false.
+     *
+     * @return
+     */
     public boolean tyhja() {
-        if (alku == loppu) {
+        if (koko == 0) {
             return true;
         }
         return false;
     }
 
+    /**
+     * Metodi palauttaa montako alkioita jonossa on.
+     *
+     * @return
+     */
     public int koko() {
         return koko;
     }
