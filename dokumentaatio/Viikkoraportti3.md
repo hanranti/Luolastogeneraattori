@@ -17,4 +17,4 @@ Kaytin 4 tuntia,
   * lisäsin uloskäyntien lisäämisen ja huoneiden ja uloskäyntien yhdistämisen käytävillä satunnaisesti
   * generoiHuoneet() generoi nyt kaikki avoimet alueet luolaan
 
-Käytin 2 tuntia keon ja linkitetyn listan toteuttamiseen.
+Käytin 2 tuntia keon, jonon ja linkitetyn listan toteuttamiseen.
