@@ -18,3 +18,5 @@ Kaytin 4 tuntia,
   * generoiHuoneet() generoi nyt kaikki avoimet alueet luolaan
 
 Käytin 2 tuntia keon, jonon ja linkitetyn listan toteuttamiseen.
+
+Käytin 2 tuntia javadocin ja testien tekemiseen.
