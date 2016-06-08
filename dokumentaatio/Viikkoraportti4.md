@@ -4,3 +4,7 @@ Käytin 2 tuntia,
 * Luolangenerointialgoritmin luolan reunojen korjaamiseen, nyt luolan viereisissä luolissa on samoissa kohtaa seinät ja aukeat alueet vastakkaisilla puolilla
 
 * Huoneidenyhdistämisalgoritmin muuttamiseen, toimimaan siten, että huoneista muodostetaan pienin virittävä puu
+
+Kaytin x tuntia,
+* pienimmän virittävän puun muodostavan algoritmin toteuttamiseen
+   * Kaytan algoritmissa kruskalia. Koska verkossa kaikista huoneista on kaari toisiinsa, verkko on tiheä eli Primin aikavaativuus olisi O(n²). Kruskalin aikavaativuus on O(m log n) + O(n²), jossa O(n²) tulee ajasta, joka kuluu kun kaikki kaaret lisätään kekoon. Käyttäen Kruskalia aikavaativuudeksi tulee siis O(m log n + n²) = O(n²) eli sama kuin Primissä. (m = kaarten määrä ja n = solmujen määrä)
