@@ -3,6 +3,7 @@ package luolasto;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Random;
+import tietorakenteet.Kaari;
 import tietorakenteet.Keko;
 import tietorakenteet.Matematiikka;
 import tietorakenteet.UnionFind;
@@ -77,6 +78,7 @@ public class Luola {
 
     private void luoUloskaynnit(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
             ArrayDeque<Integer> dist) {
+        System.out.println("luoUloskaynnit");
         int maara = random.nextInt(2) + 1;
         if (luolasto.getLuola(luolaX - 1, luolaY) != null) {
             System.out.println("x-1");
@@ -170,6 +172,7 @@ public class Luola {
 
     private void luoKaytavat(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
             ArrayDeque<Integer> dist) {
+        System.out.println("luoKaytavat");
 //        int maara = random.nextInt(huoneet.size());
 //        while (maara > 0) {
 //            Piste huone1 = huoneet.get(random.nextInt(huoneet.size()));
@@ -178,22 +181,42 @@ public class Luola {
 //                    huone2.getX(), huone2.getY());
 //            maara--;
 //        }
-        int[] distance = new int[huoneet.size()];
+        UnionFind unionFind = new UnionFind();
         Keko keko = new Keko(false);
-        int x = huoneet.get(0).getX();
-        int y = huoneet.get(0).getY();
-        for (int i = 0; i < huoneet.size(); i++) {
-            distance[i] = (int) Matematiikka.hypotenuusanPituus(Math.abs(x - huoneet.get(i).getX()), Math.abs(y - huoneet.get(i).getY()));
-            keko.insert(i, distance[i]);
+        System.out.println("huoneet" + huoneet.size());
+        for (Piste h : huoneet) {
+            unionFind.makeSet(h);
+            for (Piste h2 : huoneet) {
+                if (h.equals(h2)) {
+                    continue;
+                }
+                Kaari kO = new Kaari(h, h2,
+                        (int) Matematiikka.hypotenuusanPituus(
+                                Math.abs(h.getX() - h2.getX()),
+                                Math.abs(h.getY() - h2.getY())));
+                keko.insert(kO, kO.getLength());
+            }
         }
-
-        while (!keko.tyhja()) {
-            int u = (int) keko.poistaJuuri();
+        while (unionFind.getKomponentit() > 1 && !keko.tyhja()) {
+            Kaari u = (Kaari) keko.poistaJuuri();
+            if (unionFind
+                    .find(
+                            u
+                            .getO1())
+                    != unionFind.
+                    find(
+                            u
+                            .getO2())) {
+                unionFind.union(u.getO1(), u.getO2());
+                generoiKaytava(qX, qY, dist, u.getO1().getX(), u.getO1().getY(),
+                        u.getO2().getX(), u.getO2().getY());
+            }
         }
     }
 
     private void generoiKaytava(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
             ArrayDeque<Integer> dist, int x, int y, int loppuX, int loppuY) {
+        System.out.println("generoiKaytava");
         if (x == loppuX && y == loppuY) {
             return;
         }
@@ -229,6 +252,25 @@ public class Luola {
     }
 
     private void generoiHuoneet(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY, ArrayDeque<Integer> dist, int s) {
+        char[][] asd = new char[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                asd[i][j] = ' ';
+            }
+        }
+        for (int i = 0; i < qX.size(); i++) {
+            int x = qX.poll();
+            int y = qY.poll();
+            asd[x][y] = 'o';
+            qX.add(x);
+            qY.add(y);
+        }
+        for (int i = 0; i < asd[0].length; i++) {
+            for (int j = 0; j < asd.length; j++) {
+                System.out.print(asd[j][i]);
+            }
+            System.out.println("");
+        }
         System.out.println("generoiHuoneet");
         int[][] aloitusX = new int[size][size];
         int[][] aloitusY = new int[size][size];
@@ -316,5 +358,13 @@ public class Luola {
      */
     public ArrayList<Piste> getHuoneet() {
         return huoneet;
+    }
+
+    public int getLuolaX() {
+        return luolaX;
+    }
+
+    public int getLuolaY() {
+        return luolaY;
     }
 }

@@ -34,8 +34,18 @@ public class UnionFind {
         komponentit++;
     }
 
-    public void union(int a, int b) {
-        if (objects[a] == null || objects[b] == null) {
+    public void union(Object oA, Object oB) {
+        int a = -1;
+        int b = -1;
+        for (int j = 0; j < objects.length; j++) {
+            if (oA.equals(objects[j])) {
+                a = j;
+            }
+            if (oB.equals(objects[j])) {
+                b = j;
+            }
+        }
+        if (a == -1 || b == -1) {
             return;
         }
         a = find(a);
@@ -54,8 +64,8 @@ public class UnionFind {
     public int find(Object object) {
         int k = -1;
         for (int j = 0; j < objects.length; j++) {
-            if (objects[j].equals(object)) {
-                k = find(k);
+            if (objects[j] != null && object.equals(objects[j])) {
+                k = find(j);
             }
         }
         return k;

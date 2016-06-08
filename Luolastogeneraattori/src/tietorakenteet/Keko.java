@@ -34,6 +34,8 @@ public class Keko {
      * @param k
      */
     public void insert(Object object, int k) {
+        System.out.println("insert");
+        System.out.println(size + " " + taulukko.length);
         size++;
         if (size >= taulukko.length - 1) {
             kasvataTaulukkoa();
@@ -85,9 +87,12 @@ public class Keko {
      * @return
      */
     public Object poistaJuuri() {
+        if (size == 0) {
+            return null;
+        }
         Object juuri = objects[1];
-        taulukko[1] = taulukko[size];
-        objects[1] = objects[size];
+        taulukko[1] = taulukko[size - 1];
+        objects[1] = objects[size - 1];
         heapify(1);
         size--;
         return juuri;
@@ -149,9 +154,11 @@ public class Keko {
     }
 
     private void kasvataTaulukkoa() {
-        for (int i = 0; i < taulukko.length; i++) {
-            System.out.println(objects[i] + " " + taulukko[i]);
-        }
+        System.out.println("kasvataTaulukkoa");
+        System.out.println(taulukko.length);
+//        for (int i = 0; i < taulukko.length; i++) {
+//            System.out.println(objects[i] + " " + taulukko[i]);
+//        }
         int[] uusiTaulukko = new int[taulukko.length * 2];
         Object[] uusiObjects = new Object[taulukko.length * 2];
         for (int i = 0; i < taulukko.length; i++) {
@@ -160,9 +167,11 @@ public class Keko {
         }
         taulukko = uusiTaulukko;
         objects = uusiObjects;
-        for (int i = 0; i < taulukko.length; i++) {
-            System.out.println(objects[i] + " " + taulukko[i]);
-        }
+//        for (int i = 0; i < taulukko.length; i++) {
+//            System.out.println(objects[i] + " " + taulukko[i]);
+//        }
+        System.out.println("/kasvataTaulukkoa");
+        System.out.println(taulukko.length);
     }
 
     public boolean tyhja() {
