@@ -89,6 +89,7 @@ public class Keko {
         taulukko[1] = taulukko[size];
         objects[1] = objects[size];
         heapify(1);
+        size--;
         return juuri;
     }
 
@@ -165,6 +166,9 @@ public class Keko {
     }
 
     public boolean tyhja() {
+        if (size == 0) {
+            return true;
+        }
         return false;
     }
 }

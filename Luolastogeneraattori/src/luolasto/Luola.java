@@ -186,8 +186,10 @@ public class Luola {
             distance[i] = (int) Matematiikka.hypotenuusanPituus(Math.abs(x - huoneet.get(i).getX()), Math.abs(y - huoneet.get(i).getY()));
             keko.insert(i, distance[i]);
         }
-        
-        while(keko.){}
+
+        while (!keko.tyhja()) {
+            int u = (int) keko.poistaJuuri();
+        }
     }
 
     private void generoiKaytava(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
@@ -204,12 +206,10 @@ public class Luola {
             } else {
                 generoiKaytava(qX, qY, dist, x + 1, y, loppuX, loppuY);
             }
+        } else if (y > loppuY) {
+            generoiKaytava(qX, qY, dist, x, y - 1, loppuX, loppuY);
         } else {
-            if (y > loppuY) {
-                generoiKaytava(qX, qY, dist, x, y - 1, loppuX, loppuY);
-            } else {
-                generoiKaytava(qX, qY, dist, x, y + 1, loppuX, loppuY);
-            }
+            generoiKaytava(qX, qY, dist, x, y + 1, loppuX, loppuY);
         }
     }
 
