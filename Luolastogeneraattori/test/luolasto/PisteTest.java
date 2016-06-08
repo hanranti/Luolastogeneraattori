@@ -1,5 +1,6 @@
 package luolasto;
 
+import tietorakenteet.Piste;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

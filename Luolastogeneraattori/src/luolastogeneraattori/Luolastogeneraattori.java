@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 import luolasto.Luolasto;
 import luolasto.Pelaaja;
-import luolasto.Piste;
+import tietorakenteet.Piste;
 import ui.GUI;
 
 /**

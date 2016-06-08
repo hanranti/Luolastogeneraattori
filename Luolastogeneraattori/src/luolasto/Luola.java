@@ -1,5 +1,6 @@
 package luolasto;
 
+import tietorakenteet.Piste;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Random;
@@ -87,6 +88,7 @@ public class Luola {
                     qX.add(0);
                     qY.add(i);
                     dist.add(random.nextInt(1) + 1);
+                    huoneet.add(new Piste(0, i));
                 }
             }
         } else {
@@ -109,6 +111,7 @@ public class Luola {
                     qX.add(size - 1);
                     qY.add(i);
                     dist.add(random.nextInt(1) + 1);
+                    huoneet.add(new Piste(size - 1, i));
                 }
             }
         } else {
@@ -131,6 +134,7 @@ public class Luola {
                     qX.add(i);
                     qY.add(0);
                     dist.add(random.nextInt(1) + 1);
+                    huoneet.add(new Piste(i, 0));
                 }
             }
         } else {
@@ -153,6 +157,7 @@ public class Luola {
                     qX.add(i);
                     qY.add(size - 1);
                     dist.add(random.nextInt(1) + 1);
+                    huoneet.add(new Piste(i, size-1));
                 }
             }
         } else {
@@ -264,6 +269,9 @@ public class Luola {
             asd[x][y] = 'o';
             qX.add(x);
             qY.add(y);
+        }
+        for (Piste h : huoneet) {
+            asd[h.getX()][h.getY()] = 'x';
         }
         for (int i = 0; i < asd[0].length; i++) {
             for (int j = 0; j < asd.length; j++) {

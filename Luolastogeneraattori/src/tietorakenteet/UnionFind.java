@@ -12,6 +12,9 @@ public class UnionFind {
     private int i;
     private int komponentit;
 
+    /**
+     *
+     */
     public UnionFind() {
         int n = 10;
         taulukko = new int[n + 1];
@@ -25,6 +28,10 @@ public class UnionFind {
         komponentit = 0;
     }
 
+    /**
+     *
+     * @param object
+     */
     public void makeSet(Object object) {
         if (i >= objects.length) {
             kasvataTaulukkoa();
@@ -34,6 +41,11 @@ public class UnionFind {
         komponentit++;
     }
 
+    /**
+     *
+     * @param oA
+     * @param oB
+     */
     public void union(Object oA, Object oB) {
         int a = -1;
         int b = -1;
@@ -61,6 +73,11 @@ public class UnionFind {
         komponentit--;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     public int find(Object object) {
         int k = -1;
         for (int j = 0; j < objects.length; j++) {
@@ -93,6 +110,10 @@ public class UnionFind {
         korkeus = uusiKorkeus;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getKomponentit() {
         return komponentit;
     }

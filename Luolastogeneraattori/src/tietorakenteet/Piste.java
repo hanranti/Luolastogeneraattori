@@ -1,4 +1,4 @@
-package luolasto;
+package tietorakenteet;
 
 /**
  * Piste -luokka kuvaa yksittäistä koordinaattia luolassa.
