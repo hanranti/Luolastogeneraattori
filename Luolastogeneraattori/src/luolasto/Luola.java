@@ -178,15 +178,16 @@ public class Luola {
 //                    huone2.getX(), huone2.getY());
 //            maara--;
 //        }
-        UnionFind unionFind = new UnionFind();
+        int[] distance = new int[huoneet.size()];
         Keko keko = new Keko(false);
-        for (Piste h : huoneet) {
-            unionFind.makeSet(h);
-            keko.insert(h, size);
+        int x = huoneet.get(0).getX();
+        int y = huoneet.get(0).getY();
+        for (int i = 0; i < huoneet.size(); i++) {
+            distance[i] = (int) Matematiikka.hypotenuusanPituus(Math.abs(x - huoneet.get(i).getX()), Math.abs(y - huoneet.get(i).getY()));
+            keko.insert(i, distance[i]);
         }
-        while (unionFind.getKomponentit() > 1) {
-            
-        }
+        
+        while(keko.){}
     }
 
     private void generoiKaytava(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,

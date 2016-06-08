@@ -15,7 +15,7 @@ public class Keko {
     /**
      * Metodi luo keko -olion, johon voidaan lisätä olioita antaen oliolle arvon
      * ja poistaa aina suurimman tai pienimmän arvon saanut olio keosta riippuen
-     * onko keko maksimi- vai minimikeko. Jos metodille annetaan parametrina 
+     * onko keko maksimi- vai minimikeko. Jos metodille annetaan parametrina
      * true, keko on maksimikeko, ja jos false, keko on minimikeko.
      *
      */
@@ -162,5 +162,9 @@ public class Keko {
         for (int i = 0; i < taulukko.length; i++) {
             System.out.println(objects[i] + " " + taulukko[i]);
         }
+    }
+
+    public boolean tyhja() {
+        return false;
     }
 }
