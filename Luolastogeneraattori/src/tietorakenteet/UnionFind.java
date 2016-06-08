@@ -83,4 +83,7 @@ public class UnionFind {
         korkeus = uusiKorkeus;
     }
 
+    public int getKomponentit() {
+        return komponentit;
+    }
 }

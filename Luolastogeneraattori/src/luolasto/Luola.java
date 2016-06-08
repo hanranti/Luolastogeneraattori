@@ -3,6 +3,7 @@ package luolasto;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Random;
+import tietorakenteet.Keko;
 import tietorakenteet.Matematiikka;
 import tietorakenteet.UnionFind;
 
@@ -83,7 +84,7 @@ public class Luola {
                 if (luolasto.getLuola(luolaX - 1, luolaY).getLuola()[size - 1][i]) {
                     qX.add(0);
                     qY.add(i);
-                    dist.add(random.nextInt(1)+1);
+                    dist.add(random.nextInt(1) + 1);
                 }
             }
         } else {
@@ -94,7 +95,7 @@ public class Luola {
                 qX.add(0);
                 int y = random.nextInt(size);
                 qY.add(y);
-                dist.add(random.nextInt(1)+1);
+                dist.add(random.nextInt(1) + 1);
                 huoneet.add(new Piste(0, y));
                 maara--;
             }
@@ -105,7 +106,7 @@ public class Luola {
                 if (luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][i]) {
                     qX.add(size - 1);
                     qY.add(i);
-                    dist.add(random.nextInt(1)+1);
+                    dist.add(random.nextInt(1) + 1);
                 }
             }
         } else {
@@ -116,17 +117,18 @@ public class Luola {
                 qX.add(size - 1);
                 int y = random.nextInt(size);
                 qY.add(y);
-                dist.add(random.nextInt(1)+1);
+                dist.add(random.nextInt(1) + 1);
                 huoneet.add(new Piste(size - 1, y));
                 maara--;
             }
         }
-        if (luolasto.getLuola(luolaX, luolaY - 1) != null) {System.out.println("y-1");
+        if (luolasto.getLuola(luolaX, luolaY - 1) != null) {
+            System.out.println("y-1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX, luolaY - 1).getLuola()[i][size - 1]) {
                     qX.add(i);
                     qY.add(0);
-                    dist.add(random.nextInt(1)+1);
+                    dist.add(random.nextInt(1) + 1);
                 }
             }
         } else {
@@ -137,7 +139,7 @@ public class Luola {
                 qY.add(0);
                 int x = random.nextInt(size);
                 qX.add(x);
-                dist.add(random.nextInt(1)+1);
+                dist.add(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, 0));
                 maara--;
             }
@@ -148,7 +150,7 @@ public class Luola {
                 if (luolasto.getLuola(luolaX, luolaY + 1).getLuola()[i][0]) {
                     qX.add(i);
                     qY.add(size - 1);
-                    dist.add(random.nextInt(1)+1);
+                    dist.add(random.nextInt(1) + 1);
                 }
             }
         } else {
@@ -159,7 +161,7 @@ public class Luola {
                 qY.add(size - 1);
                 int x = random.nextInt(size);
                 qX.add(x);
-                dist.add(random.nextInt(1)+1);
+                dist.add(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, size - 1));
                 maara--;
             }
@@ -177,8 +179,13 @@ public class Luola {
 //            maara--;
 //        }
         UnionFind unionFind = new UnionFind();
+        Keko keko = new Keko(false);
         for (Piste h : huoneet) {
             unionFind.makeSet(h);
+            keko.insert(h, size);
+        }
+        while (unionFind.getKomponentit() > 1) {
+            
         }
     }
 
@@ -239,9 +246,9 @@ public class Luola {
             int d = dist.poll();
             luola[x][y] = true;
             if ((x == size - 1 && luolasto.getLuola(luolaX + 1, luolaY) != null
-                    &&  !luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][y])
+                    && !luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][y])
                     || (y == size - 1 && luolasto.getLuola(luolaX, luolaY + 1) != null
-                    &&  !luolasto.getLuola(luolaX, luolaY + 1).getLuola()[x][0])
+                    && !luolasto.getLuola(luolaX, luolaY + 1).getLuola()[x][0])
                     || x == 0 && luolasto.getLuola(luolaX - 1, luolaY) != null
                     && !luolasto.getLuola(luolaX - 1, luolaY).getLuola()[size - 1][y]
                     || y == 0 && luolasto.getLuola(luolaX, luolaY - 1) != null
@@ -301,7 +308,7 @@ public class Luola {
     }
 
     /**
-     * Metodi palauttaa listan Piste olioista,jotka sisältävät huoneiden 
+     * Metodi palauttaa listan Piste olioista,jotka sisältävät huoneiden
      * koordinaatit.
      *
      * @return
