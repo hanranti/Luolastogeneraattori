@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Random;
 import tietorakenteet.Matematiikka;
+import tietorakenteet.UnionFind;
 
 /**
  * Luokka sisältää boolean[][] taulukon, joka määrittää yksittäisen luolan
@@ -34,6 +35,8 @@ public class Luola {
         luola = new boolean[size][size];
         random = new Random();
         this.luolasto = luolasto;
+        this.luolaX = x;
+        this.luolaY = y;
     }
 
     /**
@@ -75,11 +78,12 @@ public class Luola {
             ArrayDeque<Integer> dist) {
         int maara = random.nextInt(2) + 1;
         if (luolasto.getLuola(luolaX - 1, luolaY) != null) {
+            System.out.println("x-1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX - 1, luolaY).getLuola()[size - 1][i]) {
                     qX.add(0);
                     qY.add(i);
-                    dist.add(random.nextInt(2));
+                    dist.add(random.nextInt(1)+1);
                 }
             }
         } else {
@@ -90,17 +94,18 @@ public class Luola {
                 qX.add(0);
                 int y = random.nextInt(size);
                 qY.add(y);
-                dist.add(random.nextInt(2));
+                dist.add(random.nextInt(1)+1);
                 huoneet.add(new Piste(0, y));
                 maara--;
             }
         }
         if (luolasto.getLuola(luolaX + 1, luolaY) != null) {
+            System.out.println("x+1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][i]) {
                     qX.add(size - 1);
                     qY.add(i);
-                    dist.add(random.nextInt(2));
+                    dist.add(random.nextInt(1)+1);
                 }
             }
         } else {
@@ -111,17 +116,17 @@ public class Luola {
                 qX.add(size - 1);
                 int y = random.nextInt(size);
                 qY.add(y);
-                dist.add(random.nextInt(2));
+                dist.add(random.nextInt(1)+1);
                 huoneet.add(new Piste(size - 1, y));
                 maara--;
             }
         }
-        if (luolasto.getLuola(luolaX, luolaY - 1) != null) {
+        if (luolasto.getLuola(luolaX, luolaY - 1) != null) {System.out.println("y-1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX, luolaY - 1).getLuola()[i][size - 1]) {
                     qX.add(i);
                     qY.add(0);
-                    dist.add(random.nextInt(2));
+                    dist.add(random.nextInt(1)+1);
                 }
             }
         } else {
@@ -132,17 +137,18 @@ public class Luola {
                 qY.add(0);
                 int x = random.nextInt(size);
                 qX.add(x);
-                dist.add(random.nextInt(2));
+                dist.add(random.nextInt(1)+1);
                 huoneet.add(new Piste(x, 0));
                 maara--;
             }
         }
         if (luolasto.getLuola(luolaX, luolaY + 1) != null) {
+            System.out.println("y+1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX, luolaY + 1).getLuola()[i][0]) {
                     qX.add(i);
                     qY.add(size - 1);
-                    dist.add(random.nextInt(2));
+                    dist.add(random.nextInt(1)+1);
                 }
             }
         } else {
@@ -153,7 +159,7 @@ public class Luola {
                 qY.add(size - 1);
                 int x = random.nextInt(size);
                 qX.add(x);
-                dist.add(random.nextInt(2));
+                dist.add(random.nextInt(1)+1);
                 huoneet.add(new Piste(x, size - 1));
                 maara--;
             }
@@ -162,13 +168,17 @@ public class Luola {
 
     private void luoKaytavat(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
             ArrayDeque<Integer> dist) {
-        int maara = random.nextInt(huoneet.size());
-        while (maara > 0) {
-            Piste huone1 = huoneet.get(random.nextInt(huoneet.size()));
-            Piste huone2 = huoneet.get(random.nextInt(huoneet.size()));
-            generoiKaytava(qX, qY, dist, huone1.getX(), huone1.getY(),
-                    huone2.getX(), huone2.getY());
-            maara--;
+//        int maara = random.nextInt(huoneet.size());
+//        while (maara > 0) {
+//            Piste huone1 = huoneet.get(random.nextInt(huoneet.size()));
+//            Piste huone2 = huoneet.get(random.nextInt(huoneet.size()));
+//            generoiKaytava(qX, qY, dist, huone1.getX(), huone1.getY(),
+//                    huone2.getX(), huone2.getY());
+//            maara--;
+//        }
+        UnionFind unionFind = new UnionFind();
+        for (Piste h : huoneet) {
+            unionFind.makeSet(h);
         }
     }
 
@@ -229,9 +239,9 @@ public class Luola {
             int d = dist.poll();
             luola[x][y] = true;
             if ((x == size - 1 && luolasto.getLuola(luolaX + 1, luolaY) != null
-                    && !luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][y])
+                    &&  !luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][y])
                     || (y == size - 1 && luolasto.getLuola(luolaX, luolaY + 1) != null
-                    && !luolasto.getLuola(luolaX, luolaY + 1).getLuola()[x][0])
+                    &&  !luolasto.getLuola(luolaX, luolaY + 1).getLuola()[x][0])
                     || x == 0 && luolasto.getLuola(luolaX - 1, luolaY) != null
                     && !luolasto.getLuola(luolaX - 1, luolaY).getLuola()[size - 1][y]
                     || y == 0 && luolasto.getLuola(luolaX, luolaY - 1) != null

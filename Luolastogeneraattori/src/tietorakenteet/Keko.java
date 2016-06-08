@@ -10,16 +10,20 @@ public class Keko {
     private int[] taulukko;
     private Object[] objects;
     private int size;
+    private boolean max;
 
     /**
      * Metodi luo keko -olion, johon voidaan lisätä olioita antaen oliolle arvon
-     * ja poistaa aina suurimman arvon saanut olio keosta.
+     * ja poistaa aina suurimman tai pienimmän arvon saanut olio keosta riippuen
+     * onko keko maksimi- vai minimikeko. Jos metodille annetaan parametrina 
+     * true, keko on maksimikeko, ja jos false, keko on minimikeko.
      *
      */
-    public Keko() {
+    public Keko(boolean max) {
         taulukko = new int[8];
         objects = new Object[8];
         size = 0;
+        this.max = max;
     }
 
     /**
@@ -34,8 +38,28 @@ public class Keko {
         if (size >= taulukko.length - 1) {
             kasvataTaulukkoa();
         }
+        if (max) {
+            insertMax(object, k);
+        } else {
+            insertMin(object, k);
+        }
+
+    }
+
+    private void insertMax(Object object, int k) {
         int i = size;
         while (i > 1 && taulukko[i / 2] < k) {
+            taulukko[i] = taulukko[i / 2];
+            objects[i] = objects[i / 2];
+            i /= 2;
+        }
+        taulukko[i] = k;
+        objects[i] = object;
+    }
+
+    private void insertMin(Object object, int k) {
+        int i = size;
+        while (i > 1 && taulukko[i / 2] > k) {
             taulukko[i] = taulukko[i / 2];
             objects[i] = objects[i / 2];
             i /= 2;
@@ -69,6 +93,14 @@ public class Keko {
     }
 
     private void heapify(int i) {
+        if (max) {
+            heapifyMax(i);
+        } else {
+            heapifyMin(i);
+        }
+    }
+
+    private void heapifyMax(int i) {
         int l = 2 * i;
         int r = 2 * i + 1;
         if (r <= size) {
@@ -80,9 +112,28 @@ public class Keko {
             }
             if (taulukko[i] < (taulukko[largest])) {
                 vaihda(i, largest);
-                heapify(largest);
+                heapifyMax(largest);
             }
         } else if (l == size && taulukko[i] < taulukko[l]) {
+            vaihda(i, l);
+        }
+    }
+
+    private void heapifyMin(int i) {
+        int l = 2 * i;
+        int r = 2 * i + 1;
+        if (r <= size) {
+            int smallest;
+            if (taulukko[l] < (taulukko[r])) {
+                smallest = l;
+            } else {
+                smallest = r;
+            }
+            if (taulukko[i] > (taulukko[smallest])) {
+                vaihda(i, smallest);
+                heapifyMin(smallest);
+            }
+        } else if (l == size && taulukko[i] > taulukko[l]) {
             vaihda(i, l);
         }
     }

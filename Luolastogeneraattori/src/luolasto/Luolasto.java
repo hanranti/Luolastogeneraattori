@@ -38,7 +38,7 @@ public class Luolasto {
             kasvataTaulukkoa();
         }
         if (luolasto[x + muutos][y + muutos] == null) {
-            Luola luola = new Luola(this, x, y, size);
+            Luola luola = new Luola(this, x , y, size);
             luola.generoi();
             luolasto[x + muutos][y + muutos] = luola;
         }
