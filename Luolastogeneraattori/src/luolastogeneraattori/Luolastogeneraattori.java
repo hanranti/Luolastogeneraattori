@@ -48,6 +48,7 @@ public class Luolastogeneraattori {
     public void kaynnista() {
         System.out.println("kaynnista");
         Scanner scanner = new Scanner(System.in);
+        boolean jatka = true;
         while (true) {
 //            System.out.println(pelaaja.getLuolaX() + " " + pelaaja.getLuolaY());
             gui.tulosta(
@@ -58,18 +59,24 @@ public class Luolastogeneraattori {
                     pelaaja);
             System.out.print("Seuraava siirto: ");
             String s = scanner.nextLine();
-            if (s.equals("o")) {
-                pelaaja.liikutaOikealle();
-            } else if (s.equals("v")) {
-                pelaaja.liikutaVasemmalle();
-            } else if (s.equals("y")) {
-                pelaaja.liikutaYlos();
-            } else if (s.equals("a")) {
-                pelaaja.liikutaAlas();
-            } else if (s.equals("exit")) {
-                break;
-            } else if (s.equals("t")) {
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == 'o') {
+                    pelaaja.liikutaOikealle();
+                } else if (s.charAt(i) == 'v') {
+                    pelaaja.liikutaVasemmalle();
+                } else if (s.charAt(i) == 'y') {
+                    pelaaja.liikutaYlos();
+                } else if (s.charAt(i) == 'a') {
+                    pelaaja.liikutaAlas();
+                } else if (s.charAt(i) == 'q') {
+                    jatka = false;
+                    break;
+                } else if (s.equals("t")) {
 //                luolasto.tulostaLuolasto();
+                }
+            }
+            if (!jatka) {
+                break;
             }
         }
     }
