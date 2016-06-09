@@ -47,21 +47,11 @@ public class UnionFind {
      * @param oB
      */
     public void union(Object oA, Object oB) {
-        int a = -1;
-        int b = -1;
-        for (int j = 0; j < objects.length; j++) {
-            if (oA.equals(objects[j])) {
-                a = j;
-            }
-            if (oB.equals(objects[j])) {
-                b = j;
-            }
-        }
-        if (a == -1 || b == -1) {
+       int a = find(oA);
+       int b = find(oB);
+        if (a==-1||b==-1) {
             return;
         }
-        a = find(a);
-        b = find(b);
         if (korkeus[a] < korkeus[b]) {
             taulukko[a] = b;
         } else if (korkeus[a] > korkeus[b]) {

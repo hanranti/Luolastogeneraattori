@@ -34,7 +34,6 @@ public class LuolastoTest {
     public void setUp() {
         luolasto = new Luolasto(10);
         luolastoMethodInvoker = new MethodInvoker(luolasto);
-        luolastoFieldAccess = new FieldAccess(luolasto);
     }
 
     @After
@@ -43,28 +42,28 @@ public class LuolastoTest {
 
     @Test
     public void testKasvataTaulukkoa() {
-        assertEquals(0, (int) luolastoFieldAccess.getField("muutos"));
+        assertEquals(0, (int) FieldAccess.getField(luolasto, "muutos"));
         luolastoMethodInvoker.invokeMethod("kasvataTaulukkoa", new Object[0]);
-        assertEquals(5, (int) luolastoFieldAccess.getField("muutos"));
+        assertEquals(5, (int) FieldAccess.getField(luolasto, "muutos"));
         luolastoMethodInvoker.invokeMethod("kasvataTaulukkoa", new Object[0]);
-        assertEquals(15, (int) luolastoFieldAccess.getField("muutos"));
+        assertEquals(15, (int) FieldAccess.getField(luolasto, "muutos"));
         luolastoMethodInvoker.invokeMethod("kasvataTaulukkoa", new Object[0]);
-        assertEquals(35, (int) luolastoFieldAccess.getField("muutos"));
+        assertEquals(35, (int) FieldAccess.getField(luolasto, "muutos"));
     }
 // -15 -5 0 10 15 25
 
     @Test
     public void testMuutos() {
-        int muutos = (int) luolastoFieldAccess.getField("muutos");
+        int muutos = (int) FieldAccess.getField(luolasto, "muutos");
         assertEquals(0, muutos);
         luolasto.genertoiLuola(-1, 5);
-        muutos = (int) luolastoFieldAccess.getField("muutos");
+        muutos = (int) FieldAccess.getField(luolasto, "muutos");
         assertEquals(5, muutos);
         luolasto.genertoiLuola(-6, 5);
-        muutos = (int) luolastoFieldAccess.getField("muutos");
+        muutos = (int) FieldAccess.getField(luolasto, "muutos");
         assertEquals(15, muutos);
         luolasto.genertoiLuola(-16, 5);
-        muutos = (int) luolastoFieldAccess.getField("muutos");
+        muutos = (int) FieldAccess.getField(luolasto, "muutos");
         assertEquals(35, muutos);
     }
 

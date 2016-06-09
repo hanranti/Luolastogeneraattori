@@ -8,7 +8,7 @@ package tietorakenteet;
 public class Keko {
 
     private int[] taulukko;
-    private Object[] objects;
+    public Object[] objects;
     private int size;
     private boolean max;
 
@@ -91,8 +91,8 @@ public class Keko {
             return null;
         }
         Object juuri = objects[1];
-        taulukko[1] = taulukko[size - 1];
-        objects[1] = objects[size - 1];
+        taulukko[1] = taulukko[size];
+        objects[1] = objects[size];
         heapify(1);
         size--;
         return juuri;

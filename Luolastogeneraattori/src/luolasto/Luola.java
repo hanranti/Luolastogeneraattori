@@ -157,7 +157,7 @@ public class Luola {
                     qX.add(i);
                     qY.add(size - 1);
                     dist.add(random.nextInt(1) + 1);
-                    huoneet.add(new Piste(i, size-1));
+                    huoneet.add(new Piste(i, size - 1));
                 }
             }
         } else {
@@ -202,7 +202,13 @@ public class Luola {
                 keko.insert(kO, kO.getLength());
             }
         }
-        while (unionFind.getKomponentit() > 1 && !keko.tyhja()) {
+        while (unionFind.getKomponentit() > 1) {
+            if (keko.tyhja()) {
+                System.out.println("keko");
+                for (int i = 0; i < keko.objects.length; i++) {
+                    System.out.println(keko.objects[i]);
+                }
+            }
             Kaari u = (Kaari) keko.poistaJuuri();
             if (unionFind
                     .find(

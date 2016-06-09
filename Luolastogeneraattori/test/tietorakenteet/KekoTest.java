@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import tyokalut.FieldAccess;
 
 /**
  *
@@ -13,7 +14,8 @@ import static org.junit.Assert.*;
  */
 public class KekoTest {
 
-    private Keko keko;
+    private Keko maksimikeko;
+    private Keko minimikeko;
 
     public KekoTest() {
     }
@@ -28,7 +30,8 @@ public class KekoTest {
 
     @Before
     public void setUp() {
-        keko = new Keko();
+        maksimikeko = new Keko(true);
+        minimikeko = new Keko(false);
     }
 
     @After
@@ -36,81 +39,109 @@ public class KekoTest {
     }
 
     @Test
-    public void testInsertJuuriJaPoistaJuuri() {
-        assertEquals(null, keko.juuri());
-        assertEquals(null, keko.poistaJuuri());
-        keko.insert("A", 5);
-        assertTrue(keko.juuri().equals("A"));
-        assertTrue(keko.poistaJuuri().equals("A"));
-        keko.insert("dsa", 4);
-        assertTrue(keko.juuri().equals("A"));
-        keko.insert(123, 6);
-        assertEquals(123, keko.juuri());
-        keko.insert(67, 7);
-        assertEquals(67, keko.juuri());
-        assertEquals(67, keko.poistaJuuri());
-        assertEquals(123, keko.poistaJuuri());
-        assertEquals("A", keko.poistaJuuri());
-        assertEquals("dsa", keko.poistaJuuri());
+    public void testInsertJuuriJaPoistaJuuriMaksimiKeossa() {
+        assertEquals(null, maksimikeko.juuri());
+        assertEquals(null, maksimikeko.poistaJuuri());
+        maksimikeko.insert("A", 5);
+        assertTrue(maksimikeko.juuri().equals("A"));
+        testKekoJarjestyksessa(maksimikeko);
+        assertTrue(maksimikeko.poistaJuuri().equals("A"));
+        maksimikeko.insert("dsa", 4);
+        testKekoJarjestyksessa(maksimikeko);
+//        assertTrue(maksimikeko.juuri().equals("A"));
+        maksimikeko.insert(123, 6);
+        testKekoJarjestyksessa(maksimikeko);
+        assertEquals(123, maksimikeko.juuri());
+        maksimikeko.insert(67, 7);
+        testKekoJarjestyksessa(maksimikeko);
+        assertEquals(67, maksimikeko.juuri());
+        assertEquals(67, maksimikeko.poistaJuuri());
+        testKekoJarjestyksessa(maksimikeko);
+        assertEquals(123, maksimikeko.poistaJuuri());
+        testKekoJarjestyksessa(maksimikeko);
+        assertEquals("A", maksimikeko.poistaJuuri());
+        testKekoJarjestyksessa(maksimikeko);
+        assertEquals("dsa", maksimikeko.poistaJuuri());
+        testKekoJarjestyksessa(maksimikeko);
     }
 
     @Test
-    public void testInsertJuuriJaPoistaJuuri2() {System.out.println("testinsertjuurijapoistajuuri2");
-        keko.insert(0, 0);
-        keko.insert(1, 1);
-        keko.insert(2, 2);
-        keko.insert(3, 3);
-        keko.insert(4, 4);
-        keko.insert(5, 5);
-        keko.insert(6, 6);
-        keko.insert(7, 7);
-        keko.insert(8, 8);
-        keko.insert(9, 9);
-        keko.insert(10, 10);
-        keko.insert(11, 11);
-        keko.insert(12, 12);
-        keko.insert(13, 13);
-        keko.insert(14, 14);
-        keko.insert(15, 15);
-        keko.insert(16, 16);
-        keko.insert(17, 17);
-        keko.insert(18, 18);
-        keko.insert(19, 19);
-        keko.insert(20, 20);
-        keko.insert(21, 21);
-        keko.insert(22, 22);
-        keko.insert(23, 23);
-        keko.insert(24, 24);
-        keko.insert(25, 25);
-        
-        assertEquals(25, keko.juuri());
-        assertFalse((int) keko.juuri() == 0);
+    public void testInsertJuuriJaPoistaJuuriMaksimikeossa2() {
+        System.out.println("testinsertjuurijapoistajuuri2");
+        maksimikeko.insert(0, 0);
+        maksimikeko.insert(1, 1);
+        maksimikeko.insert(2, 2);
+        maksimikeko.insert(3, 3);
+        maksimikeko.insert(4, 4);
+        maksimikeko.insert(5, 5);
+        maksimikeko.insert(6, 6);
+        maksimikeko.insert(7, 7);
+        maksimikeko.insert(8, 8);
+        maksimikeko.insert(9, 9);
+        maksimikeko.insert(10, 10);
+        maksimikeko.insert(11, 11);
+        maksimikeko.insert(12, 12);
+        maksimikeko.insert(13, 13);
+        maksimikeko.insert(14, 14);
+        maksimikeko.insert(15, 15);
+        maksimikeko.insert(16, 16);
+        maksimikeko.insert(17, 17);
+        maksimikeko.insert(18, 18);
+        maksimikeko.insert(19, 19);
+        maksimikeko.insert(20, 20);
+        maksimikeko.insert(21, 21);
+        maksimikeko.insert(22, 22);
+        maksimikeko.insert(23, 23);
+        maksimikeko.insert(24, 24);
+        maksimikeko.insert(25, 25);
 
-        assertEquals(25, keko.poistaJuuri());
-        assertEquals(24, keko.poistaJuuri());
-        assertEquals(23, keko.poistaJuuri());
-        assertEquals(22, keko.poistaJuuri());
-        assertEquals(21, keko.poistaJuuri());
-        assertEquals(20, keko.poistaJuuri());
-        assertEquals(19, keko.poistaJuuri());
-        assertEquals(18, keko.poistaJuuri());
-        assertEquals(17, keko.poistaJuuri());
-        assertEquals(16, keko.poistaJuuri());
-        assertEquals(15, keko.poistaJuuri());
-        assertEquals(14, keko.poistaJuuri());
-        assertEquals(13, keko.poistaJuuri());
-        assertEquals(12, keko.poistaJuuri());
-        assertEquals(11, keko.poistaJuuri());
-        assertEquals(10, keko.poistaJuuri());
-        assertEquals(9, keko.poistaJuuri());
-        assertEquals(8, keko.poistaJuuri());
-        assertEquals(7, keko.poistaJuuri());
-        assertEquals(6, keko.poistaJuuri());
-        assertEquals(5, keko.poistaJuuri());
-        assertEquals(4, keko.poistaJuuri());
-        assertEquals(3, keko.poistaJuuri());
-        assertEquals(2, keko.poistaJuuri());
-        assertEquals(1, keko.poistaJuuri());
-        assertEquals(0, keko.poistaJuuri());
+        assertEquals(25, maksimikeko.juuri());
+        assertFalse((int) maksimikeko.juuri() == 0);
+
+        testKekoJarjestyksessa(maksimikeko);
+
+        assertEquals(25, maksimikeko.poistaJuuri());
+        assertEquals(24, maksimikeko.poistaJuuri());
+        assertEquals(23, maksimikeko.poistaJuuri());
+        assertEquals(22, maksimikeko.poistaJuuri());
+        assertEquals(21, maksimikeko.poistaJuuri());
+        assertEquals(20, maksimikeko.poistaJuuri());
+        assertEquals(19, maksimikeko.poistaJuuri());
+        assertEquals(18, maksimikeko.poistaJuuri());
+        assertEquals(17, maksimikeko.poistaJuuri());
+        assertEquals(16, maksimikeko.poistaJuuri());
+        assertEquals(15, maksimikeko.poistaJuuri());
+        assertEquals(14, maksimikeko.poistaJuuri());
+        assertEquals(13, maksimikeko.poistaJuuri());
+        assertEquals(12, maksimikeko.poistaJuuri());
+        assertEquals(11, maksimikeko.poistaJuuri());
+        assertEquals(10, maksimikeko.poistaJuuri());
+        assertEquals(9, maksimikeko.poistaJuuri());
+        assertEquals(8, maksimikeko.poistaJuuri());
+        assertEquals(7, maksimikeko.poistaJuuri());
+        assertEquals(6, maksimikeko.poistaJuuri());
+        assertEquals(5, maksimikeko.poistaJuuri());
+        assertEquals(4, maksimikeko.poistaJuuri());
+        assertEquals(3, maksimikeko.poistaJuuri());
+        assertEquals(2, maksimikeko.poistaJuuri());
+        assertEquals(1, maksimikeko.poistaJuuri());
+        assertEquals(0, maksimikeko.poistaJuuri());
+    }
+
+    private void testKekoJarjestyksessa(Keko keko) {
+        Object[] taulukko = (Object[]) FieldAccess.getField(keko, "taulukko");
+        int size = (int) FieldAccess.getField(keko, "size");
+        assertNull(taulukko[0]);
+        for (int i = 1; i < size; i++) {
+            if (i > 1) {
+                assertTrue((int) taulukko[i] < (int) taulukko[i / 2]);
+            }
+            if (i * 2 < size) {
+                assertTrue((int) taulukko[i] > (int) taulukko[i * 2]);
+            }
+            if ((i * 2) + 1 < size) {
+                assertTrue((int) taulukko[i] > (int) taulukko[(i * 2) + 1]);
+            }
+        }
     }
 }
