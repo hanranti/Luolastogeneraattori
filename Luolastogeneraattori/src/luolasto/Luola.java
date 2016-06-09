@@ -202,13 +202,7 @@ public class Luola {
                 keko.insert(kO, kO.getLength());
             }
         }
-        while (unionFind.getKomponentit() > 1) {
-            if (keko.tyhja()) {
-                System.out.println("keko");
-                for (int i = 0; i < keko.objects.length; i++) {
-                    System.out.println(keko.objects[i]);
-                }
-            }
+        while (unionFind.getKomponentit() > 1 && !keko.tyhja()) {
             Kaari u = (Kaari) keko.poistaJuuri();
             if (unionFind
                     .find(
