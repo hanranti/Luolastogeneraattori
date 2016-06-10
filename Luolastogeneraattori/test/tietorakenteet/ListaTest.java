@@ -1,4 +1,3 @@
-
 package tietorakenteet;
 
 import org.junit.After;
@@ -53,6 +52,12 @@ public class ListaTest {
         assertEquals(true, lista.contains(3));
         assertEquals(false, lista.contains(6));
         lista.remove(3);
+        System.out.println("lista");
+        Solmu s = lista.getFirst();
+        while (s != null) {
+            System.out.println(s.getObject());
+            s = s.getOikea();
+        }
         assertEquals(false, lista.contains(3));
         lista.remove(2);
         assertEquals(4, lista.getLast().getObject());

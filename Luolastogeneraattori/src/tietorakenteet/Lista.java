@@ -30,6 +30,7 @@ public class Lista {
         } else {
             Solmu solmu = new Solmu(object);
             last.setOikea(solmu);
+            solmu.setVasen(last);
             last = solmu;
         }
     }
@@ -40,36 +41,31 @@ public class Lista {
      * @param object
      */
     public void remove(Object object) {
-        Solmu s = first;
-        while (s.getOikea() !=null) {
-            System.out.println(s.getObject());
-            s = s.getOikea();
-        }
         if (first == null) {
             return;
         }
         Solmu solmu = first;
         while (solmu != null) {
             if (solmu.getObject().equals(object)) {
+                System.out.println("poistettava:" + solmu.getObject());
                 if (solmu.equals(first)) {
+                    System.out.println("first");
                     first = solmu.getOikea();
                 }
                 if (solmu.equals(last)) {
+                    System.out.println("last");
                     last = solmu.getVasen();
                 }
                 if (solmu.getVasen() != null) {
+                    System.out.println("vasen!null");
                     solmu.getVasen().setOikea(solmu.getOikea());
                 }
                 if (solmu.getOikea() != null) {
+                    System.out.println("oikea!null");
                     solmu.getOikea().setVasen(solmu.getVasen());
                 }
             }
             solmu = solmu.getOikea();
-        }
-        s = first;
-        while (s.getOikea() !=null) {
-            System.out.println(s.getObject());
-            s = s.getOikea();
         }
     }
 

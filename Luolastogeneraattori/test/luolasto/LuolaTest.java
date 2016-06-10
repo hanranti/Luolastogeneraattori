@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  * @author Hannu
  */
 public class LuolaTest {
-
+private Luolageneraattori luolageneraattori;
     public LuolaTest() {
     }
 
@@ -35,6 +35,7 @@ public class LuolaTest {
     @Test
     public void testLuola() {
         Luolasto luolasto = new Luolasto(10);
+        this.luolageneraattori = new Luolageneraattori(luolasto, 10);
         Luola luola = new Luola(luolasto, 5, 5, 10);
         assertEquals(10, luola.getLuola().length);
         assertEquals(10, luola.getLuola()[0].length);
@@ -46,9 +47,10 @@ public class LuolaTest {
     @Test
     public void sisaltaaUloskaynnin() {
         Luolasto luolasto = new Luolasto(32);
+        this.luolageneraattori = new Luolageneraattori(luolasto, 32);
         boolean sisaltaaUloskaynnin = false;
         Luola luola = new Luola(luolasto, 5, 5, 32);
-        luola.generoi();
+        luolageneraattori.generoi(luola);
         boolean[][] taulukko = luola.getLuola();
         for (int j = 0; j < taulukko.length; j++) {
             if (!taulukko[0][j]) {

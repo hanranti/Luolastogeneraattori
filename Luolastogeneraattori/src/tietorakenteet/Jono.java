@@ -58,6 +58,10 @@ public class Jono {
     }
 
     private void kasvataTaulukkoa() {
+        System.out.println("jonokasvataTaulukkoa");
+        for (int i = 0; i < taulukko.length; i++) {
+            System.out.println(taulukko[i]);
+        }
         Object[] uusiTaulukko = new Object[taulukko.length * 2];
         int i = 0;
         while (alku != loppu) {
@@ -70,6 +74,10 @@ public class Jono {
         }
         alku = 0;
         loppu = koko;
+        System.out.println("/kasvataTaulukkoa");
+        for (int j = 0; j < taulukko.length; j++) {
+            System.out.println(taulukko[j]);
+        }
     }
 
     /**
