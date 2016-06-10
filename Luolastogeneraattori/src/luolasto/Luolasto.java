@@ -8,6 +8,7 @@ package luolasto;
 public class Luolasto {
 
     private Luola[][] luolasto;
+    private Luolageneraattori luolageneraattori;
     private final int size;
     private int muutos;
 
@@ -20,6 +21,7 @@ public class Luolasto {
     public Luolasto(int size) {
         luolasto = new Luola[10][10];
         this.size = size;
+        luolageneraattori = new Luolageneraattori(this, size);
         muutos = 0;
     }
 
@@ -39,7 +41,7 @@ public class Luolasto {
         }
         if (luolasto[x + muutos][y + muutos] == null) {
             Luola luola = new Luola(this, x , y, size);
-            luola.generoi();
+            luolageneraattori.generoi(luola);
             luolasto[x + muutos][y + muutos] = luola;
         }
     }
