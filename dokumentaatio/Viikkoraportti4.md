@@ -12,3 +12,4 @@ Kaytin 2,5 tuntia,
 
 Kaytin x tuntia, 
 * listan korjaamiseen
+* ArrayListin vaihtamiseen Listaan ohjelmassa

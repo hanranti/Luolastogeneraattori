@@ -10,12 +10,14 @@ package tietorakenteet;
 public class Lista {
 
     private Solmu first, last;
+    private int koko;
 
     /**
      * Metodi luo Lista -olion.
      *
      */
     public Lista() {
+        koko = 0;
     }
 
     /**
@@ -33,6 +35,7 @@ public class Lista {
             solmu.setVasen(last);
             last = solmu;
         }
+        koko++;
     }
 
     /**
@@ -64,6 +67,7 @@ public class Lista {
                     System.out.println("oikea!null");
                     solmu.getOikea().setVasen(solmu.getVasen());
                 }
+                koko--;
             }
             solmu = solmu.getOikea();
         }
@@ -86,6 +90,13 @@ public class Lista {
         }
         return false;
     }
+    public Object get(int i){
+        Solmu solmu = first;
+        for (int j = 0; j < i; j++) {
+            solmu = solmu.getOikea();
+        }
+        return solmu.getObject();
+    }
 
     /**
      * Metodi palauttaa listan ensimmäisen solmun.
@@ -103,5 +114,9 @@ public class Lista {
      */
     public Solmu getLast() {
         return last;
+    }
+
+    public int getKoko() {
+        return koko;
     }
 }

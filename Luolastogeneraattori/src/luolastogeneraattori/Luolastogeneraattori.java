@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 import luolasto.Luolasto;
 import luolasto.Pelaaja;
+import tietorakenteet.Lista;
 import tietorakenteet.Piste;
 import ui.GUI;
 
@@ -33,8 +34,8 @@ public class Luolastogeneraattori {
         pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
         Random random = new Random();
-        ArrayList<Piste> huoneet = luolasto.getLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY()).getHuoneet();
-        Piste huone = huoneet.get(random.nextInt(huoneet.size()));
+        Lista huoneet = luolasto.getLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY()).getHuoneet();
+        Piste huone =(Piste) huoneet.get(random.nextInt(huoneet.getKoko()));
         pelaaja.setX(huone.getX());
         pelaaja.setY(huone.getY());
         gui = new GUI();

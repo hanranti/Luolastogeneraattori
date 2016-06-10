@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import tietorakenteet.Kaari;
 import tietorakenteet.Keko;
+import tietorakenteet.Lista;
 import tietorakenteet.Matematiikka;
 import tietorakenteet.Piste;
+import tietorakenteet.Solmu;
 import tietorakenteet.UnionFind;
 
 /**
@@ -63,7 +65,7 @@ public class Luolageneraattori {
             ArrayDeque<Integer> dist) {
         int luolaX = luola.getLuolaX();
         int luolaY = luola.getLuolaY();
-        ArrayList<Piste> huoneet = luola.getHuoneet();
+        Lista huoneet = luola.getHuoneet();
         System.out.println("luoUloskaynnit");
         int maara = random.nextInt(2) + 1;
         if (luolasto.getLuola(luolaX - 1, luolaY) != null) {
@@ -158,7 +160,7 @@ public class Luolageneraattori {
 
     private void luoKaytavat(Luola luola, ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
             ArrayDeque<Integer> dist) {
-        ArrayList<Piste> huoneet = luola.getHuoneet();
+        Lista huoneet = luola.getHuoneet();
         System.out.println("luoKaytavat");
 //        int maara = random.nextInt(huoneet.size());
 //        while (maara > 0) {
@@ -170,10 +172,14 @@ public class Luolageneraattori {
 //        }
         UnionFind unionFind = new UnionFind();
         Keko keko = new Keko(false);
-        System.out.println("huoneet" + huoneet.size());
-        for (Piste h : huoneet) {
+        Solmu solmu1 = huoneet.getFirst();
+        while (solmu1 != null) {
+            Piste h = (Piste) solmu1.getObject();
             unionFind.makeSet(h);
-            for (Piste h2 : huoneet) {
+            Solmu solmu2 = huoneet.getFirst();
+            while (solmu2 != null) {
+                Piste h2 = (Piste) solmu2.getObject();
+                solmu2 = solmu2.getOikea();
                 if (h.equals(h2)) {
                     continue;
                 }
@@ -183,6 +189,7 @@ public class Luolageneraattori {
                                 Math.abs(h.getY() - h2.getY())));
                 keko.insert(kO, kO.getLength());
             }
+            solmu1 = solmu1.getOikea();
         }
         while (unionFind.getKomponentit() > 1 && !keko.tyhja()) {
             Kaari u = (Kaari) keko.poistaJuuri();
@@ -225,17 +232,20 @@ public class Luolageneraattori {
 
     private void luoHuoneet(Luola luola, ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
             ArrayDeque<Integer> dist, int m) {
-        ArrayList<Piste> huoneet = luola.getHuoneet();
+        Lista huoneet = luola.getHuoneet();
         System.out.println("luohuoneet");
         int maara = random.nextInt(m) + 1;
         for (int i = 0; i < maara; i++) {
             Piste piste = new Piste(random.nextInt(size), random.nextInt(size));
             huoneet.add(piste);
         }
-        for (Piste huone : huoneet) {
+        Solmu solmu = huoneet.getFirst();
+        while(solmu != null) {
+            Piste huone = (Piste) solmu.getObject();
             qX.add(huone.getX());
             qY.add(huone.getY());
             dist.add(random.nextInt(5) + 8);
+            solmu = solmu.getOikea();
         }
     }
 

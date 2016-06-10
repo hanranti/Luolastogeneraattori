@@ -1,13 +1,8 @@
 package luolasto;
 
 import tietorakenteet.Piste;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Random;
-import tietorakenteet.Kaari;
-import tietorakenteet.Keko;
-import tietorakenteet.Matematiikka;
-import tietorakenteet.UnionFind;
+import tietorakenteet.Lista;
 
 /**
  * Luokka sisältää boolean[][] taulukon, joka määrittää yksittäisen luolan
@@ -19,7 +14,7 @@ public class Luola {
 
     private boolean[][] luola;
     private int luolaX, luolaY, size;
-    private ArrayList<Piste> huoneet;
+    private Lista huoneet;
     private Random random;
     private Luolasto luolasto;
 
@@ -40,7 +35,7 @@ public class Luola {
         this.luolasto = luolasto;
         this.luolaX = x;
         this.luolaY = y;
-        huoneet = new ArrayList<>();
+        huoneet = new Lista();
     }
 
     /**
@@ -68,7 +63,7 @@ public class Luola {
      *
      * @return
      */
-    public ArrayList<Piste> getHuoneet() {
+    public Lista getHuoneet() {
         return huoneet;
     }
 
