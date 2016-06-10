@@ -93,6 +93,12 @@ public class Keko {
         Object juuri = objects[1];
         taulukko[1] = taulukko[size];
         objects[1] = objects[size];
+        if (max) {
+            taulukko[size] = Integer.MIN_VALUE;
+        } else {
+            taulukko[size] = Integer.MAX_VALUE;
+        }
+        objects[size] = null;
         heapify(1);
         size--;
         return juuri;

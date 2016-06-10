@@ -5,6 +5,7 @@ Käytin 2 tuntia,
 
 * Huoneidenyhdistämisalgoritmin muuttamiseen, toimimaan siten, että huoneista muodostetaan pienin virittävä puu
 
-Kaytin x tuntia,
+Kaytin 2,5 tuntia,
 * pienimmän virittävän puun muodostavan algoritmin toteuttamiseen
-   * Kaytan algoritmissa kruskalia. Koska verkossa kaikista huoneista on kaari toisiinsa, verkko on tiheä eli Primin aikavaativuus olisi O(n²). Kruskalin aikavaativuus on O(m log n) + O(n²), jossa O(n²) tulee ajasta, joka kuluu kun kaikki kaaret lisätään kekoon. Käyttäen Kruskalia aikavaativuudeksi tulee siis O(m log n + n²) = O(n²) eli sama kuin Primissä. (m = kaarten määrä ja n = solmujen määrä)
+   * Kaytan algoritmissa kruskalia. Koska verkossa kaikista huoneista on kaari toisiinsa, verkko on tiheä eli Primin aikavaativuus olisi O(n²). Kruskalin aikavaativuus on O(m log n) + O(n²), jossa O(n²) tulee ajasta, joka kuluu kun kaikki kaaret luodaan ja lisätään kekoon. Käyttäen Kruskalia aikavaativuudeksi tulee siis O(m log n + n²) = O(n²) eli sama kuin Primissä. (m = kaarten määrä ja n = solmujen määrä)
+   * Kruskal ei vielä toimi oikein: kaikki huoneet eivät yhdisty toisiinsa
