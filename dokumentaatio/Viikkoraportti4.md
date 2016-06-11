@@ -18,3 +18,4 @@ Kaytin x tuntia,
 * jonon korjaamiseen
 * ArrayDequeuen vaihtamiseen Jonoon ohjelmassa
 * javadocin tekoon
+* testien tekemiseen
