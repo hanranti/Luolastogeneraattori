@@ -90,6 +90,15 @@ public class Lista {
         }
         return false;
     }
+
+    /**
+     * Metodi palauttaa olion, joka on parametrinä saadussa indeksissä olevassa
+     * solmussa, eli solmussa, jonka etäisyys first solmusta kulkien oikealle on
+     * parametrinä saadun int i:n arvo.
+     *
+     * @param i
+     * @return
+     */
     public Object get(int i){
         Solmu solmu = first;
         for (int j = 0; j < i; j++) {
@@ -116,6 +125,11 @@ public class Lista {
         return last;
     }
 
+    /**
+     * Metodi palauttaa solmujen määrän listassa.
+     *
+     * @return
+     */
     public int getKoko() {
         return koko;
     }

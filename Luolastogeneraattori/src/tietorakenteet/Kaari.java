@@ -1,6 +1,7 @@
 package tietorakenteet;
 
 /**
+ * Luokka kuvaa kaarta Pisteistä koostuvassa verkossa.
  *
  * @author hanranti
  */
@@ -10,6 +11,8 @@ public class Kaari {
     private int length;
 
     /**
+     * Metodi luo Kaari -olion asettaen tälle Pisteiksi parametreina saadut 
+     * Pisteet ja asettaen Kaaren painoksi parametrina saadun int arvon.
      *
      * @param o1
      * @param o2
@@ -22,6 +25,7 @@ public class Kaari {
     }
 
     /**
+     * Metodi palauttaa toisen Kaaren päissä olevista pisteistä.
      *
      * @return
      */
@@ -30,6 +34,7 @@ public class Kaari {
     }
 
     /**
+     * Metodi palauttaa toisen Kaaren päissä olevista pisteistä.
      *
      * @return
      */
@@ -38,6 +43,7 @@ public class Kaari {
     }
 
     /**
+     * Metodi palauttaa Kaaren painon.
      *
      * @return
      */

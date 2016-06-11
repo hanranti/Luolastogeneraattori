@@ -6,7 +6,7 @@ import tietorakenteet.Lista;
 
 /**
  * Luokka sisältää boolean[][] taulukon, joka määrittää yksittäisen luolan
- * seinät ja avoimet alueet. True kuvaa seinää ja false avointa aluetta.
+ * seinät ja avoimet alueet. False kuvaa seinää ja true avointa aluetta.
  *
  * @author Hannu
  */
@@ -49,7 +49,7 @@ public class Luola {
     }
 
     /**
-     * Metodi palauttaa yksittäistä luolaa kuvaavan boolean[][] -taulukon.
+     * Metodi palauttaa tätä luolaa kuvaavan boolean[][] -taulukon.
      *
      * @return
      */
@@ -67,10 +67,20 @@ public class Luola {
         return huoneet;
     }
 
+    /**
+     * Metodi palauttaa tämän luolan x-koordinaatin luolastossa.
+     *
+     * @return
+     */
     public int getLuolaX() {
         return luolaX;
     }
 
+    /**
+     * Metodi palauttaa tämän luolan y-koordinaatin luolastossa.
+     *
+     * @return
+     */
     public int getLuolaY() {
         return luolaY;
     }

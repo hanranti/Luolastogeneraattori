@@ -11,15 +11,24 @@ import tietorakenteet.Solmu;
 import tietorakenteet.UnionFind;
 
 /**
+ * Luokka sisältää luolan seinien ja avointen alueiden generointiin tarvittavat 
+ * metodit.
  *
  * @author hanranti
  */
 public class Luolageneraattori {
 
-    private Luolasto luolasto;
-    private Random random;
-    private int size;
+    private final Luolasto luolasto;
+    private final Random random;
+    private final int size;
 
+    /**
+     * Metodi luo Luolageneraattori -olion, joka voi generoida luoliin avoimia 
+     * alueita.
+     *
+     * @param luolasto
+     * @param size
+     */
     public Luolageneraattori(Luolasto luolasto, int size) {
         random = new Random();
         this.luolasto = luolasto;
@@ -30,6 +39,7 @@ public class Luolageneraattori {
      * Metodi generoi luolaan seiniä ja avoimia alueita. Luolaan luodaan
      * satunnaisesti huoneita, uloskäyntejä ja näitä yhdistäviä käytäviä.
      *
+     * @param luola
      */
     public void generoi(Luola luola) {
         System.out.println("generoi");

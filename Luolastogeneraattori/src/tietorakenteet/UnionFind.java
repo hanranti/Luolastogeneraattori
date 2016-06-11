@@ -1,6 +1,7 @@
 package tietorakenteet;
 
 /**
+ * Luokka kuvaa unionFind - tietorakennetta.
  *
  * @author hanranti
  */
@@ -13,6 +14,9 @@ public class UnionFind {
     private int komponentit;
 
     /**
+     * Metodi luo UnionFind olion, johon voidaan lisätä olioita, yhdistää 
+     * olioita toisiinsa polulla ja kysyä, mitkä oliot ovat yhteydessä toisiinsa
+     * polulla.
      *
      */
     public UnionFind() {
@@ -29,6 +33,7 @@ public class UnionFind {
     }
 
     /**
+     * Metodi lisää uuden olion ja komponentin tietorakenteeseen.
      *
      * @param object
      */
@@ -42,6 +47,9 @@ public class UnionFind {
     }
 
     /**
+     * Metodi yhdistää kaksi oliota toisiinsa. Metodin kutsun jälkeen kaikkia
+     * kumpaankin olioon yhteydessä olleita olioita kutsuttaessa find -metodilla
+     * saadaan sama arvo.
      *
      * @param oA
      * @param oB
@@ -64,6 +72,8 @@ public class UnionFind {
     }
 
     /**
+     * Metodi palauttaa arvon, joka kertoo mihin komponenttiin parametrin olio 
+     * kuuluu. Jos unionFind ei sisällä oliota, metodi palauttaa -1.
      *
      * @param object
      * @return
@@ -101,6 +111,7 @@ public class UnionFind {
     }
 
     /**
+     * Metodi palauttaa komponenttien määrän tietorakenteessa.
      *
      * @return
      */

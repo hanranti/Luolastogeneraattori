@@ -3,6 +3,7 @@ package ui;
 import luolasto.Pelaaja;
 
 /**
+ * Luokka sisältää luolan tulostamiseen tarvittavat metodit.
  *
  * @author Hannu
  */

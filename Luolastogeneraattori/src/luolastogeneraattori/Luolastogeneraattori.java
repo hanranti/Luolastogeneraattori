@@ -5,10 +5,6 @@ import java.util.Scanner;
 import luolasto.Luolasto;
 import luolasto.Pelaaja;
 import tietorakenteet.Lista;
-import tietorakenteet.Lista;
-import tietorakenteet.Lista;
-import tietorakenteet.Piste;
-import tietorakenteet.Piste;
 import tietorakenteet.Piste;
 import ui.GUI;
 

@@ -18,6 +18,7 @@ public class Keko {
      * onko keko maksimi- vai minimikeko. Jos metodille annetaan parametrina
      * true, keko on maksimikeko, ja jos false, keko on minimikeko.
      *
+     * @param max
      */
     public Keko(boolean max) {
         taulukko = new int[8];
@@ -71,7 +72,8 @@ public class Keko {
     }
 
     /**
-     * Metodi palauttaa olion, jonka saama arvo on suurin keossa.
+     * Metodi palauttaa olion, jonka saama arvo on suurin maksimikeossa tai
+     * pienin minimikeossa.
      *
      * @return
      */
@@ -80,9 +82,9 @@ public class Keko {
     }
 
     /**
-     * Metodi poistaa suurimman arvon saaneen olion keosta, järjestää keon
-     * uudelleen heapify -metodilla ja palauttaa entisen suurimman arvon saaneen
-     * olion.
+     * Metodi poistaa suurimman tai pienimmän arvon saaneen olion keosta
+     * riippuen siitä onko keko maksimi vai minimikeko, järjestää keon uudelleen
+     * heapify -metodilla ja palauttaa entisen juuren.
      *
      * @return
      */
@@ -180,6 +182,11 @@ public class Keko {
         System.out.println(taulukko.length);
     }
 
+    /**
+     * Jos keko on tyhjä, metodi palauttaa true, muulloin false.
+     *
+     * @return
+     */
     public boolean tyhja() {
         if (size == 0) {
             return true;
