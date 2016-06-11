@@ -1,8 +1,7 @@
 package luolasto;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Random;
+import tietorakenteet.Jono;
 import tietorakenteet.Kaari;
 import tietorakenteet.Keko;
 import tietorakenteet.Lista;
@@ -45,9 +44,9 @@ public class Luolageneraattori {
         //        luola[luola.length - 1][(luola.length - 1) / 2] = false;
         //        luola[(luola.length - 1) / 2][0] = false;
         //        luola[(luola.length - 1) / 2][luola.length - 1] = false;
-        ArrayDeque<Integer> qX = new ArrayDeque<>();
-        ArrayDeque<Integer> qY = new ArrayDeque<>();
-        ArrayDeque<Integer> dist = new ArrayDeque<>();
+        Jono qX = new Jono();
+        Jono qY = new Jono();
+        Jono dist = new Jono();
         int s = random.nextInt(8) + 1;
         int m = size;
         m /= 10;
@@ -61,8 +60,7 @@ public class Luolageneraattori {
         generoiHuoneet(luola, qX, qY, dist, m2);
     }
 
-    private void luoUloskaynnit(Luola luola, ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
-            ArrayDeque<Integer> dist) {
+    private void luoUloskaynnit(Luola luola, Jono qX, Jono qY, Jono dist) {
         int luolaX = luola.getLuolaX();
         int luolaY = luola.getLuolaY();
         Lista huoneet = luola.getHuoneet();
@@ -72,9 +70,9 @@ public class Luolageneraattori {
             System.out.println("x-1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX - 1, luolaY).getLuola()[size - 1][i]) {
-                    qX.add(0);
-                    qY.add(i);
-                    dist.add(random.nextInt(1) + 1);
+                    qX.push(0);
+                    qY.push(i);
+                    dist.push(random.nextInt(1) + 1);
                 }
             }
         } else {
@@ -82,10 +80,10 @@ public class Luolageneraattori {
                 maara = random.nextInt(3);
             }
             while (maara > 0) {
-                qX.add(0);
+                qX.push(0);
                 int y = random.nextInt(size);
-                qY.add(y);
-                dist.add(random.nextInt(1) + 1);
+                qY.push(y);
+                dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(0, y));
                 maara--;
             }
@@ -94,9 +92,9 @@ public class Luolageneraattori {
             System.out.println("x+1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][i]) {
-                    qX.add(size - 1);
-                    qY.add(i);
-                    dist.add(random.nextInt(1) + 1);
+                    qX.push(size - 1);
+                    qY.push(i);
+                    dist.push(random.nextInt(1) + 1);
                 }
             }
         } else {
@@ -104,10 +102,10 @@ public class Luolageneraattori {
                 maara = random.nextInt(3);
             }
             while (maara > 0) {
-                qX.add(size - 1);
+                qX.push(size - 1);
                 int y = random.nextInt(size);
-                qY.add(y);
-                dist.add(random.nextInt(1) + 1);
+                qY.push(y);
+                dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(size - 1, y));
                 maara--;
             }
@@ -116,9 +114,9 @@ public class Luolageneraattori {
             System.out.println("y-1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX, luolaY - 1).getLuola()[i][size - 1]) {
-                    qX.add(i);
-                    qY.add(0);
-                    dist.add(random.nextInt(1) + 1);
+                    qX.push(i);
+                    qY.push(0);
+                    dist.push(random.nextInt(1) + 1);
                 }
             }
         } else {
@@ -126,10 +124,10 @@ public class Luolageneraattori {
                 maara = random.nextInt(3);
             }
             while (maara > 0) {
-                qY.add(0);
+                qY.push(0);
                 int x = random.nextInt(size);
-                qX.add(x);
-                dist.add(random.nextInt(1) + 1);
+                qX.push(x);
+                dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, 0));
                 maara--;
             }
@@ -138,9 +136,9 @@ public class Luolageneraattori {
             System.out.println("y+1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX, luolaY + 1).getLuola()[i][0]) {
-                    qX.add(i);
-                    qY.add(size - 1);
-                    dist.add(random.nextInt(1) + 1);
+                    qX.push(i);
+                    qY.push(size - 1);
+                    dist.push(random.nextInt(1) + 1);
                 }
             }
         } else {
@@ -148,18 +146,17 @@ public class Luolageneraattori {
                 maara = random.nextInt(3);
             }
             while (maara > 0) {
-                qY.add(size - 1);
+                qY.push(size - 1);
                 int x = random.nextInt(size);
-                qX.add(x);
-                dist.add(random.nextInt(1) + 1);
+                qX.push(x);
+                dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, size - 1));
                 maara--;
             }
         }
     }
 
-    private void luoKaytavat(Luola luola, ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
-            ArrayDeque<Integer> dist) {
+    private void luoKaytavat(Luola luola, Jono qX, Jono qY, Jono dist) {
         Lista huoneet = luola.getHuoneet();
         System.out.println("luoKaytavat");
 //        int maara = random.nextInt(huoneet.size());
@@ -208,15 +205,14 @@ public class Luolageneraattori {
         }
     }
 
-    private void generoiKaytava(ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
-            ArrayDeque<Integer> dist, int x, int y, int loppuX, int loppuY) {
+    private void generoiKaytava(Jono qX, Jono qY, Jono dist, int x, int y, int loppuX, int loppuY) {
         System.out.println("generoiKaytava");
         if (x == loppuX && y == loppuY) {
             return;
         }
-        qX.add(x);
-        qY.add(y);
-        dist.add(random.nextInt(2));
+        qX.push(x);
+        qY.push(y);
+        dist.push(random.nextInt(2));
         if (Math.abs(loppuX - x) > Math.abs(loppuY - y)) {
             if (x > loppuX) {
                 generoiKaytava(qX, qY, dist, x - 1, y, loppuX, loppuY);
@@ -230,8 +226,7 @@ public class Luolageneraattori {
         }
     }
 
-    private void luoHuoneet(Luola luola, ArrayDeque<Integer> qX, ArrayDeque<Integer> qY,
-            ArrayDeque<Integer> dist, int m) {
+    private void luoHuoneet(Luola luola, Jono qX, Jono qY, Jono dist, int m) {
         Lista huoneet = luola.getHuoneet();
         System.out.println("luohuoneet");
         int maara = random.nextInt(m) + 1;
@@ -242,14 +237,14 @@ public class Luolageneraattori {
         Solmu solmu = huoneet.getFirst();
         while (solmu != null) {
             Piste huone = (Piste) solmu.getObject();
-            qX.add(huone.getX());
-            qY.add(huone.getY());
-            dist.add(random.nextInt(5) + 8);
+            qX.push(huone.getX());
+            qY.push(huone.getY());
+            dist.push(random.nextInt(5) + 8);
             solmu = solmu.getOikea();
         }
     }
 
-    private void generoiHuoneet(Luola l, ArrayDeque<Integer> qX, ArrayDeque<Integer> qY, ArrayDeque<Integer> dist, int s) {
+    private void generoiHuoneet(Luola l, Jono qX, Jono qY, Jono dist, int s) {
         boolean[][] luola = l.getLuola();
         int luolaX = l.getLuolaX();
         int luolaY = l.getLuolaY();
@@ -259,12 +254,12 @@ public class Luolageneraattori {
                 asd[i][j] = ' ';
             }
         }
-        for (int i = 0; i < qX.size(); i++) {
-            int x = qX.poll();
-            int y = qY.poll();
+        for (int i = 0; i < qX.koko(); i++) {
+            int x = (int) qX.poll();
+            int y = (int) qY.poll();
             asd[x][y] = 'o';
-            qX.add(x);
-            qY.add(y);
+            qX.push(x);
+            qY.push(y);
         }
         Solmu solmu = l.getHuoneet().getFirst();
         while (solmu != null) {
@@ -281,19 +276,19 @@ public class Luolageneraattori {
         System.out.println("generoiHuoneet");
         int[][] aloitusX = new int[size][size];
         int[][] aloitusY = new int[size][size];
-        for (int i = 0; i < qX.size(); i++) {
-            int x = qX.poll();
-            int y = qY.poll();
+        for (int i = 0; i < qX.koko(); i++) {
+            int x = (int) qX.poll();
+            int y = (int) qY.poll();
             aloitusX[x][y] = x;
             aloitusY[x][y] = y;
-            qX.add(x);
-            qY.add(y);
+            qX.push(x);
+            qY.push(y);
         }
         boolean[][] color = new boolean[size][size];
-        while (!qX.isEmpty()) {
-            int x = qX.poll();
-            int y = qY.poll();
-            int d = dist.poll();
+        while (!qX.tyhja()) {
+            int x = (int) qX.poll();
+            int y = (int) qY.poll();
+            int d = (int) dist.poll();
             luola[x][y] = true;
             if ((x == size - 1 && luolasto.getLuola(luolaX + 1, luolaY) != null
                     && !luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][y])
@@ -309,30 +304,30 @@ public class Luolageneraattori {
             if (x < size - 1 && !color[x + 1][y] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x + 1][y] = true;
                 aloitusX[x + 1][y] = aloitusX[x][y];
-                qX.add(x + 1);
-                qY.add(y);
-                dist.add(d);
+                qX.push(x + 1);
+                qY.push(y);
+                dist.push(d);
             }
             if (x > 0 && !color[x - 1][y] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x - 1][y] = true;
                 aloitusX[x - 1][y] = aloitusX[x][y];
-                qX.add(x - 1);
-                qY.add(y);
-                dist.add(d);
+                qX.push(x - 1);
+                qY.push(y);
+                dist.push(d);
             }
             if (y < size - 1 && !color[x][y + 1] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x][y + 1] = true;
                 aloitusX[x][y + 1] = aloitusX[x][y];
-                qX.add(x);
-                qY.add(y + 1);
-                dist.add(d);
+                qX.push(x);
+                qY.push(y + 1);
+                dist.push(d);
             }
             if (y > 0 && !color[x][y - 1] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(3) < 1)) {
                 color[x][y - 1] = true;
                 aloitusX[x][y - 1] = aloitusX[x][y];
-                qX.add(x);
-                qY.add(y - 1);
-                dist.add(d);
+                qX.push(x);
+                qY.push(y - 1);
+                dist.push(d);
             }
             color[x][y] = true;
         }

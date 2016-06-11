@@ -33,7 +33,7 @@ public class Jono {
     public void push(Object object) {
         taulukko[loppu] = object;
         loppu++;
-        if (loppu >= taulukko.length) {
+        if (loppu == taulukko.length) {
             loppu = 0;
         }
         if (loppu == alku) {
@@ -56,8 +56,9 @@ public class Jono {
             return null;
         }
         Object object = taulukko[alku];
+        taulukko[alku] = null;
         alku++;
-        if (alku >= taulukko.length) {
+        if (alku == taulukko.length) {
             alku = 0;
         }
         koko--;
@@ -71,16 +72,19 @@ public class Jono {
         }
         Object[] uusiTaulukko = new Object[taulukko.length * 2];
         int i = 0;
-        while (alku != loppu) {
+        boolean s = true;
+        while (alku != loppu || s) {
             uusiTaulukko[i] = taulukko[alku];
+            alku++;
             if (alku >= taulukko.length) {
                 alku = 0;
             }
-            alku++;
             i++;
+            s = false;
         }
+        taulukko = uusiTaulukko;
         alku = 0;
-        loppu = koko;
+        loppu = koko + 1;
         System.out.println("/kasvataTaulukkoa");
         for (int j = 0; j < taulukko.length; j++) {
             System.out.println(taulukko[j]);
