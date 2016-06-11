@@ -1,6 +1,6 @@
 package main;
 
-import luolastogeneraattori.Luolastogeneraattori;
+import tietorakenteet.Luolastogeneraattori;
 
 /**
  *
