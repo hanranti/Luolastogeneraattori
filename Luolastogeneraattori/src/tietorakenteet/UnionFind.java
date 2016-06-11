@@ -99,7 +99,7 @@ public class UnionFind {
     private void kasvataTaulukkoa() {
         System.out.println("unionFindKasvataTaulukkoa");
         for (int j = 0; j < objects.length; j++) {
-            System.out.println(objects[j]);
+            System.out.println(objects[j] + " " + taulukko[j]);
         }
         Object[] uusiObjects = new Object[2 * objects.length];
         int[] uusiTaulukko = new int[2 * taulukko.length];
@@ -114,7 +114,7 @@ public class UnionFind {
         korkeus = uusiKorkeus;
         System.out.println("/unionFindKasvataTaulukkoa");
         for (int j = 0; j < objects.length; j++) {
-            System.out.println(objects[j]);
+            System.out.println(objects[j] + " " + taulukko[j]);
         }
     }
 
