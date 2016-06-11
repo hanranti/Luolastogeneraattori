@@ -52,10 +52,13 @@ public class ListaTest {
         assertEquals(true, lista.contains(3));
         assertEquals(false, lista.contains(6));
         lista.remove(3);
-        System.out.println("lista");
         Solmu s = lista.getFirst();
+        int i = 0;
+        int[] taulukko = new int[]{5, 4, 2};
         while (s != null) {
-            System.out.println(s.getObject());
+            assertEquals(taulukko[i], s.getObject());
+            assertEquals(taulukko[i],lista.get(i));
+            i++;
             s = s.getOikea();
         }
         assertEquals(false, lista.contains(3));

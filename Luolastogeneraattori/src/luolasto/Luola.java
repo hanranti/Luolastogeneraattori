@@ -15,7 +15,6 @@ public class Luola {
     private boolean[][] luola;
     private int luolaX, luolaY, size;
     private Lista huoneet;
-    private Random random;
     private Luolasto luolasto;
 
     /**
@@ -31,7 +30,6 @@ public class Luola {
         System.out.println("Luola");
         this.size = size;
         luola = new boolean[size][size];
-        random = new Random();
         this.luolasto = luolasto;
         this.luolaX = x;
         this.luolaY = y;
