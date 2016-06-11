@@ -25,17 +25,17 @@ public class Jono {
     }
 
     /**
-     * Metodi lisää olion jonon loppuun. Jos taulukko on lisäyksen jälkeen täysi,
-     * taulukon kokoa kasvatetaan kasvataTaulukkoa -metodilla.
+     * Metodi lisää olion jonon loppuun. Jos taulukko on lisäyksen jälkeen
+     * täysi, taulukon kokoa kasvatetaan kasvataTaulukkoa -metodilla.
      *
      * @param object
      */
     public void push(Object object) {
+        taulukko[loppu] = object;
+        loppu++;
         if (loppu >= taulukko.length) {
             loppu = 0;
         }
-        taulukko[loppu] = object;
-        loppu++;
         if (loppu == alku) {
             kasvataTaulukkoa();
         }
@@ -48,13 +48,20 @@ public class Jono {
      * @return
      */
     public Object poll() {
+        System.out.println("jonopoll");
+        for (int i = 0; i < taulukko.length; i++) {
+            System.out.println(taulukko[i]);
+        }
         if (this.tyhja()) {
             return null;
         }
         Object object = taulukko[alku];
         alku++;
+        if (alku >= taulukko.length) {
+            alku = 0;
+        }
         koko--;
-        return  object;
+        return object;
     }
 
     private void kasvataTaulukkoa() {

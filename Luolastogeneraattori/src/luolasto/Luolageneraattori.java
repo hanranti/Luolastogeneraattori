@@ -240,7 +240,7 @@ public class Luolageneraattori {
             huoneet.add(piste);
         }
         Solmu solmu = huoneet.getFirst();
-        while(solmu != null) {
+        while (solmu != null) {
             Piste huone = (Piste) solmu.getObject();
             qX.add(huone.getX());
             qY.add(huone.getY());
@@ -265,6 +265,12 @@ public class Luolageneraattori {
             asd[x][y] = 'o';
             qX.add(x);
             qY.add(y);
+        }
+        Solmu solmu = l.getHuoneet().getFirst();
+        while (solmu != null) {
+            Piste piste = (Piste) solmu.getObject();
+            asd[piste.getX()][piste.getY()] = 'x';
+            solmu = solmu.getOikea();
         }
         for (int i = 0; i < asd[0].length; i++) {
             for (int j = 0; j < asd.length; j++) {
