@@ -15,4 +15,4 @@
 ## Suorituskykytestaus
 
 * Luolastogeneraattori
-  * generoi -metodiin kuluu 1000 kokeilulla keskimäärin aikaa 1481211ns eli noin 1,5 millisekunttia
+  * generoi -metodiin kuluu 1000 kokeilulla keskimäärin aikaa 1481211ns eli noin 1,5 millisekuntia
