@@ -48,10 +48,6 @@ public class Jono {
      * @return
      */
     public Object poll() {
-        System.out.println("jonopoll");
-        for (int i = 0; i < taulukko.length; i++) {
-            System.out.println(taulukko[i]);
-        }
         if (this.tyhja()) {
             return null;
         }
@@ -66,10 +62,6 @@ public class Jono {
     }
 
     private void kasvataTaulukkoa() {
-        System.out.println("jonokasvataTaulukkoa");
-        for (int i = 0; i < taulukko.length; i++) {
-            System.out.println(taulukko[i]);
-        }
         Object[] uusiTaulukko = new Object[taulukko.length * 2];
         int i = 0;
         boolean s = true;
@@ -85,10 +77,6 @@ public class Jono {
         taulukko = uusiTaulukko;
         alku = 0;
         loppu = koko + 1;
-        System.out.println("/kasvataTaulukkoa");
-        for (int j = 0; j < taulukko.length; j++) {
-            System.out.println(taulukko[j]);
-        }
     }
 
     /**

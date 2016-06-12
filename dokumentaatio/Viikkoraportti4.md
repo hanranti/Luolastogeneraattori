@@ -19,3 +19,9 @@ Kaytin 4 tuntia,
 * ArrayDequeuen vaihtamiseen Jonoon ohjelmassa
 * javadocin tekoon
 * testien tekemiseen
+
+Käytin tunnin
+* testaukseen
+* dokumentointiin
+* koodin siivoamiseen
+

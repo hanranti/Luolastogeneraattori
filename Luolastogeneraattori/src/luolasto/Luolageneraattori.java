@@ -11,7 +11,7 @@ import tietorakenteet.Solmu;
 import tietorakenteet.UnionFind;
 
 /**
- * Luokka sisältää luolan seinien ja avointen alueiden generointiin tarvittavat 
+ * Luokka sisältää luolan seinien ja avointen alueiden generointiin tarvittavat
  * metodit.
  *
  * @author hanranti
@@ -23,7 +23,7 @@ public class Luolageneraattori {
     private final int size;
 
     /**
-     * Metodi luo Luolageneraattori -olion, joka voi generoida luoliin avoimia 
+     * Metodi luo Luolageneraattori -olion, joka voi generoida luoliin avoimia
      * alueita.
      *
      * @param luolasto
@@ -41,8 +41,9 @@ public class Luolageneraattori {
      *
      * @param luola
      */
-    public void generoi(Luola luola) {
-        System.out.println("generoi");
+    public long generoi(Luola luola) {
+        long aikaAlussa = System.nanoTime();
+//        System.out.println("generoi");
         //        for (int i = 0; i < luola.length; i++) {
         //            for (int j = 0; j < luola[0].length; j++) {
         //                if (i == 0 || j == 0 || i == luola.length - 1 || j == luola[0].length - 1) {
@@ -68,16 +69,19 @@ public class Luolageneraattori {
         luoUloskaynnit(luola, qX, qY, dist);
         luoKaytavat(luola, qX, qY, dist);
         generoiHuoneet(luola, qX, qY, dist, m2);
+        long aikaLopussa = System.nanoTime();
+        System.out.println("Operaatioon kului aikaa: " + (aikaLopussa - aikaAlussa) + "ns.");
+        return (aikaLopussa - aikaAlussa);
     }
 
     private void luoUloskaynnit(Luola luola, Jono qX, Jono qY, Jono dist) {
         int luolaX = luola.getLuolaX();
         int luolaY = luola.getLuolaY();
         Lista huoneet = luola.getHuoneet();
-        System.out.println("luoUloskaynnit");
+//        System.out.println("luoUloskaynnit");
         int maara = random.nextInt(2) + 1;
         if (luolasto.getLuola(luolaX - 1, luolaY) != null) {
-            System.out.println("x-1");
+//            System.out.println("x-1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX - 1, luolaY).getLuola()[size - 1][i]) {
                     qX.push(0);
@@ -99,7 +103,7 @@ public class Luolageneraattori {
             }
         }
         if (luolasto.getLuola(luolaX + 1, luolaY) != null) {
-            System.out.println("x+1");
+//            System.out.println("x+1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][i]) {
                     qX.push(size - 1);
@@ -121,7 +125,7 @@ public class Luolageneraattori {
             }
         }
         if (luolasto.getLuola(luolaX, luolaY - 1) != null) {
-            System.out.println("y-1");
+//            System.out.println("y-1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX, luolaY - 1).getLuola()[i][size - 1]) {
                     qX.push(i);
@@ -143,7 +147,7 @@ public class Luolageneraattori {
             }
         }
         if (luolasto.getLuola(luolaX, luolaY + 1) != null) {
-            System.out.println("y+1");
+//            System.out.println("y+1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX, luolaY + 1).getLuola()[i][0]) {
                     qX.push(i);
@@ -168,7 +172,7 @@ public class Luolageneraattori {
 
     private void luoKaytavat(Luola luola, Jono qX, Jono qY, Jono dist) {
         Lista huoneet = luola.getHuoneet();
-        System.out.println("luoKaytavat");
+//        System.out.println("luoKaytavat");
 //        int maara = random.nextInt(huoneet.size());
 //        while (maara > 0) {
 //            Piste huone1 = huoneet.get(random.nextInt(huoneet.size()));
@@ -216,7 +220,7 @@ public class Luolageneraattori {
     }
 
     private void generoiKaytava(Jono qX, Jono qY, Jono dist, int x, int y, int loppuX, int loppuY) {
-        System.out.println("generoiKaytava");
+//        System.out.println("generoiKaytava");
         if (x == loppuX && y == loppuY) {
             return;
         }
@@ -238,7 +242,7 @@ public class Luolageneraattori {
 
     private void luoHuoneet(Luola luola, Jono qX, Jono qY, Jono dist, int m) {
         Lista huoneet = luola.getHuoneet();
-        System.out.println("luohuoneet");
+//        System.out.println("luohuoneet");
         int maara = random.nextInt(m) + 1;
         for (int i = 0; i < maara; i++) {
             Piste piste = new Piste(random.nextInt(size), random.nextInt(size));
@@ -277,13 +281,13 @@ public class Luolageneraattori {
             asd[piste.getX()][piste.getY()] = 'x';
             solmu = solmu.getOikea();
         }
-        for (int i = 0; i < asd[0].length; i++) {
-            for (int j = 0; j < asd.length; j++) {
-                System.out.print(asd[j][i]);
-            }
-            System.out.println("");
-        }
-        System.out.println("generoiHuoneet");
+//        for (int i = 0; i < asd[0].length; i++) {
+//            for (int j = 0; j < asd.length; j++) {
+//                System.out.print(asd[j][i]);
+//            }
+//            System.out.println("");
+//        }
+//        System.out.println("generoiHuoneet");
         int[][] aloitusX = new int[size][size];
         int[][] aloitusY = new int[size][size];
         for (int i = 0; i < qX.koko(); i++) {

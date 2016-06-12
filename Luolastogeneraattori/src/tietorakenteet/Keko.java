@@ -35,8 +35,6 @@ public class Keko {
      * @param k
      */
     public void insert(Object object, int k) {
-        System.out.println("insert");
-        System.out.println(size + " " + taulukko.length);
         size++;
         if (size >= taulukko.length - 1) {
             kasvataTaulukkoa();
@@ -162,11 +160,6 @@ public class Keko {
     }
 
     private void kasvataTaulukkoa() {
-        System.out.println("kasvataTaulukkoa");
-        System.out.println(taulukko.length);
-//        for (int i = 0; i < taulukko.length; i++) {
-//            System.out.println(objects[i] + " " + taulukko[i]);
-//        }
         int[] uusiTaulukko = new int[taulukko.length * 2];
         Object[] uusiObjects = new Object[taulukko.length * 2];
         for (int i = 0; i < taulukko.length; i++) {
@@ -175,11 +168,6 @@ public class Keko {
         }
         taulukko = uusiTaulukko;
         objects = uusiObjects;
-//        for (int i = 0; i < taulukko.length; i++) {
-//            System.out.println(objects[i] + " " + taulukko[i]);
-//        }
-        System.out.println("/kasvataTaulukkoa");
-        System.out.println(taulukko.length);
     }
 
     /**

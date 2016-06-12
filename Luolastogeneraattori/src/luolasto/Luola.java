@@ -27,7 +27,6 @@ public class Luola {
      * @param x
      */
     public Luola(Luolasto luolasto, int x, int y, int size) {
-        System.out.println("Luola");
         this.size = size;
         luola = new boolean[size][size];
         this.luolasto = luolasto;

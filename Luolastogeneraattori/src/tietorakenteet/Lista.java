@@ -50,21 +50,16 @@ public class Lista {
         Solmu solmu = first;
         while (solmu != null) {
             if (solmu.getObject().equals(object)) {
-                System.out.println("poistettava:" + solmu.getObject());
                 if (solmu.equals(first)) {
-                    System.out.println("first");
                     first = solmu.getOikea();
                 }
                 if (solmu.equals(last)) {
-                    System.out.println("last");
                     last = solmu.getVasen();
                 }
                 if (solmu.getVasen() != null) {
-                    System.out.println("vasen!null");
                     solmu.getVasen().setOikea(solmu.getOikea());
                 }
                 if (solmu.getOikea() != null) {
-                    System.out.println("oikea!null");
                     solmu.getOikea().setVasen(solmu.getVasen());
                 }
                 koko--;
