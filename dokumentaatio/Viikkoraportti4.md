@@ -14,7 +14,7 @@ Kaytin 2 tuntia,
 * listan korjaamiseen
 * ArrayListin vaihtamiseen Listaan ohjelmassa
 
-Kaytin x tuntia,
+Kaytin 4 tuntia,
 * jonon korjaamiseen
 * ArrayDequeuen vaihtamiseen Jonoon ohjelmassa
 * javadocin tekoon
