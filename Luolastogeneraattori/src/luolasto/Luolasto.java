@@ -18,10 +18,10 @@ public class Luolasto {
      *
      * @param size
      */
-    public Luolasto(int size) {
+    public Luolasto(int size, int uusiaUloskaynteja) {
         luolasto = new Luola[10][10];
         this.size = size;
-        luolageneraattori = new Luolageneraattori(this, size);
+        luolageneraattori = new Luolageneraattori(this, size, uusiaUloskaynteja);
         muutos = 0;
     }
 

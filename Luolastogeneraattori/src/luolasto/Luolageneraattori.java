@@ -20,7 +20,8 @@ public class Luolageneraattori {
 
     private final Luolasto luolasto;
     private final Random random;
-    private final int size;
+    private final int size, uusiaUloskaynteja;
+    private int todennakoisyys;
 
     /**
      * Metodi luo Luolageneraattori -olion, joka voi generoida luoliin avoimia
@@ -29,10 +30,12 @@ public class Luolageneraattori {
      * @param luolasto
      * @param size
      */
-    public Luolageneraattori(Luolasto luolasto, int size) {
+    public Luolageneraattori(Luolasto luolasto, int size, int uusiaUloskaynteja) {
         random = new Random();
         this.luolasto = luolasto;
         this.size = size;
+        this.uusiaUloskaynteja = uusiaUloskaynteja;
+        this.todennakoisyys = 100;
     }
 
     /**
@@ -68,6 +71,10 @@ public class Luolageneraattori {
         luoUloskaynnit(luola, qX, qY, dist);
         luoKaytavat(luola, qX, qY, dist);
         generoiHuoneet(luola, qX, qY, dist, m2);
+        if (todennakoisyys > 0) {
+            todennakoisyys -= uusiaUloskaynteja;
+        }
+        System.out.println("todennakoisyys: " + todennakoisyys);
     }
 
     private void luoUloskaynnit(Luola luola, Jono qX, Jono qY, Jono dist) {
@@ -86,7 +93,7 @@ public class Luolageneraattori {
                     huoneet.add(new Piste(0, i));
                 }
             }
-        } else {
+        } else if (todennakoisyys > 0) {
             if (maara == 0 && random.nextBoolean()) {
                 maara = random.nextInt(3);
             }
@@ -109,7 +116,7 @@ public class Luolageneraattori {
                     huoneet.add(new Piste(size - 1, i));
                 }
             }
-        } else {
+        } else if (todennakoisyys > 0) {
             if (maara == 0 && random.nextBoolean()) {
                 maara = random.nextInt(3);
             }
@@ -132,7 +139,7 @@ public class Luolageneraattori {
                     huoneet.add(new Piste(i, 0));
                 }
             }
-        } else {
+        } else if (todennakoisyys > 0) {
             if (maara == 0 && random.nextBoolean()) {
                 maara = random.nextInt(3);
             }
@@ -155,7 +162,7 @@ public class Luolageneraattori {
                     huoneet.add(new Piste(i, size - 1));
                 }
             }
-        } else {
+        } else if (todennakoisyys > 0) {
             if (maara == 0 && random.nextBoolean()) {
                 maara = random.nextInt(3);
             }
