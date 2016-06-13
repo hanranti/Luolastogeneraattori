@@ -83,7 +83,7 @@ public class Luolageneraattori {
                     qX.push(0);
                     qY.push(i);
                     dist.push(random.nextInt(1) + 1);
-                    huoneet.add(new Piste(size - 1, i));
+                    huoneet.add(new Piste(0, i));
                 }
             }
         } else {
@@ -106,7 +106,7 @@ public class Luolageneraattori {
                     qX.push(size - 1);
                     qY.push(i);
                     dist.push(random.nextInt(1) + 1);
-                    huoneet.add(new Piste(0, i));
+                    huoneet.add(new Piste(size - 1, i));
                 }
             }
         } else {
@@ -129,7 +129,7 @@ public class Luolageneraattori {
                     qX.push(i);
                     qY.push(0);
                     dist.push(random.nextInt(1) + 1);
-                    huoneet.add(new Piste(i, size - 1));
+                    huoneet.add(new Piste(i, 0));
                 }
             }
         } else {
@@ -152,7 +152,7 @@ public class Luolageneraattori {
                     qX.push(i);
                     qY.push(size - 1);
                     dist.push(random.nextInt(1) + 1);
-                    huoneet.add(new Piste(i, 0));
+                    huoneet.add(new Piste(i, size - 1));
                 }
             }
         } else {
