@@ -44,7 +44,10 @@ public class Keko {
         } else {
             insertMin(object, k);
         }
-
+//        System.out.println("insert");
+//        for (int i = 0; i < objects.length; i++) {
+//            System.out.println(objects[i] + " " + taulukko[i]);
+//        }
     }
 
     private void insertMax(Object object, int k) {

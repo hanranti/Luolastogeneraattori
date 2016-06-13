@@ -14,7 +14,7 @@ public class UnionFind {
     private int komponentit;
 
     /**
-     * Metodi luo UnionFind olion, johon voidaan lisätä olioita, yhdistää 
+     * Metodi luo UnionFind olion, johon voidaan lisätä olioita, yhdistää
      * olioita toisiinsa polulla ja kysyä, mitkä oliot ovat yhteydessä toisiinsa
      * polulla.
      *
@@ -55,9 +55,9 @@ public class UnionFind {
      * @param oB
      */
     public void union(Object oA, Object oB) {
-       int a = find(oA);
-       int b = find(oB);
-        if (a==-1||b==-1) {
+        int a = find(oA);
+        int b = find(oB);
+        if (a == -1 || b == -1) {
             return;
         }
         if (korkeus[a] < korkeus[b]) {
@@ -72,7 +72,7 @@ public class UnionFind {
     }
 
     /**
-     * Metodi palauttaa arvon, joka kertoo mihin komponenttiin parametrin olio 
+     * Metodi palauttaa arvon, joka kertoo mihin komponenttiin parametrin olio
      * kuuluu. Jos unionFind ei sisällä oliota, metodi palauttaa -1.
      *
      * @param object
@@ -104,6 +104,10 @@ public class UnionFind {
             uusiObjects[j] = objects[j];
             uusiTaulukko[j] = taulukko[j];
             uusiKorkeus[j] = korkeus[j];
+        }
+        for (int j = taulukko.length; j < uusiTaulukko.length; j++) {
+            uusiTaulukko[j] = j;
+            uusiKorkeus[j] = 1;
         }
         objects = uusiObjects;
         taulukko = uusiTaulukko;

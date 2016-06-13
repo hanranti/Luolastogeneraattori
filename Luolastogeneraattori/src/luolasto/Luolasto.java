@@ -23,11 +23,6 @@ public class Luolasto {
         this.size = size;
         luolageneraattori = new Luolageneraattori(this, size);
         muutos = 0;
-        long k = 0;
-        for (int i = 0; i < 1000; i++) {
-            k += luolageneraattori.generoi(new Luola(this, i, i, size));
-        }
-        System.out.println("keskimääräinen aika: "+k/1000);
     }
 
     /**

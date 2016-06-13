@@ -41,8 +41,7 @@ public class Luolageneraattori {
      *
      * @param luola
      */
-    public long generoi(Luola luola) {
-        long aikaAlussa = System.nanoTime();
+    public void generoi(Luola luola) {
 //        System.out.println("generoi");
         //        for (int i = 0; i < luola.length; i++) {
         //            for (int j = 0; j < luola[0].length; j++) {
@@ -69,9 +68,6 @@ public class Luolageneraattori {
         luoUloskaynnit(luola, qX, qY, dist);
         luoKaytavat(luola, qX, qY, dist);
         generoiHuoneet(luola, qX, qY, dist, m2);
-        long aikaLopussa = System.nanoTime();
-        System.out.println("Operaatioon kului aikaa: " + (aikaLopussa - aikaAlussa) + "ns.");
-        return (aikaLopussa - aikaAlussa);
     }
 
     private void luoUloskaynnit(Luola luola, Jono qX, Jono qY, Jono dist) {
@@ -87,6 +83,7 @@ public class Luolageneraattori {
                     qX.push(0);
                     qY.push(i);
                     dist.push(random.nextInt(1) + 1);
+                    huoneet.add(new Piste(size - 1, i));
                 }
             }
         } else {
@@ -109,6 +106,7 @@ public class Luolageneraattori {
                     qX.push(size - 1);
                     qY.push(i);
                     dist.push(random.nextInt(1) + 1);
+                    huoneet.add(new Piste(0, i));
                 }
             }
         } else {
@@ -131,6 +129,7 @@ public class Luolageneraattori {
                     qX.push(i);
                     qY.push(0);
                     dist.push(random.nextInt(1) + 1);
+                    huoneet.add(new Piste(i, size - 1));
                 }
             }
         } else {
@@ -153,6 +152,7 @@ public class Luolageneraattori {
                     qX.push(i);
                     qY.push(size - 1);
                     dist.push(random.nextInt(1) + 1);
+                    huoneet.add(new Piste(i, 0));
                 }
             }
         } else {
@@ -281,13 +281,13 @@ public class Luolageneraattori {
             asd[piste.getX()][piste.getY()] = 'x';
             solmu = solmu.getOikea();
         }
-//        for (int i = 0; i < asd[0].length; i++) {
-//            for (int j = 0; j < asd.length; j++) {
-//                System.out.print(asd[j][i]);
-//            }
-//            System.out.println("");
-//        }
-//        System.out.println("generoiHuoneet");
+        for (int i = 0; i < asd[0].length; i++) {
+            for (int j = 0; j < asd.length; j++) {
+                System.out.print(asd[j][i]);
+            }
+            System.out.println("");
+        }
+        System.out.println("generoiHuoneet");
         int[][] aloitusX = new int[size][size];
         int[][] aloitusY = new int[size][size];
         for (int i = 0; i < qX.koko(); i++) {
