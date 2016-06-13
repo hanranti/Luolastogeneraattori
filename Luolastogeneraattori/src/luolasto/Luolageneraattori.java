@@ -231,19 +231,33 @@ public class Luolageneraattori {
         if (x == loppuX && y == loppuY) {
             return;
         }
-        qX.push(x);
-        qY.push(y);
-        dist.push(random.nextInt(2));
+        if (x == 0) {
+            qX.push(x + 1);
+        } else if (x == size - 1) {
+            qX.push(x - 1);
+        } else {
+            qX.push(x);
+        }
+        if (y == 0) {
+            qY.push(y + 1);
+        } else if (y == size - 1) {
+            qY.push(y - 1);
+        } else {
+            qY.push(y);
+        }
+        dist.push(random.nextInt(1) + 1);
         if (Math.abs(loppuX - x) > Math.abs(loppuY - y)) {
             if (x > loppuX) {
                 generoiKaytava(qX, qY, dist, x - 1, y, loppuX, loppuY);
             } else {
                 generoiKaytava(qX, qY, dist, x + 1, y, loppuX, loppuY);
             }
-        } else if (y > loppuY) {
-            generoiKaytava(qX, qY, dist, x, y - 1, loppuX, loppuY);
         } else {
-            generoiKaytava(qX, qY, dist, x, y + 1, loppuX, loppuY);
+            if (y > loppuY) {
+                generoiKaytava(qX, qY, dist, x, y - 1, loppuX, loppuY);
+            } else {
+                generoiKaytava(qX, qY, dist, x, y + 1, loppuX, loppuY);
+            }
         }
     }
 
