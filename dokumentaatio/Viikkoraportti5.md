@@ -1,6 +1,6 @@
 # Viikkoraportti 5
 
-Käytin x tuntia,
+Käytin 3 tuntia,
 
 * testien korjaamiseen
 * UnionFindin korjaamiseen
