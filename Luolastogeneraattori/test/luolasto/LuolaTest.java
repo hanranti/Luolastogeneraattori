@@ -29,7 +29,7 @@ public class LuolaTest {
 
     @Before
     public void setUp() {
-        luolasto = new Luolasto(22);
+        luolasto = new Luolasto(22, 0);
         luola = new Luola(luolasto, 1, 2, 22);
     }
 
@@ -48,7 +48,7 @@ public class LuolaTest {
     @Test
     public void testHuoneet() {
         assertTrue(luola.getHuoneet().getKoko() == 0);
-        Luolageneraattori luolageneraattori = new Luolageneraattori(luolasto, 22);
+        Luolageneraattori luolageneraattori = new Luolageneraattori(luolasto, 22, 0);
         luolageneraattori.generoi(luola);
         assertTrue(luola.getHuoneet().getKoko() > 0);
     }
