@@ -15,7 +15,8 @@ Kaytin x tuntia,
 * Lisäsin alarajan ohjelman saamille parametreille, joiden arvot asetetaan jos ne alitetaan
 * Muutin luolan generoinnin toimimaan siten, että reunoille ei generoida avoimia alueita generoiAvoimetAlueet metodissa, jos reunoja ei aseteta luoUloskaynnit- metodissa, uloskäynneiksi huoneet listaan
   * Tämän seurauksena luolan reunat voivat generoitua kulmikkaiksi
-  ´´´
+
+  ```
   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   xxxxxxxxxx                     x
   xxxxxxxxxx                     x
@@ -33,19 +34,19 @@ Kaytin x tuntia,
   xxx   x       x x    xxxxxxxxxxx
   xx    xx   xx xxx    xxxxxxxxxxx
        xxxx   xxxxx    xxxxxxxxxxx
-          xxxxxxxxxxxxxx    xxxxxxxxxxx
-             xxxxxxxxxxxxx    xxxxxxxxxxxx
-                  xxxxxxxx     x xxxxxxxxxxxx
-                       xxxxxxxx    xx  xxxxxxxxxxx
-                        xxxxxxxxxxx    xxxxxxxxxxxxxxxx
-                        xxxxxxxxxxxx    xxxxxxxxxxxxxxxx
-                        xxxxxxxxxxxxx  xxxxxxxxxxxxxxxxx
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  ´´´
+     xxxxxxxxxxxxxx    xxxxxxxxxxx
+     xxxxxxxxxxxxx    xxxxxxxxxxxx
+       xxxxxxxx     x xxxxxxxxxxxx
+       xxxxxxxx    xx  xxxxxxxxxxx
+   xxxxxxxxxxx    xxxxxxxxxxxxxxxx
+  xxxxxxxxxxxx    xxxxxxxxxxxxxxxx
+  xxxxxxxxxxxxx  xxxxxxxxxxxxxxxxx
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  ```
