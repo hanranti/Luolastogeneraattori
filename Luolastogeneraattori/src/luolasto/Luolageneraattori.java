@@ -99,7 +99,7 @@ public class Luolageneraattori {
             }
             while (maara > 0) {
                 qX.push(0);
-                int y = random.nextInt(size);
+                int y = 1 + random.nextInt(size - 2);
                 qY.push(y);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(0, y));
@@ -122,7 +122,7 @@ public class Luolageneraattori {
             }
             while (maara > 0) {
                 qX.push(size - 1);
-                int y = random.nextInt(size);
+                int y = 1 + random.nextInt(size - 2);
                 qY.push(y);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(size - 1, y));
@@ -145,7 +145,7 @@ public class Luolageneraattori {
             }
             while (maara > 0) {
                 qY.push(0);
-                int x = random.nextInt(size);
+                int x = 1 + random.nextInt(size - 2);
                 qX.push(x);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, 0));
@@ -168,7 +168,7 @@ public class Luolageneraattori {
             }
             while (maara > 0) {
                 qY.push(size - 1);
-                int x = random.nextInt(size);
+                int x = 1 + random.nextInt(size - 2);
                 qX.push(x);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, size - 1));
@@ -266,17 +266,20 @@ public class Luolageneraattori {
 //        System.out.println("luohuoneet");
         int maara = random.nextInt(m) + 1;
         for (int i = 0; i < maara; i++) {
-            Piste piste = new Piste(random.nextInt(size), random.nextInt(size));
+            Piste piste = new Piste(1 + random.nextInt(size - 2), 1 + random.nextInt(size - 2));
             huoneet.add(piste);
-        }
-        Solmu solmu = huoneet.getFirst();
-        while (solmu != null) {
-            Piste huone = (Piste) solmu.getObject();
-            qX.push(huone.getX());
-            qY.push(huone.getY());
+            qX.push(piste.getX());
+            qY.push(piste.getY());
             dist.push(random.nextInt(5) + 8);
-            solmu = solmu.getOikea();
         }
+//        Solmu solmu = huoneet.getFirst();
+//        while (solmu != null) {
+//            Piste huone = (Piste) solmu.getObject();
+//            qX.push(huone.getX());
+//            qY.push(huone.getY());
+//            dist.push(random.nextInt(5) + 8);
+//            solmu = solmu.getOikea();
+//        }
     }
 
     private void generoiHuoneet(Luola l, Jono qX, Jono qY, Jono dist, int s) {
