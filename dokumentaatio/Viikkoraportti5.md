@@ -50,3 +50,4 @@ Kaytin x tuntia,
   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   ```
+* Muutin todennäköisyyden löytää uusia uloskäyntejä todelliseksi todennäköisyydeksi vähennettävän luvun sijaan

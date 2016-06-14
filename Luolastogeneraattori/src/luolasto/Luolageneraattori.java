@@ -83,7 +83,13 @@ public class Luolageneraattori {
         int luolaY = luola.getLuolaY();
         Lista huoneet = luola.getHuoneet();
 //        System.out.println("luoUloskaynnit");
-        int maara = random.nextInt(2) + 1;
+        boolean uusiUloskayntiLisatty = true;
+        int maara = 0;
+        if (random.nextInt(101) < todennakoisyys) {
+            maara = random.nextInt(2) + 1;
+            uusiUloskayntiLisatty = false;
+        }
+
         if (luolasto.getLuola(luolaX - 1, luolaY) != null) {
 //            System.out.println("x-1");
             for (int i = 0; i < size; i++) {
@@ -94,17 +100,15 @@ public class Luolageneraattori {
                     huoneet.add(new Piste(0, i));
                 }
             }
-        } else if (todennakoisyys > 0) {
-            if (maara == 0 && random.nextBoolean()) {
-                maara = random.nextInt(3);
-            }
-            while (maara > 0) {
+        } else {
+            while (maara > 0 && random.nextBoolean()) {
                 qX.push(0);
                 int y = 1 + random.nextInt(size - 2);
                 qY.push(y);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(0, y));
                 maara--;
+                uusiUloskayntiLisatty = true;
             }
         }
         if (luolasto.getLuola(luolaX + 1, luolaY) != null) {
@@ -117,17 +121,15 @@ public class Luolageneraattori {
                     huoneet.add(new Piste(size - 1, i));
                 }
             }
-        } else if (todennakoisyys > 0) {
-            if (maara == 0 && random.nextBoolean()) {
-                maara = random.nextInt(3);
-            }
-            while (maara > 0) {
+        } else {
+            while (maara > 0 && random.nextBoolean()) {
                 qX.push(size - 1);
                 int y = 1 + random.nextInt(size - 2);
                 qY.push(y);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(size - 1, y));
                 maara--;
+                uusiUloskayntiLisatty = true;
             }
         }
         if (luolasto.getLuola(luolaX, luolaY - 1) != null) {
@@ -140,17 +142,15 @@ public class Luolageneraattori {
                     huoneet.add(new Piste(i, 0));
                 }
             }
-        } else if (todennakoisyys > 0) {
-            if (maara == 0 && random.nextBoolean()) {
-                maara = random.nextInt(3);
-            }
-            while (maara > 0) {
+        } else {
+            while (maara > 0 && random.nextBoolean()) {
                 qY.push(0);
                 int x = 1 + random.nextInt(size - 2);
                 qX.push(x);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, 0));
                 maara--;
+                uusiUloskayntiLisatty = true;
             }
         }
         if (luolasto.getLuola(luolaX, luolaY + 1) != null) {
@@ -163,17 +163,43 @@ public class Luolageneraattori {
                     huoneet.add(new Piste(i, size - 1));
                 }
             }
-        } else if (todennakoisyys > 0) {
-            if (maara == 0 && random.nextBoolean()) {
-                maara = random.nextInt(3);
-            }
-            while (maara > 0) {
+        } else {
+            while (maara > 0 && random.nextBoolean()) {
                 qY.push(size - 1);
                 int x = 1 + random.nextInt(size - 2);
                 qX.push(x);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, size - 1));
                 maara--;
+                uusiUloskayntiLisatty = true;
+            }
+        }
+        if (!uusiUloskayntiLisatty) {
+            int xy = random.nextInt(4);
+            if (xy == 0) {
+                qY.push(size - 1);
+                int x = 1 + random.nextInt(size - 2);
+                qX.push(x);
+                dist.push(random.nextInt(1) + 1);
+                huoneet.add(new Piste(x, size - 1));
+            } else if (xy == 1) {
+                qY.push(0);
+                int x = 1 + random.nextInt(size - 2);
+                qX.push(x);
+                dist.push(random.nextInt(1) + 1);
+                huoneet.add(new Piste(x, 0));
+            } else if (xy == 2) {
+                qX.push(size - 1);
+                int y = 1 + random.nextInt(size - 2);
+                qY.push(y);
+                dist.push(random.nextInt(1) + 1);
+                huoneet.add(new Piste(size - 1, y));
+            } else if (xy == 3) {
+                qX.push(0);
+                int y = 1 + random.nextInt(size - 2);
+                qY.push(y);
+                dist.push(random.nextInt(1) + 1);
+                huoneet.add(new Piste(0, y));
             }
         }
     }
