@@ -29,6 +29,7 @@ public class Luolageneraattori {
      *
      * @param luolasto
      * @param size
+     * @param uusiaUloskaynteja
      */
     public Luolageneraattori(Luolasto luolasto, int size, int uusiaUloskaynteja) {
         random = new Random();
@@ -339,28 +340,29 @@ public class Luolageneraattori {
                 luola[x][y] = false;
                 continue;
             }
-            if (x < size - 1 && !color[x + 1][y] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(4) < 1)) {
+
+            if (x + 1 < size - 1 && !color[x + 1][y] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(4) < 1)) {
                 color[x + 1][y] = true;
                 aloitusX[x + 1][y] = aloitusX[x][y];
                 qX.push(x + 1);
                 qY.push(y);
                 dist.push(d);
             }
-            if (x > 0 && !color[x - 1][y] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(4) < 1)) {
+            if (x - 1 > 0 && !color[x - 1][y] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(4) < 1)) {
                 color[x - 1][y] = true;
                 aloitusX[x - 1][y] = aloitusX[x][y];
                 qX.push(x - 1);
                 qY.push(y);
                 dist.push(d);
             }
-            if (y < size - 1 && !color[x][y + 1] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(4) < 1)) {
+            if (y + 1 < size - 1 && !color[x][y + 1] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(4) < 1)) {
                 color[x][y + 1] = true;
                 aloitusX[x][y + 1] = aloitusX[x][y];
                 qX.push(x);
                 qY.push(y + 1);
                 dist.push(d);
             }
-            if (y > 0 && !color[x][y - 1] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(4) < 1)) {
+            if (y - 1 > 0 && !color[x][y - 1] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(4) < 1)) {
                 color[x][y - 1] = true;
                 aloitusX[x][y - 1] = aloitusX[x][y];
                 qX.push(x);

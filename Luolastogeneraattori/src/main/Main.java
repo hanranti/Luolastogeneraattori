@@ -25,6 +25,15 @@ public class Main {
                 uusiaUloskaynteja = Integer.parseInt(args[1]);
             }
         }
+        
+        if (size < 32) {
+            size = 32;
+            System.out.println("Pienin luolan koko on 32");
+        }
+        if (uusiaUloskaynteja<0) {
+            uusiaUloskaynteja = 0;
+            System.out.println("Pienin uusien luolien löytymisen määrittävä luku on 0");
+        }
 
         Luolastogeneraattori luolastogeneraattori
                 = new Luolastogeneraattori(size, uusiaUloskaynteja);
