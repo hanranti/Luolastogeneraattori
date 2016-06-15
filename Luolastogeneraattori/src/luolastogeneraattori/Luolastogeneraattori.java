@@ -31,9 +31,10 @@ public class Luolastogeneraattori {
         System.out.println("LuolastoGeneraattori");
         this.size = size;
         luolasto = new Luolasto(size, uusiaUloskaynteja);
-        pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);
+        pelaaja = new Pelaaja(5, 5, luolasto, size);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
         gui = new GUI();
+        asetaPelaajaLuolaan();
     }
 
     /**

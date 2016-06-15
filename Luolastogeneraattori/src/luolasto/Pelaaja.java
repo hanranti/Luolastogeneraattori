@@ -24,9 +24,7 @@ public class Pelaaja {
      * @param luolasto
      * @param size
      */
-    public Pelaaja(int x, int y, int luolaX, int luolaY, Luolasto luolasto, int size) {
-        this.x = x;
-        this.y = y;
+    public Pelaaja(int luolaX, int luolaY, Luolasto luolasto, int size) {
         this.luolaX = luolaX;
         this.luolaY = luolaY;
         this.luolasto = luolasto;
