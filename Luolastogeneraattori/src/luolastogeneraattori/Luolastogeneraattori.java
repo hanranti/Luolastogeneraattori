@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 import luolasto.Luolasto;
 import luolasto.Pelaaja;
+import tietorakenteet.Jono;
 import tietorakenteet.Lista;
 import tietorakenteet.Piste;
 import ui.GUI;
@@ -32,11 +33,6 @@ public class Luolastogeneraattori {
         luolasto = new Luolasto(size, uusiaUloskaynteja);
         pelaaja = new Pelaaja(size / 2, size / 2, 5, 5, luolasto, size);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
-        Random random = new Random();
-        Lista huoneet = luolasto.getLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY()).getHuoneet();
-        Piste huone =(Piste) huoneet.get(random.nextInt(huoneet.getKoko()));
-        pelaaja.setX(huone.getX());
-        pelaaja.setY(huone.getY());
         gui = new GUI();
     }
 
@@ -77,6 +73,38 @@ public class Luolastogeneraattori {
             }
             if (!jatka) {
                 break;
+            }
+        }
+    }
+
+    private void asetaPelaajaLuolaan() {
+        Jono qX = new Jono();
+        Jono qY = new Jono();
+        qX.push(size / 2);
+        qY.push(size / 2);
+        while (!qX.tyhja()) {
+            int x = (int) qX.poll();
+            int y = (int) qY.poll();
+            if (luolasto.getLuola(5, 5).getLuola()[x][y]) {
+                pelaaja.setX(x);
+                pelaaja.setY(y);
+                return;
+            }
+            if (x + 1 <= size - 1) {
+                qX.push(x + 1);
+                qY.push(y);
+            }
+            if (y + 1 <= size - 1) {
+                qX.push(x);
+                qY.push(y + 1);
+            }
+            if (x - 1 >= 0) {
+                qX.push(x - 1);
+                qY.push(y);
+            }
+            if (y - 1 >= 0) {
+                qX.push(x);
+                qY.push(y - 1);
             }
         }
     }
