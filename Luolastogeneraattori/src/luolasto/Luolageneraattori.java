@@ -197,6 +197,7 @@ public class Luolageneraattori {
                 qX.push(x);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, size - 1));
+                return;
             }
             if (!viereinenNull[2]) {
                 xy++;
@@ -207,6 +208,7 @@ public class Luolageneraattori {
                 qX.push(x);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, 0));
+                return;
             }
             if (!viereinenNull[1]) {
                 xy++;
@@ -217,6 +219,7 @@ public class Luolageneraattori {
                 qY.push(y);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(size - 1, y));
+                return;
             }
             if (!viereinenNull[0]) {
                 xy++;
@@ -227,6 +230,7 @@ public class Luolageneraattori {
                 qY.push(y);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(0, y));
+                return;
             }
         }
     }
