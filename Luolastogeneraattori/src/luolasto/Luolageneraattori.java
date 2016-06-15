@@ -85,9 +85,12 @@ public class Luolageneraattori {
         Lista huoneet = luola.getHuoneet();
 //        System.out.println("luoUloskaynnit");
         boolean uusiUloskayntiLisatty = true;
+        boolean viereinenNull[] = new boolean[4];
+        int nullMaara = 0;
         int maara = 0;
-        if (random.nextInt(101) < todennakoisyys) {
-            maara = random.nextInt(2) + 1;
+        if (random.nextInt(101) <= todennakoisyys) {
+            System.out.println("luodaan uusia luolia");
+            maara = random.nextInt(5) + 1;
             uusiUloskayntiLisatty = false;
         }
 
@@ -102,7 +105,7 @@ public class Luolageneraattori {
                 }
             }
         } else {
-            while (maara > 0 && random.nextBoolean()) {
+            while (maara > 0 && random.nextInt(4) < 3) {
                 qX.push(0);
                 int y = 1 + random.nextInt(size - 2);
                 qY.push(y);
@@ -111,6 +114,8 @@ public class Luolageneraattori {
                 maara--;
                 uusiUloskayntiLisatty = true;
             }
+            viereinenNull[0] = true;
+            nullMaara++;
         }
         if (luolasto.getLuola(luolaX + 1, luolaY) != null) {
 //            System.out.println("x+1");
@@ -123,7 +128,7 @@ public class Luolageneraattori {
                 }
             }
         } else {
-            while (maara > 0 && random.nextBoolean()) {
+            while (maara > 0 && random.nextInt(4) < 3) {
                 qX.push(size - 1);
                 int y = 1 + random.nextInt(size - 2);
                 qY.push(y);
@@ -132,6 +137,8 @@ public class Luolageneraattori {
                 maara--;
                 uusiUloskayntiLisatty = true;
             }
+            viereinenNull[1] = true;
+            nullMaara++;
         }
         if (luolasto.getLuola(luolaX, luolaY - 1) != null) {
 //            System.out.println("y-1");
@@ -144,7 +151,7 @@ public class Luolageneraattori {
                 }
             }
         } else {
-            while (maara > 0 && random.nextBoolean()) {
+            while (maara > 0 && random.nextInt(4) < 3) {
                 qY.push(0);
                 int x = 1 + random.nextInt(size - 2);
                 qX.push(x);
@@ -153,6 +160,8 @@ public class Luolageneraattori {
                 maara--;
                 uusiUloskayntiLisatty = true;
             }
+            viereinenNull[2] = true;
+            nullMaara++;
         }
         if (luolasto.getLuola(luolaX, luolaY + 1) != null) {
 //            System.out.println("y+1");
@@ -165,7 +174,7 @@ public class Luolageneraattori {
                 }
             }
         } else {
-            while (maara > 0 && random.nextBoolean()) {
+            while (maara > 0 && random.nextInt(3) < 2) {
                 qY.push(size - 1);
                 int x = 1 + random.nextInt(size - 2);
                 qX.push(x);
@@ -174,28 +183,45 @@ public class Luolageneraattori {
                 maara--;
                 uusiUloskayntiLisatty = true;
             }
+            viereinenNull[3] = true;
+            nullMaara++;
         }
         if (!uusiUloskayntiLisatty) {
-            int xy = random.nextInt(4);
+            int xy = random.nextInt(nullMaara);
+            if (!viereinenNull[3]) {
+                xy++;
+            }
             if (xy == 0) {
                 qY.push(size - 1);
                 int x = 1 + random.nextInt(size - 2);
                 qX.push(x);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, size - 1));
-            } else if (xy == 1) {
+            }
+            if (!viereinenNull[2]) {
+                xy++;
+            }
+            if (xy == 1) {
                 qY.push(0);
                 int x = 1 + random.nextInt(size - 2);
                 qX.push(x);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(x, 0));
-            } else if (xy == 2) {
+            }
+            if (!viereinenNull[1]) {
+                xy++;
+            }
+            if (xy == 2) {
                 qX.push(size - 1);
                 int y = 1 + random.nextInt(size - 2);
                 qY.push(y);
                 dist.push(random.nextInt(1) + 1);
                 huoneet.add(new Piste(size - 1, y));
-            } else if (xy == 3) {
+            }
+            if (!viereinenNull[0]) {
+                xy++;
+            }
+            if (xy == 3) {
                 qX.push(0);
                 int y = 1 + random.nextInt(size - 2);
                 qY.push(y);
@@ -430,7 +456,7 @@ public class Luolageneraattori {
                 qY.push(1);
                 color[i][1] = true;
             }
-            if (!luola.getLuola()[0][i] && luola.getLuola()[1][i] &&random.nextBoolean()) {
+            if (!luola.getLuola()[0][i] && luola.getLuola()[1][i] && random.nextBoolean()) {
                 qX.push(1);
                 qY.push(i);
                 color[1][i] = true;
@@ -516,6 +542,7 @@ public class Luolageneraattori {
             }
         }
         if (y < size - 2) {
+            System.out.println("x: " + x + " y: " + y);
             if (!luola.getLuola()[x][y + 1] && !color[x][y + 1]) {
                 return true;
             }
