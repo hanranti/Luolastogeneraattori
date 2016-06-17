@@ -68,3 +68,4 @@ Käytin 5 tuntia,
 Reunojen generoinnissa viereisten seinien tarkastus aiheuttaa joskus arrayIndexoutOfBoundsExceptionin. 
 Reunojen generointi saattaa myös jättää avoimia alueita, joihin ei voi päästä, mikä poissulkee joitakin testaus mahdollisuuksia
 Ilmeisesti reunojen generointi voi yhä tukkia reittejä, mikä todennäköisesti johtuu vieressaSeinia -metodista.
+
