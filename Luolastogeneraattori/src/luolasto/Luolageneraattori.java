@@ -86,7 +86,7 @@ public class Luolageneraattori {
         int maara = 0;
         //Jos randomin antama todennäköisyys on pienempi, kuin todennäköisyys,
         //generoimattomiin luoliin luodaan uloskäyntejä.
-        if (random.nextInt(101) <= todennakoisyys) {
+        if (random.nextInt(100) + 1 <= todennakoisyys) {
             maara = random.nextInt(5) + 1;
             uusiUloskayntiLisatty = false;
         }
@@ -434,6 +434,10 @@ public class Luolageneraattori {
         //Jonojen koordinaatteihin luodaan seinät.
         Jono qX = new Jono();
         Jono qY = new Jono();
+        //Jotta reunojen generointi ei tukkisi seiniä, tarvitaan aloituskoordinaatteja,
+        //joista reunojen generointi lähtee
+        int[][] aloitusX = new int[size][size];
+        int[][] aloitusY = new int[size][size];
         //Jos reunalla on seinä ja satunnaisluku saa sopivan arvon, reunan vierelle
         //luodaan seinä.
         if (!luola.getLuola()[1][0] && !luola.getLuola()[0][1] && luola.getLuola()[1][1] && random.nextBoolean()) {
@@ -456,34 +460,75 @@ public class Luolageneraattori {
             qY.push(size - 2);
             color[1][size - 2] = true;
         }
+        for (int i = 1; i < size - 1; i++) {
+            aloitusX[i][1] = i;
+            aloitusY[i][1] = 1;
+            aloitusX[1][i] = 1;
+            aloitusY[1][i] = i;
+            aloitusX[i][size - 2] = i;
+            aloitusY[i][size - 2] = size - 2;
+            aloitusX[size - 2][i] = size - 2;
+            aloitusY[size - 2][i] = i;
+        }
         for (int i = 1; i < size - 2; i++) {
             if (!luola.getLuola()[i][0] && luola.getLuola()[i][1] && random.nextBoolean()) {
                 qX.push(i);
                 qY.push(1);
                 color[i][1] = true;
-            }
-            if (!luola.getLuola()[0][i] && luola.getLuola()[1][i] && random.nextBoolean()) {
-                qX.push(1);
-                qY.push(i);
-                color[1][i] = true;
-            }
-            if (!luola.getLuola()[i][size - 1] && luola.getLuola()[i][size - 2] && random.nextBoolean()) {
-                qX.push(i);
-                qY.push(size - 2);
-                color[i][size - 2] = true;
+                aloitusX[i + 1][1] = aloitusX[i][1];
+                aloitusY[i + 1][1] = aloitusY[i][1];
+            } else {
+                aloitusX[i][1] = 0;
+                aloitusY[i][1] = 0;
             }
             if (!luola.getLuola()[size - 1][i] && luola.getLuola()[size - 2][i] && random.nextBoolean()) {
                 qX.push(size - 2);
                 qY.push(i);
                 color[size - 2][i] = true;
+                aloitusX[size - 2][i + 1] = size - 2;
+                aloitusY[size - 2][i + 1] = i;
+            } else {
+                aloitusX[size - 2][i + 1] = size - 2;
+                aloitusY[size - 2][i + 1] = i + 1;
+                aloitusX[size - 2][i] = 0;
+                aloitusY[size - 2][i] = 0;
+            }
+        }
+        for (int i = size - 2; i <= 2; i--) {
+            if (!luola.getLuola()[0][i] && luola.getLuola()[1][i] && random.nextBoolean()) {
+                qX.push(1);
+                qY.push(i);
+                color[1][i] = true;
+                aloitusX[1][i - 1] = 1;
+                aloitusY[1][i - 1] = i;
+            } else {
+                aloitusX[1][i - 1] = 1;
+                aloitusY[1][i - 1] = i - 1;
+                aloitusX[1][i] = 0;
+                aloitusY[1][i] = 0;
+            }
+            if (!luola.getLuola()[i][size - 1] && luola.getLuola()[i][size - 2] && random.nextBoolean()) {
+                qX.push(i);
+                qY.push(size - 2);
+                color[i][size - 2] = true;
+                aloitusX[i - 1][size - 2] = i;
+                aloitusY[i - 1][size - 2] = size - 2;
+            } else {
+                aloitusX[i - 1][size - 2] = i - 1;
+                aloitusY[i - 1][size - 2] = size - 2;
+                aloitusX[i][size - 2] = 0;
+                aloitusY[i][size - 2] = 0;
             }
         }
         char[][] asd = new char[size][size];
-        for (int i = 0; i < asd[0].length; i++) {
+        for (int i = 0;
+                i < asd[0].length;
+                i++) {
             for (int j = 0; j < asd.length; j++) {
                 asd[j][i] = ' ';
             }
         }
+
         while (!qX.tyhja()) {
             int x = (int) qX.poll();
             int y = (int) qY.poll();
@@ -522,7 +567,9 @@ public class Luolageneraattori {
                 color[x][y - 1] = true;
             }
         }
-        for (int i = 0; i < asd[0].length; i++) {
+        for (int i = 0;
+                i < asd[0].length;
+                i++) {
             for (int j = 0; j < asd.length; j++) {
                 System.out.print(asd[j][i]);
             }
@@ -533,6 +580,7 @@ public class Luolageneraattori {
     private boolean vieressaSeinia(Luola luola, boolean[][] color, int x, int y) {
         //Jos pisteen x y vieressä tai kulmassa on seinä, metodi palauttaa true,
         //muulloin false.
+        System.out.println("x: " + x + " y: " + y);
         if (x > 1) {
             if (y > 1) {
                 if (!luola.getLuola()[x - 1][y - 1] && !color[x - 1][y - 1]) {
@@ -554,7 +602,6 @@ public class Luolageneraattori {
             }
         }
         if (y < size - 2) {
-            System.out.println("x: " + x + " y: " + y);
             if (!luola.getLuola()[x][y + 1] && !color[x][y + 1]) {
                 return true;
             }

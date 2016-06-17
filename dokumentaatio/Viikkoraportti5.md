@@ -62,3 +62,5 @@ Kaytin 2,5 tuntia,
 Käytin x tuntia,
 
 * Luolageneraattorin kommentointiin
+
+Reunojen generoinnissa viereisten seinien tarkastus aiheuttaa joskus arrayIndexoutOfBoundsExceptionin. Reunojen generointi voi myös joissain tapauksissa tukkia reittejä.
