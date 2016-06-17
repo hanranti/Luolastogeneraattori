@@ -58,3 +58,7 @@ Kaytin 2,5 tuntia,
 * GeneroiReunat aiheutti ongelman, jossa pelaaja voitiin asettaa pelin alussa seinän sisään, joten muutin pelaajan asettamisen luolaan toimimaan leveyssuuntaisella läpikäynnillä, joka alkaa luolan keskeltä ja etenee, kunnes löydetään ensimmäinen avoin kohta. Pelaaja siis asetetaan mahdollisimman keskelle luolaan.
 * Muutin uloskäyntien generoinnin varmistamaan, että jos luolasta generoidaan uusia uloskäyntejä, varmistus, että luolasta luodaan vähintään 1 uusi uloskäynti ei generoi uutta uloskäyntiä vanhaan luolaan.
 * Aiemmin luolaan generoitui aiemmin yleensä vain 1 uusi uloskäynti, joten lisäsin todennäköisyyttä generoitua uusi uloskäynti. Jos uloskäyntejä ei generoidu tarpeeksi, uusia reittejä ei välttämättä synny vaikka todennäköisyys -luku olisi suuri.
+
+Käytin x tuntia,
+
+* Luolageneraattorin kommentointiin

@@ -46,21 +46,15 @@ public class Luolageneraattori {
      * @param luola
      */
     public void generoi(Luola luola) {
-//        System.out.println("generoi");
-        //        for (int i = 0; i < luola.length; i++) {
-        //            for (int j = 0; j < luola[0].length; j++) {
-        //                if (i == 0 || j == 0 || i == luola.length - 1 || j == luola[0].length - 1) {
-        //                    luola[i][j] = true;
-        //                }
-        //            }
-        //        }
-        //        luola[0][(luola.length - 1) / 2] = false;
-        //        luola[luola.length - 1][(luola.length - 1) / 2] = false;
-        //        luola[(luola.length - 1) / 2][0] = false;
-        //        luola[(luola.length - 1) / 2][luola.length - 1] = false;
+        //Kaikki koordinaatit joihin generoidaan avoimia alueita lisätään jonoihin,
+        //jotka annetaan leveyssuuntaisella läpikäynnillä toimivalle
+        //generoiAvoimetAlueet -metodille.
         Jono qX = new Jono();
         Jono qY = new Jono();
+        //dist sisältää arvot, jotka määrittävät, kuinka laajalle arvoja vastaavista
+        //koordinaateista vähimmillään generoidaan avointa aluetta.
         Jono dist = new Jono();
+        //Luodaan satunnaisluku m, joka vaikuttaa huoneiden määrään ja kokoon.
         int s = random.nextInt(8) + 1;
         int m = size;
         m /= 10;
@@ -83,19 +77,24 @@ public class Luolageneraattori {
         int luolaX = luola.getLuolaX();
         int luolaY = luola.getLuolaY();
         Lista huoneet = luola.getHuoneet();
-//        System.out.println("luoUloskaynnit");
+        //Seuraavia boolean ja int nullMaara muuttujia käytetään varmistamaan,
+        //että, jos luolasta luodaan uusi uloskäynti generoimattomaan luolaan,
+        //luolasta luodaan vähintään yksi uusi uloskäynti.
         boolean uusiUloskayntiLisatty = true;
         boolean viereinenNull[] = new boolean[4];
         int nullMaara = 0;
         int maara = 0;
+        //Jos randomin antama todennäköisyys on pienempi, kuin todennäköisyys,
+        //generoimattomiin luoliin luodaan uloskäyntejä.
         if (random.nextInt(101) <= todennakoisyys) {
-            System.out.println("luodaan uusia luolia");
             maara = random.nextInt(5) + 1;
             uusiUloskayntiLisatty = false;
         }
 
+        //Jos seuraavissa if, niin viereinen luola on jo generoitu, ja viereisestä
+        //luolasta haetaan paikat uloskäynnille.
+        //Jos else, niin generoimattomaan luolaan luodaan mahdollisesti uloskäyntejä.
         if (luolasto.getLuola(luolaX - 1, luolaY) != null) {
-//            System.out.println("x-1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX - 1, luolaY).getLuola()[size - 1][i]) {
                     qX.push(0);
@@ -118,7 +117,6 @@ public class Luolageneraattori {
             nullMaara++;
         }
         if (luolasto.getLuola(luolaX + 1, luolaY) != null) {
-//            System.out.println("x+1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][i]) {
                     qX.push(size - 1);
@@ -141,7 +139,6 @@ public class Luolageneraattori {
             nullMaara++;
         }
         if (luolasto.getLuola(luolaX, luolaY - 1) != null) {
-//            System.out.println("y-1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX, luolaY - 1).getLuola()[i][size - 1]) {
                     qX.push(i);
@@ -164,7 +161,6 @@ public class Luolageneraattori {
             nullMaara++;
         }
         if (luolasto.getLuola(luolaX, luolaY + 1) != null) {
-//            System.out.println("y+1");
             for (int i = 0; i < size; i++) {
                 if (luolasto.getLuola(luolaX, luolaY + 1).getLuola()[i][0]) {
                     qX.push(i);
@@ -186,8 +182,19 @@ public class Luolageneraattori {
             viereinenNull[3] = true;
             nullMaara++;
         }
+        //Jos uutta uloskäyntiä ei ole lisätty ja randomin antama todennäköiyys
+        //on pienempi kuin todennäköisyys, uusi uloskäynti luodaan randomin
+        //antamaan luolaan.
         if (!uusiUloskayntiLisatty) {
+            //Randomin antamia vaihtoehtoja on viereisten generoimattomien
+            //luolien määrä.
             int xy = random.nextInt(nullMaara);
+            //Tässä ja myöhemmissä, jos viereistä ei ole generoitu, tästä aiheutuva
+            //virhe korjataan lisäämällä, xy++.
+            //Jos esimerkiksi vain ensimmäinen vierusluola on jo generoitu, random
+            //antaa xy:n arvoksi arvon välillä 0-2, koska tällöin nullMaara = 3.
+            //Koska if(!viereinenNull[3]) saa tällöin true, xy:n arvo korjautuu
+            //arvoksi välillä 1-3.
             if (!viereinenNull[3]) {
                 xy++;
             }
@@ -236,19 +243,12 @@ public class Luolageneraattori {
     }
 
     private void luoKaytavat(Luola luola, Jono qX, Jono qY, Jono dist) {
+        //Käytävillä muodostetaan pienin virittävä puu käyttäen kruskalia. 
         Lista huoneet = luola.getHuoneet();
-//        System.out.println("luoKaytavat");
-//        int maara = random.nextInt(huoneet.size());
-//        while (maara > 0) {
-//            Piste huone1 = huoneet.get(random.nextInt(huoneet.size()));
-//            Piste huone2 = huoneet.get(random.nextInt(huoneet.size()));
-//            generoiKaytava(qX, qY, dist, huone1.getX(), huone1.getY(),
-//                    huone2.getX(), huone2.getY());
-//            maara--;
-//        }
         UnionFind unionFind = new UnionFind();
         Keko keko = new Keko(false);
         Solmu solmu1 = huoneet.getFirst();
+        //Kaikkien huoneiden välille luodaan kaaret ja nämä listään kekoon.
         while (solmu1 != null) {
             Piste h = (Piste) solmu1.getObject();
             unionFind.makeSet(h);
@@ -269,23 +269,15 @@ public class Luolageneraattori {
         }
         while (unionFind.getKomponentit() > 1 && !keko.tyhja()) {
             Kaari u = (Kaari) keko.poistaJuuri();
-            if (unionFind
-                    .find(
-                            u
-                            .getO1())
-                    != unionFind.
-                    find(
-                            u
-                            .getO2())) {
+            if (unionFind.find(u.getO1()) != unionFind.find(u.getO2())) {
                 unionFind.union(u.getO1(), u.getO2());
-                generoiKaytava(qX, qY, dist, u.getO1().getX(), u.getO1().getY(),
+                luoPolku(qX, qY, dist, u.getO1().getX(), u.getO1().getY(),
                         u.getO2().getX(), u.getO2().getY());
             }
         }
     }
 
-    private void generoiKaytava(Jono qX, Jono qY, Jono dist, int x, int y, int loppuX, int loppuY) {
-//        System.out.println("generoiKaytava");
+    private void luoPolku(Jono qX, Jono qY, Jono dist, int x, int y, int loppuX, int loppuY) {
         if (x == loppuX && y == loppuY) {
             return;
         }
@@ -306,22 +298,22 @@ public class Luolageneraattori {
         dist.push(random.nextInt(1) + 1);
         if (Math.abs(loppuX - x) > Math.abs(loppuY - y)) {
             if (x > loppuX) {
-                generoiKaytava(qX, qY, dist, x - 1, y, loppuX, loppuY);
+                luoPolku(qX, qY, dist, x - 1, y, loppuX, loppuY);
             } else {
-                generoiKaytava(qX, qY, dist, x + 1, y, loppuX, loppuY);
+                luoPolku(qX, qY, dist, x + 1, y, loppuX, loppuY);
             }
         } else {
             if (y > loppuY) {
-                generoiKaytava(qX, qY, dist, x, y - 1, loppuX, loppuY);
+                luoPolku(qX, qY, dist, x, y - 1, loppuX, loppuY);
             } else {
-                generoiKaytava(qX, qY, dist, x, y + 1, loppuX, loppuY);
+                luoPolku(qX, qY, dist, x, y + 1, loppuX, loppuY);
             }
         }
     }
 
     private void luoHuoneet(Luola luola, Jono qX, Jono qY, Jono dist, int m) {
+        //Huoneita luodaan satunnainen määrä satunnaisiin koordinaatteihin.
         Lista huoneet = luola.getHuoneet();
-//        System.out.println("luohuoneet");
         int maara = random.nextInt(m) + 1;
         for (int i = 0; i < maara; i++) {
             Piste piste = new Piste(1 + random.nextInt(size - 2), 1 + random.nextInt(size - 2));
@@ -330,17 +322,11 @@ public class Luolageneraattori {
             qY.push(piste.getY());
             dist.push(random.nextInt(5) + 8);
         }
-//        Solmu solmu = huoneet.getFirst();
-//        while (solmu != null) {
-//            Piste huone = (Piste) solmu.getObject();
-//            qX.push(huone.getX());
-//            qY.push(huone.getY());
-//            dist.push(random.nextInt(5) + 8);
-//            solmu = solmu.getOikea();
-//        }
     }
 
     private void generoiAvoimetAlueet(Luola l, Jono qX, Jono qY, Jono dist, int s) {
+        //Avoimet alueet generoidaan käyttäen saatuja koordinaatteja ja dist-arvoja
+        //jonoissa.
         boolean[][] luola = l.getLuola();
         int luolaX = l.getLuolaX();
         int luolaY = l.getLuolaY();
@@ -369,7 +355,11 @@ public class Luolageneraattori {
             }
             System.out.println("");
         }
-        System.out.println("generoiHuoneet");
+        //Seuraavien taulukkojen arvot viittaavat koordinaatteihin, joista niille
+        //annettujen koordinaattien käsittely on alkanut leveyssuuntaisessa
+        //läpikäynnissä. Näiden ja dist-arvojen avulla lasketaan, miten laajalle
+        //qX ja qY antamista koordinaateista avointa aluetta täytyy vähimmillään
+        //generoida.
         int[][] aloitusX = new int[size][size];
         int[][] aloitusY = new int[size][size];
         for (int i = 0; i < qX.koko(); i++) {
@@ -386,6 +376,9 @@ public class Luolageneraattori {
             int y = (int) qY.poll();
             int d = (int) dist.poll();
             luola[x][y] = true;
+            //Jos x tai y arvo on luolan reunalla ja tämän viereisessä luolassa
+            //on vastapuolella seinä, x y paikalle laitetaan seinä ja jatketaan
+            //seuraavaan jonon arvoon.
             if ((x == size - 1 && luolasto.getLuola(luolaX + 1, luolaY) != null
                     && !luolasto.getLuola(luolaX + 1, luolaY).getLuola()[0][y])
                     || (y == size - 1 && luolasto.getLuola(luolaX, luolaY + 1) != null
@@ -398,6 +391,10 @@ public class Luolageneraattori {
                 continue;
             }
 
+            //Jos viereiset koordinaatit evät ole reunalla ja näitä ei ole vielä
+            //käsitelty, ne lisätään generoitavien alueiden jonoon, jos niiden 
+            //etäisyys pisteestä, josta ne ovat lähteneet on pienempi kuin nille
+            //annettu dist-arvo tai, jos satunnaisluku saa sopivan arvon.
             if (x + 1 < size - 1 && !color[x + 1][y] && (Matematiikka.hypotenuusanPituus(Math.abs(x - aloitusX[x][y]), Math.abs(y - aloitusY[x][y])) < d || random.nextInt(4) < 1)) {
                 color[x + 1][y] = true;
                 aloitusX[x + 1][y] = aloitusX[x][y];
@@ -431,9 +428,14 @@ public class Luolageneraattori {
     }
 
     private void generoiReunat(Luola luola) {
+        //Metodi poistaa reunojen kulmikkuuden lisäämälle seiniä reunoille 
+        //satunnaisesti leveyssuuntaisella läpikäynnillä.
         boolean[][] color = new boolean[size][size];
+        //Jonojen koordinaatteihin luodaan seinät.
         Jono qX = new Jono();
         Jono qY = new Jono();
+        //Jos reunalla on seinä ja satunnaisluku saa sopivan arvon, reunan vierelle
+        //luodaan seinä.
         if (!luola.getLuola()[1][0] && !luola.getLuola()[0][1] && luola.getLuola()[1][1] && random.nextBoolean()) {
             qX.push(1);
             qY.push(1);
@@ -487,6 +489,10 @@ public class Luolageneraattori {
             int y = (int) qY.poll();
             asd[x][y] = 'k';
             luola.getLuola()[x][y] = false;
+            //Jos koordinaatin viereinen piste on avoimen reunan vieressä,
+            //sitä ei lisätä jonoon. Muulloin, jos pisteen vieressä ei ole vanhoja
+            //seiniä ja satunnaisluku saa sopivan arvon, piste lisätään jonoon.
+            //Reunojen generointi ei siis voi tukkia yhtäkään reittiä.
             if (!(x + 1 == size - 1 && luola.getLuola()[size - 1][y])
                     && (!vieressaSeinia(luola, color, x + 1, y)) && !color[x + 1][y]
                     && random.nextInt(3) < 1) {
@@ -525,6 +531,8 @@ public class Luolageneraattori {
     }
 
     private boolean vieressaSeinia(Luola luola, boolean[][] color, int x, int y) {
+        //Jos pisteen x y vieressä tai kulmassa on seinä, metodi palauttaa true,
+        //muulloin false.
         if (x > 1) {
             if (y > 1) {
                 if (!luola.getLuola()[x - 1][y - 1] && !color[x - 1][y - 1]) {
