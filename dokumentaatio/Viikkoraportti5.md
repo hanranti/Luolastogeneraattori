@@ -59,7 +59,7 @@ Kaytin 2,5 tuntia,
 * Muutin uloskäyntien generoinnin varmistamaan, että jos luolasta generoidaan uusia uloskäyntejä, varmistus, että luolasta luodaan vähintään 1 uusi uloskäynti ei generoi uutta uloskäyntiä vanhaan luolaan.
 * Aiemmin luolaan generoitui aiemmin yleensä vain 1 uusi uloskäynti, joten lisäsin todennäköisyyttä generoitua uusi uloskäynti. Jos uloskäyntejä ei generoidu tarpeeksi, uusia reittejä ei välttämättä synny vaikka todennäköisyys -luku olisi suuri.
 
-Käytin x tuntia,
+Käytin 5 tuntia,
 
 * Luolageneraattorin kommentointiin
 * Korjasin reunojen generoinnista aiheutuneen virheen, jossa uudet seinät, joskus tukkivat reittejä.
