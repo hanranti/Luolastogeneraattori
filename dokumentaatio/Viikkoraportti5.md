@@ -62,5 +62,9 @@ Kaytin 2,5 tuntia,
 Käytin x tuntia,
 
 * Luolageneraattorin kommentointiin
+* Korjasin reunojen generoinnista aiheutuneen virheen, jossa uudet seinät, joskus tukkivat reittejä.
+  * Uudet seinät tallennetaan nyt unionFind -rakenteeseen, jossa reunoilla vierekkäin olevat pisteet ja kaikki näistä lähteneet leveyssuuntaisessa läpikäynnissä lisätyt pisteet saavat saman find-arvon. Samoin, kuin vanhat ja uudet seinät, eri find-arvon saaneet seinät eivät voi generoitua vierekkäin. Aiempi virhe tukki reitin tilanteessa, jossa uloskäynnin kummallekkin puolelle generoituneet seinät yhdistyivät ja tukkivat reitin. Nyt tämä ei ole mahdollista, koska uloskäynnin eripuolille generoituneet seinät saavat eri find-arvon.
 
-Reunojen generoinnissa viereisten seinien tarkastus aiheuttaa joskus arrayIndexoutOfBoundsExceptionin. Reunojen generointi voi myös joissain tapauksissa tukkia reittejä.
+Reunojen generoinnissa viereisten seinien tarkastus aiheuttaa joskus arrayIndexoutOfBoundsExceptionin. 
+Reunojen generointi saattaa myös jättää avoimia alueita, joihin ei voi päästä, mikä poissulkee joitakin testaus mahdollisuuksia
+Ilmeisesti reunojen generointi voi yhä tukkia reittejä, mikä todennäköisesti johtuu vieressaSeinia -metodista.

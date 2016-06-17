@@ -80,6 +80,9 @@ public class UnionFind {
      */
     public int find(Object object) {
         int k = -1;
+        if (object ==null) {
+            return k;
+        }
         for (int j = 0; j < objects.length; j++) {
             if (objects[j] != null && object.equals(objects[j])) {
                 k = find(j);
@@ -94,6 +97,24 @@ public class UnionFind {
             y = taulukko[y];
         }
         return y;
+    }
+
+    /**
+     * Metodi palauttaa false, jos parametrina saatujen olioiden find arvo on
+     * eri tai jompikumpi olioista on null, muulloin true.
+     *
+     * @param o1
+     * @param o2
+     * @return
+     */
+    public boolean sama(Object o1, Object o2) {
+        if (o1==null|| o2==null) {
+            return false;
+        }
+        if (find(o1)==find(o2)) {
+            return true;
+        }
+        return false;
     }
 
     private void kasvataTaulukkoa() {
