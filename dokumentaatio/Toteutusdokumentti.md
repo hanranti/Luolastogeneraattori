@@ -10,3 +10,17 @@
   * Huoneita luodaan satunnainen määrä satunnaisiin paikkoihin
     * Huoneen generaatiossa käytetään muunneltua leveyssuuntaista läpikäyntiä
   * Käytävät yhdistävät huoneet, pienimmäksi virittäväksi puuksi käyttäen Kruskalia
+
+### Aika- ja tilavaativuudet
+
+* Luolan generointi: 
+  * avointen alueiden generointi
+    * huoneiden generointi
+    * uloskäyntien generointi
+      * aikavaativuus
+        * min O(1)
+        * max O(n), jossa n = huoneen leveys
+    * käytävien generointi
+      * aikavaativuus O(n²), jossa n = huoneiden ja uloskäyntien yhteismäärä
+      * tilavaativuus
+  * reunojen generointi

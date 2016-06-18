@@ -70,8 +70,9 @@ Reunojen generointi saattaa myös jättää avoimia alueita, joihin ei voi pää
 Ilmeisesti reunojen generointi voi yhä tukkia reittejä, mikä todennäköisesti johtuu vieressaSeinia -metodista.
 Ohjelma voi myös ajautua ensimmäisen luolan generoinnin jälkeen ikuiseen looppiin.
 
-Kaytin x tuntia,
+Kaytin 2,5 tuntia,
  * virheen, jossa pelaajan asetus luolaan johti ikuiseen looppiin, korjaamiseen
  * generoiReunat korjaamiseen, jonka luulen nyt toimivan
    *  vieressaSeinia aiemmin aiheutti ArrayIndexOutOfBoundsExceptionin enkä ole varma onko tämä korjaantunut
+ * suorituskykytestaukseen
  
