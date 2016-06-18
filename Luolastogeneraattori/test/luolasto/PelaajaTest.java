@@ -29,8 +29,8 @@ public class PelaajaTest {
 
     @Before
     public void setUp() {
-        luolasto = new Luolasto(10);
-        pelaaja = new Pelaaja(5, 5, 5, 5, luolasto, 10);
+        luolasto = new Luolasto(32, 0);
+        pelaaja = new Pelaaja(5, 5, luolasto, 32);
         luolasto.genertoiLuola(5, 5);
     }
 

@@ -32,7 +32,7 @@ public class LuolastoTest {
 
     @Before
     public void setUp() {
-        luolasto = new Luolasto(10);
+        luolasto = new Luolasto(32, 0) ;
         luolastoMethodInvoker = new MethodInvoker(luolasto);
     }
 

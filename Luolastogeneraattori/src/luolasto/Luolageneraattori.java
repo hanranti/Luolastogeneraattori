@@ -46,6 +46,7 @@ public class Luolageneraattori {
      * @param luola
      */
     public void generoi(Luola luola) {
+//        System.out.println("generoi");
         //Kaikki koordinaatit joihin generoidaan avoimia alueita lisätään jonoihin,
         //jotka annetaan leveyssuuntaisella läpikäynnillä toimivalle
         //generoiAvoimetAlueet -metodille.
@@ -70,7 +71,7 @@ public class Luolageneraattori {
         if (todennakoisyys > 0) {
             todennakoisyys -= uusiaUloskaynteja;
         }
-        System.out.println("todennakoisyys: " + todennakoisyys);
+//        System.out.println("todennakoisyys: " + todennakoisyys);
     }
 
     private void luoUloskaynnit(Luola luola, Jono qX, Jono qY, Jono dist) {
@@ -330,31 +331,31 @@ public class Luolageneraattori {
         boolean[][] luola = l.getLuola();
         int luolaX = l.getLuolaX();
         int luolaY = l.getLuolaY();
-        char[][] asd = new char[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                asd[i][j] = ' ';
-            }
-        }
-        for (int i = 0; i < qX.koko(); i++) {
-            int x = (int) qX.poll();
-            int y = (int) qY.poll();
-            asd[x][y] = 'o';
-            qX.push(x);
-            qY.push(y);
-        }
-        Solmu solmu = l.getHuoneet().getFirst();
-        while (solmu != null) {
-            Piste piste = (Piste) solmu.getObject();
-            asd[piste.getX()][piste.getY()] = 'x';
-            solmu = solmu.getOikea();
-        }
-        for (int i = 0; i < asd[0].length; i++) {
-            for (int j = 0; j < asd.length; j++) {
-                System.out.print(asd[j][i]);
-            }
-            System.out.println("");
-        }
+//        char[][] asd = new char[size][size];
+//        for (int i = 0; i < size; i++) {
+//            for (int j = 0; j < size; j++) {
+//                asd[i][j] = ' ';
+//            }
+//        }
+//        for (int i = 0; i < qX.koko(); i++) {
+//            int x = (int) qX.poll();
+//            int y = (int) qY.poll();
+//            asd[x][y] = 'o';
+//            qX.push(x);
+//            qY.push(y);
+//        }
+//        Solmu solmu = l.getHuoneet().getFirst();
+//        while (solmu != null) {
+//            Piste piste = (Piste) solmu.getObject();
+//            asd[piste.getX()][piste.getY()] = 'x';
+//            solmu = solmu.getOikea();
+//        }
+//        for (int i = 0; i < asd[0].length; i++) {
+//            for (int j = 0; j < asd.length; j++) {
+//                System.out.print(asd[j][i]);
+//            }
+//            System.out.println("");
+//        }
         //Seuraavien taulukkojen arvot viittaavat koordinaatteihin, joista niille
         //annettujen koordinaattien käsittely on alkanut leveyssuuntaisessa
         //läpikäynnissä. Näiden ja dist-arvojen avulla lasketaan, miten laajalle
@@ -438,33 +439,10 @@ public class Luolageneraattori {
         //jotta generointi ei tuki reittejä.
         UnionFind unionFind = new UnionFind();
         Piste[][] piste = new Piste[size][size];
-//        for (int i = 0; i < size; i++) {
-//            if (piste[i][0] == null) {
-//                piste[i][0] = new Piste(i, 0);
-//                unionFind.makeSet(piste);
-//            }
-//            if (piste[0][i] == null) {
-//                piste[0][i] = new Piste(0, i);
-//                unionFind.makeSet(piste);
-//            }
-//            if (piste[i][size - 1] == null) {
-//                piste[i][size - 1] = new Piste(i, size - 1);
-//                unionFind.makeSet(piste);
-//            }
-//            if (piste[size - 1][i] == null) {
-//                piste[size - 1][i] = new Piste(size - 1, i);
-//                unionFind.makeSet(piste);
-//            }
-//            if (i > 0) {
-//                unionFind.union(piste[i][0], piste[i - 1][0]);
-//                unionFind.union(piste[i][size - 1], piste[i - 1][size - 1]);
-//                unionFind.union(piste[0][i], piste[0][i - 1]);
-//                unionFind.union(piste[size - 1][i - 1], piste[size - 1][i - 1]);
-//            }
-//        }
         //Jos reunalla on seinä ja satunnaisluku saa sopivan arvon, reunan vierelle
         //luodaan seinä.
-        if (!luola.getLuola()[1][0] && !luola.getLuola()[0][1] && luola.getLuola()[1][1] && random.nextBoolean()) {
+        if (!luola.getLuola()[1][0] && !luola.getLuola()[0][1] && luola.getLuola()[1][1]
+                && !vieressaVanhojaSeinia(luola, color, 1, 1) && random.nextBoolean()) {
             qX.push(1);
             qY.push(1);
             color[1][1] = true;
@@ -473,7 +451,8 @@ public class Luolageneraattori {
             unionFind.union(piste[1][1], piste[1][0]);
             unionFind.union(piste[1][1], piste[0][1]);
         }
-        if (!luola.getLuola()[size - 2][0] && !luola.getLuola()[size - 1][1] && luola.getLuola()[size - 2][1] && random.nextBoolean()) {
+        if (!luola.getLuola()[size - 2][0] && !luola.getLuola()[size - 1][1] && luola.getLuola()[size - 2][1]
+                && !vieressaVanhojaSeinia(luola, color, size - 2, 1) && random.nextBoolean()) {
             qX.push(size - 2);
             qY.push(1);
             color[size - 2][1] = true;
@@ -482,7 +461,9 @@ public class Luolageneraattori {
             unionFind.union(piste[size - 2][1], piste[size - 2][0]);
             unionFind.union(piste[size - 2][1], piste[size - 1][1]);
         }
-        if (!luola.getLuola()[size - 2][size - 1] && !luola.getLuola()[size - 1][size - 2] && luola.getLuola()[size - 2][size - 2] && random.nextBoolean()) {
+        if (!luola.getLuola()[size - 2][size - 1] && !luola.getLuola()[size - 1][size - 2]
+                && luola.getLuola()[size - 2][size - 2] && !vieressaVanhojaSeinia(luola, color, size - 2, size - 2)
+                && random.nextBoolean()) {
             qX.push(size - 2);
             qY.push(size - 2);
             color[size - 2][size - 2] = true;
@@ -491,7 +472,9 @@ public class Luolageneraattori {
             unionFind.union(piste[size - 2][size - 2], piste[size - 2][size - 1]);
             unionFind.union(piste[size - 2][size - 2], piste[size - 1][size - 2]);
         }
-        if (!luola.getLuola()[0][size - 2] && !luola.getLuola()[1][size - 1] && luola.getLuola()[1][size - 2] && random.nextBoolean()) {
+        if (!luola.getLuola()[0][size - 2] && !luola.getLuola()[1][size - 1]
+                && luola.getLuola()[1][size - 2] && !vieressaVanhojaSeinia(luola, color, 1, size - 2)
+                && random.nextBoolean()) {
             qX.push(1);
             qY.push(size - 2);
             color[1][size - 2] = true;
@@ -501,7 +484,9 @@ public class Luolageneraattori {
             unionFind.union(piste[1][size - 2], piste[1][size - 1]);
         }
         for (int i = 2; i < size - 2; i++) {
-            if (!luola.getLuola()[i][0] && luola.getLuola()[i][1] && random.nextBoolean()) {
+            if (!luola.getLuola()[i][0] && luola.getLuola()[i][1]
+                    && !vieressaVanhojaSeinia(luola, color, i, 1)
+                    && random.nextBoolean()) {
                 qX.push(i);
                 qY.push(1);
                 color[i][1] = true;
@@ -511,7 +496,9 @@ public class Luolageneraattori {
                     unionFind.union(piste[i][1], piste[i - 1][1]);
                 }
             }
-            if (!luola.getLuola()[size - 1][i] && luola.getLuola()[size - 2][i] && random.nextBoolean()) {
+            if (!luola.getLuola()[size - 1][i] && luola.getLuola()[size - 2][i]
+                    && !vieressaVanhojaSeinia(luola, color, size - 2, i)
+                    && random.nextBoolean()) {
                 qX.push(size - 2);
                 qY.push(i);
                 color[size - 2][i] = true;
@@ -521,7 +508,9 @@ public class Luolageneraattori {
                     unionFind.union(piste[size - 2][i], piste[size - 2][i - 1]);
                 }
             }
-            if (!luola.getLuola()[0][i] && luola.getLuola()[1][i] && random.nextBoolean()) {
+            if (!luola.getLuola()[0][i] && luola.getLuola()[1][i]
+                    && !vieressaVanhojaSeinia(luola, color, 1, i)
+                    && random.nextBoolean()) {
                 qX.push(1);
                 qY.push(i);
                 color[1][i] = true;
@@ -531,7 +520,9 @@ public class Luolageneraattori {
                     unionFind.union(piste[1][i], piste[1][i - 1]);
                 }
             }
-            if (!luola.getLuola()[i][size - 1] && luola.getLuola()[i][size - 2] && random.nextBoolean()) {
+            if (!luola.getLuola()[i][size - 1] && luola.getLuola()[i][size - 2]
+                    && !vieressaVanhojaSeinia(luola, color, i, size - 2)
+                    && random.nextBoolean()) {
                 qX.push(i);
                 qY.push(size - 2);
                 color[i][size - 2] = true;
@@ -546,27 +537,29 @@ public class Luolageneraattori {
         unionFind.union(piste[size - 3][size - 2], piste[size - 2][size - 2]);
         unionFind.union(piste[1][size - 3], piste[1][size - 2]);
         unionFind.union(piste[size - 2][size - 3], piste[size - 2][size - 2]);
-        char[][] asd = new char[size][size];
-        for (int i = 0;
-                i < asd[0].length;
-                i++) {
-            for (int j = 0; j < asd.length; j++) {
-                asd[j][i] = ' ';
-            }
-        }
+//        char[][] asd = new char[size][size];
+//        for (int i = 0;
+//                i < asd[0].length;
+//                i++) {
+//            for (int j = 0; j < asd.length; j++) {
+//                asd[j][i] = ' ';
+//            }
+//        }
 
         while (!qX.tyhja()) {
             int x = (int) qX.poll();
             int y = (int) qY.poll();
-            asd[x][y] = 'k';
+//            asd[x][y] = 'k';
             luola.getLuola()[x][y] = false;
             //Jos koordinaatin viereinen piste on avoimen reunan vieressä,
             //sitä ei lisätä jonoon. Muulloin, jos pisteen vieressä ei ole vanhoja
             //seiniä ja satunnaisluku saa sopivan arvon, piste lisätään jonoon.
             //Reunojen generointi ei siis voi tukkia yhtäkään reittiä.
+            int findxy = unionFind.find(piste[x][y]);
             if (!(x + 1 == size - 1 && luola.getLuola()[size - 1][y])
-                    && (!vieressaSeinia(luola, color, x + 1, y, unionFind, piste)) && !color[x + 1][y]
-                    && random.nextInt(3) < 1) {
+                    && (!vieressaVanhojaSeinia(luola, color, x + 1, y)
+                    && !vieressaUusiaSeinia(x + 1, y, unionFind, piste, findxy))
+                    && !color[x + 1][y] && random.nextInt(3) < 1) {
                 qX.push(x + 1);
                 qY.push(y);
                 color[x + 1][y] = true;
@@ -575,8 +568,9 @@ public class Luolageneraattori {
                 unionFind.union(piste[x][y], piste[x + 1][y]);
             }
             if (!(x - 1 == 0 && luola.getLuola()[0][y])
-                    && (!vieressaSeinia(luola, color, x - 1, y, unionFind, piste)) && !color[x - 1][y]
-                    && random.nextInt(3) < 1) {
+                    && (!vieressaVanhojaSeinia(luola, color, x - 1, y)
+                    && !vieressaUusiaSeinia(x - 1, y, unionFind, piste, findxy))
+                    && !color[x - 1][y] && random.nextInt(3) < 1) {
                 qX.push(x - 1);
                 qY.push(y);
                 color[x - 1][y] = true;
@@ -585,8 +579,9 @@ public class Luolageneraattori {
                 unionFind.union(piste[x][y], piste[x - 1][y]);
             }
             if (!(y + 1 == size - 1 && luola.getLuola()[x][size - 1])
-                    && (!vieressaSeinia(luola, color, x, y + 1, unionFind, piste)) && !color[x][y + 1]
-                    && random.nextInt(3) < 1) {
+                    && (!vieressaVanhojaSeinia(luola, color, x, y + 1)
+                    && !vieressaUusiaSeinia(x, y + 1, unionFind, piste, findxy))
+                    && !color[x][y + 1] && random.nextInt(3) < 1) {
                 qX.push(x);
                 qY.push(y + 1);
                 color[x][y + 1] = true;
@@ -595,8 +590,9 @@ public class Luolageneraattori {
                 unionFind.union(piste[x][y], piste[x][y + 1]);
             }
             if (!(y - 1 == 0 && luola.getLuola()[x][0])
-                    && (!vieressaSeinia(luola, color, x, y - 1, unionFind, piste)) && !color[x][y - 1]
-                    && random.nextInt(3) < 1) {
+                    && (!vieressaVanhojaSeinia(luola, color, x, y - 1)
+                    && !vieressaUusiaSeinia(x, y - 1, unionFind, piste, findxy))
+                    && !color[x][y - 1] && random.nextInt(3) < 1) {
                 qX.push(x);
                 qY.push(y - 1);
                 color[x][y - 1] = true;
@@ -605,73 +601,109 @@ public class Luolageneraattori {
                 unionFind.union(piste[x][y], piste[x][y - 1]);
             }
         }
-        for (int i = 0;
-                i < asd[0].length;
-                i++) {
-            for (int j = 0; j < asd.length; j++) {
-                System.out.print(asd[j][i]);
-            }
-            System.out.println("");
-        }
+//        for (int i = 0;
+//                i < asd[0].length;
+//                i++) {
+//            for (int j = 0; j < asd.length; j++) {
+//                System.out.print(asd[j][i]);
+//            }
+//            System.out.println("");
+//        }
     }
 
-    private boolean vieressaSeinia(Luola luola, boolean[][] color, int x, int y,
-            UnionFind unionFind, Piste[][] pisteet) {
-        //Jos pisteen x y vieressä tai kulmassa on vanha tai tästä seinämästä
-        //irralinen seinä metodi palauttaa true, muulloin false.
-        System.out.println("x: " + x + " y: " + y);
-        if (x > 1) {
-            if (y > 1) {
-                if ((!luola.getLuola()[x - 1][y - 1] && !color[x - 1][y - 1])
-                        || (pisteet[x - 1][y - 1] != null && unionFind.find(pisteet[x][y])
-                        != unionFind.find(pisteet[x - 1][y - 1]))) {
+    private boolean vieressaUusiaSeinia(int x, int y, UnionFind unionFind, Piste[][] pisteet, int findxy) {
+//        System.out.println("x: " + x + " y: " + y);
+        if (x > 0) {
+            if (y > 0) {
+                if (pisteet[x - 1][y - 1] != null && findxy
+                        != unionFind.find(pisteet[x - 1][y - 1])) {
                     return true;
                 }
             }
-            if ((!luola.getLuola()[x - 1][y] && !color[x - 1][y])
-                    || (pisteet[x - 1][y] != null && unionFind.find(pisteet[x][y])
-                    != unionFind.find(pisteet[x - 1][y]))) {
+            if (pisteet[x - 1][y] != null && findxy
+                    != unionFind.find(pisteet[x - 1][y])) {
                 return true;
             }
-            if (y < size - 2) {
-                if ((!luola.getLuola()[x - 1][y + 1] && !color[x - 1][y + 1])
-                        || (pisteet[x - 1][y + 1] != null && unionFind.find(pisteet[x][y])
-                        != unionFind.find(pisteet[x - 1][y + 1]))) {
+            if (y < size - 1) {
+                if (pisteet[x - 1][y + 1] != null && findxy
+                        != unionFind.find(pisteet[x - 1][y + 1])) {
                     return true;
                 }
             }
         }
-        if (y > 1) {
-            if ((!luola.getLuola()[x][y - 1] && !color[x][y - 1])
-                    || (pisteet[x][y - 1] != null && unionFind.find(pisteet[x][y])
-                    != unionFind.find(pisteet[x][y - 1]))) {
+        if (y > 0) {
+            if (pisteet[x][y - 1] != null && findxy
+                    != unionFind.find(pisteet[x][y - 1])) {
                 return true;
             }
         }
-        if (y < size - 2) {
-            if ((!luola.getLuola()[x][y + 1] && !color[x][y + 1])
-                    || (pisteet[x][y + 1] != null && unionFind.find(pisteet[x][y])
-                    != unionFind.find(pisteet[x][y + 1]))) {
+        if (y < size - 1) {
+            if (pisteet[x][y + 1] != null && findxy
+                    != unionFind.find(pisteet[x][y + 1])) {
                 return true;
             }
         }
-        if (x < size - 2) {
-            if (y > 1) {
-                if ((!luola.getLuola()[x + 1][y - 1] && !color[x + 1][y - 1])
-                        || (pisteet[x + 1][y - 1] != null && unionFind.find(pisteet[x][y])
-                        != unionFind.find(pisteet[x + 1][y - 1]))) {
+        if (x < size - 1) {
+            if (y > 0) {
+                if (pisteet[x + 1][y - 1] != null && findxy
+                        != unionFind.find(pisteet[x + 1][y - 1])) {
                     return true;
                 }
             }
-            if ((!luola.getLuola()[x + 1][y] && !color[x + 1][y])
-                    || (pisteet[x + 1][y] != null && unionFind.find(pisteet[x][y])
-                    != unionFind.find(pisteet[x + 1][y]))) {
+            if (pisteet[x + 1][y] != null && findxy
+                    != unionFind.find(pisteet[x + 1][y])) {
                 return true;
             }
-            if (y < size - 2) {
-                if ((!luola.getLuola()[x + 1][y + 1] && !color[x + 1][y + 1])
-                        || (pisteet[x + 1][y + 1] != null && unionFind.find(pisteet[x][y])
-                        != unionFind.find(pisteet[x + 1][y + 1]))) {
+            if (y < size - 1) {
+                if (pisteet[x + 1][y + 1] != null && findxy
+                        != unionFind.find(pisteet[x + 1][y + 1])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean vieressaVanhojaSeinia(Luola luola, boolean[][] color, int x, int y) {
+        //Jos pisteen x y vieressä tai kulmassa on vanha seinä metodi palauttaa 
+        //true, muulloin false.
+//        System.out.println("x: " + x + " y: " + y);
+        if (x > 0) {
+            if (y > 0) {
+                if (!luola.getLuola()[x - 1][y - 1] && !color[x - 1][y - 1]) {
+                    return true;
+                }
+            }
+            if (!luola.getLuola()[x - 1][y] && !color[x - 1][y]) {
+                return true;
+            }
+            if (y < size - 1) {
+                if (!luola.getLuola()[x - 1][y + 1] && !color[x - 1][y + 1]) {
+                    return true;
+                }
+            }
+        }
+        if (y > 0) {
+            if (!luola.getLuola()[x][y - 1] && !color[x][y - 1]) {
+                return true;
+            }
+        }
+        if (y < size - 1) {
+            if (!luola.getLuola()[x][y + 1] && !color[x][y + 1]) {
+                return true;
+            }
+        }
+        if (x < size - 1) {
+            if (y > 0) {
+                if (!luola.getLuola()[x + 1][y - 1] && !color[x + 1][y - 1]) {
+                    return true;
+                }
+            }
+            if (!luola.getLuola()[x + 1][y] && !color[x + 1][y]) {
+                return true;
+            }
+            if (y < size - 1) {
+                if (!luola.getLuola()[x + 1][y + 1] && !color[x + 1][y + 1]) {
                     return true;
                 }
             }

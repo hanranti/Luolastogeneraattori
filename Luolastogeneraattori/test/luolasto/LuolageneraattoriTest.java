@@ -36,11 +36,11 @@ public class LuolageneraattoriTest {
 
     @Test
     public void testGeneroi() {
-        Luolasto luolasto = new Luolasto(10);
-        this.luolageneraattori = new Luolageneraattori(luolasto, 10);
-        Luola luola = new Luola(luolasto, 5, 5, 10);
-        assertEquals(10, luola.getLuola().length);
-        assertEquals(10, luola.getLuola()[0].length);
+        Luolasto luolasto = new Luolasto(50, 0);
+        this.luolageneraattori = new Luolageneraattori(luolasto, 50, 0);
+        Luola luola = new Luola(luolasto, 5, 5, 50);
+        assertEquals(50, luola.getLuola().length);
+        assertEquals(50, luola.getLuola()[0].length);
         luola = new Luola(luolasto, 5, 5, 32);
         assertEquals(32, luola.getLuola().length);
         assertEquals(32, luola.getLuola()[0].length);
@@ -48,8 +48,8 @@ public class LuolageneraattoriTest {
 
     @Test
     public void sisaltaaUloskaynnin() {
-        Luolasto luolasto = new Luolasto(32);
-        this.luolageneraattori = new Luolageneraattori(luolasto, 32);
+        Luolasto luolasto = new Luolasto(32, 0);
+        this.luolageneraattori = new Luolageneraattori(luolasto, 32, 0);
         boolean sisaltaaUloskaynnin = false;
         Luola luola = new Luola(luolasto, 5, 5, 32);
         luolageneraattori.generoi(luola);

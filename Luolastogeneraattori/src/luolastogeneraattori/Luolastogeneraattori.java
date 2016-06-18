@@ -1,12 +1,9 @@
 package luolastogeneraattori;
 
-import java.util.Random;
 import java.util.Scanner;
 import luolasto.Luolasto;
 import luolasto.Pelaaja;
 import tietorakenteet.Jono;
-import tietorakenteet.Lista;
-import tietorakenteet.Piste;
 import ui.GUI;
 
 /**
@@ -81,8 +78,10 @@ public class Luolastogeneraattori {
     private void asetaPelaajaLuolaan() {
         Jono qX = new Jono();
         Jono qY = new Jono();
+        boolean[][] color = new boolean[size][size];
         qX.push(size / 2);
         qY.push(size / 2);
+        color[size / 2][size / 2] = true;
         while (!qX.tyhja()) {
             int x = (int) qX.poll();
             int y = (int) qY.poll();
@@ -91,21 +90,25 @@ public class Luolastogeneraattori {
                 pelaaja.setY(y);
                 return;
             }
-            if (x + 1 <= size - 1) {
+            if (x + 1 <= size - 1 && color[x + 1][y] == false) {
                 qX.push(x + 1);
                 qY.push(y);
+                color[x + 1][y] = true;
             }
-            if (y + 1 <= size - 1) {
+            if (y + 1 <= size - 1 && color[x][y + 1] == false) {
                 qX.push(x);
                 qY.push(y + 1);
+                color[x][y + 1] = true;
             }
-            if (x - 1 >= 0) {
+            if (x - 1 >= 0 && color[x - 1][y] == false) {
                 qX.push(x - 1);
                 qY.push(y);
+                color[x - 1][y] = true;
             }
-            if (y - 1 >= 0) {
+            if (y - 1 >= 0 && color[x][y - 1] == false) {
                 qX.push(x);
                 qY.push(y - 1);
+                color[x][y - 1] = true;
             }
         }
     }
