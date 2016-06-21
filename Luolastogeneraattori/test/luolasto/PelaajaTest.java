@@ -50,47 +50,51 @@ public class PelaajaTest {
     @Test
     public void testLiikuta() {
         poistaSeinat(luolasto.getLuola(5, 5));
-        assertEquals(pelaaja.getX(), 5);
-        assertEquals(pelaaja.getY(), 5);
+        pelaaja.setX(5);
+        pelaaja.setY(5);
+        assertEquals(5, pelaaja.getX());
+        assertEquals(5, pelaaja.getY());
         pelaaja.liikutaOikealle();
-        assertEquals(pelaaja.getX(), 6);
-        assertEquals(pelaaja.getY(), 5);
+        assertEquals(6, pelaaja.getX());
+        assertEquals(5, pelaaja.getY());
         pelaaja.liikutaAlas();
-        assertEquals(pelaaja.getX(), 6);
-        assertEquals(pelaaja.getY(), 6);
+        assertEquals(6, pelaaja.getX());
+        assertEquals(6, pelaaja.getY());
         pelaaja.liikutaVasemmalle();
-        assertEquals(pelaaja.getX(), 5);
-        assertEquals(pelaaja.getY(), 6);
+        assertEquals(5, pelaaja.getX());
+        assertEquals(6, pelaaja.getY());
         pelaaja.liikutaYlos();
-        assertEquals(pelaaja.getX(), 5);
-        assertEquals(pelaaja.getY(), 5);
+        assertEquals(5, pelaaja.getX());
+        assertEquals(5, pelaaja.getY());
         pelaaja.liikutaVasemmalle();
-        assertEquals(pelaaja.getX(), 4);
-        assertEquals(pelaaja.getY(), 5);
+        assertEquals(4, pelaaja.getX());
+        assertEquals(5, pelaaja.getY());
         pelaaja.liikutaVasemmalle();
-        assertEquals(pelaaja.getX(), 3);
-        assertEquals(pelaaja.getY(), 5);
+        assertEquals(3, pelaaja.getX());
+        assertEquals(5, pelaaja.getY());
         pelaaja.liikutaVasemmalle();
-        assertEquals(pelaaja.getX(), 2);
-        assertEquals(pelaaja.getY(), 5);
+        assertEquals(2, pelaaja.getX());
+        assertEquals(5, pelaaja.getY());
         pelaaja.liikutaVasemmalle();
-        assertEquals(pelaaja.getX(), 1);
-        assertEquals(pelaaja.getY(), 5);
+        assertEquals(1, pelaaja.getX());
+        assertEquals(5, pelaaja.getY());
         pelaaja.liikutaVasemmalle();
-        assertEquals(pelaaja.getX(), 0);
-        assertEquals(pelaaja.getY(), 5);
+        assertEquals(0, pelaaja.getX());
+        assertEquals(5, pelaaja.getY());
         luolasto.genertoiLuola(4, 5);
         poistaSeinat(luolasto.getLuola(4, 5));
         pelaaja.liikutaVasemmalle();
-        assertEquals(pelaaja.getX(), 9);
-        assertEquals(pelaaja.getY(), 5);
-        assertEquals(pelaaja.getLuolaX(), 4);
-        assertEquals(pelaaja.getLuolaY(), 5);
+        assertEquals(31, pelaaja.getX());
+        assertEquals(5, pelaaja.getY());
+        assertEquals(4, pelaaja.getLuolaX());
+        assertEquals(5, pelaaja.getLuolaY());
     }
 
     @Test
     public void testSeinat() {
         poistaSeinat(luolasto.getLuola(5, 5));
+        pelaaja.setX(5);
+        pelaaja.setY(5);
         boolean[][] t = luolasto.getLuola(5, 5).getLuola();
         t[4][5] = false;
         t[6][5] = false;

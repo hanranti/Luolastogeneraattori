@@ -35,7 +35,6 @@ public class Luolasto {
      * @param y
      */
     public void genertoiLuola(int x, int y) {
-        System.out.println(luolasto.length);
         if (x + muutos >= luolasto.length || x + muutos < 0 || y + muutos >= luolasto[0].length || y + muutos < 0) {
             kasvataTaulukkoa();
         }
