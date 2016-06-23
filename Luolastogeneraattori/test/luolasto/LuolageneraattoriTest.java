@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 import tietorakenteet.Jono;
 import tietorakenteet.Lista;
 import tietorakenteet.Piste;
+import tietorakenteet.Solmu;
 
 /**
  *
@@ -111,7 +112,13 @@ public class LuolageneraattoriTest {
             System.out.println("");
         }
         Lista huoneet = luola.getHuoneet();
-        boolean[] kayty = new boolean[huoneet.getKoko()];
+        boolean[][] pisteet = new boolean[size][size];
+        Solmu s = huoneet.getFirst();
+        while (!s.equals(huoneet.getLast())) {
+            Piste h = (Piste) s.getObject();
+            pisteet[h.getX()][h.getY()] = true;
+            s = s.getOikea();
+        }
         Jono qX = new Jono();
         Jono qY = new Jono();
         boolean[][] color = new boolean[size][size];
@@ -125,13 +132,7 @@ public class LuolageneraattoriTest {
             int y = (int) qY.poll();
             asd[x][y] = 'k';
             int i = 0;
-            while (i < huoneet.getKoko()) {
-                Piste huone = (Piste) huoneet.get(i);
-                if (huone.getX() == x && huone.getY() == y) {
-                    kayty[i] = true;
-                }
-                i++;
-            }
+            pisteet[x][y] = false;
             if (x + 1 < size && luola.getLuola()[x + 1][y] && !color[x + 1][y]) {
                 qX.push(x + 1);
                 qY.push(y);
@@ -155,20 +156,20 @@ public class LuolageneraattoriTest {
         }
         for (int i = 0; i < asd[0].length; i++) {
             for (int j = 0; j < asd.length; j++) {
-                System.out.print(asd[j][i]);
+                if (pisteet[j][i]&&asd[j][i]=='k') {
+                    System.out.print('o');
+                } else if (pisteet[j][j]) {
+                    System.out.print('p');
+                } else{
+                    System.out.print(asd[j][i]);
+                }
             }
             System.out.println("");
         }
-        boolean kaikkiinReitit = true;
-        for (int i = 0; i < kayty.length; i++) {
-            System.out.println("i " + i);
-            Piste a = (Piste) huoneet.get(i);
-            System.out.println(a.getX() + " " + a.getY());
-            if (!kayty[i]) {
-                kaikkiinReitit = false;
-                break;
+        for (int i = 0; i < pisteet[0].length; i++) {
+            for (int j = 0; j < pisteet.length; j++) {
+                assertFalse(pisteet[j][i]);
             }
         }
-        assertTrue(kaikkiinReitit);
     }
 }
