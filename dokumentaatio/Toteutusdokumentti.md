@@ -17,12 +17,18 @@
 
 * Luolan generointi: 
   * avointen alueiden generointi
-    * huoneiden generointi
-    * uloskäyntien generointi
+    * huoneiden luominen
+      * aikavaativuus O(1)
+      * tilavaativuus O(1)
+    * uloskäyntien luominen
       * aikavaativuus
-        * min O(1)
+        * min Ω(1)
         * max O(n), jossa n = huoneen leveys
-    * käytävien generointi
+      * tilavaativuus 
+        * min Ω(1)
+        * max O(n)
+    * käytävien luominen
       * aikavaativuus O(n²), jossa n = huoneiden ja uloskäyntien yhteismäärä
-      * tilavaativuus
+      * tilavaativuus O(n)
   * reunojen generointi
+    * aikavaativuus O(n²), jossa n = huoneen leveys
