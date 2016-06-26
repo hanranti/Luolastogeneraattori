@@ -31,7 +31,9 @@ public class FieldAccess {
                     fields[i].setAccessible(true);
                     return  fields[i].get(object);
                 } catch (IllegalArgumentException ex) {
+                    System.out.println("IllegalArgumentException");
                 } catch (IllegalAccessException ex) {
+                    System.out.println("IllegalAccessException");
                 }
             }
         }

@@ -33,15 +33,7 @@ public class Luola {
         huoneet = new Lista();
     }
 
-    /**
-     * Metodi lisää huoneisiin uuden Piste -olion, joka sisältää yhden huoneen
-     * koordinaatit.
-     *
-     * @param huone
-     */
-    public void addHuone(Piste huone) {
-        huoneet.add(huone);
-    }
+    
 
     /**
      * Metodi palauttaa tätä luolaa kuvaavan boolean[][] -taulukon.

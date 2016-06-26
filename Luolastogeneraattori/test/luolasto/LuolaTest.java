@@ -29,7 +29,7 @@ public class LuolaTest {
 
     @Before
     public void setUp() {
-        luolasto = new Luolasto(22, 0);
+        luolasto = new Luolasto(52, 0);
         luola = new Luola(luolasto, 1, 2);
     }
 
@@ -41,8 +41,8 @@ public class LuolaTest {
     public void testLuola() {
         assertEquals(1, luola.getX());
         assertEquals(2, luola.getY());
-        assertEquals(22, luola.getLuola().length);
-        assertEquals(22, luola.getLuola()[0].length);
+        assertEquals(52, luola.getLuola().length);
+        assertEquals(52, luola.getLuola()[0].length);
     }
 
     @Test

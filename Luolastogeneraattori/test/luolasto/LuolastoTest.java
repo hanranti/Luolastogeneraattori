@@ -50,7 +50,6 @@ public class LuolastoTest {
         luolastoMethodInvoker.invokeMethod("kasvataTaulukkoa", new Object[0]);
         assertEquals(35, (int) FieldAccess.getField(luolasto, "muutos"));
     }
-// -15 -5 0 10 15 25
 
     @Test
     public void testMuutos() {

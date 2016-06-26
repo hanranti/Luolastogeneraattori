@@ -128,25 +128,25 @@ public class KekoTest {
     }
 
     private void testKekoJarjestyksessa(Keko keko) {
-//        Object[] taulukko = (Object[]) FieldAccess.getArray(keko, "taulukko");
-//        System.out.println("taulukko " + taulukko.length);
-//        for (int i = 0; i < taulukko.length; i++) {
-//            System.out.println(taulukko[i]);
-//        }
-//        int size = (int) FieldAccess.getField(keko, "size");
-//        assertNull(taulukko[0]);
-//
-//        for (int i = 1; i < size; i++) {
-//            if (i > 1) {
-//                assertTrue((int) taulukko[i] < (int) taulukko[i / 2]);
-//            }
-//            if (i * 2 < size) {
-//                System.out.println("i*2");
-//                assertTrue((int) taulukko[i] > (int) taulukko[i * 2]);
-//            }
-//            if ((i * 2) + 1 < size) {
-//                assertTrue((int) taulukko[i] > (int) taulukko[(i * 2) + 1]);
-//            }
-//        }
+        Object[] taulukko = (Object[]) FieldAccess.getArray(keko, "taulukko");
+        System.out.println("taulukko " + taulukko.length);
+        for (int i = 0; i < taulukko.length; i++) {
+            System.out.println(taulukko[i]);
+        }
+        int size = (int) FieldAccess.getField(keko, "size");
+        assertNull(taulukko[0]);
+
+        for (int i = 1; i < size; i++) {
+            if (i > 1) {
+                assertTrue((int) taulukko[i] < (int) taulukko[i / 2]);
+            }
+            if (i * 2 < size) {
+                System.out.println("i*2");
+                assertTrue((int) taulukko[i] > (int) taulukko[i * 2]);
+            }
+            if ((i * 2) + 1 < size) {
+                assertTrue((int) taulukko[i] > (int) taulukko[(i * 2) + 1]);
+            }
+        }
     }
 }
