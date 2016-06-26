@@ -69,6 +69,12 @@
     * Avointen alueiden generointi ja reunojen generointi vievät kumpikin aikaa O(n²) eli aikavaativuus on O(n²).
   * tilavaativuus O(n²), jossa n = luolan leveys
     * Avointen alueiden generointi ja reunojen generointi vievät kumpikin tilaa O(n²) eli tilavaativuus on O(n²).
+    
+* pelaajan asettaminen luokkaan
+  * aikavaativuus O(n²), jossa n = luolan leveys
+    * Leveyssuuntaisen läpikäynnin aikavaativuus on O (n² + m) eli O(n²) (m = kaarten määrä)(n² = solmujen määrä). 
+  * tilavaativuus O(n²), jossa n = luolan leveys
+      * Leveyssuuntaisen läpikäynnin tilavaativuus on O(n²) (n² = solmujen määrä).
 
 ### Suorituskykytestaus
 
