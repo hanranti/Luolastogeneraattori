@@ -20,14 +20,19 @@
     * huoneiden luominen
       * aikavaativuus O(1)
       * tilavaativuus O(1)
+        * Huoneita luodaan aina vakiomäärä.
       
     * uloskäyntien luominen
       * aikavaativuus
         * min Ω(1)
+          * Jos yhtäkään viereistä luolaa ei ole generoitu, aikavaativuus on vakio, koska uusia uloskäyntejä luodaan aina vakio määrä.
         * max O(n), jossa n = luolan leveys
+          * Kun luolan vieressä on generoitu luola, viereisen luolan reunan vastaisten koordinaattien lisääminen jonoon vie lineaarisen ajan.
       * tilavaativuus 
         * min Ω(1)
+          * Jos yhtäkään viereistä luolaa ei ole generoitu, tilavaativuus on vakio, koska uusia uloskäyntejä luodaan aina vakio määrä.
         * max O(n), jossa n = luolan leveys
+          * Kun luolan vieressä on generoitu luola, viereisen luolan reunan vastaisten koordinaattien lisääminen jonoon vie lineaarisen tilan.
         
     * käytävien luominen
       * käytävän luominen
