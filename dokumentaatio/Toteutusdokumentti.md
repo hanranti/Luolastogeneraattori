@@ -23,12 +23,23 @@
     * uloskäyntien luominen
       * aikavaativuus
         * min Ω(1)
-        * max O(n), jossa n = huoneen leveys
+        * max O(n), jossa n = luolan leveys
       * tilavaativuus 
         * min Ω(1)
-        * max O(n)
+        * max O(n), jossa n = luolan leveys
     * käytävien luominen
+      * käytävän luominen
+        * aikavaativuus O(n), jossa n = luolan leveys
+        * tilavaativuus O(n), jossa n = luolan leveys
       * aikavaativuus O(n²), jossa n = huoneiden ja uloskäyntien yhteismäärä
-      * tilavaativuus O(n)
+      * tilavaativuus O(n²), jossa n = huoneiden ja uloskäyntien yhteismäärä
+    * alueiden generointi
+      * aikavaativuus O(n²), jossa n = luolan leveys
+      * tilavaativuus O(n²), jossa n = luolan leveys
+    * aikavaativuus O(n²), jossa n = luolan leveys
+    * tilavaativuus O(n²), jossa n = luolan leveys
   * reunojen generointi
-    * aikavaativuus O(n²), jossa n = huoneen leveys
+    * aikavaativuus O(n²), jossa n = luolan leveys
+    * tilavaativuus O(n²), jossa n = luolan leveys
+  * aikavaativuus O(n²), jossa n = luolan leveys
+  * tilavaativuus O(n²), jossa n = luolan leveys
