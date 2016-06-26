@@ -17,12 +17,12 @@ public class Main {
      */
     public static void main(String[] args) {
         int size = 32;
-        int uusiaUloskaynteja = 10;
+        int todennakoisyysVahennys = 10;
 
         if (args.length > 0) {
             size = Integer.parseInt(args[0]);
             if (args.length > 1) {
-                uusiaUloskaynteja = Integer.parseInt(args[1]);
+                todennakoisyysVahennys = Integer.parseInt(args[1]);
             }
         }
         
@@ -30,13 +30,13 @@ public class Main {
             size = 32;
             System.out.println("Pienin luolan koko on 32");
         }
-        if (uusiaUloskaynteja<0) {
-            uusiaUloskaynteja = 0;
-            System.out.println("Pienin uusien luolien löytymisen määrittävä luku on 0");
+        if (todennakoisyysVahennys<0) {
+            todennakoisyysVahennys = 0;
+            System.out.println("Pienin todennäköisyysvähennös on 0");
         }
 
         Luolastogeneraattori luolastogeneraattori
-                = new Luolastogeneraattori(size, uusiaUloskaynteja);
+                = new Luolastogeneraattori(size, todennakoisyysVahennys);
         luolastogeneraattori.kaynnista();
     }
 }

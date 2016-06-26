@@ -33,11 +33,11 @@ public class LuolaogeneraattoriSuorituskykyTest {
     @Before
     public void setUp() {
         luolasto32 = new Luolasto(32, 0);
-        luolageneraattori32 = new Luolageneraattori(luolasto32, 32, 0);
+        luolageneraattori32 = new Luolageneraattori(luolasto32, 0);
         luolasto50 = new Luolasto(50, 0);
-        luolageneraattori50 = new Luolageneraattori(luolasto50, 50, 0);
+        luolageneraattori50 = new Luolageneraattori(luolasto50, 0);
         luolasto100 = new Luolasto(100, 0);
-        luolageneraattori100 = new Luolageneraattori(luolasto100, 100, 0);
+        luolageneraattori100 = new Luolageneraattori(luolasto100, 0);
     }
 
     @After
@@ -50,7 +50,7 @@ public class LuolaogeneraattoriSuorituskykyTest {
         long keskiarvo = 0;
         for (int i = 0; i < 10000; i++) {
             long alku = System.nanoTime();
-            luolageneraattori32.generoi(new Luola(luolasto32, 5, 5, 32));
+            luolageneraattori32.generoi(new Luola(luolasto32, 5, 5));
             long loppu = System.nanoTime();
             keskiarvo += (loppu - alku);
         }
@@ -62,7 +62,7 @@ public class LuolaogeneraattoriSuorituskykyTest {
         long keskiarvo = 0;
         for (int i = 0; i < 10000; i++) {
             long alku = System.nanoTime();
-            luolageneraattori50.generoi(new Luola(luolasto50, 5, 5, 50));
+            luolageneraattori50.generoi(new Luola(luolasto50, 5, 5));
             long loppu = System.nanoTime();
             keskiarvo += (loppu - alku);
         }
@@ -74,7 +74,7 @@ public class LuolaogeneraattoriSuorituskykyTest {
         long keskiarvo = 0;
         for (int i = 0; i < 10000; i++) {
             long alku = System.nanoTime();
-            luolageneraattori100.generoi(new Luola(luolasto100, 5, 5, 100));
+            luolageneraattori100.generoi(new Luola(luolasto100, 5, 5));
             long loppu = System.nanoTime();
             keskiarvo += (loppu - alku);
         }

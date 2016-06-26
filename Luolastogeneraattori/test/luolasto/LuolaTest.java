@@ -30,7 +30,7 @@ public class LuolaTest {
     @Before
     public void setUp() {
         luolasto = new Luolasto(22, 0);
-        luola = new Luola(luolasto, 1, 2, 22);
+        luola = new Luola(luolasto, 1, 2);
     }
 
     @After
@@ -39,8 +39,8 @@ public class LuolaTest {
 
     @Test
     public void testLuola() {
-        assertEquals(1, luola.getLuolaX());
-        assertEquals(2, luola.getLuolaY());
+        assertEquals(1, luola.getX());
+        assertEquals(2, luola.getY());
         assertEquals(22, luola.getLuola().length);
         assertEquals(22, luola.getLuola()[0].length);
     }
@@ -48,7 +48,7 @@ public class LuolaTest {
     @Test
     public void testHuoneet() {
         assertTrue(luola.getHuoneet().getKoko() == 0);
-        Luolageneraattori luolageneraattori = new Luolageneraattori(luolasto, 22, 0);
+        Luolageneraattori luolageneraattori = new Luolageneraattori(luolasto, 0);
         luolageneraattori.generoi(luola);
         assertTrue(luola.getHuoneet().getKoko() > 0);
     }

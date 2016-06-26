@@ -1,7 +1,6 @@
 package luolasto;
 
 import tietorakenteet.Piste;
-import java.util.Random;
 import tietorakenteet.Lista;
 
 /**
@@ -12,26 +11,25 @@ import tietorakenteet.Lista;
  */
 public class Luola {
 
-    private boolean[][] luola;
-    private int luolaX, luolaY, size;
-    private Lista huoneet;
-    private Luolasto luolasto;
+    private final boolean[][] luola;
+    private final int x, y, size;
+    private final Lista huoneet;
+    private final Luolasto luolasto;
 
     /**
      * Metodi luo Luola -olion. Metodi ottaa parametrina int size muuttujan,
      * joka määrittää luolan leveyden ja korkeuden.
      *
      * @param luolasto
-     * @param size
      * @param y
      * @param x
      */
-    public Luola(Luolasto luolasto, int x, int y, int size) {
-        this.size = size;
-        luola = new boolean[size][size];
+    public Luola(Luolasto luolasto, int x, int y) {
         this.luolasto = luolasto;
-        this.luolaX = x;
-        this.luolaY = y;
+        this.size = luolasto.getSize();
+        luola = new boolean[size][size];
+        this.x = x;
+        this.y = y;
         huoneet = new Lista();
     }
 
@@ -69,8 +67,8 @@ public class Luola {
      *
      * @return
      */
-    public int getLuolaX() {
-        return luolaX;
+    public int getX() {
+        return x;
     }
 
     /**
@@ -78,7 +76,7 @@ public class Luola {
      *
      * @return
      */
-    public int getLuolaY() {
-        return luolaY;
+    public int getY() {
+        return y;
     }
 }

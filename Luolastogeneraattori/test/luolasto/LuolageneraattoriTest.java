@@ -39,18 +39,6 @@ public class LuolageneraattoriTest {
     }
 
     @Test
-    public void testLength() {
-        Luolasto luolasto = new Luolasto(50, 0);
-        this.luolageneraattori = new Luolageneraattori(luolasto, 50, 0);
-        Luola luola = new Luola(luolasto, 5, 5, 50);
-        assertEquals(50, luola.getLuola().length);
-        assertEquals(50, luola.getLuola()[0].length);
-        luola = new Luola(luolasto, 5, 5, 32);
-        assertEquals(32, luola.getLuola().length);
-        assertEquals(32, luola.getLuola()[0].length);
-    }
-
-    @Test
     public void testSisaltaaUloskaynnin() {
         for (int i = 0; i < 100; i++) {
             sisaltaaUloskaynnin();
@@ -59,9 +47,9 @@ public class LuolageneraattoriTest {
 
     private void sisaltaaUloskaynnin() {
         Luolasto luolasto = new Luolasto(32, 0);
-        this.luolageneraattori = new Luolageneraattori(luolasto, 32, 0);
+        this.luolageneraattori = new Luolageneraattori(luolasto, 0);
         boolean sisaltaaUloskaynnin = false;
-        Luola luola = new Luola(luolasto, 5, 5, 32);
+        Luola luola = new Luola(luolasto, 5, 5);
         luolageneraattori.generoi(luola);
         boolean[][] taulukko = luola.getLuola();
         for (int j = 0; j < taulukko.length; j++) {
@@ -96,8 +84,8 @@ public class LuolageneraattoriTest {
 
     private void kaikkienUloskayntienJaReittienValillaOnPolut(int size) {
         Luolasto luolasto = new Luolasto(size, 0);
-        luolageneraattori = new Luolageneraattori(luolasto, size, 0);
-        Luola luola = new Luola(luolasto, 5, 5, size);
+        luolageneraattori = new Luolageneraattori(luolasto, 0);
+        Luola luola = new Luola(luolasto, 5, 5);
         luolageneraattori.generoi(luola);
         char[][] asd = new char[size][size];
         for (int i = 0; i < luola.getLuola()[0].length; i++) {
@@ -156,15 +144,32 @@ public class LuolageneraattoriTest {
         }
         for (int i = 0; i < asd[0].length; i++) {
             for (int j = 0; j < asd.length; j++) {
-                if (pisteet[j][i]&&asd[j][i]=='k') {
+                if (pisteet[j][i] && asd[j][i] == 'k') {
                     System.out.print('o');
                 } else if (pisteet[j][j]) {
                     System.out.print('p');
-                } else{
+                } else {
                     System.out.print(asd[j][i]);
                 }
             }
             System.out.println("");
+        }
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (luola.getLuola()[j][i]) {
+                    if (pisteet[j][i]) {
+                        System.out.println("o");
+                    } else {
+                        System.out.print(" ");
+                    }
+                } else {
+                    if (pisteet[j][i]) {
+                        System.out.println("p");
+                    } else {
+                        System.out.print("x");
+                    }
+                }
+            }
         }
         for (int i = 0; i < pisteet[0].length; i++) {
             for (int j = 0; j < pisteet.length; j++) {

@@ -9,7 +9,8 @@ package luolasto;
  */
 public class Pelaaja {
 
-    private int x, y, luolaX, luolaY, size;
+    private int x, y, luolaX, luolaY;
+    private final int size;
     private final Luolasto luolasto;
 
     /**
@@ -17,18 +18,15 @@ public class Pelaaja {
      * koordinaatit luolassa ja luolasta, jossa pelaaja on, sekä luolasto
      * -olion, joka sisältää tiedon luolastosta, jossa pelaaja sijaitsee.
      *
-     * @param x
-     * @param y
      * @param luolaX
      * @param luolaY
      * @param luolasto
-     * @param size
      */
-    public Pelaaja(int luolaX, int luolaY, Luolasto luolasto, int size) {
+    public Pelaaja(int luolaX, int luolaY, Luolasto luolasto) {
         this.luolaX = luolaX;
         this.luolaY = luolaY;
         this.luolasto = luolasto;
-        this.size = size;
+        this.size = luolasto.getSize();
     }
 
     /**

@@ -30,7 +30,7 @@ public class PelaajaTest {
     @Before
     public void setUp() {
         luolasto = new Luolasto(32, 0);
-        pelaaja = new Pelaaja(5, 5, luolasto, 32);
+        pelaaja = new Pelaaja(5, 5, luolasto);
         luolasto.genertoiLuola(5, 5);
     }
 

@@ -8,7 +8,7 @@ package luolasto;
 public class Luolasto {
 
     private Luola[][] luolasto;
-    private Luolageneraattori luolageneraattori;
+    private final Luolageneraattori luolageneraattori;
     private final int size;
     private int muutos;
 
@@ -17,11 +17,12 @@ public class Luolasto {
      * luolat.
      *
      * @param size
+     * @param todennakoisyysVahennys
      */
-    public Luolasto(int size, int uusiaUloskaynteja) {
+    public Luolasto(int size, int todennakoisyysVahennys) {
         luolasto = new Luola[10][10];
         this.size = size;
-        luolageneraattori = new Luolageneraattori(this, size, uusiaUloskaynteja);
+        luolageneraattori = new Luolageneraattori(this, todennakoisyysVahennys);
         muutos = 0;
     }
 
@@ -39,13 +40,11 @@ public class Luolasto {
             kasvataTaulukkoa();
         }
         if (luolasto[x + muutos][y + muutos] == null) {
-            Luola luola = new Luola(this, x, y, size);
+            Luola luola = new Luola(this, x, y);
             luolageneraattori.generoi(luola);
             luolasto[x + muutos][y + muutos] = luola;
         }
     }
-    //  -75 -35 -15 -5 0 10(10) 15(20) 25(40) 45(80)  85
-    //  -40 -20 -10 -5 0 10     15     30     60
 
     /**
      * Metodi vaihtaa luolastotaulukon tilalle tästä kaksi kertaa suuremman
@@ -57,10 +56,8 @@ public class Luolasto {
         int uusiMuutos = muutos + luolasto.length / 2;
         Luola[][] luolasto2 = new Luola[luolasto.length * 2][luolasto[0].length * 2];
         boolean[][] generoitu2 = new boolean[luolasto2.length][luolasto2[0].length];
-//        System.out.println("uusimuutos " + uusiMuutos);
         for (int i = 0; i < luolasto.length; i++) {
             for (int j = 0; j < luolasto[0].length; j++) {
-//                System.out.println("i" + i + "j" + j);
                 luolasto2[uusiMuutos - muutos + i][uusiMuutos - muutos + j]
                         = luolasto[i][j];
             }
@@ -83,31 +80,12 @@ public class Luolasto {
         return luolasto[x + muutos][y + muutos];
     }
 
-//    public void tulostaLuolasto() {
-//        System.out.print(" ");
-//        for (int i = 0; i < luolasto.length; i++) {
-//            for (int j = 0; j < size; j++) {
-//                System.out.print(i);
-//            }
-//        }
-//        System.out.println("");
-//        for (int i = 0; i < luolasto[0].length; i++) {
-//            for (int j = 0; j < size; j++) {
-//                System.out.print(i);
-//                for (int k = 0; k < luolasto.length; k++) {
-////                    System.out.print(k);
-//                    for (int l = 0; l < size; l++) {
-//                        if (luolasto[k][i] == null) {
-//                            System.out.print("n");
-//                        } else if (luolasto[k][i].getLuola()[l][j]) {
-//                            System.out.print("x");
-//                        } else {
-//                            System.out.print(" ");
-//                        }
-//                    }
-//                }
-//                System.out.println("");
-//            }
-//        }
-//    }
+    /**
+     * Metodi palauttaa luolan koon.
+     *
+     * @return
+     */
+    public int getSize() {
+        return size;
+    }
 }

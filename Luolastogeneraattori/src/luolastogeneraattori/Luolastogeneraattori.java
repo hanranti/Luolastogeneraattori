@@ -13,22 +13,22 @@ import ui.GUI;
  */
 public class Luolastogeneraattori {
 
-    private int size;
-    private Luolasto luolasto;
-    private Pelaaja pelaaja;
-    private GUI gui;
+    private final int size;
+    private final Luolasto luolasto;
+    private final Pelaaja pelaaja;
+    private final GUI gui;
 
     /**
      * Metodi luo ohjelman tarvitsemat luokat ja välittää näille parametrina
      * saamansa luolan koon.
      *
      * @param size
+     * @param todennakoisyysVahennys
      */
-    public Luolastogeneraattori(int size, int uusiaUloskaynteja) {
-        System.out.println("LuolastoGeneraattori");
+    public Luolastogeneraattori(int size, int todennakoisyysVahennys) {
         this.size = size;
-        luolasto = new Luolasto(size, uusiaUloskaynteja);
-        pelaaja = new Pelaaja(5, 5, luolasto, size);
+        luolasto = new Luolasto(size, todennakoisyysVahennys);
+        pelaaja = new Pelaaja(5, 5, luolasto);
         luolasto.genertoiLuola(pelaaja.getLuolaX(), pelaaja.getLuolaY());
         gui = new GUI();
         asetaPelaajaLuolaan();
@@ -40,11 +40,9 @@ public class Luolastogeneraattori {
      *
      */
     public void kaynnista() {
-        System.out.println("kaynnista");
         Scanner scanner = new Scanner(System.in);
         boolean jatka = true;
         while (true) {
-//            System.out.println(pelaaja.getLuolaX() + " " + pelaaja.getLuolaY());
             gui.tulosta(
                     luolasto.getLuola(
                             pelaaja.getLuolaX(),
@@ -65,9 +63,7 @@ public class Luolastogeneraattori {
                 } else if (s.charAt(i) == 'q') {
                     jatka = false;
                     break;
-                } else if (s.equals("t")) {
-//                luolasto.tulostaLuolasto();
-                }
+                } 
             }
             if (!jatka) {
                 break;

@@ -28,14 +28,13 @@ public class Luolageneraattori {
      * alueita.
      *
      * @param luolasto
-     * @param size
-     * @param uusiaUloskaynteja
+     * @param todennakoisyysVahennys
      */
-    public Luolageneraattori(Luolasto luolasto, int size, int uusiaUloskaynteja) {
+    public Luolageneraattori(Luolasto luolasto, int todennakoisyysVahennys) {
         random = new Random();
         this.luolasto = luolasto;
-        this.size = size;
-        this.uusiaUloskaynteja = uusiaUloskaynteja;
+        this.size = luolasto.getSize();
+        this.uusiaUloskaynteja = todennakoisyysVahennys;
         this.todennakoisyys = 100;
     }
 
@@ -75,8 +74,8 @@ public class Luolageneraattori {
     }
 
     private void luoUloskaynnit(Luola luola, Jono qX, Jono qY, Jono dist) {
-        int luolaX = luola.getLuolaX();
-        int luolaY = luola.getLuolaY();
+        int luolaX = luola.getX();
+        int luolaY = luola.getY();
         Lista huoneet = luola.getHuoneet();
         //Seuraavia boolean ja int nullMaara muuttujia käytetään varmistamaan,
         //että, jos luolasta luodaan uusi uloskäynti generoimattomaan luolaan,
@@ -329,8 +328,8 @@ public class Luolageneraattori {
         //Avoimet alueet generoidaan käyttäen saatuja koordinaatteja ja dist-arvoja
         //jonoissa.
         boolean[][] luola = l.getLuola();
-        int luolaX = l.getLuolaX();
-        int luolaY = l.getLuolaY();
+        int luolaX = l.getX();
+        int luolaY = l.getY();
 //        char[][] asd = new char[size][size];
 //        for (int i = 0; i < size; i++) {
 //            for (int j = 0; j < size; j++) {
@@ -571,7 +570,7 @@ public class Luolageneraattori {
                 unionFind.union(piste[x][y], piste[x + 1][y]);
             }
 //            System.out.println("x+1");
-            if (x-1 >=1 
+            if (x - 1 >= 1
                     && (!vieressaVanhojaSeinia(luola, color, x - 1, y, 0, size - 1)
                     && !vieressaUusiaSeinia(x - 1, y, unionFind, piste, findxy))
                     && !color[x - 1][y] && random.nextInt(3) < 1) {
@@ -584,7 +583,7 @@ public class Luolageneraattori {
                 unionFind.union(piste[x][y], piste[x - 1][y]);
             }
 //            System.out.println("x-1");
-            if (y+1 <=size-2 
+            if (y + 1 <= size - 2
                     && (!vieressaVanhojaSeinia(luola, color, x, y + 1, 0, size - 1)
                     && !vieressaUusiaSeinia(x, y + 1, unionFind, piste, findxy))
                     && !color[x][y + 1] && random.nextInt(3) < 1) {
@@ -596,7 +595,7 @@ public class Luolageneraattori {
                 unionFind.makeSet(piste[x][y + 1]);
                 unionFind.union(piste[x][y], piste[x][y + 1]);
             }
-            if (y-1 >=1 
+            if (y - 1 >= 1
                     && (!vieressaVanhojaSeinia(luola, color, x, y - 1, 0, size - 1)
                     && !vieressaUusiaSeinia(x, y - 1, unionFind, piste, findxy))
                     && !color[x][y - 1] && random.nextInt(3) < 1) {
@@ -620,7 +619,6 @@ public class Luolageneraattori {
     }
 
     private boolean vieressaUusiaSeinia(int x, int y, UnionFind unionFind, Piste[][] pisteet, int findxy) {
-//        System.out.println("x: " + x + " y: " + y);
         if (x > 0) {
             if (y > 0) {
                 if (pisteet[x - 1][y - 1] != null && findxy
@@ -685,7 +683,7 @@ public class Luolageneraattori {
             if (!luola.getLuola()[x - 1][y] && !color[x - 1][y]) {
                 return true;
             }
-            if (y +1<= max) {
+            if (y + 1 <= max) {
                 if (!luola.getLuola()[x - 1][y + 1] && !color[x - 1][y + 1]) {
                     return true;
                 }
