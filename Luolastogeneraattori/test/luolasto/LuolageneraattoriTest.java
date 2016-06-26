@@ -74,15 +74,15 @@ public class LuolageneraattoriTest {
     }
 
     @Test
-    public void testkaikkienUloskayntienJaReittienValillaOnPolut() {
+    public void testkaikkienUloskayntienValillaOnPolut() {
         for (int i = 0; i < 100; i++) {
-            kaikkienUloskayntienJaReittienValillaOnPolut(32);
-            kaikkienUloskayntienJaReittienValillaOnPolut(50);
-            kaikkienUloskayntienJaReittienValillaOnPolut(100);
+            kaikkienUloskayntienValillaOnPolut(32);
+            kaikkienUloskayntienValillaOnPolut(50);
+            kaikkienUloskayntienValillaOnPolut(100);
         }
     }
 
-    private void kaikkienUloskayntienJaReittienValillaOnPolut(int size) {
+    private void kaikkienUloskayntienValillaOnPolut(int size) {
         Luolasto luolasto = new Luolasto(size, 0);
         luolageneraattori = new Luolageneraattori(luolasto, 0);
         Luola luola = new Luola(luolasto, 5, 5);
@@ -110,7 +110,12 @@ public class LuolageneraattoriTest {
         Jono qX = new Jono();
         Jono qY = new Jono();
         boolean[][] color = new boolean[size][size];
-        Piste p = (Piste) huoneet.get(0);
+        int o = 0;
+        Piste p = (Piste) huoneet.get(o);
+        while (!luola.getLuola()[p.getX()][p.getY()]) {
+            o++;
+            p = (Piste) huoneet.get(o);
+        }
         qX.push(p.getX());
         qY.push(p.getY());
         color[p.getX()][p.getY()] = true;
@@ -119,7 +124,6 @@ public class LuolageneraattoriTest {
             int x = (int) qX.poll();
             int y = (int) qY.poll();
             asd[x][y] = 'k';
-            int i = 0;
             pisteet[x][y] = false;
             if (x + 1 < size && luola.getLuola()[x + 1][y] && !color[x + 1][y]) {
                 qX.push(x + 1);
@@ -170,11 +174,13 @@ public class LuolageneraattoriTest {
                     }
                 }
             }
+            System.out.println("");
         }
-        for (int i = 0; i < pisteet[0].length; i++) {
-            for (int j = 0; j < pisteet.length; j++) {
-                assertFalse(pisteet[j][i]);
-            }
+        for (int i = 0; i < size; i++) {
+            assertFalse(pisteet[i][0]);
+            assertFalse(pisteet[i][size - 1]);
+            assertFalse(pisteet[0][i]);
+            assertFalse(pisteet[size - 1][i]);
         }
     }
 }

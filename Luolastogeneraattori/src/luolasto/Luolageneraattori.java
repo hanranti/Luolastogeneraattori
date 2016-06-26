@@ -45,7 +45,6 @@ public class Luolageneraattori {
      * @param luola
      */
     public void generoi(Luola luola) {
-//        System.out.println("generoi");
         //Kaikki koordinaatit joihin generoidaan avoimia alueita lisätään jonoihin,
         //jotka annetaan leveyssuuntaisella läpikäynnillä toimivalle
         //generoiAvoimetAlueet -metodille.
@@ -69,8 +68,9 @@ public class Luolageneraattori {
         generoiReunat(luola);
         if (todennakoisyys > 0) {
             todennakoisyys -= uusiaUloskaynteja;
+        } else {
+            todennakoisyys = 0;
         }
-//        System.out.println("todennakoisyys: " + todennakoisyys);
     }
 
     private void luoUloskaynnit(Luola luola, Jono qX, Jono qY, Jono dist) {
@@ -330,31 +330,6 @@ public class Luolageneraattori {
         boolean[][] luola = l.getLuola();
         int luolaX = l.getX();
         int luolaY = l.getY();
-//        char[][] asd = new char[size][size];
-//        for (int i = 0; i < size; i++) {
-//            for (int j = 0; j < size; j++) {
-//                asd[i][j] = ' ';
-//            }
-//        }
-//        for (int i = 0; i < qX.koko(); i++) {
-//            int x = (int) qX.poll();
-//            int y = (int) qY.poll();
-//            asd[x][y] = 'o';
-//            qX.push(x);
-//            qY.push(y);
-//        }
-//        Solmu solmu = l.getHuoneet().getFirst();
-//        while (solmu != null) {
-//            Piste piste = (Piste) solmu.getObject();
-//            asd[piste.getX()][piste.getY()] = 'x';
-//            solmu = solmu.getOikea();
-//        }
-//        for (int i = 0; i < asd[0].length; i++) {
-//            for (int j = 0; j < asd.length; j++) {
-//                System.out.print(asd[j][i]);
-//            }
-//            System.out.println("");
-//        }
         //Seuraavien taulukkojen arvot viittaavat koordinaatteihin, joista niille
         //annettujen koordinaattien käsittely on alkanut leveyssuuntaisessa
         //läpikäynnissä. Näiden ja dist-arvojen avulla lasketaan, miten laajalle
@@ -536,32 +511,20 @@ public class Luolageneraattori {
         unionFind.union(piste[size - 3][size - 2], piste[size - 2][size - 2]);
         unionFind.union(piste[1][size - 3], piste[1][size - 2]);
         unionFind.union(piste[size - 2][size - 3], piste[size - 2][size - 2]);
-//        char[][] asd = new char[size][size];
-//        for (int i = 0;
-//                i < asd[0].length;
-//                i++) {
-//            for (int j = 0; j < asd.length; j++) {
-//                asd[j][i] = ' ';
-//            }
-//        }
 
         while (!qX.tyhja()) {
             int x = (int) qX.poll();
             int y = (int) qY.poll();
-//            System.out.println("reunat " + x + " " + y);
-//            asd[x][y] = 'k';
             luola.getLuola()[x][y] = false;
             //Jos koordinaatin viereinen piste on avoimen reunan vieressä,
             //sitä ei lisätä jonoon. Muulloin, jos pisteen vieressä ei ole vanhoja
             //seiniä ja satunnaisluku saa sopivan arvon, piste lisätään jonoon.
             //Reunojen generointi ei siis voi tukkia yhtäkään reittiä.
             int findxy = unionFind.find(piste[x][y]);
-//            System.out.println("unionfind ohi");
             if (x + 1 <= size - 2
                     && (!vieressaVanhojaSeinia(luola, color, x + 1, y, 0, size - 1)
                     && !vieressaUusiaSeinia(x + 1, y, unionFind, piste, findxy))
                     && !color[x + 1][y] && random.nextInt(3) < 1) {
-//                System.out.println("x+1 " + (x+1));
                 qX.push(x + 1);
                 qY.push(y);
                 color[x + 1][y] = true;
@@ -569,12 +532,10 @@ public class Luolageneraattori {
                 unionFind.makeSet(piste[x + 1][y]);
                 unionFind.union(piste[x][y], piste[x + 1][y]);
             }
-//            System.out.println("x+1");
             if (x - 1 >= 1
                     && (!vieressaVanhojaSeinia(luola, color, x - 1, y, 0, size - 1)
                     && !vieressaUusiaSeinia(x - 1, y, unionFind, piste, findxy))
                     && !color[x - 1][y] && random.nextInt(3) < 1) {
-//                System.out.println("x-1 " + (x-1));
                 qX.push(x - 1);
                 qY.push(y);
                 color[x - 1][y] = true;
@@ -582,12 +543,10 @@ public class Luolageneraattori {
                 unionFind.makeSet(piste[x - 1][y]);
                 unionFind.union(piste[x][y], piste[x - 1][y]);
             }
-//            System.out.println("x-1");
             if (y + 1 <= size - 2
                     && (!vieressaVanhojaSeinia(luola, color, x, y + 1, 0, size - 1)
                     && !vieressaUusiaSeinia(x, y + 1, unionFind, piste, findxy))
                     && !color[x][y + 1] && random.nextInt(3) < 1) {
-//                System.out.println("y+1 " + (y+1));
                 qX.push(x);
                 qY.push(y + 1);
                 color[x][y + 1] = true;
@@ -599,7 +558,6 @@ public class Luolageneraattori {
                     && (!vieressaVanhojaSeinia(luola, color, x, y - 1, 0, size - 1)
                     && !vieressaUusiaSeinia(x, y - 1, unionFind, piste, findxy))
                     && !color[x][y - 1] && random.nextInt(3) < 1) {
-//                System.out.println("y-1 " + (y-1));
                 qX.push(x);
                 qY.push(y - 1);
                 color[x][y - 1] = true;
@@ -608,14 +566,6 @@ public class Luolageneraattori {
                 unionFind.union(piste[x][y], piste[x][y - 1]);
             }
         }
-//        for (int i = 0;
-//                i < asd[0].length;
-//                i++) {
-//            for (int j = 0; j < asd.length; j++) {
-//                System.out.print(asd[j][i]);
-//            }
-//            System.out.println("");
-//        }
     }
 
     private boolean vieressaUusiaSeinia(int x, int y, UnionFind unionFind, Piste[][] pisteet, int findxy) {
@@ -673,7 +623,6 @@ public class Luolageneraattori {
     private boolean vieressaVanhojaSeinia(Luola luola, boolean[][] color, int x, int y, int min, int max) {
         //Jos pisteen x y vieressä tai kulmassa on vanha seinä x:n ja y:n min ja 
         //max arvojen rajaamalla alueella metodi palauttaa true, muulloin false.
-//        System.out.println("x: " + x + " y: " + y);
         if (x - 1 >= min) {
             if (y - 1 >= min) {
                 if (!luola.getLuola()[x - 1][y - 1] && !color[x - 1][y - 1]) {
