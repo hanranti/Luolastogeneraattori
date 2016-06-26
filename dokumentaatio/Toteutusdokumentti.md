@@ -69,3 +69,8 @@
     * Avointen alueiden generointi ja reunojen generointi vievät kumpikin aikaa O(n²) eli aikavaativuus on O(n²).
   * tilavaativuus O(n²), jossa n = luolan leveys
     * Avointen alueiden generointi ja reunojen generointi vievät kumpikin tilaa O(n²) eli tilavaativuus on O(n²).
+
+### Suorituskykytestaus
+
+### Puutteet ja parannusehdotukset
+
