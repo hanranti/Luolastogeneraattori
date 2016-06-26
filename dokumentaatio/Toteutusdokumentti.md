@@ -10,6 +10,8 @@
   * Huoneita luodaan satunnainen määrä satunnaisiin paikkoihin
     * Huoneen generaatiossa käytetään muunneltua leveyssuuntaista läpikäyntiä
   * Käytävät yhdistävät huoneet, pienimmäksi virittäväksi puuksi käyttäen Kruskalia
+* Luolastogeneraattori, joka käynnistää ohjelman ja kysyy pelaajan siirtoja
+* GUI, joka tulostaa luolia ja pelaajan luolassa
 
 ### Aika- ja tilavaativuudet
 
