@@ -16,10 +16,13 @@
 ### Aika- ja tilavaativuudet
 
 * Luolan generointi: 
+
   * avointen alueiden generointi
+
     * huoneiden luominen
       * aikavaativuus O(1)
       * tilavaativuus O(1)
+
     * uloskäyntien luominen
       * aikavaativuus
         * min Ω(1)
