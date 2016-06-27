@@ -59,6 +59,8 @@ Testit voidaan toistaa viemällä repositorion netbeans projekti Netbeansiin ja 
   * Testaan, että myös pelaajan luolakoordinaatit ovat oikeita.
   * Testaan, että pelaaja ei voi liikkua seinien läpi.
 
+### Luolastogeneraattori
+
 * Luolastogeneraattori
   * Testaan, että pelaajan asetus luolaan asettaa pelaajan paikkaan, josta on polu kaikkiin uloskäynteihin.
 
