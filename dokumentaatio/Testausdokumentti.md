@@ -1,6 +1,7 @@
 # Testausdokumentti
 
 Kaikki testit ovat toteutettu käyttäen JUnit 4.10.
+Testit voidaan toistaa viemällä repositorion netbeans projekti Netbeansiin ja ajamalla testit ohjelmassa.
 
 ### Tietorakenteet
 
@@ -39,6 +40,23 @@ Kaikki testit ovat toteutettu käyttäen JUnit 4.10.
   * Testaan, että unionFind toimii oikein, kun sen taulukon kokoa kasvatetaan.
 
 ### Luolasto
+
+* Luola
+  * Testaan, että luotu luola on sille alussa annetuissa koordinaateissa, ja, että sille annettu luolan leveys on oikea.
+  * Testaan, että, kun luola generoidaan, huoneita on enemmän kuin 0.
+ 
+* Luolageneraattori
+  * Testaan, että luotu luola sisältää ainakin yhden uloskäynnin.
+  * Testaan, että kaikista uloskäynneistä on polut toisiinsa.
+* Luolasto
+  * Testaan, että luolaston koon kaksinkertaistaessa luolan muutos metodi saa oikean arvon eli luolaston ulospäin näkyvät koordinaatit vastaavat luolaston sisälle näkyviä koordinaatteja oikein.
+  * Testaan, että sama toimii myös kun luolaston ulkopuolelle generoidaan luolia.
+  * Testaan, että luolaston kaksinkertaistaminen säilyttää luolat niiden oikeissa koordinaateissa.
+
+* Pelaaja
+  * Testaan, että pelaajan koordinaatit ovat oikeita, kun pelaaja liikkuu luolassa tai luolasta toiseen.
+  * Testaan, että myös pelaajan luolakoordinaatit ovat oikeita.
+  * Testaan, että pelaaja ei voi liikkua seinien läpi.
 
 ### Työkalut
 
