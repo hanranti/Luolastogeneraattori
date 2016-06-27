@@ -14,3 +14,4 @@ Kaytin x tuntia
 * testien tekemiseen
 * dokumentointiin
 * FieldAccess getArray korjaamiseen
+* Suorituskykytestaukseen
