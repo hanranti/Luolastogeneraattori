@@ -80,3 +80,4 @@
 
 ### Puutteet ja parannusehdotukset
 
+* Luolan koko voisi vaikuttaa huoneiden määrään, jotta suuremmissa luolissa olisi enemmän huoneita.
