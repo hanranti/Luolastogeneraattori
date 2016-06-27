@@ -124,6 +124,118 @@ Suorituskykytestit voidaan ajaa muuttamalla tarvittavat metodit public:ksi, pois
 Tulokset on nimetty: "test" testattavan metodin nimi ("KunVieressaOn" X "Luolaa") "LuolanKoolla" Y
 
 ```
+testLuoHuoneetLuolanKoolla32
+Keskiarvo: 2231ns
+testLuoHuoneetLuolanKoolla50
+Keskiarvo: 3893ns
+testLuoHuoneetLuolanKoolla100
+Keskiarvo: 6712ns
+testLuoHuoneetLuolanKoolla200
+Keskiarvo: 21994ns
+testLuoUlosKaynnitLuolanKoolla32
+Keskiarvo: 3575ns
+testLuoUlosKaynnitLuolanKoolla50
+Keskiarvo: 3589ns
+testLuoUlosKaynnitLuolanKoolla100
+Keskiarvo: 1520ns
+testLuoUlosKaynnitLuolanKoolla200
+Keskiarvo: 2108ns
+testLuoUloskaynnitKunVieressaOn1LuolaLuolanKoolla32
+Keskiarvo: 2354ns
+testLuoUloskaynnitKunVieressaOn1LuolaLuolanKoolla50
+Keskiarvo: 3151ns
+testLuoUloskaynnitKunVieressaOn1LuolaLuolanKoolla100
+Keskiarvo: 3290ns
+testLuoUloskaynnitKunVieressaOn1LuolaLuolanKoolla200
+Keskiarvo: 6683ns
+testLuoUloskaynnitKunVieressaOn2LuolaaLuolanKoolla32
+Keskiarvo: 3520ns
+testLuoUloskaynnitKunVieressaOn2LuolaaLuolanKoolla50
+Keskiarvo: 3017ns
+testLuoUloskaynnitKunVieressaOn2LuolaaLuolanKoolla100
+Keskiarvo: 4038ns
+testLuoUloskaynnitKunVieressaOn2LuolaaLuolanKoolla200
+Keskiarvo: 7995ns
+testLuoUloskaynnitKunVieressaOn3LuolaaLuolanKoolla32
+Keskiarvo: 2971ns
+testLuoUloskaynnitKunVieressaOn3LuolaaLuolanKoolla50
+Keskiarvo: 4091ns
+testLuoUloskaynnitKunVieressaOn3LuolaaLuolanKoolla100
+Keskiarvo: 5698ns
+testLuoUloskaynnitKunVieressaOn3LuolaaLuolanKoolla200
+Keskiarvo: 8142ns
+testLuoUloskaynnitKunVieressaOn4LuolaaLuolanKoolla32
+Keskiarvo: 3803ns
+testLuoUloskaynnitKunVieressaOn4LuolaaLuolanKoolla50
+Keskiarvo: 4761ns
+testLuoUloskaynnitKunVieressaOn4LuolaaLuolanKoolla100
+Keskiarvo: 5686ns
+testLuoUloskaynnitKunVieressaOn4LuolaaLuolanKoolla200
+Keskiarvo: 9734ns
+testLuoKaytavatLuolanKoolla32
+Keskiarvo: 80059ns
+testLuoKaytavatLuolanKoolla50
+Keskiarvo: 124379ns
+testLuoKaytavatLuolanKoolla100
+Keskiarvo: 374712ns
+testLuoKaytavatLuolanKoolla200
+Keskiarvo: 1346867ns
+testGeneroiAvoimetAlueetLuolanKoolla32
+Keskiarvo: 222560ns
+testGeneroiAvoimetAlueetLuolanKoolla50
+Keskiarvo: 456007ns
+testGeneroiAvoimetAlueetLuolanKoolla100
+Keskiarvo: 1789861ns
+testGeneroiAvoimetAlueetLuolanKoolla200
+Keskiarvo: 7752384ns
+testGeneroiReunatLuolanKoolla32
+Keskiarvo: 330319ns
+testGeneroiReunatLuolanKoolla50
+Keskiarvo: 838605ns
+testGeneroiReunatLuolanKoolla100
+Keskiarvo: 3514462ns
+testGeneroiReunatLuolanKoolla200
+Keskiarvo: 13204524ns
+testGeneroiLuolanKoolla32
+Keskiarvo: 437193ns
+testGeneroiLuolanKoolla50
+Keskiarvo: 819044ns
+testGeneroiLuolanKoolla100
+Keskiarvo: 1440416ns
+testGeneroiLuolanKoolla200
+Keskiarvo: 4359624ns
+testGeneroiKunVieressaOn1LuolaLuolanKoolla32
+Keskiarvo: 357922ns
+testGeneroiKunVieressaOn1LuolaLuolanKoolla50
+Keskiarvo: 591842ns
+testGeneroiKunVieressaOn1LuolaLuolanKoolla100
+Keskiarvo: 1381234ns
+testGeneroiKunVieressaOn1LuolaLuolanKoolla200
+Keskiarvo: 3795622ns
+testGeneroiKunVieressaOn2LuolaaLuolanKoolla32
+Keskiarvo: 335604ns
+testGeneroiKunVieressaOn2LuolaaLuolanKoolla50
+Keskiarvo: 578248ns
+testGeneroiKunVieressaOn2LuolaaLuolanKoolla100
+Keskiarvo: 1371206ns
+testGeneroiKunVieressaOn2LuolaaLuolanKoolla200
+Keskiarvo: 3796017ns
+testGeneroiKunVieressaOn3LuolaaLuolanKoolla32
+Keskiarvo: 372961ns
+testGeneroiKunVieressaOn3LuolaaLuolanKoolla50
+Keskiarvo: 588668ns
+testGeneroiKunVieressaOn3LuolaaLuolanKoolla100
+Keskiarvo: 1364083ns
+testGeneroiKunVieressaOn3LuolaaLuolanKoolla200
+Keskiarvo: 3588200ns
+testGeneroiKunVieressaOn4LuolaaLuolanKoolla32
+Keskiarvo: 347043ns
+testGeneroiKunVieressaOn4LuolaaLuolanKoolla50
+Keskiarvo: 551724ns
+testGeneroiKunVieressaOn4LuolaaLuolanKoolla100
+Keskiarvo: 1351752ns
+testGeneroiKunVieressaOn4LuolaaLuolanKoolla200
+Keskiarvo: 3597270ns
 ```
 
 Testasin generoi -metodia, sekä sen suorittamien metodien aikaa erikseen. Testasin myös generoi ja luoUloskaynnit -metodeita eri tapauksissa, joissa generoitavan luolan viereen on jo generoitu eri määrä luolia. Mitä enemmän luolan viereen on jo generoitu luolia, sitä pitempään luolan generoinnin tulisi kestää. Satunnaisuus vaikuttaa paljon kuluvaan aikaan kaikissa metodeissa, joten jokaisen metodin eri suorituksen kesto voi vaihdella paljon, mikä näkyykin tuloksissa esimerkiksi luoUloskaynnit -metodeissa. Teen kaikki suorituskykytestit erikseen 32, 50, 100, ja 200 levyisille luolille.
