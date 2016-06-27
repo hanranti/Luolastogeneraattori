@@ -18,9 +18,9 @@
 * Luolan generointi(Luolageneraattori -generoi) 
   * avointen alueiden generointi
     * huoneiden luominen(luoHuoneet)
-      * aikavaativuus O(1)
-      * tilavaativuus O(1)
-        * Huoneita luodaan aina vakiomäärä.
+      * aikavaativuus O(n), jossa n = luolan leveys
+      * tilavaativuus O(n), jossa n = luolan leveys
+        * Huoneiden määrä perustuu satunaislukuun, joka on luotu käyttäen luolan leveyttä.
       
     * uloskäyntien luominen(luoUloskaynnit)
       * aikavaativuus
@@ -40,13 +40,13 @@
         * tilavaativuus O(n), jossa n = luolan leveys
           * Kaytavan luominen kulkee pisimmillään kulmasta kulmaan eli 2 n matkan. Kaytavanluomismetodi kutsuu siis itseään maksimissaan 2n kertaa eli aika- ja tilavaativuus on lineaarinen.
         
-      * aikavaativuus O(n³), jossa n = huoneiden ja uloskäyntien yhteismäärä
+      * aikavaativuus O(n³), jossa n = luolan leveys
         * Aikavaativuus on kaarien lisäämisestä kekoon aiheutuva O(n²) + Kruskalin aikavaativuus, johon on lisätty yhden kaytavan luomiseen kuluva aika, O(m (log n + n)), jossa m = huoneiden ja uloskäyntien välisten kaarien määrä.
         * Koska m = n * (n-1), aikavaativuus on O(n²) + O(n² (log n + n)) = O(n³ + n² * log n) = O(n³)
-      * tilavaativuus O(n³), jossa n = huoneiden ja uloskäyntien yhteismäärä
+      * tilavaativuus O(n³), jossa n = luolan leveys
         * Tilavaativuus on kaarien lisäämisestä kekoon aiheutuva O(n²) + Kruskalin tilavaativuus, johon on lisätty kaytavan luomiseen kuluva tila, O(m * n), jossa m = huoneiden ja uloskäyntien välisten kaarien määrä.
         * Koska m = n * (n-1), tilavaativuus on O(n²) + O(n² * n) eli O(n³)
-      * Kaytavien generoinnin aika- ja tilavaativuus on kuitenkin vakio suhteessa muuhun luolan generointiin, koska huoneiden ja uloskäyntien määrä on vakio.
+      * Luolan leveyden katsominen solmujen määräksi perustuu siihen, että huoneiden määrä perustuu luolan leveydestä laskettavaan lukuun.
       
     * alueiden generointi(generoiAvoimetAlueet)
       * aikavaativuus O(n²), jossa n = luolan leveys
@@ -54,10 +54,10 @@
       * tilavaativuus O(n²), jossa n = luolan leveys
         * Leveyssuuntaisen läpikäynnin tilavaativuus on O(n²) (n² = solmujen määrä).
       
-    * aikavaativuus O(n²), jossa n = luolan leveys
-      * Alueiden generointi vie eniten aikaa eli avointen alueiden generoinnin kokonaisaikavaativuus on O(n²).
-    * tilavaativuus O(n²), jossa n = luolan leveys
-      * Alueiden generointi vie eniten tilaa eli avointen alueiden generoinnin kokonaistilavaativuus on O(n²).
+    * aikavaativuus O(n³), jossa n = luolan leveys
+      * Kaytavien luominen vie eniten aikaa eli avointen alueiden generoinnin kokonaisaikavaativuus on O(n³).
+    * tilavaativuus O(n³), jossa n = luolan leveys
+      * Alueiden generointi vie eniten tilaa eli avointen alueiden generoinnin kokonaistilavaativuus on O(n³).
     
   * reunojen generointi(generoiReunat)
     * aikavaativuus O(n²), jossa n = luolan leveys
@@ -65,10 +65,10 @@
     * tilavaativuus O(n²), jossa n = luolan leveys
       * Leveyssuuntaisen läpikäynnin tilavaativuus on O(n²) (n² = solmujen määrä).
     
-  * aikavaativuus O(n²), jossa n = luolan leveys
-    * Avointen alueiden generointi ja reunojen generointi vievät kumpikin aikaa O(n²) eli aikavaativuus on O(n²).
-  * tilavaativuus O(n²), jossa n = luolan leveys
-    * Avointen alueiden generointi ja reunojen generointi vievät kumpikin tilaa O(n²) eli tilavaativuus on O(n²).
+  * aikavaativuus O(n³), jossa n = luolan leveys
+    * Avointen alueiden generointi vie eniten aikaa O(n³).
+  * tilavaativuus O(n³), jossa n = luolan leveys
+    * Avointen alueiden generointi vie eniten tilaa O(n³).
     
 * pelaajan asettaminen luokkaan(Luolastogeneraattori -asetaPelaajaLuolaan)
   * aikavaativuus O(n²), jossa n = luolan leveys
@@ -82,4 +82,3 @@ SuorituskykyTestauksen tulokset heittelevät paljon, joten testaan metodit kerta
 
 ### Puutteet ja parannusehdotukset
 
-* Luolan koko voisi vaikuttaa huoneiden määrään, jotta suuremmissa luolissa olisi enemmän huoneita.
