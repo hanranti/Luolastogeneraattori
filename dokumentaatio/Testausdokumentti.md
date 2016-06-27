@@ -1,7 +1,7 @@
 # Testausdokumentti
 
 Kaikki testit ovat toteutettu käyttäen JUnit 4.10.
-Testit voidaan toistaa viemällä repositorion netbeans projekti Netbeansiin ja ajamalla testit ohjelmassa.
+Testit voidaan toistaa viemällä repositorion netbeans-projekti Netbeansiin ja ajamalla testit ohjelmassa.
 
 ### Tietorakenteet
 
