@@ -15,14 +15,14 @@
 
 ### Aika- ja tilavaativuudet
 
-* Luolan generointi: 
+* Luolan generointi(Luolageneraattori -generoi) 
   * avointen alueiden generointi
-    * huoneiden luominen
+    * huoneiden luominen(luoHuoneet)
       * aikavaativuus O(1)
       * tilavaativuus O(1)
         * Huoneita luodaan aina vakiomäärä.
       
-    * uloskäyntien luominen
+    * uloskäyntien luominen(luoUloskaynnit)
       * aikavaativuus
         * min Ω(1)
           * Jos yhtäkään viereistä luolaa ei ole generoitu, aikavaativuus on vakio, koska uusia uloskäyntejä luodaan aina vakio määrä.
@@ -34,8 +34,8 @@
         * max O(n), jossa n = luolan leveys
           * Kun luolan vieressä on generoitu luola, viereisen luolan reunan vastaisten koordinaattien lisääminen jonoon vie lineaarisen tilan.
         
-    * käytävien luominen
-      * käytävän luominen
+    * käytävien luominen(luoKaytavat)
+      * käytävän luominen(luoPolku)
         * aikavaativuus O(n), jossa n = luolan leveys
         * tilavaativuus O(n), jossa n = luolan leveys
           * Kaytavan luominen kulkee pisimmillään kulmasta kulmaan eli 2 n matkan. Kaytavanluomismetodi kutsuu siis itseään maksimissaan 2n kertaa eli aika- ja tilavaativuus on lineaarinen.
@@ -48,7 +48,7 @@
         * Koska m = n * (n-1), tilavaativuus on O(n²) + O(n² * n) eli O(n³)
       * Kaytavien generoinnin aika- ja tilavaativuus on kuitenkin vakio suhteessa muuhun luolan generointiin, koska huoneiden ja uloskäyntien määrä on vakio.
       
-    * alueiden generointi
+    * alueiden generointi(generoiAvoimetAlueet)
       * aikavaativuus O(n²), jossa n = luolan leveys
         * Leveyssuuntaisen läpikäynnin aikavaativuus on O (n² + m) eli O(n²) (m = kaarten määrä)(n² = solmujen määrä). 
       * tilavaativuus O(n²), jossa n = luolan leveys
@@ -59,7 +59,7 @@
     * tilavaativuus O(n²), jossa n = luolan leveys
       * Alueiden generointi vie eniten tilaa eli avointen alueiden generoinnin kokonaistilavaativuus on O(n²).
     
-  * reunojen generointi
+  * reunojen generointi(generoiReunat)
     * aikavaativuus O(n²), jossa n = luolan leveys
       * Leveyssuuntaisen läpikäynnin aikavaativuus on O (n² + m) eli O(n²) (m = kaarten määrä)(n² = solmujen määrä). 
     * tilavaativuus O(n²), jossa n = luolan leveys
@@ -70,13 +70,15 @@
   * tilavaativuus O(n²), jossa n = luolan leveys
     * Avointen alueiden generointi ja reunojen generointi vievät kumpikin tilaa O(n²) eli tilavaativuus on O(n²).
     
-* pelaajan asettaminen luokkaan
+* pelaajan asettaminen luokkaan(Luolastogeneraattori -asetaPelaajaLuolaan)
   * aikavaativuus O(n²), jossa n = luolan leveys
     * Leveyssuuntaisen läpikäynnin aikavaativuus on O (n² + m) eli O(n²) (m = kaarten määrä)(n² = solmujen määrä). 
   * tilavaativuus O(n²), jossa n = luolan leveys
       * Leveyssuuntaisen läpikäynnin tilavaativuus on O(n²) (n² = solmujen määrä).
 
 ### Suorituskykytestaus
+
+SuorituskykyTestauksen tulokset heittelevät paljon, joten testaan metodit kertaa.
 
 ### Puutteet ja parannusehdotukset
 
