@@ -134,4 +134,4 @@ Testasin generoi -metodia, sekä sen suorittamien metodien aikaa erikseen. Testa
 * Luolat olisi voinut generoida siten, että jokaisesta luolan uloskäynnistä ei pääse toisiinsa. Halusin kuitenkin käyttää työssä pienimmän virittävän puun muodostavaa algoritmia.
 * Ohjelmaan olisi voinut luoda lyhimmän reitin etsivän algoritmin(esim A*).
   * Ongelmana on, että kaikkia reittejä ei ole välttämättä vielä luotu, koska luolat generoidaan vasta, kun niihin kuljetaan.
-  * Lyhimmän reitin etsiminen luolastossa, jossa jokaisesta luolan uloskäynnistä on reitti toisiinsa, ei välttämättä olisi kovin mielenkiintoista.
+  * Lyhimmän reitin etsiminen luolastossa, jossa jokaisesta luolan uloskäynnistä on reitti toisiinsa, ei tosin välttämättä olisi kovin mielenkiintoista.
