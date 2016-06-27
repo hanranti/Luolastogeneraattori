@@ -11,6 +11,13 @@ Kaikki testit ovat toteutettu käyttäen JUnit 4.10.
 * Kaari
   * Testaan, että kaari palauttaa sille alussa annetut arvot.
 
+* Keko
+  * Testaan minimi- ja maksimikekoa erikseen.
+    * Lisään olioita insertillä kekoon ja testaan, että keko palauttaa oikean olion juuri ja poistaJuuri -metodeilla.
+    * Käytän keon oikean järjestyksen tarkastamiseen metodia, joka tarkistaa, että jokaisen olion arvo on maksimikeossa pienempi kuin tämän vanhempi ja suurempi kuin tämän lapset, ja minimikeossa päinvastoin.
+      * Olioiden arvoihin päästään käsiksi FieldAccess -luokalla
+    * Testaan minimi- ja maksimikekoa lisäämällä niihin olioita niin, että keon taulukon koko täytyy kaksinkertaistaa kaksi kertaa, testaan onko keko järjestyksessä ja testaan, että oliot palautetaan keosta oikeassa järjestyksessä.
+
 * Lista
   * Testaan, että oliot, jotka on lisätty listaan ja joita ei ole poistettu, löytyvät listasta contains -metodilla, ja muita ei löydy.
   * Testaan, että listan getFirst ja getLast viittaavat oikeisiin solmuihin.
@@ -22,12 +29,8 @@ Kaikki testit ovat toteutettu käyttäen JUnit 4.10.
 * Piste
   * Testaan, että piste palauttaa sille alussa annetut arvot.
 
-* Keko
-  * Testaan minimi- ja maksimikekoa erikseen.
-    * Lisään olioita insertillä kekoon ja testaan, että keko palauttaa oikean olion juuri ja poistaJuuri -metodeilla.
-    * Käytän keon oikean järjestyksen tarkastamiseen metodia, joka tarkistaa, että jokaisen olion arvo on maksimikeossa pienempi kuin tämän vanhempi ja suurempi kuin tämän lapset, ja minimikeossa päinvastoin.
-      * Olioiden arvoihin päästään käsiksi FieldAccess -luokalla
-    * Testaan minimi- ja maksimikekoa lisäämällä niihin olioita niin, että keon taulukon koko täytyy kaksinkertaistaa kaksi kertaa, testaan onko keko järjestyksessä ja testaan, että oliot palautetaan keosta oikeassa järjestyksessä.
+* Solmu
+  * Testaan, että solmu palauttaa sille annetun olion, ja, että olion getVasen() ja getOikea() viittaa oikeisiin solmuihin.
 
 ### Luolasto
 
