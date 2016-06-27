@@ -31,6 +31,12 @@ Kaikki testit ovat toteutettu käyttäen JUnit 4.10.
 
 * Solmu
   * Testaan, että solmu palauttaa sille annetun olion, ja, että olion getVasen() ja getOikea() viittaa oikeisiin solmuihin.
+ 
+* UnionFind
+  * Testaan, että unionFindille annetut oliot eivät ole valmiiksi yhdistettyjä.
+  * Testaan, että yhdistämisen union -metodilla jälkeen find -metodi antaa yhdistetyille olioille saman arvon.
+  * Testaan, että oliolle, jota ei ole lisätty unionFind -rakenteeseen, find antaa arvoksi -1.
+  * Testaan, että unionFind toimii oikein, kun sen taulukon kokoa kasvatetaan.
 
 ### Luolasto
 
