@@ -18,9 +18,30 @@
 * Luolan generointi(Luolageneraattori -generoi) 
   * avointen alueiden generointi
     * huoneiden luominen(luoHuoneet)
-      * aikavaativuus O(n), jossa n = luolan leveys
-      * tilavaativuus O(n), jossa n = luolan leveys
-        * Huoneiden määrä perustuu satunaislukuun, joka on luotu käyttäen luolan leveyttä.
+      * aikavaativuus
+        * max O(n), jossa n = luolan leveys
+        * min O(1)
+      * tilavaativuus
+        * max O(n), jossa n = luolan leveys
+        * min O(1)
+      * Huoneiden määrä perustuu satunaislukuun, joka on luotu käyttäen luolan leveyttä.
+      ```
+      int s = random.nextInt(8) + 1;
+      int m = size;
+      m /= 10;
+      int m2 = m;
+      m *= s;
+      m2 *= (10 - s);
+      m++;
+      ```
+      * Metodissa luoHuoneet lukua m käytetään huoneiden määrän maksimilukuna.
+      ```
+      int maara = random.nextInt(m) + 1;
+      ```
+      * Kun luolan leveys on n,
+        * maksimiaikavaativuus on O(((n / 10) * 9 + 1) + 1) = O(n)
+        * minimiaikavaativuus on O(1), jos luoHuoneet -metodissa random.nextInt(m) antaa luvun 0.
+        * sama pätee tilavaativuuksiin
       
     * uloskäyntien luominen(luoUloskaynnit)
       * aikavaativuus
@@ -40,13 +61,21 @@
         * tilavaativuus O(n), jossa n = luolan leveys
           * Kaytavan luominen kulkee pisimmillään kulmasta kulmaan eli 2 n matkan. Kaytavanluomismetodi kutsuu siis itseään maksimissaan 2n kertaa eli aika- ja tilavaativuus on lineaarinen.
         
-      * aikavaativuus O(n³), jossa n = luolan leveys
-        * Aikavaativuus on kaarien lisäämisestä kekoon aiheutuva O(n²) + Kruskalin aikavaativuus, johon on lisätty yhden kaytavan luomiseen kuluva aika, O(m (log n + n)), jossa m = huoneiden ja uloskäyntien välisten kaarien määrä.
-        * Koska m = n * (n-1), aikavaativuus on O(n²) + O(n² (log n + n)) = O(n³ + n² * log n) = O(n³)
-      * tilavaativuus O(n³), jossa n = luolan leveys
-        * Tilavaativuus on kaarien lisäämisestä kekoon aiheutuva O(n²) + Kruskalin tilavaativuus, johon on lisätty kaytavan luomiseen kuluva tila, O(m * n), jossa m = huoneiden ja uloskäyntien välisten kaarien määrä.
-        * Koska m = n * (n-1), tilavaativuus on O(n²) + O(n² * n) eli O(n³)
-      * Luolan leveyden katsominen solmujen määräksi perustuu siihen, että huoneiden määrä perustuu luolan leveydestä laskettavaan lukuun.
+      * aikavaativuus
+        * max O(n³), jossa n = luolan leveys
+          * Aikavaativuus on maksimissaan kaarien lisäämisestä kekoon aiheutuva O(n²) + Kruskalin aikavaativuus, johon on lisätty yhden kaytavan luomiseen kuluva aika, O(m (log n + n)), jossa m = huoneiden ja uloskäyntien välisten kaarien määrä.
+            * Koska m = n * (n-1), aikavaativuus on O(n²) + O(n² (log n + n)) = O(n³ + n² * log n) = O(n³)
+        * min Ω(n), jossa n = luolan leveys
+          * Minimissään aikavaativuus on O(m (log 1 + n)), jossa m on huoneiden ja uloskäyntien välisten kaarien määrä.
+            * Koska m = kaarten määrä * (kaarten määrä - 1), aikavaativuus on O(1 (log 1 + n)) = O(n)
+      * tilavaativuus
+        * max O(n³), jossa n = luolan leveys
+          * Tilavaativuus on maksimissaan kaarien lisäämisestä kekoon aiheutuva O(n²) + Kruskalin tilavaativuus, johon on lisätty kaytavan luomiseen kuluva tila, O(m * n), jossa m = huoneiden ja uloskäyntien välisten kaarien määrä.
+            * Koska m = n * (n-1), tilavaativuus on O(n²) + O(n² * n) eli O(n³)
+        * min Ω(n), jossa n = luolan leveys
+          * Minimissään tilavaativuus on O(m * n), jossa m on huoneiden ja uloskäyntien välisten kaarien määrä.
+            * Koska m = kaarten määrä * (kaarten määrä - 1), tilavaativuus on O(1 * n) = O(n)
+      * Luolan leveyden katsominen solmujen määräksi maksimitapauksissa perustuu siihen, että huoneiden määrä perustuu tällöin luolan leveydestä laskettavaan lukuun.
       
     * alueiden generointi(generoiAvoimetAlueet)
       * aikavaativuus O(n²), jossa n = luolan leveys
