@@ -1,5 +1,7 @@
 # Käyttöohje
 
+Ohjelma löytyy jar -tiedostona repositorion juuresta.
+
 Ohjelman parametreiksi voidaan antaa ensimmäisenä parametrina luolan leveys ja toisena todennäköisyysvähennys, joka on luku, joka vähennetään todennäköisyydestä löytää luolia, joka kerta kun uusi luola generoidaan. Luolan minimileveys on 32 ja minimitodennäköisyysvähennys on 0.
 
 Kun ohjelma käynnistyy, ensimmäinen luola tulostetaan.
