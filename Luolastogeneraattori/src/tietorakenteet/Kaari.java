@@ -7,8 +7,8 @@ package tietorakenteet;
  */
 public class Kaari {
 
-    private Piste o1, o2;
-    private int length;
+    private final Piste o1, o2;
+    private final int length;
 
     /**
      * Metodi luo Kaari -olion asettaen tälle Pisteiksi parametreina saadut 

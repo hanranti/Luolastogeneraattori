@@ -10,7 +10,7 @@ public class Keko {
     private int[] taulukko;
     public Object[] objects;
     private int size;
-    private boolean max;
+    private final boolean max;
 
     /**
      * Metodi luo keko -olion, johon voidaan lisätä olioita antaen oliolle arvon

@@ -96,7 +96,7 @@ public class Jono {
      *
      * @return
      */
-    public int koko() {
+    public int getKoko() {
         return koko;
     }
 }

@@ -7,8 +7,8 @@ package tietorakenteet;
  */
 public class Piste {
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     /**
      * Metodi luo Piste -olion ja asettaa x- ja y koordinaateiksi parametrina

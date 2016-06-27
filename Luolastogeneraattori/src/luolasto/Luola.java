@@ -1,6 +1,5 @@
 package luolasto;
 
-import tietorakenteet.Piste;
 import tietorakenteet.Lista;
 
 /**

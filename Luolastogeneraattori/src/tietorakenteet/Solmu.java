@@ -8,7 +8,7 @@ package tietorakenteet;
  */
 public class Solmu<E extends Object> {
 
-    private Object object;
+    private final Object object;
     private Solmu vasen, oikea;
 
     /**

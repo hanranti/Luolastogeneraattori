@@ -91,7 +91,7 @@ public class LuolageneraattoriTest {
         Lista huoneet = luola.getHuoneet();
         boolean[][] pisteet = new boolean[size][size];
         Solmu s = huoneet.getFirst();
-        while (!s.equals(huoneet.getLast())) {
+        while (s!=null) {
             Piste h = (Piste) s.getObject();
             pisteet[h.getX()][h.getY()] = true;
             s = s.getOikea();

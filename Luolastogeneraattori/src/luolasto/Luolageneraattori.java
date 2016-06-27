@@ -20,7 +20,7 @@ public class Luolageneraattori {
 
     private final Luolasto luolasto;
     private final Random random;
-    private final int size, uusiaUloskaynteja;
+    private final int size, todennakoisyysVahennys;
     private int todennakoisyys;
 
     /**
@@ -34,7 +34,7 @@ public class Luolageneraattori {
         random = new Random();
         this.luolasto = luolasto;
         this.size = luolasto.getSize();
-        this.uusiaUloskaynteja = todennakoisyysVahennys;
+        this.todennakoisyysVahennys = todennakoisyysVahennys;
         this.todennakoisyys = 100;
     }
 
@@ -67,7 +67,7 @@ public class Luolageneraattori {
         generoiAvoimetAlueet(luola, qX, qY, dist, m2);
         generoiReunat(luola);
         if (todennakoisyys > 0) {
-            todennakoisyys -= uusiaUloskaynteja;
+            todennakoisyys -= todennakoisyysVahennys;
         } else {
             todennakoisyys = 0;
         }
@@ -337,7 +337,7 @@ public class Luolageneraattori {
         //generoida.
         int[][] aloitusX = new int[size][size];
         int[][] aloitusY = new int[size][size];
-        for (int i = 0; i < qX.koko(); i++) {
+        for (int i = 0; i < qX.getKoko(); i++) {
             int x = (int) qX.poll();
             int y = (int) qY.poll();
             aloitusX[x][y] = x;

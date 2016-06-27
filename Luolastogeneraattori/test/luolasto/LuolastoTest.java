@@ -52,7 +52,7 @@ public class LuolastoTest {
     }
 
     @Test
-    public void testMuutos() {
+    public void testGeneroiLuolaLuolastonUlkopuolelle() {
         int muutos = (int) FieldAccess.getField(luolasto, "muutos");
         assertEquals(0, muutos);
         luolasto.genertoiLuola(-1, 5);
@@ -67,7 +67,7 @@ public class LuolastoTest {
     }
 
     @Test
-    public void testMuutos2() {
+    public void testLuolastonKoonKasvattaminenEiMuutaLuolienSijainteja() {
         luolasto.genertoiLuola(5, 5);
         Luola luola = luolasto.getLuola(5, 5);
         luolastoMethodInvoker.invokeMethod("kasvataTaulukkoa", new Object[0]);

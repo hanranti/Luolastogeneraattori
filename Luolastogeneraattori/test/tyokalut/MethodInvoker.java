@@ -1,13 +1,12 @@
 package tyokalut;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.logging.Logger;
 
 public class MethodInvoker {
 
-    private Method[] methods;
+    private final Method[] methods;
 
-    private Object object;
+    private final Object object;
 
     public MethodInvoker(Object object) {
         this.object = object;
