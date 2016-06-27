@@ -113,7 +113,17 @@
 
 ### Suorituskykytestaus
 
-SuorituskykyTestauksen tulokset heittelevät paljon, joten testaan metodit kertaa.
+SuorituskykyTestauksen tulokset heittelevät paljon, joten otan jokaisen metodin tuloksen 1000000 suorituksen keskiarvosta.
+
+Kaikki testit koskevat Luolageneraattori -luokan metodeita.
+
+Suorituskykytestit voidaan ajaa muuttamalla tarvittavat metodit public:ksi, poistamalla halutut testit kommenteista suorituskykytestaus.luolasto.LuolaogeneraattoriSuorituskykyTest -luokassa ja ajamalla JUnit testit.
+
+#### Tulokset
+
+```
+```
 
 ### Puutteet ja parannusehdotukset
 
+* Ohjelman olisi voinut saada toimimaan pienemmillä luolilla kuin 32. Pienet luolat generoituvat nyt usein täysin tyhjiksi.
