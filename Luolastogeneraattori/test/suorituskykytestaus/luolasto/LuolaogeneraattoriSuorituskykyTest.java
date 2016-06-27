@@ -611,6 +611,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn1LuolaLuolanKoolla32");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto32 = new Luolasto(32, 0);
+            luolageneraattori32 = new Luolageneraattori(luolasto32, 0);
             Luola luola = new Luola(luolasto32, 5, 5);
             luolageneraattori32.generoi(new Luola(luolasto32, 4, 5));
             long alku = System.nanoTime();
@@ -627,6 +629,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn1LuolaLuolanKoolla50");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto50 = new Luolasto(50, 0);
+            luolageneraattori50 = new Luolageneraattori(luolasto50, 0);
             Luola luola = new Luola(luolasto50, 5, 5);
             luolageneraattori50.generoi(new Luola(luolasto50, 4, 5));
             long alku = System.nanoTime();
@@ -643,6 +647,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn1LuolaLuolanKoolla100");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto100 = new Luolasto(100, 0);
+            luolageneraattori100 = new Luolageneraattori(luolasto100, 0);
             Luola luola = new Luola(luolasto100, 5, 5);
             luolageneraattori100.generoi(new Luola(luolasto100, 4, 5));
             long alku = System.nanoTime();
@@ -659,6 +665,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn1LuolaLuolanKoolla200");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto200 = new Luolasto(200, 0);
+            luolageneraattori200 = new Luolageneraattori(luolasto200, 0);
             Luola luola = new Luola(luolasto200, 5, 5);
             luolageneraattori200.generoi(new Luola(luolasto200, 4, 5));
             long alku = System.nanoTime();
@@ -675,6 +683,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn2LuolaaLuolanKoolla32");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto32 = new Luolasto(32, 0);
+            luolageneraattori32 = new Luolageneraattori(luolasto32, 0);
             Luola luola = new Luola(luolasto32, 5, 5);
             luolageneraattori32.generoi(new Luola(luolasto32, 4, 5));
             luolageneraattori32.generoi(new Luola(luolasto32, 6, 5));
@@ -692,6 +702,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn2LuolaaLuolanKoolla50");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto50 = new Luolasto(50, 0);
+            luolageneraattori50 = new Luolageneraattori(luolasto50, 0);
             Luola luola = new Luola(luolasto50, 5, 5);
             luolageneraattori50.generoi(new Luola(luolasto50, 4, 5));
             luolageneraattori50.generoi(new Luola(luolasto50, 6, 5));
@@ -709,6 +721,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn2LuolaaLuolanKoolla100");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto100 = new Luolasto(100, 0);
+            luolageneraattori100 = new Luolageneraattori(luolasto100, 0);
             Luola luola = new Luola(luolasto100, 5, 5);
             luolageneraattori100.generoi(new Luola(luolasto100, 4, 5));
             luolageneraattori100.generoi(new Luola(luolasto100, 6, 5));
@@ -726,6 +740,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn2LuolaaLuolanKoolla200");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto200 = new Luolasto(200, 0);
+            luolageneraattori200 = new Luolageneraattori(luolasto200, 0);
             Luola luola = new Luola(luolasto200, 5, 5);
             luolageneraattori200.generoi(new Luola(luolasto200, 4, 5));
             luolageneraattori200.generoi(new Luola(luolasto200, 6, 5));
@@ -743,6 +759,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn3LuolaaLuolanKoolla32");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto32 = new Luolasto(32, 0);
+            luolageneraattori32 = new Luolageneraattori(luolasto32, 0);
             Luola luola = new Luola(luolasto32, 5, 5);
             luolageneraattori32.generoi(new Luola(luolasto32, 4, 5));
             luolageneraattori32.generoi(new Luola(luolasto32, 6, 5));
@@ -761,6 +779,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn3LuolaaLuolanKoolla50");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto50 = new Luolasto(50, 0);
+            luolageneraattori50 = new Luolageneraattori(luolasto50, 0);
             Luola luola = new Luola(luolasto50, 5, 5);
             luolageneraattori50.generoi(new Luola(luolasto50, 4, 5));
             luolageneraattori50.generoi(new Luola(luolasto50, 6, 5));
@@ -779,6 +799,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn3LuolaaLuolanKoolla100");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto100 = new Luolasto(100, 0);
+            luolageneraattori100 = new Luolageneraattori(luolasto100, 0);
             Luola luola = new Luola(luolasto100, 5, 5);
             luolageneraattori100.generoi(new Luola(luolasto100, 4, 5));
             luolageneraattori100.generoi(new Luola(luolasto100, 6, 5));
@@ -797,6 +819,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn3LuolaaLuolanKoolla200");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto200 = new Luolasto(200, 0);
+            luolageneraattori200 = new Luolageneraattori(luolasto200, 0);
             Luola luola = new Luola(luolasto200, 5, 5);
             luolageneraattori200.generoi(new Luola(luolasto200, 4, 5));
             luolageneraattori200.generoi(new Luola(luolasto200, 6, 5));
@@ -815,6 +839,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn4LuolaaLuolanKoolla32");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto32 = new Luolasto(32, 0);
+            luolageneraattori32 = new Luolageneraattori(luolasto32, 0);
             Luola luola = new Luola(luolasto32, 5, 5);
             luolageneraattori32.generoi(new Luola(luolasto32, 4, 5));
             luolageneraattori32.generoi(new Luola(luolasto32, 6, 5));
@@ -834,6 +860,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn4LuolaaLuolanKoolla50");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto50 = new Luolasto(50, 0);
+            luolageneraattori50 = new Luolageneraattori(luolasto50, 0);
             Luola luola = new Luola(luolasto50, 5, 5);
             luolageneraattori50.generoi(new Luola(luolasto50, 4, 5));
             luolageneraattori50.generoi(new Luola(luolasto50, 6, 5));
@@ -853,6 +881,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn4LuolaaLuolanKoolla100");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto100 = new Luolasto(100, 0);
+            luolageneraattori100 = new Luolageneraattori(luolasto100, 0);
             Luola luola = new Luola(luolasto100, 5, 5);
             luolageneraattori100.generoi(new Luola(luolasto100, 4, 5));
             luolageneraattori100.generoi(new Luola(luolasto100, 6, 5));
@@ -872,6 +902,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testGeneroiKunVieressaOn4LuolaaLuolanKoolla200");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto200 = new Luolasto(200, 0);
+            luolageneraattori200 = new Luolageneraattori(luolasto200, 0);
             Luola luola = new Luola(luolasto200, 5, 5);
             luolageneraattori200.generoi(new Luola(luolasto200, 4, 5));
             luolageneraattori200.generoi(new Luola(luolasto200, 6, 5));
@@ -891,6 +923,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn1LuolaLuolanKoolla32");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto32 = new Luolasto(32, 0);
+            luolageneraattori32 = new Luolageneraattori(luolasto32, 0);
             Luola luola = new Luola(luolasto32, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -910,6 +944,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn1LuolaLuolanKoolla50");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto50 = new Luolasto(50, 0);
+            luolageneraattori50 = new Luolageneraattori(luolasto50, 0);
             Luola luola = new Luola(luolasto50, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -929,6 +965,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn1LuolaLuolanKoolla100");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto100 = new Luolasto(100, 0);
+            luolageneraattori100 = new Luolageneraattori(luolasto100, 0);
             Luola luola = new Luola(luolasto100, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -948,6 +986,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn1LuolaLuolanKoolla200");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto200 = new Luolasto(200, 0);
+            luolageneraattori200 = new Luolageneraattori(luolasto200, 0);
             Luola luola = new Luola(luolasto200, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -967,6 +1007,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn2LuolaaLuolanKoolla32");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto32 = new Luolasto(32, 0);
+            luolageneraattori32 = new Luolageneraattori(luolasto32, 0);
             Luola luola = new Luola(luolasto32, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -987,6 +1029,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn2LuolaaLuolanKoolla50");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto50 = new Luolasto(50, 0);
+            luolageneraattori50 = new Luolageneraattori(luolasto50, 0);
             Luola luola = new Luola(luolasto50, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -1007,6 +1051,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn2LuolaaLuolanKoolla100");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto100 = new Luolasto(100, 0);
+            luolageneraattori100 = new Luolageneraattori(luolasto100, 0);
             Luola luola = new Luola(luolasto100, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -1027,6 +1073,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn2LuolaaLuolanKoolla200");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto200 = new Luolasto(200, 0);
+            luolageneraattori200 = new Luolageneraattori(luolasto200, 0);
             Luola luola = new Luola(luolasto200, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -1047,6 +1095,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn3LuolaaLuolanKoolla32");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto32 = new Luolasto(32, 0);
+            luolageneraattori32 = new Luolageneraattori(luolasto32, 0);
             Luola luola = new Luola(luolasto32, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -1068,6 +1118,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn3LuolaaLuolanKoolla50");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto50 = new Luolasto(50, 0);
+            luolageneraattori50 = new Luolageneraattori(luolasto50, 0);
             Luola luola = new Luola(luolasto50, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -1089,6 +1141,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn3LuolaaLuolanKoolla100");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto100 = new Luolasto(100, 0);
+            luolageneraattori100 = new Luolageneraattori(luolasto100, 0);
             Luola luola = new Luola(luolasto100, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -1110,6 +1164,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn3LuolaaLuolanKoolla200");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto200 = new Luolasto(200, 0);
+            luolageneraattori200 = new Luolageneraattori(luolasto200, 0);
             Luola luola = new Luola(luolasto200, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -1131,6 +1187,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn4LuolaaLuolanKoolla32");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto32 = new Luolasto(32, 0);
+            luolageneraattori32 = new Luolageneraattori(luolasto32, 0);
             Luola luola = new Luola(luolasto32, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -1153,6 +1211,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn4LuolaaLuolanKoolla50");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto50= new Luolasto(50, 0);
+            luolageneraattori50 = new Luolageneraattori(luolasto50, 0);
             Luola luola = new Luola(luolasto50, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -1175,6 +1235,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn4LuolaaLuolanKoolla100");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto100= new Luolasto(100, 0);
+            luolageneraattori100 = new Luolageneraattori(luolasto100, 0);
             Luola luola = new Luola(luolasto100, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
@@ -1197,6 +1259,8 @@ public class LuolaogeneraattoriSuorituskykyTest {
         System.out.println("testLuoUloskaynnitKunVieressaOn4LuolaaLuolanKoolla200");
         long keskiarvo = 0;
         for (int i = 0; i < maara; i++) {
+            luolasto200= new Luolasto(200, 0);
+            luolageneraattori200 = new Luolageneraattori(luolasto200, 0);
             Luola luola = new Luola(luolasto200, 5, 5);
             Jono j1 = new Jono();
             Jono j2 = new Jono();
