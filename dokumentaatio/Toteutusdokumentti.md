@@ -113,7 +113,7 @@
 
 ### Suorituskykytestaus
 
-SuorituskykyTestauksen tulokset heittelevät paljon, joten otan jokaisen metodin tuloksen 1000000 suorituksen keskiarvosta.
+SuorituskykyTestauksen tulokset heittelevät paljon, joten otan jokaisen metodin tuloksen 100000 suorituksen keskiarvosta.
 
 Kaikki testit koskevat Luolageneraattori -luokan metodeita.
 
@@ -123,6 +123,8 @@ Suorituskykytestit voidaan ajaa muuttamalla tarvittavat metodit public:ksi, pois
 
 ```
 ```
+
+Testasin generoi -metodia, sekä sen suorittamien metodien aikaa erikseen. Testasin myös generoi ja luoUloskaynnit -metodeita eri tapauksissa, joissa generoitavan luolan viereen on jo generoitu eri määrä luolia. Mitä enemmän luolan viereen on jo generoitu luolia, sitä pitempään luolan generoinnin tulisi kestää. Satunnaisuus vaikuttaa paljon kuluvaan aikaan kaikissa metodeissa, joten jokaisen metodin eri suorituksen kesto voi vaihdella paljon.
 
 ### Puutteet ja parannusehdotukset
 
