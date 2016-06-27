@@ -44,9 +44,13 @@ Kaikki testit ovat toteutettu käyttäen JUnit 4.10.
 
 * FieldAccess
   * Mahdollistaa pääsyn private näkyvyyden muuttujiin testattavassa luokassa
+  * getField(Object object, String field) palauttaa field nimisen muuttujan object oliosta
+  * getArray(Object object, String field) palauttaa field nimisen taulukon object oliosta
   
 * MethodInvoker
   * Mahdollistaa, private näkyvyyden metodien suorittamisen testattavassa oliossa
+  * MethodInvoker(Object object) luo MethodInvoker -olion, ja asettaa tälle olioksi object
+  * invokeMethod(String methodName, Object... objects) suorittaa MethodInvoker -olion methodName nimisen metodin antaen tälle parametriksi objects
 
 ## Suorituskykytestaus
 
