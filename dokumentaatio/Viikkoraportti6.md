@@ -6,3 +6,11 @@ Kaytin 3 tuntia,
   * generoiReunat ei enää aiheuta arrayIndexOutOfBoundsExceptionia
   
 * testeihin
+
+Kaytin tunnin koodin siistimiseen
+
+Kaytin x tuntia
+
+* testien tekemiseen
+* dokumentointiin
+* FieldAccess getArray korjaamiseen
