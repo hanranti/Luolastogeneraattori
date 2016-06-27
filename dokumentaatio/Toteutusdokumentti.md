@@ -67,14 +67,14 @@
             * Koska m = n * (n-1), aikavaativuus on O(n²) + O(n² (log n + n)) = O(n³ + n² * log n) = O(n³)
         * min Ω(n), jossa n = luolan leveys
           * Minimissään aikavaativuus on O(m (log 1 + n)), jossa m on huoneiden ja uloskäyntien välisten kaarien määrä.
-            * Koska m = kaarten määrä * (kaarten määrä - 1), aikavaativuus on O(1 (log 1 + n)) = O(n)
+            * Koska m = solmujen määrä * (solmujen määrä - 1), aikavaativuus on O(1 (log 1 + n)) = O(n)
       * tilavaativuus
         * max O(n³), jossa n = luolan leveys
           * Tilavaativuus on maksimissaan kaarien lisäämisestä kekoon aiheutuva O(n²) + Kruskalin tilavaativuus, johon on lisätty kaytavan luomiseen kuluva tila, O(m * n), jossa m = huoneiden ja uloskäyntien välisten kaarien määrä.
             * Koska m = n * (n-1), tilavaativuus on O(n²) + O(n² * n) eli O(n³)
         * min Ω(n), jossa n = luolan leveys
           * Minimissään tilavaativuus on O(m * n), jossa m on huoneiden ja uloskäyntien välisten kaarien määrä.
-            * Koska m = kaarten määrä * (kaarten määrä - 1), tilavaativuus on O(1 * n) = O(n)
+            * Koska m = solmujen määrä * (solmujen määrä - 1), tilavaativuus on O(1 * n) = O(n)
       * Luolan leveyden katsominen solmujen määräksi maksimitapauksissa perustuu siihen, että huoneiden määrä perustuu tällöin luolan leveydestä laskettavaan lukuun.
       
     * alueiden generointi(generoiAvoimetAlueet)
@@ -83,10 +83,16 @@
       * tilavaativuus O(n²), jossa n = luolan leveys
         * Leveyssuuntaisen läpikäynnin tilavaativuus on O(n²) (n² = solmujen määrä).
       
-    * aikavaativuus O(n³), jossa n = luolan leveys
-      * Kaytavien luominen vie eniten aikaa eli avointen alueiden generoinnin kokonaisaikavaativuus on O(n³).
-    * tilavaativuus O(n³), jossa n = luolan leveys
-      * Alueiden generointi vie eniten tilaa eli avointen alueiden generoinnin kokonaistilavaativuus on O(n³).
+    * aikavaativuus 
+      * max O(n³), jossa n = luolan leveys
+        * Kaytavien luominen vie eniten aikaa eli avointen alueiden generoinnin kokonaisaikavaativuus on O(n³).
+      * min Ω(n²), jossa n = luolan leveys
+        * Parhaassa tapauksessa kaytavien luominen vie Ω(n) aikaa, jolloin alueiden generointi vie eniten aikaa.
+    * tilavaativuus 
+      * max O(n³), jossa n = luolan leveys
+        * kaytavien luominen vie eniten tilaa eli avointen alueiden generoinnin kokonaistilavaativuus on O(n³).
+      * min Ω(n²), jossa n = luolan leveys
+        * Parhaassa tapauksessa kaytavien luominen vie Ω(n) tilaa, jolloin alueiden generointi vie eniten tilaa.
     
   * reunojen generointi(generoiReunat)
     * aikavaativuus O(n²), jossa n = luolan leveys
