@@ -9,7 +9,7 @@ Kaytin 3 tuntia,
 
 Kaytin tunnin koodin siistimiseen
 
-Kaytin x tuntia
+Kaytin 10 tuntia
 
 * testien tekemiseen
 * dokumentointiin

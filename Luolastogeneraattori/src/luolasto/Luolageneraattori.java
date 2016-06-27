@@ -73,7 +73,7 @@ public class Luolageneraattori {
         }
     }
 
-    public void luoUloskaynnit(Luola luola, Jono qX, Jono qY, Jono dist) {
+    private void luoUloskaynnit(Luola luola, Jono qX, Jono qY, Jono dist) {
         int luolaX = luola.getX();
         int luolaY = luola.getY();
         Lista huoneet = luola.getHuoneet();
@@ -242,7 +242,7 @@ public class Luolageneraattori {
         }
     }
 
-    public void luoKaytavat(Luola luola, Jono qX, Jono qY, Jono dist) {
+    private void luoKaytavat(Luola luola, Jono qX, Jono qY, Jono dist) {
         //Käytävillä muodostetaan pienin virittävä puu käyttäen kruskalia. 
         Lista huoneet = luola.getHuoneet();
         UnionFind unionFind = new UnionFind();
@@ -277,7 +277,7 @@ public class Luolageneraattori {
         }
     }
 
-    public void luoPolku(Jono qX, Jono qY, Jono dist, int x, int y, int loppuX, int loppuY) {
+    private void luoPolku(Jono qX, Jono qY, Jono dist, int x, int y, int loppuX, int loppuY) {
         if (x == loppuX && y == loppuY) {
             return;
         }
@@ -311,7 +311,7 @@ public class Luolageneraattori {
         }
     }
 
-    public void luoHuoneet(Luola luola, Jono qX, Jono qY, Jono dist, int m) {
+    private void luoHuoneet(Luola luola, Jono qX, Jono qY, Jono dist, int m) {
         //Huoneita luodaan satunnainen määrä satunnaisiin koordinaatteihin.
         Lista huoneet = luola.getHuoneet();
         int maara = random.nextInt(m) + 1;
@@ -324,7 +324,7 @@ public class Luolageneraattori {
         }
     }
 
-    public void generoiAvoimetAlueet(Luola l, Jono qX, Jono qY, Jono dist, int s) {
+    private void generoiAvoimetAlueet(Luola l, Jono qX, Jono qY, Jono dist, int s) {
         //Avoimet alueet generoidaan käyttäen saatuja koordinaatteja ja dist-arvoja
         //jonoissa.
         boolean[][] luola = l.getLuola();
@@ -402,7 +402,7 @@ public class Luolageneraattori {
         }
     }
 
-    public void generoiReunat(Luola luola) {
+    private void generoiReunat(Luola luola) {
         //Metodi poistaa reunojen kulmikkuuden lisäämälle seiniä reunoille 
         //satunnaisesti leveyssuuntaisella läpikäynnillä.
         boolean[][] color = new boolean[size][size];
