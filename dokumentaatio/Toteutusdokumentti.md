@@ -240,6 +240,8 @@ Keskiarvo: 3597270ns
 
 Testasin generoi -metodia, sekä sen suorittamien metodien aikaa erikseen. Testasin myös generoi ja luoUloskaynnit -metodeita eri tapauksissa, joissa generoitavan luolan viereen on jo generoitu eri määrä luolia. Mitä enemmän luolan viereen on jo generoitu luolia, sitä pitempään luolan generoinnin tulisi kestää. Satunnaisuus vaikuttaa paljon kuluvaan aikaan kaikissa metodeissa, joten jokaisen metodin eri suorituksen kesto voi vaihdella paljon, mikä näkyykin tuloksissa esimerkiksi luoUloskaynnit -metodeissa. Teen kaikki suorituskykytestit erikseen 32, 50, 100, ja 200 levyisille luolille.
 
+Repositorion dokumentaatio kansiossa on kuva ViereistenLuolienVaikutusLuolanGenerointiAikaan.png, josta näkyy y -akselilla aika nanosekunteina, ja x -akselilla erikseen eri kokoisten luolien generointi ajat, joissa on erikseen eri väreillä tulokset, generointiajoista, joissa generoitavan luolan vieressä on ollut eri määrä luolia.
+
 ### Puutteet ja parannusehdotukset
 
 * Ohjelman olisi voinut saada toimimaan pienemmillä luolilla kuin 32. Pienet luolat generoituvat nyt usein täysin tyhjiksi.
