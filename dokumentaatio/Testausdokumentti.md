@@ -59,6 +59,8 @@ Testit voidaan toistaa viemällä repositorion netbeans projekti Netbeansiin ja 
   * Testaan, että myös pelaajan luolakoordinaatit ovat oikeita.
   * Testaan, että pelaaja ei voi liikkua seinien läpi.
 
+### Luolastogeneraattori
+
 * Luolastogeneraattori
   * Testaan, että pelaajan asetus luolaan asettaa pelaajan paikkaan, josta on polu kaikkiin uloskäynteihin.
 
@@ -73,11 +75,3 @@ Testit voidaan toistaa viemällä repositorion netbeans projekti Netbeansiin ja 
   * Mahdollistaa, private näkyvyyden metodien suorittamisen testattavassa oliossa
   * MethodInvoker(Object object) luo MethodInvoker -olion, ja asettaa tälle olioksi object
   * invokeMethod(String methodName, Object... objects) suorittaa MethodInvoker -olion methodName nimisen metodin antaen tälle parametriksi objects
-
-## Suorituskykytestaus
-
-* Luolastogeneraattori
-  * Generoi -metodin suoritusnopeus 10000 kokeilun keskiarvolla:
-    * Luolan koko :32 keskiarvo: 4466197ns eli noin 4,5ms
-    * Luolan koko :50 keskiarvo: 1340217ns eli noin 1,3ms
-    * Luolan koko: 100 keskiarvo: 6935111ns eli noin 6,9ms
