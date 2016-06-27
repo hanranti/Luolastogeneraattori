@@ -1,5 +1,7 @@
 # Testausdokumentti
 
+Kaikki testit ovat toteutettu käyttäen JUnit 4.10.
+
 ### Tietorakenteet
 
 ### Luolasto
