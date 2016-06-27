@@ -113,7 +113,7 @@
 
 ### Suorituskykytestaus
 
-SuorituskykyTestauksen tulokset heittelevät paljon, joten otan jokaisen metodin tuloksen 1000000 suorituksen keskiarvosta.
+SuorituskykyTestauksen tulokset heittelevät paljon, joten otan jokaisen metodin tuloksen 100000 suorituksen keskiarvosta.
 
 Kaikki testit koskevat Luolageneraattori -luokan metodeita.
 
@@ -121,8 +121,12 @@ Suorituskykytestit voidaan ajaa muuttamalla tarvittavat metodit public:ksi, pois
 
 #### Tulokset
 
+Tulokset on nimetty: "test" testattavan metodin nimi ("KunVieressaOn" X "Luolaa") "LuolanKoolla" Y
+
 ```
 ```
+
+Testasin generoi -metodia, sekä sen suorittamien metodien aikaa erikseen. Testasin myös generoi ja luoUloskaynnit -metodeita eri tapauksissa, joissa generoitavan luolan viereen on jo generoitu eri määrä luolia. Mitä enemmän luolan viereen on jo generoitu luolia, sitä pitempään luolan generoinnin tulisi kestää. Satunnaisuus vaikuttaa paljon kuluvaan aikaan kaikissa metodeissa, joten jokaisen metodin eri suorituksen kesto voi vaihdella paljon, mikä näkyykin tuloksissa esimerkiksi luoUloskaynnit -metodeissa. Teen kaikki suorituskykytestit erikseen 32, 50, 100, ja 200 levyisille luolille.
 
 ### Puutteet ja parannusehdotukset
 
@@ -130,4 +134,4 @@ Suorituskykytestit voidaan ajaa muuttamalla tarvittavat metodit public:ksi, pois
 * Luolat olisi voinut generoida siten, että jokaisesta luolan uloskäynnistä ei pääse toisiinsa. Halusin kuitenkin käyttää työssä pienimmän virittävän puun muodostavaa algoritmia.
 * Ohjelmaan olisi voinut luoda lyhimmän reitin etsivän algoritmin(esim A*).
   * Ongelmana on, että kaikkia reittejä ei ole välttämättä vielä luotu, koska luolat generoidaan vasta, kun niihin kuljetaan.
-  * Lyhimmän reitin etsiminen luolastossa, jossa jokaisesta luolan uloskäynnistä on reitti toisiinsa, ei välttämättä olisi kovin mielenkiintoista.
+  * Lyhimmän reitin etsiminen luolastossa, jossa jokaisesta luolan uloskäynnistä on reitti toisiinsa, ei tosin välttämättä olisi kovin mielenkiintoista.
