@@ -127,3 +127,7 @@ Suorituskykytestit voidaan ajaa muuttamalla tarvittavat metodit public:ksi, pois
 ### Puutteet ja parannusehdotukset
 
 * Ohjelman olisi voinut saada toimimaan pienemmillä luolilla kuin 32. Pienet luolat generoituvat nyt usein täysin tyhjiksi.
+* Luolat olisi voinut generoida siten, että jokaisesta luolan uloskäynnistä ei pääse toisiinsa. Halusin kuitenkin käyttää työssä pienimmän virittävän puun muodostavaa algoritmia.
+* Ohjelmaan olisi voinut luoda lyhimmän reitin etsivän algoritmin(esim A*).
+  * Ongelmana on, että kaikkia reittejä ei ole välttämättä vielä luotu, koska luolat generoidaan vasta, kun niihin kuljetaan.
+  * Lyhimmän reitin etsiminen luolastossa, jossa jokaisesta luolan uloskäynnistä on reitti toisiinsa, ei välttämättä olisi kovin mielenkiintoista.
