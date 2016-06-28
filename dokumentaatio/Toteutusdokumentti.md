@@ -242,6 +242,8 @@ Testasin generoi -metodia, sekä sen suorittamien metodien aikaa erikseen. Testa
 
 Repositorion dokumentaatio kansiossa on kuva ViereistenLuolienVaikutusLuolanGenerointiAikaan.png, josta näkyy y -akselilla aika nanosekunteina, ja x -akselilla erikseen eri kokoisten luolien generointi ajat, joissa on erikseen eri väreillä tulokset, generointiajoista, joissa generoitavan luolan vieressä on ollut eri määrä luolia.
 
+Kuvasta näkyy, että toisin kuin oletin, mitä vähemmän generoitavan luolan vieressä on luolia, sitä pidempään generoinnissa kestää. Erityisesti, kun vieressä on 0 luolaa, generoinnissa kestää pittempään kuin muissa tapauksissa.
+
 ### Puutteet ja parannusehdotukset
 
 * Ohjelman olisi voinut saada toimimaan pienemmillä luolilla kuin 32. Pienet luolat generoituvat nyt usein täysin tyhjiksi.
