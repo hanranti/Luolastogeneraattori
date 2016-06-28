@@ -27,8 +27,9 @@ public class Luolageneraattori {
      * Metodi luo Luolageneraattori -olion, joka voi generoida luoliin avoimia
      * alueita.
      *
-     * @param luolasto
-     * @param todennakoisyysVahennys
+     * @param luolasto Luolasto, jossa generoitavat luolat sijaitsevat
+     * @param todennakoisyysVahennys Luku, joka vahennetaan todennakoisyydesta
+     * loytaa uusia uloskaynteja, joka kerta, kun uusi luola generoidaan
      */
     public Luolageneraattori(Luolasto luolasto, int todennakoisyysVahennys) {
         random = new Random();
@@ -42,7 +43,7 @@ public class Luolageneraattori {
      * Metodi generoi luolaan seiniä ja avoimia alueita. Luolaan luodaan
      * satunnaisesti huoneita, uloskäyntejä ja näitä yhdistäviä käytäviä.
      *
-     * @param luola
+     * @param luola Luola, johon avoimet alueet ja seinat generoidaan
      */
     public void generoi(Luola luola) {
         //Kaikki koordinaatit joihin generoidaan avoimia alueita lisätään jonoihin,

@@ -16,8 +16,9 @@ public class Luolasto {
      * Metodi luo Luolasto -olion, joka sisältää ja generoi ohjelman tarvitsemat
      * luolat.
      *
-     * @param size
-     * @param todennakoisyysVahennys
+     * @param size Luolan koko
+     * @param todennakoisyysVahennys Luku, joka vahennetaan todennakoisyydesta
+     * loytaa uusia uloskaynteja joka kerta kun uusi luola generoidaan
      */
     public Luolasto(int size, int todennakoisyysVahennys) {
         luolasto = new Luola[10][10];
@@ -32,8 +33,8 @@ public class Luolasto {
      * taulukon ulkopuolelle, taulukon koko kasvatetaan kaksinkertaisesksi
      * kasvataTaulukkoa() metodilla.
      *
-     * @param x
-     * @param y
+     * @param x Luolaston x -koordinaatti johon uusi luola generoidaan
+     * @param y Luolaston y -koordinaatti johon uusi luola generoidaan
      */
     public void genertoiLuola(int x, int y) {
         if (x + muutos >= luolasto.length || x + muutos < 0 || y + muutos >= luolasto[0].length || y + muutos < 0) {
@@ -69,9 +70,9 @@ public class Luolasto {
     /**
      * Metodi palauttaa Luola -olion taulukon x, ja y koordinaateista.
      *
-     * @param x
-     * @param y
-     * @return
+     * @param x X -koordinaatti luolastossa, josta luola palautetaan
+     * @param y Y -koordinaatti luolastossa, josta luola palautetaan
+     * @return Palauttaa luolan luolastosta annetuista x- ja y-  koordinaateista
      */
     public Luola getLuola(int x, int y) {
         if (x + muutos < 0 || x + muutos >= luolasto.length || y + muutos < 0 || y + muutos >= luolasto[0].length) {
@@ -83,7 +84,7 @@ public class Luolasto {
     /**
      * Metodi palauttaa luolan koon.
      *
-     * @return
+     * @return Palauttaa luolan koon
      */
     public int getSize() {
         return size;

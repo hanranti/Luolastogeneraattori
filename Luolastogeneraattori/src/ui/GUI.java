@@ -20,8 +20,8 @@ public class GUI {
      * tulostaa luolan, jossa seiniä kuvataan merkillä "x", avoimia alueita
      * merkillä " " ja pelaajaa merkillä "@".
      *
-     * @param luola
-     * @param pelaaja
+     * @param luola Tulostettava luola
+     * @param pelaaja Pelaaja, joka tulostetaan luolaan
      */
     public void tulosta(boolean[][] luola, Pelaaja pelaaja) {
         clean();

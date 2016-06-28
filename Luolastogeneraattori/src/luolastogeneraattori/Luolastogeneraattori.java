@@ -20,10 +20,11 @@ public class Luolastogeneraattori {
 
     /**
      * Metodi luo ohjelman tarvitsemat luokat ja välittää näille parametrina
-     * saamansa luolan koon.
+     * saamansa luolan koon ja todennakoisyysvahennyksen.
      *
-     * @param size
-     * @param todennakoisyysVahennys
+     * @param size Luolan koko
+     * @param todennakoisyysVahennys Luku, joka vahennetaan todennakoisyydesta
+     * loytaa uusiaUloskaynteja joka kerta, kun uusi luola generoidaan
      */
     public Luolastogeneraattori(int size, int todennakoisyysVahennys) {
         this.size = size;

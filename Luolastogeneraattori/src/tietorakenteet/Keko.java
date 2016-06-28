@@ -18,7 +18,7 @@ public class Keko {
      * onko keko maksimi- vai minimikeko. Jos metodille annetaan parametrina
      * true, keko on maksimikeko, ja jos false, keko on minimikeko.
      *
-     * @param max
+     * @param max Jos max on true, keko on maksimikeko, muulloin minimikeko
      */
     public Keko(boolean max) {
         taulukko = new int[8];
@@ -31,8 +31,8 @@ public class Keko {
      * Metodi lisää kekoon olion ja tälle arvon. Jos olioiden määrä kasvaa yli
      * taulukon koon, taulukon kokoa kasvatetaan kasvataTaulukkoa -metodilla.
      *
-     * @param object
-     * @param k
+     * @param object Olio, joka lisataan kekoon
+     * @param k Lisattavan olion saama arvo, joka maarittaa olion sijainnin keossa
      */
     public void insert(Object object, int k) {
         size++;
@@ -72,7 +72,7 @@ public class Keko {
      * Metodi palauttaa olion, jonka saama arvo on suurin maksimikeossa tai
      * pienin minimikeossa.
      *
-     * @return
+     * @return Palauttaa keon juuressa olevan olion
      */
     public Object juuri() {
         return objects[1];
@@ -83,7 +83,7 @@ public class Keko {
      * riippuen siitä onko keko maksimi vai minimikeko, järjestää keon uudelleen
      * heapify -metodilla ja palauttaa entisen juuren.
      *
-     * @return
+     * @return Palauttaa keon juuressa olevan olion
      */
     public Object poistaJuuri() {
         if (size == 0) {
@@ -170,9 +170,9 @@ public class Keko {
     }
 
     /**
-     * Jos keko on tyhjä, metodi palauttaa true, muulloin false.
+     * Jos keko on tyhja, metodi palauttaa true, muulloin false.
      *
-     * @return
+     * @return Jos keko on tyhja, palauttaa true, muulloin false
      */
     public boolean tyhja() {
         if (size == 0) {

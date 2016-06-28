@@ -23,7 +23,7 @@ public class Lista {
     /**
      * Metodi lisää listaan uuden Solmun, jolla on parametrinä annettu olio.
      *
-     * @param object
+     * @param object Olio, joka lisataan listaan
      */
     public void add(Object object) {
         if (first == null) {
@@ -41,7 +41,7 @@ public class Lista {
     /**
      * Metodi poistaa listasta Solmut, joilla on parametrinä annettu olio.
      *
-     * @param object
+     * @param object Olio, joka poistetaan listasta
      */
     public void remove(Object object) {
         if (first == null) {
@@ -72,8 +72,9 @@ public class Lista {
      * Metodi palauttaa true, jos listassa on solmu, jolla on parametrinä saatu
      * olio, muulloin false.
      *
-     * @param object
-     * @return
+     * @param object Olio, jonka testataan olevan listassa
+     * @return Jos parametrina annettu olio on listassa, palautetaan true muulloin
+     * false
      */
     public boolean contains(Object object) {
         Solmu solmu = first;
@@ -91,8 +92,8 @@ public class Lista {
      * solmussa, eli solmussa, jonka etäisyys first solmusta kulkien oikealle on
      * parametrinä saadun int i:n arvo.
      *
-     * @param i
-     * @return
+     * @param i Indeksi, josta olio haetaan
+     * @return Olio parametrina saadusta indeksista
      */
     public Object get(int i){
         Solmu solmu = first;
@@ -103,9 +104,9 @@ public class Lista {
     }
 
     /**
-     * Metodi palauttaa listan ensimmäisen solmun.
+     * Metodi palauttaa listan ensimmaisen solmun.
      *
-     * @return
+     * @return Palauttaa listan ensimmaisen solmun
      */
     public Solmu getFirst() {
         return first;
@@ -114,16 +115,16 @@ public class Lista {
     /**
      * Metodi palauttaa listan viimeisen solmun.
      *
-     * @return
+     * @return Palauttaa listan viimeisen solmun
      */
     public Solmu getLast() {
         return last;
     }
 
     /**
-     * Metodi palauttaa solmujen määrän listassa.
+     * Metodi palauttaa solmujen maaran listassa.
      *
-     * @return
+     * @return Palauttaa solmujen maaran listassa
      */
     public int getKoko() {
         return koko;

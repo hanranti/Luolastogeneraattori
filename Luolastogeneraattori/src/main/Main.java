@@ -11,9 +11,13 @@ public class Main {
     /**
      * Metodi käynnistää ohjelman. Ohjelman parametri args sisältää tiedon
      * yksittäisen luolan koosta size. Jos tätä lukua ei anneta, size muuttujan
-     * arvoksi annetaan 32.
+     * arvoksi annetaan 32. Toisena parametrina on todennakoisyysvahennys, joka
+     * on todennakoisyydesta loytaa uusia uloskaynteja luolan generoinnin
+     * yhteydessa vahennettava luku.
      *
-     * @param args
+     * @param args Sisaltaa mahdollisesti ensimmaisena parametrina luolan koon ja
+     * toisena todennakoisyydesta loytaa uusia uloskaynteja luolan generoinnin
+     * yhteydessa vahennettavan luvun
      */
     public static void main(String[] args) {
         int size = 32;

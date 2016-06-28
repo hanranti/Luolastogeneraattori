@@ -28,7 +28,7 @@ public class Jono {
      * Metodi lisää olion jonon loppuun. Jos taulukko on lisäyksen jälkeen
      * täysi, taulukon kokoa kasvatetaan kasvataTaulukkoa -metodilla.
      *
-     * @param object
+     * @param object Olio, joka lisataan jonon loppuun
      */
     public void push(Object object) {
         taulukko[loppu] = object;
@@ -45,7 +45,7 @@ public class Jono {
     /**
      * Metodi poistaa ja palauttaa jonon ensimmäisen alkion.
      *
-     * @return
+     * @return Palauttaa jonon ensimmaisen alkion
      */
     public Object poll() {
         if (this.tyhja()) {
@@ -82,7 +82,7 @@ public class Jono {
     /**
      * Jos jono on tyhjä, metodi palauttaa true, muulloin false.
      *
-     * @return
+     * @return Palauttaa true, jos jono on tyhja, muulloin false
      */
     public boolean tyhja() {
         if (koko == 0) {
@@ -94,7 +94,7 @@ public class Jono {
     /**
      * Metodi palauttaa montako alkioita jonossa on.
      *
-     * @return
+     * @return Palauttaa alkioiden maaran jonossa
      */
     public int getKoko() {
         return koko;

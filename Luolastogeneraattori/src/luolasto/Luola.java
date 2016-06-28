@@ -19,9 +19,9 @@ public class Luola {
      * Metodi luo Luola -olion. Metodi ottaa parametrina int size muuttujan,
      * joka määrittää luolan leveyden ja korkeuden.
      *
-     * @param luolasto
-     * @param y
-     * @param x
+     * @param luolasto Luolasto, jossa luola sijaitsee
+     * @param y Luolan x -koordinaatti luolastossa
+     * @param x Luolan y -koordinaatti luolastossa
      */
     public Luola(Luolasto luolasto, int x, int y) {
         this.luolasto = luolasto;
@@ -37,7 +37,7 @@ public class Luola {
     /**
      * Metodi palauttaa tätä luolaa kuvaavan boolean[][] -taulukon.
      *
-     * @return
+     * @return Boolean -taulukko, jossa false on seina ja true avoin alue
      */
     public boolean[][] getLuola() {
         return luola;
@@ -47,7 +47,7 @@ public class Luola {
      * Metodi palauttaa listan Piste olioista,jotka sisältävät huoneiden
      * koordinaatit.
      *
-     * @return
+     * @return Lista luolan sisältämistä huoneista
      */
     public Lista getHuoneet() {
         return huoneet;
@@ -56,7 +56,7 @@ public class Luola {
     /**
      * Metodi palauttaa tämän luolan x-koordinaatin luolastossa.
      *
-     * @return
+     * @return Tämän luolan x-koordinaatti luolastossa
      */
     public int getX() {
         return x;
@@ -65,7 +65,7 @@ public class Luola {
     /**
      * Metodi palauttaa tämän luolan y-koordinaatin luolastossa.
      *
-     * @return
+     * @return Tämän luolan y-koordinaatti luolastossa
      */
     public int getY() {
         return y;

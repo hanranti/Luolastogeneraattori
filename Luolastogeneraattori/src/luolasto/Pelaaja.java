@@ -18,9 +18,9 @@ public class Pelaaja {
      * koordinaatit luolassa ja luolasta, jossa pelaaja on, sekä luolasto
      * -olion, joka sisältää tiedon luolastosta, jossa pelaaja sijaitsee.
      *
-     * @param luolaX
-     * @param luolaY
-     * @param luolasto
+     * @param luolaX Luolaston x -koordinaatti, johon pelaaja sijoitetaan
+     * @param luolaY Luolaston y -koordinaatti, johon pelaaja sijoitetaan
+     * @param luolasto Luolasto, jossa pelaaja sijaitsee
      */
     public Pelaaja(int luolaX, int luolaY, Luolasto luolasto) {
         this.luolaX = luolaX;
@@ -102,36 +102,36 @@ public class Pelaaja {
     }
 
     /**
-     * Metodi palauttaa pelaajan x-koordinaatin.
+     * Metodi palauttaa pelaajan x- koordinaatin luolassa.
      *
-     * @return
+     * @return Palauttaa pelaajan x- koordinaatin luolassa
      */
     public int getX() {
         return x;
     }
 
     /**
-     * Metodi palauttaa pelaajan y-koordinaatin.
+     * Metodi palauttaa pelaajan y- koordinaatin luolassa.
      *
-     * @return
+     * @return Palauttaa pelaajan y- koordinaatin luolassa
      */
     public int getY() {
         return y;
     }
 
     /**
-     * Metodi palauttaa x-koordinaatin luolasta, jossa pelaaja on, luolastosta.
+     * Metodi palauttaa x- koordinaatin luolasta, jossa pelaaja on, luolastosta.
      *
-     * @return
+     * @return Palauttaa x- koordinaatin luolasta, jossa pelaaja on, luolastosta
      */
     public int getLuolaX() {
         return luolaX;
     }
 
     /**
-     * Metodi palauttaa y-koordinaatin luolasta, jossa pelaaja on, luolastosta.
+     * Metodi palauttaa y- koordinaatin luolasta, jossa pelaaja on, luolastosta.
      *
-     * @return
+     * @return Palauttaa y- koordinaatin luolasta, jossa pelaaja on, luolastosta
      */
     public int getLuolaY() {
         return luolaY;
@@ -140,7 +140,7 @@ public class Pelaaja {
     /**
      * Metodi asettaa parametrina saadun arvon x:n arvoksi.
      *
-     * @param x
+     * @param x Tämä asetetaan pelaajan x- koordinaatin sijainniksi luolassa
      */
     public void setX(int x) {
         this.x = x;
@@ -149,7 +149,7 @@ public class Pelaaja {
     /**
      * Metodi asettaa parametrina saadun arvon y:n arvoksi.
      *
-     * @param y
+     * @param y Tämä asetetaan pelaajan y- koordinaatin sijainniksi luolassa
      */
     public void setY(int y) {
         this.y = y;

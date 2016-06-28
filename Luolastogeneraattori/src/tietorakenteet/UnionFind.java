@@ -35,7 +35,7 @@ public class UnionFind {
     /**
      * Metodi lisää uuden olion ja komponentin tietorakenteeseen.
      *
-     * @param object
+     * @param object Olio, joka lisataan komponenttina unionFindiin
      */
     public void makeSet(Object object) {
         if (i >= objects.length) {
@@ -51,8 +51,8 @@ public class UnionFind {
      * kumpaankin olioon yhteydessä olleita olioita kutsuttaessa find -metodilla
      * saadaan sama arvo.
      *
-     * @param oA
-     * @param oB
+     * @param oA Olio, joka yhdistetaan toiseen parametrina saatuun olioon
+     * @param oB Olio, joka yhdistetaan toiseen parametrina saatuun olioon
      */
     public void union(Object oA, Object oB) {
         int a = find(oA);
@@ -75,8 +75,8 @@ public class UnionFind {
      * Metodi palauttaa arvon, joka kertoo mihin komponenttiin parametrin olio
      * kuuluu. Jos unionFind ei sisällä oliota, metodi palauttaa -1.
      *
-     * @param object
-     * @return
+     * @param object Olio, jonka find -arvo etsitaan unionFindista
+     * @return Parametrina annetun olion find -arvo
      */
     public int find(Object object) {
         int k = -1;
@@ -103,9 +103,12 @@ public class UnionFind {
      * Metodi palauttaa false, jos parametrina saatujen olioiden find arvo on
      * eri tai jompikumpi olioista on null, muulloin true.
      *
-     * @param o1
-     * @param o2
-     * @return
+     * @param o1 Olio, jonka find arvoa verrataan toisen parametrina saadun olion
+     * find arvoon
+     * @param o2 Olio, jonka find arvoa verrataan toisen parametrina saadun olion
+     * find arvoon
+     * @return Jos parametrina saatujen olioiden find arvot eivat ole samat tai
+     * jompikumpi olioista on null, palautetaan false, muulloin true
      */
     public boolean sama(Object o1, Object o2) {
         if (o1==null|| o2==null) {
@@ -136,9 +139,9 @@ public class UnionFind {
     }
 
     /**
-     * Metodi palauttaa komponenttien määrän tietorakenteessa.
+     * Metodi palauttaa komponenttien maaran tietorakenteessa.
      *
-     * @return
+     * @return Palauttaa komponenttien maaran unionFindissa
      */
     public int getKomponentit() {
         return komponentit;

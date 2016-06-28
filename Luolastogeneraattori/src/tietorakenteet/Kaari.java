@@ -14,9 +14,9 @@ public class Kaari {
      * Metodi luo Kaari -olion asettaen tälle Pisteiksi parametreina saadut 
      * Pisteet ja asettaen Kaaren painoksi parametrina saadun int arvon.
      *
-     * @param o1
-     * @param o2
-     * @param length
+     * @param o1 Kaaren ensimmainen Piste -olio
+     * @param o2 Kaaren toinen Piste -olio
+     * @param length Kaare paino
      */
     public Kaari(Piste o1, Piste o2, int length) {
         this.o1 = o1;
@@ -25,18 +25,18 @@ public class Kaari {
     }
 
     /**
-     * Metodi palauttaa toisen Kaaren päissä olevista pisteistä.
+     * Metodi palauttaa toisen Kaaren paissa olevista pisteista.
      *
-     * @return
+     * @return Palauttaa ensimmaisen Kaaren paissä olevista pisteista
      */
     public Piste getO1() {
         return o1;
     }
 
     /**
-     * Metodi palauttaa toisen Kaaren päissä olevista pisteistä.
+     * Metodi palauttaa toisen Kaaren paissa olevista pisteista.
      *
-     * @return
+     * @return Palauttaa toisen Kaaren paissa olevista pisteista
      */
     public Piste getO2() {
         return o2;
@@ -45,7 +45,7 @@ public class Kaari {
     /**
      * Metodi palauttaa Kaaren painon.
      *
-     * @return
+     * @return Kaaren paino
      */
     public int getLength() {
         return length;

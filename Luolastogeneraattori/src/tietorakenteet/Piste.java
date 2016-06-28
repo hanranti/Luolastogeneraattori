@@ -14,8 +14,8 @@ public class Piste {
      * Metodi luo Piste -olion ja asettaa x- ja y koordinaateiksi parametrina
      * saadut x- ja y muuttujat.
      *
-     * @param x
-     * @param y
+     * @param x Pisteen x- koordinaatti
+     * @param y Pisteen y- koordinaatti
      */
     public Piste(int x, int y) {
         this.x = x;
@@ -25,7 +25,7 @@ public class Piste {
     /**
      * Metodi palauttaa x-koordinaatin.
      *
-     * @return
+     * @return Pisteen x- koordinaatti
      */
     public int getX() {
         return x;
@@ -34,7 +34,7 @@ public class Piste {
     /**
      * Metodi palauttaa y-koordinaatin.
      *
-     * @return
+     * @return Pisteen y- koordinaatti
      */
     public int getY() {
         return y;
