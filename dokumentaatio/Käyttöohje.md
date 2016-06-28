@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Ohjelma löytyy jar -tiedostona repositorion juuresta.
+Ohjelma löytyy jar -tiedostona repositorion juuresta. Ohjelman suorittamiseen tarvitaan Java 8.
 
 Ohjelman parametreiksi voidaan antaa ensimmäisenä parametrina luolan leveys ja toisena todennäköisyysvähennys, joka on luku, joka vähennetään todennäköisyydestä löytää luolia, joka kerta kun uusi luola generoidaan. Luolan minimileveys on 32 ja minimitodennäköisyysvähennys on 0.
 
